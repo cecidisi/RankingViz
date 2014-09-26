@@ -42,26 +42,6 @@ and open the template in the editor.
             ?>
         </div>
 
-        <!--
-        <header id="eexcess_header">
-			<div id="eexcess_inner_header">
-		  		<div id="eexcess_header_search">
-	    			<input id="eexcess_search_field" class="eexcess_query_field" type="text" name="query" value="" />
-                    <input id="eexcess_search_button" class="eexcess_submit_btn" type="button" value="Search" />
-	  			</div>
-	  			<div id="eexcess_header_intro_and_task_section">
-	  				<span></span>
-	  			</div>
-	  			<div id="eexcess_header_filter">
-                    <a target="_blank" href="help-visdashboard.html" >
-                        <img src="../../media/icons/help.png" />
-                    </a>
-	  			</div>
-			</div>
-      	</header>
-        -->
-
-
 		<header id="eexcess_header">
             <section id="eexcess_header_task_section">
 	  			<span></span>
@@ -114,8 +94,10 @@ and open the template in the editor.
             </div>
 
             <div id="eexcess_document_panel">
-                <div id="eexcess_document_controls"></div>
-                <div id="eexcess_document_viewer"></div>
+                <div id="eexcess_document_details"></div>
+                <div id="eexcess_document_viewer">
+                    <p></p>
+                </div>
             </div>
 
 		</div>

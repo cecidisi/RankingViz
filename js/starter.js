@@ -34,6 +34,7 @@ EVT.startButtonClicked = function(){
 
 function startVisualization(){
     // console.log("Status: Testing with Dataset " + datasetId);
+    console.log($("#select-tool-condition").val());
     dataset['tool-aided'] = $("#select-tool-condition").val();
     dataset = getDataWithKeywords(dataset);
     dataset["keywords"] = averageKeywordScores(dataset.data);

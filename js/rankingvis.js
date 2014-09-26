@@ -122,31 +122,8 @@ function RankingVis( domRoot, iWidth, iHeight, visTemplate ){
                 .on('mouseover', function(){ d3.select(this).selectAll('.bar').attr('transform', 'translate(0, 0)'); })
                 .on('mouseout', function(){ d3.select(this).selectAll('.bar').attr('transform', 'translate(0, 0.2)'); });
 
-           /*
-        stackedBars.append('foreignObject')
-            .attr('x', -margin.left)
-            .attr('width', margin.left)
-            .attr('height', y.rangeBand())
-            .style('background', '-webkit-linear-gradient(top, whitesmoke 75%, #DDD)')
-            .style('border', '1px solid #ddd')
-            .append('xhtml:div')
-                .attr('class', 'title-bar')
-                .attr('height', y.rangeBand())
-                .text(function(d){ return d.title; });
-         */
-           /*
-        stackedBars.append('foreignObject')
-            .attr('x', 0)
-            .attr('width', width)
-            .attr('height', y.rangeBand())
-            .style('background', '-webkit-linear-gradient(top, whitesmoke 75%, #DDD)')
-            .style('border', '1px solid #ddd')
-            .append('xhtml:div')
-                .attr('class', 'background');
-            */
-
         stackedBars.append('rect')
-            .attr('class', 'background')
+            .attr('class', function(d, i){ if(i%2 == 0) return 'light_background'; return 'dark_background'; })
             .attr('x', 0)
             .attr('width', width)
             .attr('height', y.rangeBand());
@@ -363,7 +340,6 @@ function RankingVis( domRoot, iWidth, iHeight, visTemplate ){
 
         svg.selectAll('.x.axis text')
             .text(function(text){
-                console.log(text);
                 if(parseFloat(text) == 0.0) return ""; return text;
             });
 
@@ -430,7 +406,6 @@ function RankingVis( domRoot, iWidth, iHeight, visTemplate ){
 
         svg.selectAll('.x.axis text')
             .text(function(text){
-                console.log(text);
                 if(parseFloat(text) == 0.0) return ""; return text;
             });
 
@@ -603,80 +578,17 @@ function RankingVis( domRoot, iWidth, iHeight, visTemplate ){
     * ***************************************************************************************************************/
     RANKING.Render.selectItem = function( itemIndex, isSelectedFromOutside ){
 
-        var datum = data[itemIndex];
-
-        if( itemIndex == selectedIndex ){
+        if( itemIndex != selectedIndex ){       // select
+            selectedIndex = itemIndex;
+            svg.selectAll('.stackedbar').style('opacity', function(d, i){ if(i == itemIndex) return 1; return 0.2; });
+        }
+        else{                                   // deselect
             selectedIndex = 'undefined';
-            RANKING.Render.deselectItem( datum, isSelectedFromOutside );
-            return;
+            svg.selectAll('.stackedbar').style('opacity', 1);
         }
-
-        RANKING.Render.highlightStackedBarsAndTitle( datum, itemIndex );
-
-        selectedIndex = itemIndex;
-
-        /*
-        histogramIdArray.forEach(function(histogramIndex){
-
-            var term = $('#' + histogramIndex).parent().text();
-            var barsH = d3.select('#' + histogramIndex).select("svg").selectAll('.barHistogram');
-            var distributionData = barsH.data();
-            var termIndex = datum.weightedKeywords.getIndexOf(term, 'term');
-
-            if(termIndex != -1){
-
-                var j = 0;
-                while(j < distributionData.length && datum.weightedKeywords[termIndex].weightedScore > distributionData[j].supLimit )
-                    j++;
-
-                // j contains the index of the bar in the current histogram to be highlighted
-                // highlight corresponding bar in darkred
-                barsH.style('fill', function(d, i){
-                    if(i == j) return 'darkred'; return 'grey';
-                });
-            }
-
-        });
-*/
-        if(!isSelectedFromOutside){
-           Vis.ListItemSelected(datum.originalIndex);
-        }
-
-    };
-
-
-
-    RANKING.Render.deselectItem = function( datum, isSelectedFromOutside ){
-
-        // highlight y axis label and stacked bar
-        svg.select('.y.axis').selectAll('text')
-            .style('font-weight', 'normal');
-
-        svg.selectAll(".bar")
-            .style('stroke', 'none')
-            .style('stroke-width', '0px');
-
-        // restore histogram bars to grey fill
-        //d3.selectAll('.barHistogram').style('fill', 'grey');
 
         if(!isSelectedFromOutside)
-            Vis.ListItemSelected( datum.originalIndex );
-    };
-
-
-
-    RANKING.Render.highlightStackedBarsAndTitle = function( datum, itemIndex ){
-
-        // highlight y axis label and stacked bar
-        svg.select('.y.axis').selectAll('text')
-            .style('font-weight', function(d){
-                if(datum.title == d) return 'bold'; return 'normal';
-            });
-
-        svg.selectAll('.bar')
-            .style('filter', function(){
-                if(d3.select(this.parentNode).data()[0].title == datum.title) return 'url(#drop-shadow)'; return '';
-            });
+           Vis.ListItemSelected(itemIndex);
     };
 
 
@@ -701,7 +613,7 @@ function RankingVis( domRoot, iWidth, iHeight, visTemplate ){
             RANKING.Render.drawHistograms( divArray );
         },
         'selectItem' : function( itemIndex ){
-            RANKING.Render.selectItem( itemIndex, true );
+            if(isRankingDrawn) RANKING.Render.selectItem( itemIndex, true );
         }
     };
 

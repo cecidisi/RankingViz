@@ -42,10 +42,12 @@ function VisController() {
 	var contentPanel = "#eexcess_content";										// Selector for content div on the right side
 	var contentList = "#eexcess_content .eexcess_result_list";					// ul element within div content
 	var allListItems = "#eexcess_content .eexcess_result_list .eexcess_list";	// String to select all li items by class
-	var listItem = "#eexcess_content .eexcess_result_list #data-pos-";			// String to select individual li items by id
+	var listItem = "#data-pos-";	                                      		// String to select individual li items by id
 	var rankingContainerClass = ".eexcess_ranking_container";					// class selector for div wrapping ranking indicators in content list
     var favIconClass = ".eexcess_favicon_section";
     var detailsSections = '.eexcess_item_details_section';
+
+    var documentViewer = '#eexcess_document_viewer';
 
 
 	// Constants
@@ -71,6 +73,7 @@ function VisController() {
 	var STR_DROP_TAGS_HERE = "Drop tags here!";
 	var STR_JUST_RANKED = "new";
 	var STR_SEARCHING = "Searching...";
+    var STR_NO_INDEX = 'no_index'
 
 
 	// Main variables
@@ -384,7 +387,7 @@ function VisController() {
 	////////	content list item click	////////
 
 	EVTHANDLER.listItemClicked = function(d, i){
-		LIST.selectListItem(i);
+        LIST.selectListItem(i);
 	};
 
 
@@ -756,6 +759,12 @@ function VisController() {
                 return indices[0];
         },
 
+        getActualIndex : function(index){
+            if(dataRanking.length == 0)
+                return index;
+            return dataRanking[index].originalIndex;
+        },
+
 
         /**
          *	Creates the ranking items with default values and calculates the weighted score for each selected keyword (tags in tag box)
@@ -919,7 +928,7 @@ function VisController() {
 	 * 	Keeps track of selected recommendation in content list
 	 *
 	 * */
-	LIST.selectededListIndex = 'undefined';
+	LIST.selectededListIndex = STR_NO_INDEX;
 
 
 
@@ -937,8 +946,7 @@ function VisController() {
 
 		var aListItem = content.enter()
 							.append("li")
-								//.attr("class", "eexcess_list")
-                                .attr("class", function(d, i){ if(i%2 == 0) return "eexcess_list light_background"; return "eexcess_list dark_background"; })
+								.attr("class", "eexcess_list")
 								.attr("id", function(d, i){ return "data-pos-"+i; });
 
         var rankingDiv = aListItem.append('div')
@@ -955,7 +963,7 @@ function VisController() {
                     .attr("href", "#")
                     .on("click", function(d){ window.open(d.uri, '_blank'); })
 					.html(function(d){
-                        if(d.title.length > 70) return d.title.substring(0, 66) + '...'; return d.title;
+                        if(d.title.length > 60) return d.title.substring(0, 56) + '...'; return d.title;
                     });
 
         // fav icon section on the right
@@ -965,8 +973,9 @@ function VisController() {
                 .attr('title', 'Mark as relevant')
                 .attr("src", FAV_ICON_OFF);
 
+        LIST.updateItemsBackground();
         LIST.bindEventHandlersToItems();
-		$( contentPanel ).scrollTo( "top" );
+		$(contentPanel).scrollTo("top");
 	};
 
 
@@ -977,6 +986,14 @@ function VisController() {
         d3.selectAll(allListItems)
             .on("click", function(d, i){ EVTHANDLER.listItemClicked(d, i); })
             .select(favIconClass).select('img').on("click", function(d, i){ EVTHANDLER.faviconClicked(d, i);});
+
+        /*
+        $(allListItems).each(function(i, item){
+            $(item).on("click", function(){
+
+            });
+        });
+        */
     };
 
 
@@ -993,6 +1010,7 @@ function VisController() {
 		this.internal.updateRanking();
 		this.internal.sortRanking(dataRanking);
 		this.internal.extendRankingWithPositionsChanged(previousRanking);
+        this.highlightListItems();
         this.stopAnimation();
         var isRankingChanged = LIST.internal.hasRankingChanged(previousRanking);
 
@@ -1002,6 +1020,7 @@ function VisController() {
 			this.addRankingPositions(previousRanking);
 			this.hideUnrankedItems();
 			this.animateRanking();
+            this.updateItemsBackground();
 		}
 		VISPANEL.drawRanking(isRankingChanged);
 	};
@@ -1046,7 +1065,7 @@ function VisController() {
 		// Re-binds on click event to list item. Removing and re-appending DOM elements destroy the bounds to event handlers
 		//d3.selectAll( allListItems ).on("click", EVTHANDLER.listItemClicked);
         LIST.bindEventHandlersToItems();
-		LIST.selectededListIndex = 'undefined';
+		LIST.selectededListIndex = STR_NO_INDEX;
 
 	};
 
@@ -1090,14 +1109,12 @@ function VisController() {
 	 *
 	 * */
 	LIST.hideUnrankedItems = function(){
-
         dataRanking.forEach(function(d){
             if(d.rankingPos == 0)
                 $(listItem + '' + d.originalIndex).css('display', 'none');
             else
                 $(listItem + '' + d.originalIndex).css('display', '');
         });
-
 	};
 
 
@@ -1136,31 +1153,44 @@ function VisController() {
 	};
 
 
+    /**
+     * Description
+     */
+    LIST.updateItemsBackground = function(){
+        $(allListItems).removeClass('light_background').removeClass('dark_background');
+        $(allListItems).each(function(i, item){
+            if(i%2 == 0)
+                $(item).addClass('light_background');
+            else
+                $(item).addClass('dark_background');
+        });
+    };
+
+
 
     /**
 	 * Draws legend color icons in each content list item
 	 * */
 	LIST.selectListItem = function( i, flagSelectedOutside ){
-
 		LIST.stopAnimation();
 		var isSelectedFromOutside = flagSelectedOutside || false;
-		var index = (typeof dataRanking !== 'undefined' && dataRanking.length > 0 && !isSelectedFromOutside) ? dataRanking[i].originalIndex :  i;
 
-		LIST.selectededListIndex = (index !== LIST.selectededListIndex) ? index : 'undefined';
-
-		// if clickedListIndex is not undefined then the item was selected, otherwise it was deselected
-		if(LIST.selectededListIndex !== 'undefined'){
-			LIST.highlightListItems(index);
-			if( !isSelectedFromOutside )
-                VISPANEL.selectItemInRanking(i);        // for rankvis actual index is required. the charts require the original index
+		// if clickedListIndex is undefined then the item was selected, otherwise it was deselected
+		if(i !== LIST.selectededListIndex){
+			console.log('entra -- ' + i);
+            LIST.selectededListIndex = i;
+            var actualIndex = LIST.internal.getActualIndex(i);
+            LIST.highlightListItems(actualIndex);
+            DOCPANEL.showDocument(actualIndex);
 		}
 		else{
-            // Restore opacity for all items
+            LIST.selectededListIndex = STR_NO_INDEX;
             LIST.highlightListItems();
-            if( !isSelectedFromOutside )
-                VISPANEL.selectItemInRanking(i);
+            DOCPANEL.clear();
         }
 
+        if( !isSelectedFromOutside )
+            VISPANEL.selectItemInRanking(i);
 	};
 
 
@@ -1170,13 +1200,14 @@ function VisController() {
 	 *	If no paramters are received, all the list items are restored to the default opacity
 	 *
 	 * */
-	LIST.highlightListItems = function(indexToHighlight){
-
-		var index = indexToHighlight || -1;
-		if(index != -1)
-            d3.selectAll(allListItems).style('opacity', function(d, i){ if(i == index) return 1; return 0.2; })
-		else
-			d3.selectAll( allListItems ).style("opacity", "1");
+	LIST.highlightListItems = function(index){
+		if(typeof index !== 'undefined'){
+            $(allListItems).css("opacity", "0.2");
+            $(listItem + "" + index).css("opacity", "1");
+        }
+		else{
+            $(allListItems).css("opacity", "1");
+        }
 	};
 
 
@@ -1206,6 +1237,7 @@ function VisController() {
 		$(rankingContainerClass).empty();
 
         LIST.highlightListItems();
+        LIST.updateItemsBackground();
         LIST.bindEventHandlersToItems();
 		dataRanking = [];
 	};
@@ -1244,6 +1276,26 @@ function VisController() {
     VISPANEL.resizeRanking = function(){
         rankingVis.resize();
     };
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	var DOCPANEL = {};
+
+
+    DOCPANEL.showDocument = function(index){
+        console.log('doc show');
+        $(documentViewer).find('p').text(data[index].description);
+    };
+
+
+    DOCPANEL.clear = function(){
+        $(documentViewer).find('p').empty();
+    };
+
+
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

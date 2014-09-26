@@ -76,8 +76,12 @@ rect.pane {
 }
 
 
-.stackedbar rect.background {
+.stackedbar rect.light_background {
     fill: #eee;
+}
+
+.stackedbar rect.dark_background {
+    fill: #ddd;
 }
 
 
