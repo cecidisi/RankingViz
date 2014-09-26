@@ -1,0 +1,36 @@
+body {
+    text-align: center;
+}
+
+
+select {
+    margin: 2em auto;
+}
+
+
+h1 {
+	font-size: 1.4em;
+    color: #529CBF;
+    text-shadow: 0em 0.1em #fff;
+}
+
+
+section {
+    width: 70%;
+    margin: 1em auto;
+    padding: .5em;
+    background: rgba(230, 230, 230, .8);
+    border-radius: 1em;
+    border: .1em solid rgba(230, 230, 230, 1);
+    text-align: justify;
+}
+
+p {
+    color: #555;
+    font-size: 1.2em;
+}
+
+
+input[type="button"] {
+    margin: 2em auto;
+}

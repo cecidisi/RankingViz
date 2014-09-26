@@ -1,0 +1,1165 @@
+
+
+/********************************************************************************************************************************************
+
+    DROP-DOWN LIST
+
+********************************************************************************************************************************************/
+
+.wrapper-dropdown {
+
+    /* Size & position */
+    position: relative;
+    font-size: 1em;
+    float: left;
+    padding-left: 0.5em;
+
+    /* Styles */
+    vertical-align: middle;
+    line-height: 1.6em;
+    cursor: pointer;
+    outline: none;
+    background: #fff;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.2);
+}
+
+
+.wrapper-dropdown span {
+    display: inline-block;
+    float: left;
+    margin-left: 0em !important;
+    margin-top: 0.2em !important;
+    vertical-align: top;
+    line-height: 1.4em;
+    font-size: 1em;
+}
+
+
+.wrapper-dropdown:after {          /* Little arrow */
+    content: "";
+    width: 0;
+    height: 0;
+    position: relative;
+    float: right;
+    margin-right: 15px;
+    margin-top: 7px;
+}
+
+
+.dropdown-list-icon {
+    display: inline-block;
+    float: left;
+    width: 14px;
+    height: 14px;
+    margin-top: 0.24em !important;
+    margin-right: 0.4em;
+    background-color: inherit;
+}
+
+
+.wrapper-dropdown .dropdown {       /*ul*/
+
+    /* Size & position */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    -webkit-padding-before: 0em;
+    padding-left: 0.4em;
+
+    max-height: 30em;
+    overflow: hidden;
+    list-style: none;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-top: none;
+}
+
+.wrapper-dropdown .dropdown li {
+    padding: 0em;
+}
+
+.wrapper-dropdown .dropdown li a {
+    display: block;
+    text-decoration: none;
+    vertical-align: top;
+    line-height: 1.7em;
+    color: #666;
+}
+
+
+.wrapper-dropdown .dropdown li:last-of-type a {
+    border: none;
+}
+
+
+/* Hover state */
+.wrapper-dropdown .dropdown li:hover a {
+    color: #57a9d9;
+}
+
+
+/* Active state */
+.wrapper-dropdown.active {
+    box-shadow: none;
+}
+
+.wrapper-dropdown.active span {
+    color: #fff;
+}
+
+.wrapper-dropdown.active:after {
+    border-color: #fff transparent;
+    border-width: 0px 6px 6px 6px;
+}
+
+
+
+/********************************************************************************************************************************************
+
+    SHOW & HIDE SECTION
+
+********************************************************************************************************************************************/
+
+
+.show-and-hide-container {
+    width: 100%;
+    margin: 1em 0em;
+}
+
+
+.show-and-hide-header {
+    display: inline-block;
+    width: 100%;
+    height: 1.4em;
+    margin-top: .1em;
+    vertical-align: middle;
+    font-size: 1em;
+    line-height: 1.6em;
+    cursor: pointer;
+    outline: none;
+}
+
+
+.show-and-hide-header .arrow-icon {
+    float: left;
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+
+    background-image: url("../libs/ui/images/ui-icons_454545_256x240.png");
+    background-position: -32px -16px;
+}
+
+
+.show-and-hide-header .title {
+    display: inline-block;
+    float: left;
+    margin-left: 0.2em;
+    margin-top: 0.2em;
+    vertical-align: top;
+    color: #1f6080;
+}
+
+
+.show-and-hide-content {
+    width: 100%;
+    max-height: 30em;
+    background: #fff;
+    /*border: 0.1em #ddd solid;*/
+    border-radius: 0.5em;
+}
+
+.show-and-hide-content p {
+    display: inline-block;
+    margin: .4em;
+    font-size: .95em;
+    -webkit-margin-before: 0.5em !important;
+    -webkit-margin-after: 0.5em !important;
+}
+
+
+/* Active state */
+.show-and-hide-header.active .arrow-icon {
+    background-position: -64px -16px;
+}
+
+
+
+/********************************************************************************************************************************************
+
+    Header panel (top of screen)
+
+********************************************************************************************************************************************/
+
+
+#eexcess_vis{
+    width:100%;
+}
+
+
+
+/*
+    Div wrapping the whole header (green bar on the top of the iFrame)
+*/
+#eexcess_header {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    float: left;
+    /*width: 99.75%;*/
+    height: 16%;
+    margin-top: .5em;
+    padding: .5em;
+    vertical-align: middle;
+    background: -webkit-linear-gradient(top, rgba(115, 115, 115, 1), rgba(102, 102, 102, 1));
+    box-shadow: inset .1em .1em .5em #666, inset -.1em -.1em .5em #666;
+}
+
+
+/*
+    <span> inside #eexcess_message_and_task_section
+    Displays message like "Query Results : xx"
+*/
+#eexcess_header_task_section {
+	display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    float: left;
+	width: 15%;
+    text-align:center;
+    color: #fff;
+}
+
+
+#eexcess_header_task_section span {
+    margin-top: .3em;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-shadow: 0em 0.1em #888;
+}
+
+#eexcess_header_task_section p {
+    font-size: 1.1em;
+    -webkit-margin-before: .5em;
+    -webkit-margin-after: .5em;
+}
+
+
+#eexcess_header_task_section div {
+    width: 100%;
+}
+
+#eexcess_header_task_section input[type="button"] {
+    align-self: center;
+}
+
+#eexcess_header_task_section img {
+    float: left;
+    width: 1.3em;
+    margin-top: 0.3em;
+}
+
+/*
+    <div> on the left side of header
+    Wraps the message and task
+*/
+#eexcess_message_section {
+    float:left;
+    width: 60%;
+    height: 100%;
+    /*
+    border-radius: .8em;
+    */
+    background: white;
+    box-shadow: inset .2em .2em .5em #ccc, inset -.2em -.2em .5em #ccc;
+    overflow: auto;
+}
+
+#eexcess_message_section p {
+    margin: .5em;
+    font-size: 1.1em;
+    line-height: 1.3em;
+    color: #444;
+}
+
+
+
+/*
+    Third and last <div> aligned inside "#eexcess_inner_header"
+    Currently Unused
+*/
+#eexcess_selected_items_section {
+	width: 20%;
+	float: right;
+    padding: .4em 0em;
+    /*
+    border-radius: .8em;
+    */
+    background: white;
+    box-shadow: inset .2em .2em .5em #ccc, inset -.2em -.2em .5em #ccc;
+    overflow: auto;
+    text-align: center;
+}
+
+
+.eexcess_selected_item {
+    display: inline-flex;
+    align-items: center;
+    padding: .15em;
+    width: 94%;
+    margin: .1em auto;
+    text-align: left;
+    border: solid 1px #ccc;
+    background: rgba(250, 250, 250, 1);
+    box-shadow: 0em 0.1em 0.2em -0.1em #888;
+    color: #529CBF;
+}
+
+
+.eexcess_selected_item span {
+    display: inline-block;
+    float: left;
+    width: 93%;
+    margin-right: .4em;
+}
+
+.eexcess_selected_item img {
+    display: inline-block;
+    float: right;
+    width: .9em;
+    z-index: 999;
+}
+
+
+/*
+    Contains icon expand/contract
+*/
+#eexcess_expand_contract_icon_section {
+    display: flex;
+    align-items: flex-end;
+    width: 2em;
+}
+
+/********************************************************************************************************************************************
+
+        Main Containers
+
+********************************************************************************************************************************************/
+
+
+
+/*
+    <div> containing everything below the header ("#eexcess_header")
+*/
+#eexcess_main_panel{
+	display: inline-flex;
+    justify-content: space-between;
+    text-align: center;
+	vertical-align: top;
+	height: 81%;
+}
+
+
+
+/********************************************************************************************************************************************
+
+   LEFT CONTROL PANEL - Wraps keyword container (tag cloud)
+
+********************************************************************************************************************************************/
+
+/*
+    Main panel (div) on the left side (green)
+
+*/
+#eexcess_controls_left_panel {
+    float: left;
+    display: flex;
+    align-items: stretch;
+    width: 15%;
+    /*height: 98%;*/
+    padding: .5em;
+    z-index: 2;
+    background: -webkit-linear-gradient(top, rgba(175, 175, 175, 1), rgba(170, 170, 170, 1));
+    box-shadow: inset .1em .1em .5em #aaa, inset -.1em -.1em .5em #aaa;
+}
+
+/*  Keyword cloud containing keywords in blue sclae  */
+
+#eexcess_keywords_container {
+    overflow-y: auto;
+    width: 100%;
+    height: 20%;
+    padding: .5em 0em;
+    /*-
+    border-radius: .8em;
+    */
+    background: white;
+    box-shadow: inset .2em .2em .5em #ccc, inset -.2em -.2em .5em #ccc;
+}
+
+/*  keywords in keyword container  */
+.eexcess_keyword_tag{
+	display: inline-block;
+	pointer-events: all;
+	margin: 0.2em;
+	padding: 0.3em;
+	border: 0.1em #222 solid;
+	-webkit-border-radius: 0.3em;
+    border-radius: 0.3em;
+	-webkit-box-shadow: 0em 0.1em 0.3em -0.1em #888;
+    box-shadow: 0em 0.1em 0.3em -0.1em #888;
+    color: #111;
+    text-shadow: -0.1em 0.1em 0.5em #eee;
+	opacity: 1.0;
+	cursor: move;
+}
+
+.eexcess_keyword_tag:hover {
+	color: #eee;
+    text-shadow: none;
+}
+
+/*
+    div on the upper side of #eexcess_controls_left_panel.
+    Wraps #eexcess_controls_chart and #eexcess_controls_chart, which enclose pairs  of span-select DOM elements
+
+
+#eexcess_fixed_controls{
+	height: 20%;
+	margin-top: 2em;
+	margin-bottom: 1%;
+}
+
+
+/*
+    Wraps the first pair span-select, e.g. "Chart  timeline")
+
+#eexcess_controls_chart {
+	margin-left: 5px;
+}
+
+/*
+    <div> for wrapping the divs containing the remaining pairs span-select (".eexcess_mapping_container")
+
+#eexcess_controls_mappings {
+	margin-top: 10px;
+	margin-left: 5px;
+}
+
+
+/*
+    Contains individual <span>, <select> pairs
+
+.eexcess_mapping_container {
+
+}
+
+
+/*
+    Class for <span> elements labelling the <select> elements$$
+
+.eexcess_controls_title {
+	display: block;
+	float: left;
+	text-align : left;
+	margin-left: 2%;
+	width: 35%;
+	z-index: 3;
+}
+
+/*
+    All <select> elements
+
+#eexcess_select_chart,
+.eexcess_select {
+    margin-left: 40%;
+    width: 58%;
+    display: block;
+}
+
+
+.eexcess_controls_facet_static {
+    display: block;
+    width: 56%;
+    height: 1.3em;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 40%;
+    margin right: auto;
+    padding-left: .2em;
+    font-size: 1em;
+    text-align: left;
+
+    background: -webkit-linear-gradient(top,#fefefe, #fff , #fefefe);
+    border: 0.1em #ddd solid;
+    color: #555;
+    box-shadow: 0em 0.1em .1em #999;
+}
+*/
+
+
+
+/********************************************************************************************************************************************
+
+VIS PANEL (center of screen)
+
+********************************************************************************************************************************************/
+
+#eexcess_vis_panel {
+    display: inline-block;
+    width: 64%;
+    height: 100%;
+}
+
+/********************************************************************************************************************************************
+
+    VIS PANEL CONTROLS
+
+********************************************************************************************************************************************/
+
+
+#eexcess_vis_panel_controls {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 100%;
+    height: 10%;
+}
+
+
+/*
+*   Ranking Controls (upper mid-left)
+*
+*/
+
+#eexcess_ranking_controls {
+	display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    margin: .2em 0em;
+    background: -webkit-linear-gradient(top, rgba(245, 245, 245, 1), rgba(230, 230, 230, 1));
+    box-shadow: inset .1em .1em .5em #ccc, inset -.1em -.1em .5em #ccc;
+}
+
+
+#eexcess_ranking_controls button {
+    min-width: 2.1em;
+    height: 1.7em;
+    margin: .6em .3em;
+    padding: .3em .6em;
+    border-radius: .9em;
+}
+
+
+#eexcess_ranking_controls button img {
+    width: 100%;
+    height: 100%;
+}
+
+
+/*
+*   Keyword box (upper mid-right header)
+*
+*/
+#eexcess_keywords_box {
+	overflow-x: hidden;
+    overflow-y: auto;
+    display: inline-flex;
+    align-items: center;
+    float: right;
+    width: 60%;
+    margin: .2em 0em;
+    padding: 0em .3em;
+    background: -webkit-linear-gradient(top, rgba(245, 245, 245, 1), rgba(230, 230, 230, 1));
+    list-style-type: none;
+    text-align: left;
+    box-shadow: inset .1em .1em .5em #ccc, inset -.1em -.1em .5em #ccc;
+}
+
+#eexcess_keywords_box p {
+	width: 100%;
+    margin-top: 0.2em;
+	margin-bottom: 0.2em;
+	font-size: 1em;
+    text-align: center;
+    color: #777;
+}
+
+.eexcess_keyword_tag_in_box{
+	cursor: default;
+	display: inline-block;
+	text-align: left;
+	width: 14%;
+    height: 2em;
+	margin: 0em .1em;
+    padding: .2em;
+	border-radius: 0.3em;
+	-webkit-border-radius: 0.3em;
+	-webkit-box-shadow: 0em 7px 6px -6px #888;
+    box-shadow: 0em 7px 6px -6px #888;
+    -webkit-text-shadow: -0.1em 0.1em 0.5em #eee;
+    text-shadow: -0.1em 0.1em 0.5em #eee;
+
+}
+
+.eexcess_keyword_tag_in_box:hover {
+    box-shadow: 2px 2px 5px #888, -2px -2px 5px #888;
+}
+
+
+.eexcess_keyword_tag_in_box > text {
+	opacity: 0.5;
+}
+
+.eexcess_weight_slider {
+	margin-top: 0.2em;
+	height: 1em;
+	text-align: left;
+}
+
+.ui-slider-horizontal {
+    height: .5em;
+    margin: .1em;
+}
+
+.ui-widget {
+	font-size: 1em;
+}
+
+.eexcess_weight_slider .ui-slider-range {
+	height: 100%;
+	font-size: 0.9em;
+	font-weight: normal;
+
+	border-radius: 0.3em;
+	-webkit-border-radius: 0.3em;
+}
+
+.ui-slider-range .label {
+	display: inline-block;
+	vertical-align: middle;
+	padding-left: 0.3em;
+	line-height: 1.7em;
+	font-size: 1.1em;
+}
+
+.ui-slider .ui-slider-handle {
+	top:-0.2em;
+	width: 0.4em;
+	height: .8em;
+	border-radius: 0.2em;
+	-webkit-border-radius: 0.2em;
+}
+
+
+.eexcess_tag_img {
+	position: relative;
+	float: right;
+	right: -1.3em;
+	top: -1.1em;
+	z-index: 8040;
+	width: 1.7em;
+	height: 1.4em;
+	cursor: pointer;
+}
+
+
+
+
+/********************************************************************************************************************************************
+
+    CANVAS PANEL (bottom-center)
+
+********************************************************************************************************************************************/
+
+#eexcess_vis_panel_canvas {
+    display: inline-block;
+    width: 100%;
+    height: 90%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/********************************************************************************************************************************************
+
+    Content List Panel (left-center)
+
+********************************************************************************************************************************************/
+
+
+/*
+    <div> container for the list of recommendations
+*/
+#eexcess_content{
+	display: inline-block;
+    float: left;
+	vertical-align: top;
+    width: 40%;
+}
+
+
+
+/*
+    List body in "#eexcess_content"
+*/
+#eexcess_content ul{
+	clear:both;
+    width: 100%;
+    margin: 0;
+    margin-left: 1px;
+    padding: 0;
+    list-style: none;
+    display:block;
+    padding-bottom: 1px;
+
+}
+
+
+/*
+    <li> items in "#eexcess_content ul". Each <li> wraps 2 container <div>s: ".eexcess_item_ctl" and ".eexcess_ritem_container"
+*/
+.eexcess_list {
+    position: relative;
+    padding: .1em;
+    height: 27.5px;/*2em;*/
+    vertical-align: top;
+    /*background: -webkit-linear-gradient(top, whitesmoke 75%, #DDD);*/
+   /* border: 1px solid #ddd;*/
+    -webkit-transition: box-shadow 4s linear;
+}
+
+
+.light_background {
+    background: #eee;
+}
+
+.dark_background {
+    background: #ddd;
+}
+
+/* <li> itmes' hover style */
+.eexcess_list:hover {
+    background: -webkit-linear-gradient(top, rgb(230, 230, 230) 75%, #ccc);
+    /*border: 1px solid #ccc;*/
+}
+
+
+/***************	content list ranking section	**************/
+
+
+.eexcess_ranking_container {
+    display: inline-block;
+    float: left;
+    height: 100%;
+    max-width: 12%;
+    padding-left: .3em;
+}
+
+
+.eexcess_ranking_pos {
+	display: inline-block;
+	float: left;
+	width: 1.7em;
+	height: 1.7em;
+	margin: .2em;
+    background: -webkit-linear-gradient(top, rgba(255, 175, 0, 0.8) 75%, rgba(235, 155, 0, 0.8));
+	-webkit-border-radius: 1em;
+	box-shadow: 0.05em 0.15em 0.3em #888;
+	line-height: 1.9em;
+	font-size: 0.85em;
+	vertical-align: middle;
+	text-align: center;
+	color: #fff;
+    text-shadow: 0em 0.1em #888;
+}
+
+
+.eexcess_ranking_posmoved {
+	display: inline-block;
+	float: left;
+	/*width: 1.8em;*/
+	height: 1.8em;
+	margin-top: 0.3em;
+	margin-left: 0.5em;
+    line-height: 1.6em;
+    font-size: .9em;
+	font-weight: bold;
+	vertical-align: middle;
+	text-align: center;
+	color: #222;
+	text-shadow: 0em 0.1em 0 rgba(136, 136, 136, 0.5);
+}
+
+/***************	Encloses item title   **************/
+
+.eexcess_ritem_container {
+    display: inline-flex;
+    align-items: center;
+    width: 80%;
+    height: 100%;
+    margin-left: 1%;
+    vertical-align: top;
+    text-align: left;
+}
+
+
+/***************	Encloses favicon   **************/
+
+.eexcess_favicon_section {
+    display: inline-flex;
+    float: right;
+    width: 5%;
+    vertical-align: top;
+}
+
+.eexcess_favicon_section img{
+    margin-top: .4em;
+    cursor: pointer;
+}
+
+/***************	Effects for list items when the ranking changes   **************/
+
+.eexcess_list_moving_up {
+	/*border: 1px solid rgba(0, 250, 0, 0.8);*/
+    box-shadow: inset 0.1em 0.1em 0.3em rgba(0, 250, 0, 0.6), inset -0.1em -0.1em 0.3em rgba(0, 250, 0, 0.6);
+    -webkit-transition: box-shadow 0s linear;
+}
+
+.eexcess_list_moving_down {
+	/*border: 1px solid rgba(250, 10, 10, 0.6);*/
+    box-shadow: inset 0.1em 0.1em 0.3em rgba(250, 10, 10, 0.6), inset -0.1em -0.1em 0.3em rgba(250, 10, 10, 0.6);
+    -webkit-transition: box-shadow 0s linear;
+}
+
+.eexcess_list_not_moving {
+	/*border: 1px solid rgba(128, 128, 128, 0.6);*/
+    box-shadow: inset 0.1em 0.1em 0.3em rgba(128, 128, 128, 0.6), inset -0.1em -0.1em 0.3em rgba(128, 128, 128, 0.6);
+    -webkit-transition: box-shadow 0s linear;
+}
+
+
+
+
+/********************************************************************************************************************************************
+
+    Canvas section (right-center) - displays ranking vis
+
+********************************************************************************************************************************************/
+
+
+/*
+    <div> where the charts (timeline, bar chart) are actually rendered
+*/
+#eexcess_canvas {
+	display: inline-block;
+    width: 60%;
+    height: 99%;
+	text-align: center;
+}
+
+
+/*
+    <div> appended to #eexcess_canvas when a message should be displayed. E.g. when a new search is triggered or no data are received.
+    Contains a <span> for the message and optionally an <img> tag (for the loading icon, only for the case of a new search )
+*/
+#eexcess_message_on_canvas{
+	display: block;
+	margin-top: 8em;
+	text-align: center;
+}
+
+
+/*
+    <span> in #eexcess_loading_results
+*/
+
+#eexcess_message_on_canvas span{
+	display: block;
+}
+
+
+#eexcess_loading_results span{
+	display: block;
+	font-size: 1.1em;
+}
+
+
+/********************************************************************************************************************************************
+
+    Document Panel (right) - for visualizing highlighted text
+
+********************************************************************************************************************************************/
+
+
+/*
+*   Document Controls (upper right)
+*
+*/
+#eexcess_document_panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    float: right;
+    width: 20%;
+    height: 100%;
+}
+
+
+#eexcess_document_controls {
+    width: 100%;
+    height: 10%;
+    margin: .2em 0em;
+    background: -webkit-linear-gradient(top, rgba(245, 245, 245, 1), rgba(230, 230, 230, 1));
+    box-shadow: inset .1em .1em .5em #ccc, inset -.1em -.1em .5em #ccc;
+}
+
+
+#eexcess_document_viewer {
+    display: inline-block;
+    width: 100%;
+    height: 90%;
+    background: -webkit-linear-gradient(top, rgba(175, 175, 175, 1), rgba(170, 170, 170, 1));
+    box-shadow: inset .1em .1em .5em #aaa, inset -.1em -.1em .5em #aaa;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/********************************************************************************************************************************************
+
+    Bookmark addition panel (appears on favicon clicked)
+
+********************************************************************************************************************************************/
+
+
+.eexcess-bookmark-dialog {
+    position: absolute;
+    right: 4.6em;
+    width: 18em;
+    max-height: 30em;
+    padding: 0.5em;
+    z-index: 999;
+    font-size: 0.9em;
+}
+
+
+.eexcess-bookmark-dialog span {
+    display: inline-block;
+    float: left;
+    width: 19%;
+    margin-top: .1em;
+    margin-left: 0.4em;
+    margin-right: 0.4em;
+    text-align: left;
+}
+
+.eexcess-bookmark-dialog p {
+    display: inline-block;
+    width: 76%;
+    height: auto;
+    margin-top: .1em;
+    font-size: .95em;
+
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+}
+
+
+.eexcess-bookmark-dialog-title {
+    display: block !important;
+    margin-top: 0.2em !important;
+    margin-bottom: 0.5em;
+    margin-left: 0em !important;
+    text-align: center !important;
+    font-size: 1.1em;
+    font-weight: bold;
+    width: inherit !important;
+}
+
+
+.eexcess-boookmark-dialog-details {
+    width: 100%;
+    margin-top: 0.6em;
+    margin-bottom: 0.6em;
+    vertical-align: top;
+}
+
+
+.eexcess-bookmark-dialog-settings {
+    width: 100%;
+    min-height: 2em;
+    margin-bottom: .6em;
+}
+
+
+.eexcess-bookmark-dialog-settings span {
+    margin-top: 0.3em;
+}
+
+
+.eexcess-bookmark-dropdown-list {
+    display: inline-block;
+    width: 68%;
+    height: 1.7em;
+    border: 0.1em #ddd solid;
+}
+
+
+/* Color icon in header of drop-down list */
+.eexcess-bookmark-dropdown-list-icon {
+    display: inline-block;
+    float: left;
+    width: 14px;
+    height: 14px;
+    margin-top: 0.24em !important;
+    margin-right: 0.4em;
+}
+
+
+.eexcess-bookmark-dialog-optional {
+    float: left;
+    width: 100%;
+    margin-top: 0.3em;
+    margin-bottom: .9em;
+    vertical-align: top;
+}
+
+.eexcess-bookmark-dialog-optional p {
+    display: inline-block;
+    margin-top: 0;
+    margin-left: 5.2em;
+    font-size: .9em;
+    /* static */
+    color: red;
+}
+
+
+/* Color picker */
+#eexcess-bookmak-dialog-color-picker {
+    display: inline-block;
+    width: 1.8em;
+    height: 1.8em;
+    margin-top: 0.3em;
+    margin-left: 1.9em;
+    margin-right: .3em;
+    cursor: pointer;
+
+    /* Static color-related style */
+    background-color: #fff;
+    border: 0.1em #ddd solid;
+    box-shadow: inset 4px 4px 6px -6px #666666;
+}
+
+
+
+.eexcess-bookmark-dialog-input-wrapper {
+    display: inline-block;
+    width: 71.5%;
+    margin-top: 0.35em;
+    vertical-align: top;
+}
+
+
+.eexcess-bookmark-dialog-input-wrapper input {
+    width: 100%;
+    height: 1.4em;
+    font-size: 1.1em;
+    text-align: left;
+
+    /* Static color-related style */
+    background-color: white;
+    border: 0.1em #ddd solid;
+    /*box-shadow: 0 1px 0 rgba(0,0,0,0.2);*/
+    box-shadow: inset 4px 4px 6px -6px #666666;
+    color: #666;
+}
+
+
+
+.eexcess-bookmark-buttons-wrapper {
+    width: 100%;
+    text-align: center;
+    margin-bottom: .3em;
+}
+
+
+
+.eexcess-bookmark-bookmarked-in-section {
+    width: 100%;
+    margin: 1em 0em;
+}
+
+.eexcess-bookmark-bookmarked-in {
+    display: inline-block;
+    width: 100%;
+    height: 1.7em;
+    margin-top: .2em;
+    vertical-align: middle;
+    font-size: 1em;
+    line-height: 1.6em;
+}
+
+
+.eexcess-bookmark-bookmarked-in span {
+    display: inline-block;
+    float: left;
+    margin-left: 0em !important;
+    margin-top: 0.2em !important;
+    vertical-align: top;
+    line-height: 1.4em;
+    font-size: 1em;
+}
+
+.eexcess-bookmark-bookmarked-in img {
+    width: 12px;
+    height: 12px;
+    float: right;
+    margin-top: .3em;
+    margin-right: .5em;
+    z-index: 99;
+    cursor: pointer;
+}
+
+.eexcess-bookmark-color-icon {
+    display: inline-block;
+    float: left;
+    width: 14px;
+    height: 14px;
+    margin-top: 0.25em;
+    margin-right: 0.4em;
+    margin-left: .5em;
+}
+
+
+
+
+
