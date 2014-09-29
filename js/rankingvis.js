@@ -47,13 +47,6 @@ function RankingVis( domRoot, iWidth, iHeight, visTemplate ){
     };
 
 
-    RANKING.Internal.getBarHeight = function() {
-
-        return 30;//$('#data-pos-1').height();
-        //return (height / data.length - 1 < 55) ? (height / data.length - 1) : 55;
-    };
-
-
     RANKING.Internal.getDistributionData = function( term ){
 
         var array = [];
@@ -278,7 +271,8 @@ function RankingVis( domRoot, iWidth, iHeight, visTemplate ){
 		******************************************************/
 		RANKING.Dimensions = RANKING.Settings.getRankingDimensions(domRoot, iWidth, data.length);
 		width          = RANKING.Dimensions.width;
-		height         = RANKING.Dimensions.height;
+        height         = RANKING.Dimensions.height;
+        barHeight      = RANKING.Dimensions.barHeight;
 		margin         = RANKING.Dimensions.margin;
 		centerOffset   = RANKING.Dimensions.centerOffset;
 		verticalOffset = RANKING.Dimensions.verticalOffset;
@@ -293,7 +287,7 @@ function RankingVis( domRoot, iWidth, iHeight, visTemplate ){
 
 		y = d3.scale.ordinal()
 			.domain(data.map(function(d){ return d.title; }))
-			.rangeBands( [0, data.length * RANKING.Internal.getBarHeight()], .02);
+			.rangeBands( [0, height], .02);
 
         color = colorScale;
 
@@ -321,7 +315,7 @@ function RankingVis( domRoot, iWidth, iHeight, visTemplate ){
         svg = d3.select(root).append("svg")
 			.attr("class", "svg")
 			.attr("width", width + margin.left + margin.right)
-			.attr("height", height + margin.top + margin.bottom)
+            .attr("height", height + margin.top + margin.bottom + 30)
                 .append("g")
                     .attr("width", width)
                     .attr("height", height)
@@ -382,13 +376,15 @@ function RankingVis( domRoot, iWidth, iHeight, visTemplate ){
         RANKING.InitData = RANKING.Settings.getRankingInitData( recomData, ranking, rankingCriteria );
 		data = RANKING.InitData.data;
 
-		/******************************************************
+        RANKING.Render.updateCanvasDimensions();
+
+        /******************************************************
 		*	Redefine x & y scales' domain
 		******************************************************/
 
 		x0 = x.domain([0, RANKING.Internal.topLimit(data, rankingCriteria)]).copy();
 
-        y.rangeBands( [0, data.length * RANKING.Internal.getBarHeight()], .02);
+        y.rangeBands( [0, height], .02);
 		y0 = y.domain(data.map(function(d){ return d.title; })).copy();
 
         color = colorScale;
@@ -424,51 +420,62 @@ function RankingVis( domRoot, iWidth, iHeight, visTemplate ){
 	};
 
 
+
+    RANKING.Render.updateCanvasDimensions = function(){
+
+        /******************************************************
+		*	Recalculate canvas dimensions
+		******************************************************/
+		RANKING.Dimensions = RANKING.Settings.getRankingDimensions(domRoot, iWidth, data.length);
+        height         = RANKING.Dimensions.height;
+
+		y.rangeBands(height, .02);
+
+        d3.select(svg.node().parentNode)
+            .attr('height', height + margin.top + margin.bottom + 30);
+
+        svg.attr("height", height + 30)
+            .attr("transform", "translate(" + (margin.left) + ", 0)");
+
+        // update axes
+        svg.select('.x.axis').attr("transform", "translate(0," + (height) + ")").call(xAxis.orient('bottom'));
+
+    }
+
     /******************************************************************************************************************
 	*
 	*	Redraw without animating when the container's size changes
 	*
 	* ***************************************************************************************************************/
     RANKING.Render.resize = function(){
-
         /******************************************************
 		*	Recalculate canvas dimensions
 		******************************************************/
-		RANKING.Dimensions = RANKING.Settings.getRankingDimensions(domRoot, iWidth);
+		RANKING.Dimensions = RANKING.Settings.getRankingDimensions(domRoot, iWidth, data.length);
 		width          = RANKING.Dimensions.width;
-		height         = RANKING.Dimensions.height;
+        height         = RANKING.Dimensions.height;
+        barHeight      = RANKING.Dimensions.barHeight;
 		margin         = RANKING.Dimensions.margin;
 		centerOffset   = RANKING.Dimensions.centerOffset;
 		verticalOffset = RANKING.Dimensions.verticalOffset;
 
         x.rangeRound([0, width]);
-		y.rangeBands([0, data.length * RANKING.Internal.getBarHeight()], .02);
+		y.rangeBands(height, .02);
 
-        d3.select(svg.node().parentNode)
-            .attr('width',width + margin.left + margin.right)
-            .attr('height', height + margin.top + margin.bottom);
+        d3.select(svg.node().parentNode).attr('width',width + margin.left + margin.right);
+        svg.attr("width", width);
 
-        svg.attr("width", width)
-            .attr("height", height)
-            .attr("transform", "translate(" + (margin.left) + ", 0)");
+        // update x-axis
+        svg.select('.x.axis').call(xAxis.orient('bottom'));
 
-        // update axes
-        svg.select('.x.axis').attr("transform", "translate(0," + (height) + ")").call(xAxis.orient('bottom'));
-        svg.select('.y.axis').call(yAxis.orient('left'));
+        // Update bars
+        svg.selectAll(".stackedbar").attr('width', width);
+        svg.selectAll("rect.light_background").attr('width', width);
+        svg.selectAll("rect.dark_background").attr('width', width);
 
-        //RANKING.Render.adjustTitlesInYAxis();
-
-        svg.selectAll(".stackedbar")
-            .attr( "transform", function(d) { return "translate(0, " + y(d.title) + ")"; } );
-
-        svg.selectAll("rect.background")
-            .attr('width', width)
-            .attr('height', y.rangeBand());
-
-		svg.selectAll(".bar")
-            .attr("height", y.rangeBand())
-			.attr("x", function(d) { return x(d.x0); })
-			.attr("width", function(d) { return x(d.x1) - x(d.x0); });
+        svg.selectAll(".bar")
+            .attr("x", function(d) { return x(d.x0); })
+            .attr("width", function(d) { return x(d.x1) - x(d.x0); });
     };
 
 

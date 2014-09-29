@@ -654,8 +654,8 @@ var words = [
     'sample', 'wide', 'analysis', 'alone', 'really', 'during', 'small', 'big', 'related', 'fully', 'concerning', 'new', 'somehow', 'does', 'even', 'arent',
     'different', 'perceive', 'perceived', 'perceives', 'useful', 'observe', 'observes', 'observed', 'registers', 'registered', 'find', 'finds', 'found',
     'test', 'tests', 'tested', 'author', 'article', 'unless', 'useless', 'day', 'days', 'month', 'months', 'year', 'years', 'describe', 'describes', 'described',
-    'least', 'current', 'review', 'around', 'worse', 'either', 'non', 'will', 'down', 'up', 'no', 'survey', 'study', 'far', 'beyond', 'lower', 'actual', 'actually', 'aren',
-    'little', 'enough', '__key'];
+    'least', 'current', 'review', 'around', 'worse', 'either', 'non', 'will', 'down', 'up', 'no', 'survey', 'study', 'far', 'beyond', 'lower', 'actual', 'actually', 'aren', 'whether',
+    'little', 'enough', 'show', 'suggests', 'suggest', 'suggested', 'suggesting', 'full', 'fulfill', 'hold', '__key'];
 
 // tell the world about the noise words.
 exports.words = words;

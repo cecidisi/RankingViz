@@ -1177,7 +1177,6 @@ function VisController() {
 
 		// if clickedListIndex is undefined then the item was selected, otherwise it was deselected
 		if(i !== LIST.selectededListIndex){
-			console.log('entra -- ' + i);
             LIST.selectededListIndex = i;
             var actualIndex = LIST.internal.getActualIndex(i);
             LIST.highlightListItems(actualIndex);
@@ -1286,7 +1285,6 @@ function VisController() {
 
 
     DOCPANEL.showDocument = function(index){
-        console.log('doc show');
         $(documentViewer).find('p').text(data[index].description);
     };
 

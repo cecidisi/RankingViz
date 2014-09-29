@@ -1,6 +1,6 @@
 function Settings(){
 
-    Settings.prototype.getRankingDimensions = function(domRoot, iWidth){
+    Settings.prototype.getRankingDimensions = function(domRoot, iWidth, dataLength){
 
 		var rootWidth  = $(domRoot).width() - 10;
 		var rootHeight = $(domRoot).height();// >= 600 ? 600 : $(domRoot).height();
@@ -8,7 +8,9 @@ function Settings(){
         //var margin = {top: 20, bottom: 30, left: Math.floor(rootWidth * 0.3), right: Math.floor(rootWidth * 0.02) };
         var margin = {top: 0, bottom: 20, left: 0, right: 0 };
         var width = rootWidth - margin.left - margin.right;
-        var height = rootHeight - margin.top - margin.bottom;
+        //var height = rootHeight - margin.top - margin.bottom;
+        var barHeight = 30;
+        var height = barHeight * dataLength;
         var centerOffset = (iWidth/2) - ((width + margin.left + margin.right)/2);
         var verticalOffset = ((rootHeight - 500) / 2) < 30 ? 30 : ((rootHeight - 500) / 2);
 /*
@@ -24,7 +26,7 @@ function Settings(){
         console.log(height);
        */
 
-        return{ 'margin': margin, 'width': width, 'height': height, 'centerOffset': centerOffset, 'verticalOffset': verticalOffset };
+        return{ 'margin': margin, 'width': width, 'height': height, 'barHeight': barHeight, 'centerOffset': centerOffset, 'verticalOffset': verticalOffset };
 
 	};
 

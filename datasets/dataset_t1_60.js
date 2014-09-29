@@ -671,10 +671,8 @@ function getDataset_t1_60() {
 
 
 
-                    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                    /////////////////////// PARTIALLY RELATED 9 ITEMS
 
-                                         {
+                     {
                         "collectionName":"Journal of Business Ethics",
                         "eexcessURI":"http://www.mendeley.com/catalog/women-board-directors-characteristics-few/",
                         "description":"Appointment as a director of a company board often represents the pinnacle of a management career. Worldwide, it has been noted that very few women are appointed to the boards of directors of companies. Blame for the low numbers of women of company boards can be partly attributed to the widely publicized \"glass ceiling\". However, the very low representation of women on company boards requires further examination. This article reviews the current state of women's representation on boards of directors and summarizes the reasons as to why women are needed on company boards. Given that more women on boards are desirable, the article then describes how more women could be appointed to boards, and the actions that organizations and women could take to help increase the representation of women. Finally, the characteristics of those women that have succeeded in becoming members of company boards are described from an international perspective. Unfortunately, answers to the vexing question of whether these women have gained board directorships in their own right as extremely competent managers, or whether they are mere token female appointments in a traditional male dominated culture, remains elusive.",
@@ -696,7 +694,7 @@ function getDataset_t1_60() {
                     {
                         "collectionName":"Development",
                         "eexcessURI":"http://www.mendeley.com/research/women-politics-place/",
-                        "description":"\"This book analyzes the mobilization of women's economic and social justice movements by challenging traditional views\"--Provided by publisher.",
+                        "description":"This book analyzes the mobilization of women's economic and social justice movements by challenging traditional views",
                         "creator":"Wendy Harcourt, Arturo Escobar",
                         "facets":{
                             "year":"2002",
@@ -721,86 +719,223 @@ function getDataset_t1_60() {
                     },
 
 
-                    /////// other 6 items
+                    /////// motherhood
 
                     {
-                        "collectionName":"Quaderni urbinati di cultura classica",
-                        "eexcessURI":"http://www.mendeley.com/research/significance-greek-athletes-artists-memphis-alexanders-strategy-after-battle-issus/",
-                        "description":"Résumé : Giustificazione del fatto che le gare atletiche ed artistiche vengano svolte per la prima volta a Memfi. Considerazioni sul senso che tale gesto assume dopo la battaglia di Isso, sui tempi di spostamento dei partecipanti ai giochi, che si dovevano trasferire dalla Grecia all'Egitto, e sull'importanza attribuita da Alessandro a tale territorio",
-                        "creator":"Edmund F Bloedow",
+                        "id":"96bfa131-5115-3edf-ada3-a38aa0175082",
+                        "title":"The Motherhood Wage Penalty: Which Mothers Pay It and Why?",
+                        "uri":"http://www.mendeley.com/catalog/motherhood-wage-penalty-mothers-pay-it/",
+                        "eexcessURI":"http://www.mendeley.com/catalog/motherhood-wage-penalty-mothers-pay-it/",
+                        "creator":"Deborah J. Anderson, Melissa Binder, Kate Krause",
+                        "description":"Part of a special issue presenting the papers and proceedings of the 114th annual meeting of the American Economic Association, which took place January 4-6, 2002, in Atlanta. A study was conducted to examine the motherhood wage penalty. Data were drawn from the 1968-88 National Longitudinal Survey of Labor Market Experience of Young Women. Findings reveal that the motherhood wage penalty for white mothers varies significantly according to education level. Moreover, the motherhood wage gap for college graduates seems to be a phenomenon of unobserved heterogeneity between mothers and nonmothers, given that in fixed-effects analyses, the total wage effect for having children is positive. Further findings‚Äîand their implications‚Äîare discussed.",
+                        "collectionName":"American Economic Review",
                         "facets":{
-                             "year":"1998",
-                             "provider":"mendeley"
-                        },
-                        "title":"The significance of the Greek athletes and artists at Memphis in Alexander's strategy after the battle of Issus",
-                        "uri":"http://www.mendeley.com/research/significance-greek-athletes-artists-memphis-alexanders-strategy-after-battle-issus/",
-                        "id":"13cda898-b8bf-3b8f-bc63-9a7dd22b0931"
+                             "provider":"mendeley",
+                             "year":"2002"
+                        }
                     },
                     {
-                        "collectionName":"European Journal of Population",
-                        "eexcessURI":"http://www.mendeley.com/catalog/monitoring-trends-global-combat-new-dataset-battle-deaths/",
-                        "description":"Both academic publications and public media often make inappropriate use of incommensurate conflict statistics, creating misleading impressions about patterns in global warfare. This article clarifies the distinction between combatant deaths, battle deaths, and war deaths. A new dataset of battle deaths in armed conflict is presented for the period 1946–2002. Global battle deaths have been decreasing over most of this period, mainly due to a decline in interstate and internationalised civil armed conflict. It is far more difficult to accurately assess the number of war deaths in conflicts both past and present. But there are compelling reasons to believe that there is a need for increased attention to non-battle causes of mortality, especially displacement and disease in conflict studies. Therefore, it is demographers, public health specialists, and epidemiologists who can best describe the true human cost of many recent armed conflicts and assess the actions necessary to reduce that toll.",
-                        "creator":"Bethany Lacina, Nils Petter Gleditsch",
-                        "facets":{
-                             "year":"2005",
-                             "provider":"mendeley"
-                        },
-                        "title":"Monitoring trends in global combat: A new dataset of battle deaths",
-                        "uri":"http://www.mendeley.com/catalog/monitoring-trends-global-combat-new-dataset-battle-deaths/",
-                        "id":"7a5b8f8a-d6d7-3d82-b334-bd79e6e6ca9b"
+                      "id":"b0845119-ed8c-3ac1-9214-dee53f9b86b8",
+                      "title":"The motherhood wage gap: What about job amenities?",
+                      "uri":"http://www.mendeley.com/research/motherhood-wage-gap-about-job-amenities/",
+                      "eexcessURI":"http://www.mendeley.com/research/motherhood-wage-gap-about-job-amenities/",
+                      "creator":"Christina Felfe",
+                      "description":"Women with children tend to earn lower hourly wages than women without children - a shortfall known as the 'motherhood wage gap'. While many studies provide evidence for this empirical fact and explore several hypotheses about its causes, the impact of motherhood on job dimensions other than wages has scarcely been investigated. In order to assess changes in women's jobs around motherhood, I use data from the German Socio-Economic Panel and employ a first difference analysis. The results reveal that women when having children accommodate at their original employer primarily through adjustments in working hours. Yet, when changing the employer women adjust their jobs in several dimensions, such as different aspects of the work schedule (working hours, work at night or according to a flexible schedule) as well as the level of stress. Further analysis provides some limited support for the motherhood wage gap being explained by adjustments in the work conditions. © 2011 Elsevier B.V.",
+                      "collectionName":"Labour Economics",
+                      "facets":{
+                         "provider":"mendeley",
+                         "year":"2012"
+                      }
                     },
                     {
-                        "collectionName":"Criminology",
-                        "eexcessURI":"http://www.mendeley.com/research/heinonline-30-criminology-47-1992/",
-                        "description":"This paper argues that the increasing dominance in contemporary criminology of the logitudinal or cohort study is not justified on methodological grounds, that this research design has taken criminological theory in unproductive directions, has produced illusory substantive findings, and has promoted policy conclusions of doubtful utility. In addition, it is noted that longitudinal research is very expensive and therefore has high opportunity costs, costs that have not been properly evaluated. The positive thesis is that many of the apparent benefits of longitudinal research can be obtained by carefully designed and reasonably conceptualized cross-sectional studies, at substantially reduced cost.",
-                        "creator":"Heinonline Criminology",
-                        "facets":{
-                            "year":"1992",
-                            "provider":"mendeley"
-                        },
-                        "title":"HeinOnline -- 30 Criminology 47 1992",
-                        "uri":"http://www.mendeley.com/research/heinonline-30-criminology-47-1992/",
-                        "id":"b9d11f91-3c87-3d54-87db-831fafb17eb5"
+                      "id":"b710ad02-a493-3f00-aafc-0b2d327afb90",
+                      "title":"Is There a Motherhood Penalty? Decomposing the Family Wage Gap in Colombia",
+                      "uri":"http://www.mendeley.com/research/motherhood-penalty-decomposing-family-wage-gap-colombia/",
+                      "eexcessURI":"http://www.mendeley.com/research/motherhood-penalty-decomposing-family-wage-gap-colombia/",
+                      "creator":"Luis Fernando Gamboa, Blanca Zuluaga",
+                      "description":"The aim of this paper is to provide an estimation and decomposition of the motherhood wage penalty in Colombia. Our empirical strategy was based on the matching procedure designed by Nopo (2008) for the case of gender wage gaps. This is an alternative procedure to the well-known Blinder-Oaxaca decomposition method. Using the cross-sectional data of the Colombian Living Standard Survey, the wage gap was decomposed into four components, according to the characteristics of mothers and non-mothers. Three of the components are explained by differences in observable characteristics of women, while the other is the unexplained part of the gap. We found that mothers earn, on average, 1.73% less than their counterparts without children and that this gap slightly decreased when the group included older women. It is observed from the results that, once schooling was included as a matching variable, the unexplained part of the gap considerably decreased and became non-significant. Thus, we did not find evidence of wage discrimination against mothers in the Colombian labor market.",
+                      "collectionName":"Journal of Family and Economic Issues",
+                      "facets":{
+                         "provider":"mendeley",
+                         "year":"2013"
+                      }
                     },
                     {
-                        "collectionName":"Criminology",
-                        "eexcessURI":"http://www.mendeley.com/catalog/silence-memory-criminology-american-society-criminology-2009-sutherland-address/",
-                        "description":"Two recent American Society of Criminology presidential addresses have identified as a key problem the fact that criminology lacks a his- tory. In this address, I ask why criminology (in contrast to closely related fields) has generated so few studies of its past; I also identify some results of this failure and discuss why intellectual fields need a sense of their origins and development. History molds individual and collective identities; it lays a foundation for sociologies of knowledge; it encourages reflexivity, teaches us where our ideas came from, and gives us a sense of where we are going. To encourage historical work, I pro- pose an overall framework for understanding the evolution of criminology, reaching back to the late eighteenth century and continuing into the present. My overall framework is that of scientific modernism, within which I identify the following three primary phases: exploratory modernism, confident modernism, and agonistic modernism. In con- clusion, I suggest ways to stimulate histories of science in the field of criminology.",
-                        "creator":"Nicole Rafter",
-                        "facets":{
-                             "year":"2010",
-                             "provider":"mendeley"
-                        },
-                        "title":"Silence and memory in criminology - The American society of criminology 2009 Sutherland address",
-                        "uri":"http://www.mendeley.com/catalog/silence-memory-criminology-american-society-criminology-2009-sutherland-address/",
-                        "id":"a30ef5f8-d671-3074-9b7e-863aa89445d1"
+                      "id":"8b4a3355-f548-327e-9d2d-e554d4237c60",
+                      "title":"Marriage and the motherhood wage penalty among African Americans, Hispanics, and Whites",
+                      "uri":"http://www.mendeley.com/catalog/marriage-motherhood-wage-penalty-among-african-americans-hispanics-whites/",
+                      "eexcessURI":"http://www.mendeley.com/catalog/marriage-motherhood-wage-penalty-among-african-americans-hispanics-whites/",
+                      "creator":"Rebecca Glauber",
+                      "description":"This study draws on data from the National Longitudinal Survey of Youth (N = 5,929) to analyze the moderating effects of race and marriage on the motherhood wage penalty. Fixed-effects models reveal that for Hispanic women, motherhood is not associated with a wage penalty. For African Americans, only married mothers with more than 2 children pay a wage penalty. For Whites, all married mothers pay a wage penalty, as do all never-married mothers and divorced mothers with 1 or 2 children. These findings imply that racial differences in the motherhood wage penalty persist even for women with similar marital statuses, and they suggest that patterns of racial stratification shape women’s family experiences and labor market outcomes.",
+                      "collectionName":"Journal of Marriage and Family",
+                      "facets":{
+                         "provider":"mendeley",
+                         "year":"2007"
+                      }
                     },
                     {
-                        "collectionName":"Current Biology",
-                        "eexcessURI":"http://www.mendeley.com/catalog/microrna-processing-battle-bulge/",
-                        "description":"Several recent analyses of plant microRNA precursors define the contributions of secondary structure to the precise positions at which processing of these precursors occurs. ?? 2010 Elsevier Ltd. All rights reserved.",
-                        "creator":"Blake C. Meyers, Stacey A. Simon, Jixian Zhai",
-                        "facets":{
-                             "year":"2010",
-                             "provider":"mendeley"
-                        },
-                        "title":"MicroRNA Processing: Battle of the Bulge",
-                        "uri":"http://www.mendeley.com/catalog/microrna-processing-battle-bulge/",
-                        "id":"12eb17b3-c5ef-3e1d-8634-bac128ad59fd"
+                      "id":"ea63206e-d79b-3339-bef5-626d22b19ae2",
+                      "title":"Is the Motherhood Penalty Larger for Low-Wage Women? A Comment on Quantile Regression",
+                      "uri":"http://www.mendeley.com/catalog/motherhood-penalty-larger-lowwage-women-comment-quantile-regression/",
+                      "eexcessURI":"http://www.mendeley.com/catalog/motherhood-penalty-larger-lowwage-women-comment-quantile-regression/",
+                      "creator":"A. Killewald, J. Bearak",
+                      "description":"In this comment, we offer a nontechnical discussion of conventional (conditional) multivariate quantile regression, with an emphasis on the appropriate interpretation of results. We discuss its distinction from unconditional quantile regression, an analytic method that can be used to estimate varying associations between predictors and outcome at different points of the outcome distribution. We argue that the research question posed by Budig and Hodges (2010)--whether the motherhood penalty is larger for low-wage women--cannot be answered with the authors' conditional quantile regression models. Using more appropriate unconditional quantile regression models, we find, in contrast to Budig and Hodges's claims, that the motherhood penalty is not largest for low-wage women.",
+                      "collectionName":"American Sociological Review",
+                      "facets":{
+                         "provider":"mendeley",
+                         "year":"2014"
+                      }
                     },
                     {
-                        "collectionName":"Nature",
-                        "eexcessURI":"http://www.mendeley.com/catalog/battle-sexes-set-brain/",
-                        "description":"A tug-of-war between the mother's and father's genes in the developing brain could explain a spectrum of mental disorders from autism to schizophrenia, suggest Christopher Badcock and Bernard Crespi.",
-                        "creator":"Christopher Badcock, Bernard Crespi",
-                        "facets":{
-                             "year":"2008",
-                             "provider":"mendeley"
-                        },
-                        "title":"Battle of the sexes may set the brain.",
-                        "uri":"http://www.mendeley.com/catalog/battle-sexes-set-brain/",
-                        "id":"fbe305be-08ec-38b3-b36c-e66585f36ebf"
-                    }
+                      "id":"32758946-c557-3944-bd2c-3b1c11b8db63",
+                      "title":"The motherhood wage gap for women in the United States: The importance of college and fertility delay",
+                      "uri":"http://www.mendeley.com/catalog/motherhood-wage-gap-women-united-states-importance-college-fertility-delay/",
+                      "eexcessURI":"http://www.mendeley.com/catalog/motherhood-wage-gap-women-united-states-importance-college-fertility-delay/",
+                      "creator":"Catalina Amuedo-Dorantes, Jean Kimmel",
+                      "description":"One of the stylised facts from the past thirty years has been the declining rate of first births before age 30 for all women and the increase rate of first births after age 30 among women with four-year college degrees (Martin 2000). What are some of the factors behind women’s decision to postpone their childbearing? We hypothesize that the wage difference often observed between like-educated mothers and non-mothers (Waldfogel 1998) may be affected by the postponement of childbearing until after careers are fully established. We use individual-level data on women from the 1979 National Longitudinal Survey of Youth and find that: (a) College-educated mothers do not experience a motherhood wage penalty at all, and (b) fertility delay enhances their earnings opportunities even further",
+                      "collectionName":"Review of Economics of the Household",
+                      "facets":{
+                         "provider":"mendeley",
+                         "year":"2005"
+                      }
+                   },
+                   {
+                      "id":"5d7b4b3f-5fbd-3fb9-bbf9-e7c6c4f3c8e2",
+                      "title":"The Wage Penalty for Motherhood",
+                      "uri":"http://www.mendeley.com/catalog/wage-penalty-motherhood/",
+                      "eexcessURI":"http://www.mendeley.com/catalog/wage-penalty-motherhood/",
+                      "creator":"Michelle J. Budig, Paula England",
+                      "description":"Motherhood is associated with lower hourly pay, but the causes of this are not well understood. Mothers may earn less than other women because having children causes them to (1) lose job experience, (2) be less productive at work, (3) trade off higher wages for mother-friendly jobs, or (4) be discriminated against by employers. Or the relationship may be spurious rather than causal-women with lower earning potential may have children at relatively higher rates. The authors use data from the1982-1993 National Longitudinal Survey of Youth with fixed-effects models to examine the wage penalty for motherhood. Results show a wage penalty of 7 percent per child. Penalties are larger for married women than for unmarried women. Women with (more) children have fewer years of job experience, and after controlling for experience a penalty of 5 percent per child remains. \"Mother-friendly\" characteristics of the jobs held by mothers explain little of the penalty beyond the tendency of more mothers than non-mothers to work part-time. The portion of the motherhood penalty unexplained probably results from the effect of motherhood on productivity and/or from discrimination by employers against mothers. While the benefits of mothering diffuse widely-to the employers, neighbors, friends, spouses, and children of the adults who received the mothering-the costs of child rearing are borne disproportionately by mothers.",
+                      "collectionName":"American Sociological Review",
+                      "facets":{
+                         "provider":"mendeley",
+                         "year":"2001"
+                      }
+                    },
+                    {
+                      "id":"5420169e-0b38-3c21-8df5-f1e89980dc74",
+                      "title":"Establishment-level wage effects of entering motherhood",
+                      "uri":"http://www.mendeley.com/research/establishmentlevel-wage-effects-entering-motherhood/",
+                      "eexcessURI":"http://www.mendeley.com/research/establishmentlevel-wage-effects-entering-motherhood/",
+                      "creator":"Miriam Beblo, Stefan Bender, Elke Wolf",
+                      "description":"We analyse the wage effects following employment breaks of women who enter motherhood using a novel matching approach where mothers' wages upon return to work are compared to those of their female colleagues within the same establishment. Using an administrative German data set, we apply a fixed-effects propensity score matching based on information two years before birth of the first child. Our results yield new insights into the nature of the wage penalty associated with motherhood: when matching with establishment-specific effects we find that first births reduce women's wages by 19%, whereas ignoring the identifier and matching across all establishments would yield a wage cut of 26%. We therefore conclude that selection into establishments is an important explanatory factor for the family pay gap.",
+                      "collectionName":"Oxford Economic Papers",
+                      "facets":{
+                         "provider":"mendeley",
+                         "year":"2009"
+                      }
+                    },
+                    {
+                      "id":"2ceb8813-885e-3d0d-9f42-2983fff1edb2",
+                      "title":"The effects of motherhood timing on career path",
+                      "uri":"http://www.mendeley.com/catalog/effects-motherhood-timing-career-path/",
+                      "eexcessURI":"http://www.mendeley.com/catalog/effects-motherhood-timing-career-path/",
+                      "creator":"Amalia R. Miller",
+                      "description":"This paper estimates the effects of motherhood timing on female career path, using biological fertility shocks to instrument for age at first birth. Motherhood delay leads to a substantial increase in earnings of 9%per year of delay, an increase in wages of 3%, and an increase in work hours of 6%. Supporting a human capital story, the advantage is largest for college- educated women and those in professional and managerial occupations. Panel estimation reveals both fixed wage penalties and lower returns to experience formothers, suggesting that a“mommytrack” is the source of the timing effect.",
+                      "collectionName":"Journal of Population Economics",
+                      "facets":{
+                         "provider":"mendeley",
+                         "year":"2011"
+                      }
+                    },
+                    {
+                      "id":"4d086d87-7858-3edf-8963-2114e6014e17",
+                      "title":"Has the price of motherhood declined over time? A cross-cohort comparison of the motherhood wage penalty",
+                      "uri":"http://www.mendeley.com/catalog/price-motherhood-declined-time-crosscohort-comparison-motherhood-wage-penalty/",
+                      "eexcessURI":"http://www.mendeley.com/catalog/price-motherhood-declined-time-crosscohort-comparison-motherhood-wage-penalty/",
+                      "creator":"Sarah Avellar, Pamela J. Smock",
+                      "description":"Several recent studies have shown a negative association between motherhood and wages. However, an analysis of change over time in the motherhood penalty has not been conducted. Using two cohorts of young women drawn from the 1975–1985 National Longitudinal Survey of Young Women and the 1986–1998 National Longitudinal Survey of Youth, we explicitly test the relationship between motherhood and wages across two cohorts and examine whether that relationship has changed. Even after controlling for unobserved heterogeneity and human capital variables, each additional child is associated with a negative effect on women's wages. Moreover, our findings suggest that the penalty has not diminished over time.",
+                      "collectionName":"Journal of Marriage and Family",
+                      "facets":{
+                         "provider":"mendeley",
+                         "year":"2003"
+                      }
+                    },
+                    {
+                      "id":"32178231-95ab-356f-aebc-d464d544cdee",
+                      "title":"Explaining the Motherhood Wage Penalty During the Early Occupational Career",
+                      "uri":"http://www.mendeley.com/catalog/explaining-motherhood-wage-penalty-during-early-occupational-career/",
+                      "eexcessURI":"http://www.mendeley.com/catalog/explaining-motherhood-wage-penalty-during-early-occupational-career/",
+                      "creator":"Jeremy Staff, Jeylan T. Mortimer",
+                      "description":"Prior research shows that mothers earn lower hourly wages than women without children, and that this maternal wage penalty cannot be fully explained by differences between mothers and other women in work experience and job characteristics. This research examines whether the residual motherhood wage penalty results from differences between mothers and other women in the accumulation of work interruptions and breaks in schooling. Using longitudinal data for 486 women followed from ages 19 to 31 in the Minnesota Youth Development Study, we find that accumulated months not in the labor force and not enrolled in school explain the residual pay gap between mothers and other women.",
+                      "collectionName":"Demography",
+                      "facets":{
+                         "provider":"mendeley",
+                         "year":"2012"
+                      }
+                    },
+                    {
+                      "id":"5f28c67d-3794-3db9-a22b-7e582010bbd0",
+                      "title":"The Motherhood Wage Penalty Revisited: Experience, Heterogeneity, Work Effort, and Work-Schedule Flexibility",
+                      "uri":"http://www.mendeley.com/catalog/motherhood-wage-penalty-revisited-experience-heterogeneity-work-effort-workschedule-flexibility/",
+                      "eexcessURI":"http://www.mendeley.com/catalog/motherhood-wage-penalty-revisited-experience-heterogeneity-work-effort-workschedule-flexibility/",
+                      "creator":"Deborah J Anderson, Melissa Binder, Kate Krause",
+                      "description":"This paper seeks an explanation for the well-documented wage disadvantage of mothers compared to women without children. An analysis of data from the 1968-88 National Longitudinal Survey of Young Women shows that human capital inputs and unobserved heterogeneity explain 55-57% of the gap. Further analysis suggests that mothers tended to face the highest wage penalty when they first returned to work. A finding that medium-skill mothers (high school graduates) suffered more prolonged and severe wage losses than either low- or high-skill mother casts doubt on the work-effort explanation for the wage gap, according to which women reduce work effort in response to childcare duties. The authors instead cite variable time constraints: high school graduates are likely to hold jobs requiring their presence during regular office hours, and are unlikely to gain flexibility by finding work at other hours or by taking work home in the evening.",
+                      "collectionName":"Industrial and Labor Relations Review",
+                      "facets":{
+                         "provider":"mendeley",
+                         "year":"2003"
+                      }
+                    },
+                    {
+                      "id":"1a791445-6cd7-33bf-a137-84a8daabef41",
+                      "title":"Differences in Disadvantage: Variation in the Motherhood Penalty across White Women's Earnings Distribution",
+                      "uri":"http://www.mendeley.com/catalog/differences-disadvantage-variation-motherhood-penalty-across-white-womens-earnings-distribution/",
+                      "eexcessURI":"http://www.mendeley.com/catalog/differences-disadvantage-variation-motherhood-penalty-across-white-womens-earnings-distribution/",
+                      "creator":"M. J. Budig, M. J. Hodges",
+                      "description":"Earnings inequality has grown in recent decades in the United States, yet research investigating the motherhood wage penalty has not fully considered how the penalty itself, and the mechanisms producing it, may vary among low-wage, middle-wage, and high-wage workers. Pooling data from the 1979 to 2004 waves of the NLSY and using simultaneous quantile regression methods with fixed effects, we test whether the size of the motherhood penalty differs across the distribution of white women's earnings, and whether the mechanisms explaining this penalty vary by earnings level. Results show that having children inflicts the largest penalty on low-wage women, proportionately, although a significant motherhood penalty persists at all earnings levels. We also find that the mechanisms creating the motherhood penalty vary by earnings level. Family resources, work effort, and compensating differentials account for a greater portion of the penalty among low earners. Among highly paid women, by contrast, the motherhood penalty is significantly smaller and largely explained by lost human capital due to childbearing. Our findings show that estimates of average motherhood penalties obscure the compounded disadvantage mothers face at the bottom of the earnings distribution, as well as differences in the type and strength of mechanisms that produce the penalty.",
+                      "collectionName":"American Sociological Review",
+                      "facets":{
+                         "provider":"mendeley",
+                         "year":"2010"
+                      }
+                   },
+
+
+                    //// family
+                   {
+                      "id":"5147a96d-3128-3b73-b9a5-3259993db50d",
+                      "title":"Understanding the ‘Family Gap’ in Pay for Women with Children",
+                      "uri":"http://www.mendeley.com/catalog/understanding-family-gap-pay-women-children/",
+                      "eexcessURI":"http://www.mendeley.com/catalog/understanding-family-gap-pay-women-children/",
+                      "creator":"Jane Waldfogel",
+                      "description":"This paper analyzes how much of the gender earnings gap among physicians is due to women's greater family responsibilities. Women physicians earn 11 percent less for being married plus 14 percent less for having one child and 22 percent less for having ...",
+                      "collectionName":"Journal of Economic Perspectives",
+                      "facets":{
+                         "provider":"mendeley",
+                         "year":"1998"
+                      }
+                    },
+
+
+
+                    //// black-white wage difference/gap
+                    {
+                      "id":"89385890-5b1a-3c9d-84ba-ae8173565f7f",
+                      "title":"The Role of Premarket Factors in Black-White Wage Differences",
+                      "uri":"http://www.mendeley.com/catalog/role-premarket-factors-blackwhite-wage-differences/",
+                      "eexcessURI":"http://www.mendeley.com/catalog/role-premarket-factors-blackwhite-wage-differences/",
+                      "creator":"Derek A. Neal, William R. Johnson",
+                      "description":"Many attempts to measure the wage effects of current labor market discrimination against minorities include controls for worker productivity that (I) could themselves be affected by market discrimination and (2) are very imprecise measures of worker skill. The resulting estimates of residual wage gaps may be biased. Our approach is a parsimoniously specified wage equation that controls for skill with the score of a test administered as teenagers prepared to leave high school and embark on work careers or postsecondary education. Independent evidence shows that this test score is a racially unbiased measure of the skills and abilities these teenagers were about to bring to the labor market. We find that this one test score explains all of the black-white wage gap for young women and much of the gap for young men. For today's young adults, the black-white wage gap primarily reflects a skill gap, which in turn we can trace, at least in part, to observable differences in the family backgrounds and school environments of black and white children. While our results do provide some evidence of current labor market discrimination, skill gaps play such a large role that we believe future research should focus on the obstacles black children face in acquiring productive skill.",
+                      "collectionName":"Journal of Political Economy",
+                      "facets":{
+                         "provider":"mendeley",
+                         "year":"1996"
+                      }
+                    },
+                    {
+                      "id":"08b3d2d9-1896-3634-91d0-4413691bab9d",
+                      "title":"Racial differences in access to high-paying jobs and the wage gap between black and white women",
+                      "uri":"http://www.mendeley.com/research/racial-differences-access-highpaying-jobs-wage-gap-between-black-white-women/",
+                      "eexcessURI":"http://www.mendeley.com/research/racial-differences-access-highpaying-jobs-wage-gap-between-black-white-women/",
+                      "creator":"Deborah Anderson, David Shapiro",
+                      "description":"The authors examine the role that racial differences in access to high-paying occupations played in determining the racial wage gap in the 1980s. Analyzing data on black and white women aged 34-44 from the National Longitudinal Surveys for 1968-88, they estimate the effects of human capital characteristics and discrimination on segregation into high- and low-wage jobs by race. They find that differences in workers' measured characteristics explain little of either the observed occupational segregation by race or the racial wage gap in 1988. Further analysis suggests that several changes in the wage structure for women during the 1980s, notably a widening of occupational wage differentials and an increase in the returns to education, abetted direct discrimination in enlarging the racial wage gap among women.",
+                      "collectionName":"Industrial and Labor Relations Review",
+                      "facets":{
+                         "provider":"mendeley",
+                         "year":"1996"
+                      }
+                   }
 
 
 

@@ -921,7 +921,7 @@ VIS PANEL (center of screen)
 #eexcess_document_viewer {
     display: inline-block;
     width: 100%;
-    height: 75%;
+    height: 70%;
     background: white;
     box-shadow: inset .2em .2em .5em #ccc, inset -.2em -.2em .5em #ccc;
     overflow-y: auto;
