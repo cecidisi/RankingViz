@@ -40,6 +40,8 @@ function RankingVis( domRoot, iWidth, iHeight, visTemplate ){
 
     RANKING.Internal.topLimit = function( array, rankingCriteria ){
         var attr = (rankingCriteria == 'overall_score') ? 'overallScore' : 'maxScore';
+
+        console.log(array);
         //var maxScore = d3.max(array, function(d) { return d[attr]; }).toFixed(2);
         var maxScore = array[0][attr];
         var maxScore = array[0][attr];

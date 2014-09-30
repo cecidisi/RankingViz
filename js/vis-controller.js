@@ -594,8 +594,9 @@ function VisController() {
 
         // Retrieve color in weightColorScale for the corresponding label
         // Create weight slider
-		var label = $(tag).text();
-        var aux = weightColorScale(label);
+		//var label = $(tag).text();
+        var stem = d3.select(tag[0]).data()[0].stem;
+        var aux = weightColorScale(stem);
         var rgbSequence = hexToR(aux) + ', ' + hexToG(aux) + ', ' + hexToB(aux);
 
 		// Set tag's style
@@ -621,7 +622,8 @@ function VisController() {
 
         var tag = keywordSlider.parentNode;
         var label = d3.select(tag).text();
-        var aux = weightColorScale(label);
+        var stem = d3.select(tag).data()[0].stem;
+        var aux = weightColorScale(stem);
         var rgbSequence = hexToR(aux) + ', ' + hexToG(aux) + ', ' + hexToB(aux);
 
 		d3.select(tag).style("background", "rgba("+ rgbSequence + "," + ui.value + ")");
@@ -704,8 +706,12 @@ function VisController() {
 
         for(var i = 0; i < selectedTags.length; i++){
             // Reasign keyword to color scale domain
+            var stem = d3.select(selectedTags[i][0]).data()[0].stem;
+
+            console.log('stem');
+            console.log(stem);
             var label = d3.select(selectedTags[i][0]).text();
-            var aux = weightColorScale(label);
+            var aux = weightColorScale(stem);
             var rgbSequence = hexToR(aux) + "," + hexToG(aux) + "," + hexToB(aux);
             var value = $(selectedTags[i][0]).find(".div-slider").slider("value");
 
@@ -727,8 +733,9 @@ function VisController() {
 		var  weightedKeywords = [];
         $(tagClassInBox).each(function(i, tag){
             var term = d3.select(tag).data()[0].term;
+            var stem = d3.select(tag).data()[0].stem;
 			var weight = parseFloat( $(tag).find(".div-slider").slider("value") / 10);
-			weightedKeywords.push({ 'term': term, 'weight': weight });
+			weightedKeywords.push({ 'term': term, 'stem': stem, 'weight': weight });
         });
 		return weightedKeywords;
 	}
@@ -771,6 +778,8 @@ function VisController() {
          *
          * */
         updateRanking: function(){
+
+            var keywordsInBox = TAGCLOUD.getWeightedKeywordsInBox();
             dataRanking = [];
             data.forEach(function(d, i) {
                 dataRanking.push({
@@ -782,22 +791,21 @@ function VisController() {
                     'weightedKeywords': new Array()
                 });
 
-                var keywordsInBox = TAGCLOUD.getWeightedKeywordsInBox();
                 var max = 0;
-                keywordsInBox.forEach(function( wk, j ) {
-                    var index = d.keywords.getIndexOf( wk.term, 'term' );
+                keywordsInBox.forEach(function(wk, j) {
+                    var index = d.keywords.getIndexOf(wk.stem, 'term');
 
-                    if(index !== -1){
-                        var score = parseFloat( d.keywords[index].score ) *  parseFloat( wk.weight );
+                    if(index > -1){ // item contains keyword in box
+                        var score = parseFloat(d.keywords[index].score) *  parseFloat(wk.weight);
                         if(score > max)
                             max = score;
 
-                        dataRanking[i].overallScore = parseFloat( dataRanking[i].overallScore ) + score;
+                        dataRanking[i].overallScore = parseFloat(dataRanking[i].overallScore) + score;
                         dataRanking[i].maxScore = max;
-                        dataRanking[i].weightedKeywords.push({ 'term': wk.term, 'weightedScore': score });
+                        dataRanking[i].weightedKeywords.push({ 'term': wk.stem, 'weightedScore': score });
                     }
-                    else{
-                        dataRanking[i].weightedKeywords.push({ 'term': wk.term, 'weightedScore': 0, 'maxScore': 0 });
+                    else{   // item doesn't contain keyword in box => maxScore and overallScore are set to 0
+                        dataRanking[i].weightedKeywords.push({ 'term': wk.stem, 'weightedScore': 0, 'maxScore': 0 });
                     }
                 });
             });
@@ -961,7 +969,7 @@ function VisController() {
 				.append("a")
 					.attr("class", "eexcess_ritem_title")
                     .attr("href", "#")
-                    .on("click", function(d){ window.open(d.uri, '_blank'); })
+                  //  .on("click", function(d){ window.open(d.uri, '_blank'); })
 					.html(function(d){
                         if(d.title.length > 60) return d.title.substring(0, 56) + '...'; return d.title;
                     });
@@ -981,19 +989,10 @@ function VisController() {
 
 
     LIST.bindEventHandlersToItems = function(){
-
         // Event for item clicked
         d3.selectAll(allListItems)
             .on("click", function(d, i){ EVTHANDLER.listItemClicked(d, i); })
             .select(favIconClass).select('img').on("click", function(d, i){ EVTHANDLER.faviconClicked(d, i);});
-
-        /*
-        $(allListItems).each(function(i, item){
-            $(item).on("click", function(){
-
-            });
-        });
-        */
     };
 
 

@@ -655,7 +655,9 @@ var words = [
     'different', 'perceive', 'perceived', 'perceives', 'useful', 'observe', 'observes', 'observed', 'registers', 'registered', 'find', 'finds', 'found',
     'test', 'tests', 'tested', 'author', 'article', 'unless', 'useless', 'day', 'days', 'month', 'months', 'year', 'years', 'describe', 'describes', 'described',
     'least', 'current', 'review', 'around', 'worse', 'either', 'non', 'will', 'down', 'up', 'no', 'survey', 'study', 'far', 'beyond', 'lower', 'actual', 'actually', 'aren', 'whether',
-    'little', 'enough', 'show', 'suggests', 'suggest', 'suggested', 'suggesting', 'full', 'fulfill', 'hold', '__key'];
+    'little', 'enough', 'show', 'suggests', 'suggest', 'suggested', 'suggesting', 'full', 'fulfill', 'hold', 'using', 'further', 'paper', 'less', 'have', 'recent',
+    'argue', 'seek', 'per', 'imply', 'research', 'cannot', 'do', 'long', 'off', 'once', 'main', 'mainly', 'log', 'brief', 'old', 'end', 'right', 'past', 'lack', 'detail',
+    'focus', 'shap', 'mer', 'review', 'need', 'recent', 'late', 'later', 'other', 'others', '__key'];
 
 // tell the world about the noise words.
 exports.words = words;
@@ -5012,8 +5014,17 @@ function buildDocument(text, key) {
     }
 
     return text.reduce(function(document, term) {
-        if(!stopOut || stopwords.indexOf(term) < 0)
-            document[term] = (document[term] ? document[term] + 1 : 1);
+    //    console.log('*******************************************');
+    //    console.log(document);
+    //    console.log(term);
+        if(!stopOut || (isNaN(term) && stopwords.indexOf(term) < 0 && stopwords.indexOf(term.stem()) < 0 )){
+            if(term.stem() == 'focus'){
+                console.log('term => ' + term + ' - index = ' + stopwords.indexOf(term));
+                console.log('stem => ' + term.stem() + ' - index = ' + stopwords.indexOf(term.stem()));
+            }
+            document[term.stem()] = (document[term.stem()] ? document[term.stem()] + 1 : 1);
+        }
+
 
         return document;
     }, {__key: key});
@@ -5048,6 +5059,7 @@ TfIdf.prototype.idf = function(term) {
 
 TfIdf.prototype.addDocument = function(document, key) {
     this.documents.push(buildDocument(document, key));
+    //console.log(JSON.stringify(this.documents[this.documents.length-1]));
 };
 
 TfIdf.prototype.addFileSync = function(path, encoding, key) {
