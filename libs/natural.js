@@ -657,7 +657,8 @@ var words = [
     'least', 'current', 'review', 'around', 'worse', 'either', 'non', 'will', 'down', 'up', 'no', 'survey', 'study', 'far', 'beyond', 'lower', 'actual', 'actually', 'aren', 'whether',
     'little', 'enough', 'show', 'suggests', 'suggest', 'suggested', 'suggesting', 'full', 'fulfill', 'hold', 'using', 'further', 'paper', 'less', 'have', 'recent',
     'argue', 'seek', 'per', 'imply', 'research', 'cannot', 'do', 'long', 'off', 'once', 'main', 'mainly', 'log', 'brief', 'old', 'end', 'right', 'past', 'lack', 'detail',
-    'focus', 'shap', 'mer', 'review', 'need', 'recent', 'late', 'later', 'other', 'others', '__key'];
+    'focus', 'shap', 'mer', 'review', 'need', 'recent', 'late', 'later', 'other', 'others', 'furthermore', 'present', 'propose', 'include', 'discuss', 'apply', 'even',
+    'discuss', '__key'];
 
 // tell the world about the noise words.
 exports.words = words;

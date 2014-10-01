@@ -10,13 +10,14 @@
         <script type="text/javascript" src="libs/natural.js" charset="utf-8"></script>
         <script type="text/javascript" src="libs/d3.v3.js" charset="utf-8"></script>
 
-        <script type="text/javascript" src="js/utils.js" charset="utf-8"></script>
+        <script type="text/javascript" src="scripts/utils.js" charset="utf-8"></script>
 
         <script type="text/javascript" src="datasets/datasetManager.js" charset="utf-8" ></script>
         <script type="text/javascript" src="datasets/dataset_t1_20.js" charset="utf-8" ></script>
         <script type="text/javascript" src="datasets/dataset_t1_40.js" charset="utf-8" ></script>
         <script type="text/javascript" src="datasets/dataset_t1_60.js" charset="utf-8" ></script>
         <script type="text/javascript" src="datasets/dataset_t2_60.js" charset="utf-8" ></script>
+        <script type="text/javascript" src="datasets/dataset_t3_60.js" charset="utf-8" ></script>
 
         <link rel="stylesheet" type="text/css" href="css/general-style.css" />
         <link rel="stylesheet" type="text/css" href="css/index-style.css" />
@@ -53,7 +54,7 @@
 
         <input type="button" id="start-button" value="Start" />
 
-        <script type="text/javascript" src="js/starter.js" charset="utf-8"></script>
+        <script type="text/javascript" src="scripts/starter.js" charset="utf-8"></script>
 
     </body>
 

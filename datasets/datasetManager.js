@@ -6,7 +6,8 @@ function datasetManager(){
         "T1-20" : getDataset_t1_20(),
         "T1-40" : getDataset_t1_40(),
         "T1-60" : getDataset_t1_60(),
-        "T2-60" : getDataset_t2_60()
+        "T2-60" : getDataset_t2_60(),
+        "T3-60" : getDataset_t3_60()
     };
 
 

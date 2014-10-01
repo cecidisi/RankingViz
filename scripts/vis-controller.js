@@ -1,11 +1,5 @@
 
-$(document).ready(function(){
-    var Vis_Controller = new VisController();
-    Vis_Controller.init();
-});
-
-
-function VisController() {
+(function VisController() {
 
 	var self = this;
 
@@ -86,6 +80,7 @@ function VisController() {
 
 	// Ancillary variables
 	var dataRanking;					// array that represents the current ranking. Each item is an object specifying "originalIndex, "overallScore", "rankingPos" and "positionsChanged"
+    var keywordsInBox;
 	var selectedTags = [];				// array of DOM elements contained in the tag box
 	var indicesToHighlight = [];		// array containing the indices of <li> elements to be highlighted in content list
     var rankingCriteria = 'overall_score';
@@ -777,9 +772,8 @@ function VisController() {
          *	Creates the ranking items with default values and calculates the weighted score for each selected keyword (tags in tag box)
          *
          * */
-        updateRanking: function(){
+        updateRanking: function(newKeywords){
 
-            var keywordsInBox = TAGCLOUD.getWeightedKeywordsInBox();
             dataRanking = [];
             data.forEach(function(d, i) {
                 dataRanking.push({
@@ -792,7 +786,7 @@ function VisController() {
                 });
 
                 var max = 0;
-                keywordsInBox.forEach(function(wk, j) {
+                newKeywords.forEach(function(wk, j) {
                     var index = d.keywords.getIndexOf(wk.stem, 'term');
 
                     if(index > -1){ // item contains keyword in box
@@ -1005,8 +999,9 @@ function VisController() {
 	LIST.rankRecommendations = function() {
 
         var previousRanking = dataRanking || [];
+        keywordsInBox = TAGCLOUD.getWeightedKeywordsInBox();
 		// Recalculates scores and positions, sorts the dataRanking array and extends it with #positionsChanged
-		this.internal.updateRanking();
+		this.internal.updateRanking(keywordsInBox);
 		this.internal.sortRanking(dataRanking);
 		this.internal.extendRankingWithPositionsChanged(previousRanking);
         this.highlightListItems();
@@ -1282,9 +1277,21 @@ function VisController() {
 
 	var DOCPANEL = {};
 
+    DOCPANEL.internal = {
+
+        highlightKeywordsInText : function(text){
+
+
+
+
+
+            return text;
+        }
+
+    };
 
     DOCPANEL.showDocument = function(index){
-        $(documentViewer).find('p').text(data[index].description);
+        $(documentViewer).find('p').text(this.internal.highlightKeywordsInText(data[index].description));
     };
 
 
@@ -1300,10 +1307,10 @@ function VisController() {
 
 
     /**
-     * 	Initizialization function called from starter.js
+     * 	Initizialization function self-invoked
      *
      * */
-    this.init = function(){
+    (function(){
 
         dataset = JSON.parse($("#dataset").text());
         console.log(dataset);
@@ -1336,7 +1343,7 @@ function VisController() {
         }
 
         startTime = $.now();
-    };
+    })();
 
 
 
@@ -1354,4 +1361,4 @@ function VisController() {
 
 
 
-}
+})();

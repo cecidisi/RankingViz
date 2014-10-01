@@ -3,7 +3,7 @@ var dsm;
 var dataset;
 var datasetId;
 
-var stemmer = natural.PorterStemmer; //natural.LancasterStemmer;
+var stemmer = natural.LancasterStemmer; //natural.PorterStemmer;
 var tokenizer = new natural.WordTokenizer;
 var nounInflector = new natural.NounInflector();
 var tfidf = new natural.TfIdf();
@@ -11,7 +11,8 @@ var tfidf = new natural.TfIdf();
 stemmer.attach();
 nounInflector.attach();
 
-var allWords = '';
+//var pos = require('pos');
+
 var allTokens = [];
 
 var EVT = {};
@@ -66,18 +67,25 @@ function getDataWithKeywords(testDataset){
     });
 
     testDataset.data.forEach(function(d, i){
-       d.keywords = [];
+        d.keywords = [];
+        var sumScores = 0;
 
-       tfidf.listTerms(i).forEach(function(item){
-         //  if(d.keywords.length < 12){
+        tfidf.listTerms(i).forEach(function(item){
+        //   if(d.keywords.length < 30){
                if(isNaN(item.term) && parseFloat(item.tfidf) > 0 ){
                    d.keywords.push( { 'term': item.term, 'score': item.tfidf } );
+                   sumScores += item.tfidf;
                 }
-         //  }
-       });
+        //   }
+        });
 
+        var scoreMean = sumScores / d.keywords.length;
+        var cutIndex = 0;
+        while(d.keywords[cutIndex].score >= scoreMean)
+            cutIndex++;
+        d.keywords.splice(cutIndex, d.keywords.length - cutIndex);
+      //  console.log('score mean = ' + scoreMean + ' -- cut index = ' + cutIndex);
    });
-
     return testDataset;
 }
 
@@ -99,7 +107,6 @@ function getGlobalKeywords(results) {
 
     allTokens.forEach(function(token){
         var kIndex = keywords.getIndexOf(token.stem(), 'stem');
-        //console.log(kIndex + ' --- ' + token + ' -- ' + token.stem());
         if(kIndex >= 0 && keywords[kIndex].variations.indexOf(token) < 0 ){
             keywords[kIndex].variations.push(token);
         }
@@ -144,8 +151,8 @@ function getGlobalKeywords(results) {
         return i;
     }
 
-    console.log('sorted keywords -- ' + sortedKeywords.length);
-    console.log(JSON.stringify(sortedKeywords));
+  //  console.log('sorted keywords -- ' + sortedKeywords.length);
+  //  console.log(JSON.stringify(sortedKeywords));
 
     return sortedKeywords
 }

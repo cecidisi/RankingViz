@@ -22,10 +22,10 @@ and open the template in the editor.
         <script type="text/javascript" src="libs/colorbrewer.js" charset="utf-8"></script>
         <link rel="stylesheet" type="text/css" href="libs/ui/jquery-ui-1.10.4.custom.min.css">
 
-		<script type="text/javascript" src="js/rankingvis.js" charset="utf-8"></script>
-        <script type="text/javascript" src="js/settings.js" charset="utf-8"></script>
-        <script type="text/javascript" src="js/utils.js" charset="utf-8"></script>
-        <script type="text/javascript" src="js/show-and-hide-section.js" charset="utf-8"></script>
+		<script type="text/javascript" src="scripts/rankingvis.js" charset="utf-8"></script>
+        <script type="text/javascript" src="scripts/settings.js" charset="utf-8"></script>
+        <script type="text/javascript" src="scripts/utils.js" charset="utf-8"></script>
+        <script type="text/javascript" src="scripts/show-and-hide-section.js" charset="utf-8"></script>
 
        <!-- <link rel="stylesheet" type="text/css" href="css/vis.css" /> -->
         <link rel="stylesheet" type="text/css" href="css/general-style.css" />
@@ -102,7 +102,7 @@ and open the template in the editor.
 
 		</div>
 
-        <script type="text/javascript" src="js/vis-controller.js" charset="utf-8"></script>
+        <script type="text/javascript" src="scripts/vis-controller.js" charset="utf-8"></script>
 
     </body>
 </html>
