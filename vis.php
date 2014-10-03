@@ -43,18 +43,15 @@ and open the template in the editor.
         </div>
 
 		<header id="eexcess_header">
-            <section id="eexcess_header_task_section">
+            <section id="eexcess_header_info_section">
 	  			<span></span>
-                <p></p>
-                <div>
-                    <img src="media/batchmaster/arrow-up.png" expanded="true" />
-                    <input type="button" id="eexcess_finished_button" value="Finished" />
-                </div>
 	  		</section>
-            <section id="eexcess_message_section">
+            <section id="eexcess_header_task_section">
 	    	  <p></p>
 	  		</section>
-	  		<section id="eexcess_selected_items_section"></section>
+	  		<section id="eexcess_header_control_section">
+                <input type="button" id="eexcess_finished_button" value="Finished" />
+            </section>
       	</header>
 
 		<div id="eexcess_main_panel">
@@ -94,7 +91,24 @@ and open the template in the editor.
             </div>
 
             <div id="eexcess_document_panel">
-                <div id="eexcess_document_details"></div>
+                <div id="eexcess_document_details">
+                    <div>
+                        <label>Title: </label>
+                        <h3 id="eexcess_document_details_title"></h3>
+                    </div>
+                    <div>
+                        <label>Year: </label>
+                        <span id="eexcess_document_details_year"></span>
+                    </div>
+                    <div>
+                        <label>Language: </label>
+                        <span id="eexcess_document_details_language"></span>
+                    </div>
+                    <div>
+                        <label>Provider: </label>
+                        <span id="eexcess_document_details_provider"></span>
+                    </div>
+                </div>
                 <div id="eexcess_document_viewer">
                     <p></p>
                 </div>

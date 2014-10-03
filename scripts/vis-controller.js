@@ -11,16 +11,14 @@
     var root = "#eexcess_canvas";												// String to select the area where the visualization should be displayed
 
     var headerPanel = "#eexcess_header";                                        // header dom element
-    var headerTaskSection = "#eexcess_header_task_section";						// Section wrapping #items, task, finish and expand/collapse buttons
-    var expandCollapseBtn = "#eexcess_header_task_section img";                 // Img element for expanding/collapsing header
+    var headerInfoSection = "#eexcess_header_info_section span";
+    var headerTaskSection = "#eexcess_header_task_section p";						// Section wrapping #items, task, finish and expand/collapse buttons
     var btnFinished = "#eexcess_finished_button";                               // Finishes the task and redirects back to the initial screeen
-    var messageSection = "#eexcess_message_section";                            // Selector for section displaying text and message for the current task. Child <p>
     var selectedItemsSection = "#eexcess_selected_items_section";               // Section listing items marked as relevant by the user
     var selectedItemsClass = ".eexcess_selected_item";                          // Selected item contained in selectedItemsSection
 
     var mainPanel = "#eexcess_main_panel";                                      // Panel containing tag cloug, canvas (in #eexcess_vis) and content list
     var inputCriteria = '.eexcess_vis_controls_input';
-    var radioCriteria = 'input:radio';                                          // Selector for radio button that switches ranking criteria
 	var tagContainer = "#eexcess_keywords_container";							// Selector for div wrapping keyword tags
 	var tagClass = ".eexcess_keyword_tag";										// Selector for all keyword tags
     var tagId = "#tag-";                                                        // Id selector for tags in tag container
@@ -33,6 +31,8 @@
 	var btnReset = "#eexcess_btnreset";											// Selector for reset button in vis control panel
     var btnRankByOverall = "#eexcess_btn_sort_by_overall_score";                // Button that triggers ranking by overall score criteria
     var btnRankByMax = "#eexcess_btn_sort_by_max_score";                        // Button to rank by max score criteria
+
+    var visPanelCanvas = "#eexcess_vis_panel_canvas";
 	var contentPanel = "#eexcess_content";										// Selector for content div on the right side
 	var contentList = "#eexcess_content .eexcess_result_list";					// ul element within div content
 	var allListItems = "#eexcess_content .eexcess_result_list .eexcess_list";	// String to select all li items by class
@@ -41,6 +41,10 @@
     var favIconClass = ".eexcess_favicon_section";
     var detailsSections = '.eexcess_item_details_section';
 
+    var documentDetailsTitle = "#eexcess_document_details_title";
+    var documentDetailsYear = "#eexcess_document_details_year";
+    var documentDetailsLanguage = "#eexcess_document_details_language";
+    var documentDetailsProvider = "#eexcess_document_details_provider";
     var documentViewer = '#eexcess_document_viewer';
 
 
@@ -80,7 +84,6 @@
 
 	// Ancillary variables
 	var dataRanking;					// array that represents the current ranking. Each item is an object specifying "originalIndex, "overallScore", "rankingPos" and "positionsChanged"
-    var keywordsInBox;
 	var selectedTags = [];				// array of DOM elements contained in the tag box
 	var indicesToHighlight = [];		// array containing the indices of <li> elements to be highlighted in content list
     var rankingCriteria = 'overall_score';
@@ -95,6 +98,9 @@
     var textTagColorScale = d3.scale.ordinal().range(['#eee', '#ddd', '#333', '#222', '#222']);
     var weightColorScale = d3.scale.ordinal().range( colorbrewer.Set1[9] );
 
+    //
+    var stemmer = natural.PorterStemmer;
+    stemmer.attach();
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -111,9 +117,7 @@
 		$(btnReset).click( function(){ EVTHANDLER.btnResetClicked(); });
         $(btnRankByOverall).click(function(){ EVTHANDLER.rankButtonClicked(this); });
         $(btnRankByMax).click(function(){ EVTHANDLER.rankButtonClicked(this); });
-        $(expandCollapseBtn).click(function(){ EVTHANDLER.expandCollapseBtnClicked(); });
         $(btnFinished).click(function(){ EVTHANDLER.btnFinishedClicked(); });
-        $(inputCriteria).click(function(){ EVTHANDLER.radioScoreClicked( $(this).attr('value') ) });
         $(window).resize(function(){ EVTHANDLER.canvasResized(); });
         $(mainPanel).resize(function(){ EVTHANDLER.canvasResized(); });
 	};
@@ -138,7 +142,7 @@
                 case "ZBW":         d['provider-icon'] = ICON_ZBW; break;
                 case "wissenmedia": d['provider-icon'] = ICON_WISSENMEDIA; break;
                 case "KIM.Collect": d["provider-icon"] = ICON_KIM_COLLECT; break;
-                default:            d['provider-icon'] = ICON_UNKNOWN; break;EVTHANDLER.expandCollapseBtnClicked
+                default:            d['provider-icon'] = ICON_UNKNOWN; break;
             }
         });
 
@@ -147,37 +151,29 @@
 
 
 	PREPROCESSING.extendKeywordsWithColorCategory = function(){
-/*
-		var extent = d3.extent(keywords, function(k){ return k['score']; });
-		var range = (extent[1] - extent[0] + 0.1) / TAG_CATEGORIES;
-        console.log('extent --> ' + extent[0] + ' - ' + extent[1]);
-        console.log('range = ' + range);
+
+		var extent = d3.extent(keywords, function(k){ return k['repeated']; });
+		var range = (extent[1] - extent[0]) * 0.15;   // / TAG_CATEGORIES;
+        //console.log('extent --> ' + extent[0] + ' - ' + extent[1]);
+        //console.log('range = ' + range);
         catArray = [];
+        for(var i = 0; i < TAG_CATEGORIES; i++)
+            catArray[i] = 0;
 
 		keywords.forEach(function(k){
-			k['colorCategory'] = parseInt( (k['score'] - extent[0]) / range );
-            if(typeof catArray[k.colorCategory] == 'undefined' || catArray[k.colorCategory] == 'undefined')
-                catArray[k.colorCategory] = 1;
-            else
+			var colorCategory = parseInt((k['repeated'] - extent[0]) / range);
+            colorCategory = (colorCategory < TAG_CATEGORIES) ? colorCategory : TAG_CATEGORIES - 1;
+            k['colorCategory'] = colorCategory;
                 catArray[k.colorCategory]++;
 		});
-
+/*
         var inf = extent[0];
         catArray.forEach(function(c, i){
-            console.log('Category ' + (inf)  + ' - ' + (inf + range) + ' --> ' + c);
+            console.log('Category ' + i + " ** " + (inf)  + ' - ' + (inf + range) + ' --> ' + c + 'keywords');
             inf = inf + range;
         });
         */
-
-        var min = d3.extent(keywords, function(k){ return k['repeated']; })[0];
-
-        keywords.forEach(function(k){
-            k['colorCategory'] = k.repeated - min < TAG_CATEGORIES ? k.repeated - min : TAG_CATEGORIES - 1;
-        });
-
-
 	};
-
 
 
 
@@ -209,44 +205,13 @@
 
 
     HEADER.showInfoInHeader = function(){
-
         // Display number of results on the left of header
-		$( headerTaskSection ).find( "span" ).text("Number of Items: " + data.length);
+		$(headerInfoSection).html("Number of Items: " + data.length);
 
         // Display task on the left of header
-        $( headerTaskSection ).find( "p" ).text('TASK: ' + task);
-
-        // Show test paragraph in the middle of the header
-        $(messageSection).find('p').text(message);
+        $(headerTaskSection).html('TASK: ' + task);
     }
 
-
-
-	/**
-	 *	Updates the text in the center of the header according to the received paramter
-	 *
-	 * *//*
-	HEADER.updateHeaderText = function(text){
-
-		if( text == STR_SEARCHING){
-			$( headerText ).find( "span" ).text( "" );
-			$( root ).empty();
-
-			var loadingDiv = d3.select( root ).append("div")
-				.attr("id", "eexcess_loading_results");
-
-			loadingDiv.append("span")
-				.text( STR_SEARCHING );
-
-			loadingDiv.append("img")
-				.attr("src", LOADING_IMG);
-		}
-		else{
-			$( headerText ).find( "span" ).text( text );
-		}
-	};
-
-	*/
 
 	HEADER.addItemToListOfSelected = function(index){
 
@@ -270,40 +235,6 @@
     HEADER.removeItemFromListOfSelected = function(index) {
         $(selectedItemsSection).find("div[original-index='" + index + "']").remove();
     };
-
-
-
-    HEADER.toggleHeader = function() {
-
-        if(($(expandCollapseBtn).attr('expanded')).toBool()) {
-
-            $(mainPanel).css('height', '94%');
-            $(headerPanel).animate({'height': '3%'});
-            $(headerTaskSection).find('span').slideUp();
-            $(headerTaskSection).find('p').slideUp();
-            $(messageSection).slideUp();
-            $(selectedItemsSection).slideUp();
-            $(expandCollapseBtn)
-                .attr('expanded', 'false')
-                .attr('src', ARROW_DOWN_ICON)
-                .css('marginTop', '.2em');
-        }
-        else{
-            $(mainPanel).css('height', '81%');
-            $(headerPanel).animate({'height': '16%'});
-
-            $(headerTaskSection).find('span').slideDown();
-            $(headerTaskSection).find('p').slideDown();
-            $(messageSection).css('display', 'block');
-            $(selectedItemsSection).css('display', 'block');
-
-            $(expandCollapseBtn)
-                .attr('expanded', 'true')
-                .attr('src', ARROW_UP_ICON)
-                .css('marginTop', '.3em');
-        }
-    };
-
 
 
     HEADER.finishTask = function(){
@@ -345,23 +276,11 @@
         VISPANEL.resizeRanking();
     };
 
-    ////////	radio button clicked	////////
-
-    EVTHANDLER.radioScoreClicked = function( value ){
-
-        $('input[value=\"' + value + '\"]').prop('checked', true);
-        rankingCriteria = value;
-        if(dataRanking.length > 0){
-            LIST.rankRecommendations();
-        }
-    };
 
     ////////	Rank button clicked (by overall or max score)	////////
 
     EVTHANDLER.rankButtonClicked = function(sender){
         rankingCriteria = $(sender).attr('sort-by');
-        console.log($(sender));
-        console.log('criteria = ' + rankingCriteria);
         if(dataRanking.length > 0)
             LIST.rankRecommendations();
     };
@@ -375,6 +294,7 @@
         TAGCLOUD.buildTagCloud();
         LIST.resetContentList();
 		VISPANEL.resetRanking();
+        DOCPANEL.clear();
 	};
 
 
@@ -385,12 +305,22 @@
         LIST.selectListItem(i);
 	};
 
+    ////////	list item mouseover	////////
+    EVTHANDLER.listItemHovered = function(d, index){
+        LIST.hoverListItem(index);
+    };
+
+
+    ////////	list item mouseout	////////
+    EVTHANDLER.listItemUnhovered = function(d, index){
+        LIST.unhoverListItem(index);
+    };
 
 
 	////////	Delete tag click	////////
 
 	EVTHANDLER.deleteTagClicked = function(tag){
-		TAGCLOUD.deleteTagInBox( tag );
+		TAGCLOUD.deleteTagInBox(tag);
 	};
 
 
@@ -453,11 +383,6 @@
     };
 
 
-    EVTHANDLER.expandCollapseBtnClicked = function(){
-        HEADER.toggleHeader();
-    };
-
-
     EVTHANDLER.btnFinishedClicked = function(){
       HEADER.finishTask();
     };
@@ -512,6 +437,7 @@
 		$(tagBox).empty();
 		$('<p></p>').appendTo($(tagBox)).text(STR_DROP_TAGS_HERE);
 		selectedTags = [];
+        TAGCLOUD.updateTagColor();
 	};
 
 
@@ -523,10 +449,10 @@
 		// Empty tag container
         $(tagContainer).empty();
 		// Append one div per tag
-		d3.select(tagContainer).selectAll( tagClass )
+		d3.select(tagContainer).selectAll(tagClass)
 			.data(keywords)
 			.enter()
-			.append( "div" )
+			.append("div")
 				.attr( "class", "eexcess_keyword_tag" )
 				.attr( "id", function(k, i){ return "tag-"+i; })
                 .attr('tag-pos', function(k, i){ return i; })
@@ -604,7 +530,6 @@
 
         // Reset the draggability
         tag.draggable('destroy');
-
 	};
 
 
@@ -616,7 +541,6 @@
 	TAGCLOUD.changeKeywordInBoxWeight = function( keywordSlider, ui ){
 
         var tag = keywordSlider.parentNode;
-        var label = d3.select(tag).text();
         var stem = d3.select(tag).data()[0].stem;
         var aux = weightColorScale(stem);
         var rgbSequence = hexToR(aux) + ', ' + hexToG(aux) + ', ' + hexToB(aux);
@@ -702,10 +626,6 @@
         for(var i = 0; i < selectedTags.length; i++){
             // Reasign keyword to color scale domain
             var stem = d3.select(selectedTags[i][0]).data()[0].stem;
-
-            console.log('stem');
-            console.log(stem);
-            var label = d3.select(selectedTags[i][0]).text();
             var aux = weightColorScale(stem);
             var rgbSequence = hexToR(aux) + "," + hexToG(aux) + "," + hexToB(aux);
             var value = $(selectedTags[i][0]).find(".div-slider").slider("value");
@@ -714,7 +634,6 @@
                 .style("background", "rgba("+ rgbSequence + ", " + value + ")")
                 .style("border", "solid 0.2em " + aux);
         }
-
     };
 
 
@@ -772,7 +691,7 @@
          *	Creates the ranking items with default values and calculates the weighted score for each selected keyword (tags in tag box)
          *
          * */
-        updateRanking: function(newKeywords){
+        updateRanking: function(){
 
             dataRanking = [];
             data.forEach(function(d, i) {
@@ -786,7 +705,8 @@
                 });
 
                 var max = 0;
-                newKeywords.forEach(function(wk, j) {
+                var keywordsInBox = TAGCLOUD.getWeightedKeywordsInBox();
+                keywordsInBox.forEach(function(wk, j) {
                     var index = d.keywords.getIndexOf(wk.stem, 'term');
 
                     if(index > -1){ // item contains keyword in box
@@ -986,6 +906,8 @@
         // Event for item clicked
         d3.selectAll(allListItems)
             .on("click", function(d, i){ EVTHANDLER.listItemClicked(d, i); })
+            .on("mouseover", EVTHANDLER.listItemHovered)
+            .on("mouseout", EVTHANDLER.listItemUnhovered)
             .select(favIconClass).select('img').on("click", function(d, i){ EVTHANDLER.faviconClicked(d, i);});
     };
 
@@ -999,9 +921,8 @@
 	LIST.rankRecommendations = function() {
 
         var previousRanking = dataRanking || [];
-        keywordsInBox = TAGCLOUD.getWeightedKeywordsInBox();
 		// Recalculates scores and positions, sorts the dataRanking array and extends it with #positionsChanged
-		this.internal.updateRanking(keywordsInBox);
+		this.internal.updateRanking();
 		this.internal.sortRanking(dataRanking);
 		this.internal.extendRankingWithPositionsChanged(previousRanking);
         this.highlightListItems();
@@ -1016,6 +937,7 @@
 			this.animateRanking();
             this.updateItemsBackground();
 		}
+        DOCPANEL.clear();
 		VISPANEL.drawRanking(isRankingChanged);
 	};
 
@@ -1204,6 +1126,25 @@
 	};
 
 
+
+    LIST.hoverListItem = function(index, isExternalCall) {
+        $(listItem + '' + LIST.internal.getActualIndex(index)).addClass("eexcess_list_hover");
+        isExternalCall = isExternalCall || false;
+        if(!isExternalCall)
+            VISPANEL.hoverItem(index);
+    };
+
+
+
+    LIST.unhoverListItem = function(index, isExternalCall){
+        $(listItem + '' + LIST.internal.getActualIndex(index)).removeClass("eexcess_list_hover");
+        isExternalCall = isExternalCall || false;
+        if(!isExternalCall)
+            VISPANEL.unhoverItem(index);
+    };
+
+
+
 	/**
 	 * Restores content list to its original state
 	 *
@@ -1255,15 +1196,23 @@
 
 	VISPANEL.drawRanking = function(isRankingChanged){
         rankingVis.draw(dataRanking, data, weightColorScale, rankingCriteria, isRankingChanged);
+        $(visPanelCanvas).scrollTo('top');
 	};
 
     VISPANEL.resetRanking = function(){
-        weightColorScale.domain([]);
         rankingVis.reset();
     };
 
     VISPANEL.selectItemInRanking = function(actualIndex){
         rankingVis.selectItem(actualIndex);
+    };
+
+    VISPANEL.hoverItem = function(index){
+        rankingVis.hoverItem(index);
+    };
+
+    VISPANEL.unhoverItem = function(index){
+        rankingVis.unhoverItem(index);
     };
 
     VISPANEL.resizeRanking = function(){
@@ -1280,22 +1229,40 @@
     DOCPANEL.internal = {
 
         highlightKeywordsInText : function(text){
+            var textWithKeywords = "", word = "";
+            var keywordsInBox = TAGCLOUD.getWeightedKeywordsInBox();
 
-
-
-
-
-            return text;
+            text.split('').forEach(function(c){
+                if(c.match(/\w/)){
+                    word += c;
+                }
+                else{
+                    var wordStem = word.stem();
+                    if(keywordsInBox.getIndexOf(wordStem, "stem") > -1)
+                        word = "<strong style=\"color:" + weightColorScale(wordStem) + "\">" + word + "</strong>";
+                    textWithKeywords += word + c;
+                    word = "";
+                }
+            });
+            return textWithKeywords;
         }
 
     };
 
     DOCPANEL.showDocument = function(index){
-        $(documentViewer).find('p').text(this.internal.highlightKeywordsInText(data[index].description));
+        $(documentDetailsTitle).html(data[index].title);
+        $(documentDetailsYear).html(data[index].facets.year);
+        $(documentDetailsLanguage).html(data[index].facets.language);
+        $(documentDetailsProvider).html(data[index].facets.provider);
+        $(documentViewer).find('p').html(this.internal.highlightKeywordsInText(data[index].description));
     };
 
 
     DOCPANEL.clear = function(){
+        $(documentDetailsTitle).empty();
+        $(documentDetailsYear).empty();
+        $(documentDetailsLanguage).empty();
+        $(documentDetailsProvider).empty();
         $(documentViewer).find('p').empty();
     };
 
@@ -1335,7 +1302,7 @@
             // Initialize template's elements
             TAGCLOUD.clearTagbox();
             TAGCLOUD.buildTagCloud();
-            //VISPANEL.drawRanking();
+            VISPANEL.resetRanking();
         }
         else{
             $("#eexcess_vis").css('display', 'none');
@@ -1355,10 +1322,16 @@
 
 	///////////// External call triggered by rankingvis
 
-	this.ListItemSelected = function(i){
-        LIST.selectListItem(i, true);
+	this.ListItemSelected = function(index){
+        LIST.selectListItem(index, true);
 	};
 
+    this.ListItemHovered = function(index){
+        LIST.hoverListItem(index, true);
+    };
 
+    this.ListItemUnhovered = function(index){
+        LIST.unhoverListItem(index, true);
+    };
 
 })();

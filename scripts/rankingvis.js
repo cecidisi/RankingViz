@@ -30,10 +30,17 @@ function RankingVis( domRoot, iWidth, iHeight, visTemplate ){
         RANKING.Render.selectItem(i, false);
     };
 
+    RANKING.Evt.itemMouseOvered = function(d, i){
+        RANKING.Render.hoverItem(i);
+    };
+
+    RANKING.Evt.itemMouseOuted = function(d, i){
+        RANKING.Render.unhoverItem(i);
+    };
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////$/////////////////////////////////////////////////////////////////////
 
 	RANKING.Internal = {};
 
@@ -41,9 +48,7 @@ function RankingVis( domRoot, iWidth, iHeight, visTemplate ){
     RANKING.Internal.topLimit = function( array, rankingCriteria ){
         var attr = (rankingCriteria == 'overall_score') ? 'overallScore' : 'maxScore';
 
-        console.log(array);
         //var maxScore = d3.max(array, function(d) { return d[attr]; }).toFixed(2);
-        var maxScore = array[0][attr];
         var maxScore = array[0][attr];
         return maxScore;
     };
@@ -74,7 +79,7 @@ function RankingVis( domRoot, iWidth, iHeight, visTemplate ){
         }
 
         data.forEach(function(d){
-            var index = d.weightedKeywords.getIndexOf(term, 'term');
+            var index = d.weightedKeywords.getIndexOf(term, 'term');$
             if( index != -1 && d.weightedKeywords[index].weightedScore > 0 ){
                 var j = 0;
 
@@ -108,38 +113,39 @@ function RankingVis( domRoot, iWidth, iHeight, visTemplate ){
 
         setTimeout(function(){
 
-        var stackedBars = svg.selectAll(".stackedbar")
-			.data(data)
-			.enter().append("g")
-				.attr("class", "stackedbar")
-				.attr( "transform", function(d) { return "translate(0, " + y(d.title) + ")"; } )
-                .on('click', function(d, i){ RANKING.Evt.itemClicked(i); })
-                .on('mouseover', function(){ d3.select(this).selectAll('.bar').attr('transform', 'translate(0, 0)'); })
-                .on('mouseout', function(){ d3.select(this).selectAll('.bar').attr('transform', 'translate(0, 0.2)'); });
+            var stackedBars = svg.selectAll(".stackedbar")
+                .data(data)
+                .enter().append("g")
+                    .attr("class", "stackedbar")
+                    .attr("id", function(d, i){ return "stackedbar-" + i; })
+                    .attr( "transform", function(d) { return "translate(0, " + y(d.title) + ")"; } )
+                    .on('click', function(d, i){ RANKING.Evt.itemClicked(i); })
+                    .on('mouseover', RANKING.Evt.itemMouseOvered)
+                    .on('mouseout', RANKING.Evt.itemMouseOuted);
 
-        stackedBars.append('rect')
-            .attr('class', function(d, i){ if(i%2 == 0) return 'light_background'; return 'dark_background'; })
-            .attr('x', 0)
-            .attr('width', width)
-            .attr('height', y.rangeBand());
+            stackedBars.append('rect')
+                .attr('class', function(d, i){ if(i%2 == 0) return 'light_background'; return 'dark_background'; })
+                .attr('x', 0)
+                .attr('width', width)
+                .attr('height', y.rangeBand());
 
-		stackedBars.selectAll(".bar")
-			.data(function(d) { return d.weightedKeywords; })
-			.enter()
-			.append("rect")
-				.attr("class", "bar")
-				.attr("height", y.rangeBand())
-				.attr("x", function(d) { return x(d.x0); })
-				.attr("width", 0)
-				.style("fill", function(d) { return color(d.term); });
+            stackedBars.selectAll(".bar")
+                .data(function(d) { return d.weightedKeywords; })
+                .enter()
+                .append("rect")
+                    .attr("class", "bar")
+                    .attr("height", y.rangeBand())
+                    .attr("x", function(d) { return x(d.x0); })
+                    .attr("width", 0)
+                    .style("fill", function(d) { return color(d.term); });
 
-		var bars = stackedBars.selectAll(".bar");
+            var bars = stackedBars.selectAll(".bar");
 
-		var t0 = bars.transition()
-				.duration(500)
-				.attr({
-					"width": function(d) { return x(d.x1) - x(d.x0); }
-				});
+            var t0 = bars.transition()
+                    .duration(500)
+                    .attr({
+                        "width": function(d) { return x(d.x1) - x(d.x0); }
+                    });
         }, 800);
 	};
 
@@ -320,7 +326,7 @@ function RankingVis( domRoot, iWidth, iHeight, visTemplate ){
             .attr("height", height + margin.top + margin.bottom + 30)
                 .append("g")
                     .attr("width", width)
-                    .attr("height", height)
+                    .attr("height", height + 30)
                     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 		svg.append("g")
@@ -423,13 +429,19 @@ function RankingVis( domRoot, iWidth, iHeight, visTemplate ){
 
 
 
+    /******************************************************************************************************************
+	*
+	*	Adjust height of svg and other elements when the ranking changes
+	*
+	* ***************************************************************************************************************/
+
     RANKING.Render.updateCanvasDimensions = function(){
 
         /******************************************************
 		*	Recalculate canvas dimensions
 		******************************************************/
 		RANKING.Dimensions = RANKING.Settings.getRankingDimensions(domRoot, iWidth, data.length);
-        height         = RANKING.Dimensions.height;
+        height = RANKING.Dimensions.height;
 
 		y.rangeBands(height, .02);
 
@@ -579,7 +591,7 @@ function RankingVis( domRoot, iWidth, iHeight, visTemplate ){
 
     /******************************************************************************************************************
     *
-    *	Highlight title in y axis, stacked bar and corresponding item in recommendation list
+    *	Highlight stacked bar and corresponding item in recommendatitle in y axis, tion list
     *	Show rich tooltip
     *   @param {integer} itemIndex: index of selected item
     *   @param {boolean} isSelectedFromOutside: true means that the call came from Vis object, otherwise it was invoked internally by clicking on a y-axis tick or stacked bar
@@ -600,6 +612,30 @@ function RankingVis( domRoot, iWidth, iHeight, visTemplate ){
            Vis.ListItemSelected(itemIndex);
     };
 
+
+    RANKING.Render.hoverItem = function(index, isExternalCall) {
+
+        svg.select("#stackedbar-" + index).selectAll('.bar')
+            .attr('transform', 'translate(0, 0)')
+            .style('filter', 'url(#drop-shadow)');
+
+        isExternalCall = isExternalCall || false;
+        if(!isExternalCall)
+            Vis.ListItemHovered(index);
+    };
+
+
+
+    RANKING.Render.unhoverItem = function(index, isExternalCall) {
+
+        svg.select("#stackedbar-" + index).selectAll('.bar')
+            .attr('transform', 'translate(0, 0.2)')
+            .style('filter', '');
+
+        isExternalCall = isExternalCall || false;
+        if(!isExternalCall)
+            Vis.ListItemUnhovered(index);
+    };
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -623,6 +659,12 @@ function RankingVis( domRoot, iWidth, iHeight, visTemplate ){
         },
         'selectItem' : function( itemIndex ){
             if(isRankingDrawn) RANKING.Render.selectItem( itemIndex, true );
+        },
+        'hoverItem' : function(index){
+            if(isRankingDrawn) RANKING.Render.hoverItem(index, true);
+        },
+        'unhoverItem' : function(index){
+            if(isRankingDrawn) RANKING.Render.unhoverItem(index, true);
         }
     };
 

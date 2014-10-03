@@ -27,23 +27,19 @@ function datasetManager(){
     }
 
 
-
-
     this.getDataset = function(datasetId){
 
-        if(typeof datasetId != 'undefined' && datasetId != 'undefined')
-            return datasets[datasetId];
-
-
+        if(typeof datasetId != 'undefined' && datasetId != 'undefined'){
+            var dataset = datasets[datasetId];
+            dataset.data.shuffle();
+            return dataset;
+        }
         // If dataset id is not specified, return array with all the datasets
-
         var datasetIds = Object.keys(datasets);
         var datasetArray = [];
-
         datasetIds.forEach(function(id){
             datasetArray.push(datasets[id]);
         });
-
         return datasetArray;
     };
 
