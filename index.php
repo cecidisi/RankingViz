@@ -48,12 +48,16 @@
         <div>
             <span>Tool aided: </span>
             <select id="select-tool-condition">
-                <option value="yes">Yes</option>
+                <option value="yes" selected="selected">Yes</option>
                 <option value="no">No</option>
             </select>
         </div>
 
         <input type="button" id="start-button" value="Start" />
+
+        <div id="eexcess_loading" style="display: none">
+            <img src="media/loading.gif" />
+        </div>
 
         <script type="text/javascript" src="scripts/starter.js" charset="utf-8"></script>
 

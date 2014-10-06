@@ -13,7 +13,11 @@
     var headerPanel = "#eexcess_header";                                        // header dom element
     var headerInfoSection = "#eexcess_header_info_section span";
     var headerTaskSection = "#eexcess_header_task_section p";						// Section wrapping #items, task, finish and expand/collapse buttons
+    var headerControlsSection = "eexcess_header_control_section";
+    var btnShowList = "#eexcess_list_button";
+    var btnShowText = "#eexcess_text_button";
     var btnFinished = "#eexcess_finished_button";                               // Finishes the task and redirects back to the initial screeen
+    var topicTextSection = "#eexcess_topic_text_section";
     var selectedItemsSection = "#eexcess_selected_items_section";               // Section listing items marked as relevant by the user
     var selectedItemsClass = ".eexcess_selected_item";                          // Selected item contained in selectedItemsSection
 
@@ -79,7 +83,7 @@
 	var data;							// contains the data to be visualized
 	var keywords;
 	var query;							// string representing the query that triggered the current recommendations
-    var message, task;
+    var topicText, task;
 
 
 	// Ancillary variables
@@ -103,173 +107,11 @@
     stemmer.attach();
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	var PREPROCESSING = {};
-
-
-	/**
-	 *	Bind event handlers to
-	 *
-	 * */
-	PREPROCESSING.bindEventHandlers = function(){
-		$(btnReset).click( function(){ EVTHANDLER.btnResetClicked(); });
-        $(btnRankByOverall).click(function(){ EVTHANDLER.rankButtonClicked(this); });
-        $(btnRankByMax).click(function(){ EVTHANDLER.rankButtonClicked(this); });
-        $(btnFinished).click(function(){ EVTHANDLER.btnFinishedClicked(); });
-        $(window).resize(function(){ EVTHANDLER.canvasResized(); });
-        $(mainPanel).resize(function(){ EVTHANDLER.canvasResized(); });
-	};
-
-
-
-    PREPROCESSING.extendDataWithAncillaryDetails = function(){
-
-        data.forEach(function(d){
-/**
-            if(typeof d['description' == 'undefined'] || d['description' == 'undefined'])
-                d['description'] = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus semper, metus sit amet tristique ultricies, nulla augue eleifend neque, sed luctus neque dui semper est. Suspendisse sodales urna tortor, vitae convallis erat luctus id. Maecenas sit amet mauris quis risus consectetur pulvinar et a augue. Nulla facilisi. Nulla facilisi. Praesent a lacus bibendum, placerat purus non, pulvinar orci. Fusce pellentesque, risus at mattis tempus, ante massa auctor eros, et blandit sapien nunc eu diam. Aenean at pharetra dolor. Praesent rhoncus sodales elementum. Nunc eget pellentesque velit, eu accumsan sem. Curabitur hendrerit nisi arcu, et imperdiet nibh adipiscing eget. Vestibulum porttitor libero eu sem mattis, a commodo erat molestie. In in convallis tellus. Fusce eget mauris erat.";
-       */
-            d['isSelected'] = false;
-
-            // Assign 'provider-icon' with the provider's icon
-            switch(d.facets.provider){
-                case "europeana":
-                case "Europeana":   d['provider-icon'] = ICON_EUROPEANA; break;
-			    case "mendeley":    d['provider-icon'] = ICON_MENDELEY; break;
-                case "econbiz":
-                case "ZBW":         d['provider-icon'] = ICON_ZBW; break;
-                case "wissenmedia": d['provider-icon'] = ICON_WISSENMEDIA; break;
-                case "KIM.Collect": d["provider-icon"] = ICON_KIM_COLLECT; break;
-                default:            d['provider-icon'] = ICON_UNKNOWN; break;
-            }
-        });
-
-    };
-
-
-
-	PREPROCESSING.extendKeywordsWithColorCategory = function(){
-
-		var extent = d3.extent(keywords, function(k){ return k['repeated']; });
-		var range = (extent[1] - extent[0]) * 0.15;   // / TAG_CATEGORIES;
-        //console.log('extent --> ' + extent[0] + ' - ' + extent[1]);
-        //console.log('range = ' + range);
-        catArray = [];
-        for(var i = 0; i < TAG_CATEGORIES; i++)
-            catArray[i] = 0;
-
-		keywords.forEach(function(k){
-			var colorCategory = parseInt((k['repeated'] - extent[0]) / range);
-            colorCategory = (colorCategory < TAG_CATEGORIES) ? colorCategory : TAG_CATEGORIES - 1;
-            k['colorCategory'] = colorCategory;
-                catArray[k.colorCategory]++;
-		});
-/*
-        var inf = extent[0];
-        catArray.forEach(function(c, i){
-            console.log('Category ' + i + " ** " + (inf)  + ' - ' + (inf + range) + ' --> ' + c + 'keywords');
-            inf = inf + range;
-        });
-        */
-	};
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	var HEADER = {};
-
-
-    HEADER.internal = {
-        validateFinishedTask : function(){
-            /*
-            var numberOfSelectedItems = $(selectedItemsClass).length;
-            if(numberOfSelectedItems < SELECTED_ITEMS_REQUIRED){
-                alert("You must select exactly " + SELECTED_ITEMS_REQUIRED + " items from the list" +
-                     "\n Items selected = " + numberOfSelectedItems);
-                return false;
-            }
-            else if(numberOfSelectedItems > SELECTED_ITEMS_REQUIRED){
-                alert("You must select exactly " + SELECTED_ITEMS_REQUIRED + " items from the list" +
-                     "\n Items selected = " + numberOfSelectedItems);
-                return false;
-            }*/
-            return true;
-        }
-
-    };
-
-
-    HEADER.showInfoInHeader = function(){
-        // Display number of results on the left of header
-		$(headerInfoSection).html("Number of Items: " + data.length);
-
-        // Display task on the left of header
-        $(headerTaskSection).html('TASK: ' + task);
-    }
-
-
-	HEADER.addItemToListOfSelected = function(index){
-
-        if(!data[index].isSelected){
-            var selectedItemContainer = d3.select(selectedItemsSection).append('div')
-                .attr('class', 'eexcess_selected_item')
-                .attr('original-index', index);
-
-            selectedItemContainer.append('span').text(data[index].title);
-            selectedItemContainer.append('img').attr("src", REMOVE_SMALL_ICON);
-
-            $(selectedItemsSection).find("div[original-index='" + index + "']").click(function(){ EVTHANDLER.removeSelectedItemIconClicked(index); });
-        }
-        else{
-            HEADER.removeItemFromListOfSelected(index);
-        }
-    };
-
-
-
-    HEADER.removeItemFromListOfSelected = function(index) {
-        $(selectedItemsSection).find("div[original-index='" + index + "']").remove();
-    };
-
-
-    HEADER.finishTask = function(){
-
-        if(HEADER.internal.validateFinishedTask()){
-            var elapsedTime = parseInt($.now() - startTime).toTime();
-            console.log(elapsedTime);
-
-            var selectedItems = [];
-            $(selectedItemsClass).each(function(i, item){
-                var index = $(item).attr('original-index');
-                var datumToSave = data[index];
-                datumToSave['original-index'] = index;
-                selectedItems.push(datumToSave);
-            });
-
-            var obj = {
-                'dataset-id': dataset['dataset-id'],
-                'description': dataset['description'],
-                'tool-aided': dataset['tool-aided'],
-                'time': elapsedTime,
-                'selected-items': selectedItems
-            };
-
-            console.log(obj);
-        }
-    };
-
-
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	var EVTHANDLER = {};
-
 
 
     EVTHANDLER.canvasResized = function(){
@@ -315,6 +157,26 @@
     EVTHANDLER.listItemUnhovered = function(d, index){
         LIST.unhoverListItem(index);
     };
+
+
+
+    ////////	Tag in box mouseovered	////////
+
+    EVTHANDLER.tagInBoxMouseOvered = function(){
+        d3.select(this)
+            .style( "background", function(k){ return getGradientString("#0066ff", [1, 0.8, 1]); })
+            .style("color", "#eee");
+    };
+
+
+    ////////	Tag in box mouseouted	////////
+
+    EVTHANDLER.tagInBoxMouseOuted = function(){
+        d3.select(this)
+            .style( "background", function(k){ return getGradientString(tagColorScale(k.colorCategory+1), [1, 0.7, 1]); })
+            .style("color", "#111");
+    };
+
 
 
 	////////	Delete tag click	////////
@@ -383,8 +245,168 @@
     };
 
 
+    ////////	Show List button	////////
+
+    EVTHANDLER.btnListClicked = function(){
+        $(selectedItemsSection).slideToggle();
+    };
+
+
+    ////////	Show Text button	////////
+
+    EVTHANDLER.btnTextClicked = function(){
+        $(topicTextSection).slideToggle();
+    };
+
+
+    ////////	Finished button	////////
+
     EVTHANDLER.btnFinishedClicked = function(){
       HEADER.finishTask();
+    };
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	var PREPROCESSING = {};
+
+
+    PREPROCESSING.extendDataWithAncillaryDetails = function(){
+
+        data.forEach(function(d){
+            d['isSelected'] = false;
+            // Assign 'provider-icon' with the provider's icon
+            switch(d.facets.provider){
+                case "europeana":
+                case "Europeana":   d['provider-icon'] = ICON_EUROPEANA; break;
+			    case "mendeley":    d['provider-icon'] = ICON_MENDELEY; break;
+                case "econbiz":
+                case "ZBW":         d['provider-icon'] = ICON_ZBW; break;
+                case "wissenmedia": d['provider-icon'] = ICON_WISSENMEDIA; break;
+                case "KIM.Collect": d["provider-icon"] = ICON_KIM_COLLECT; break;
+                default:            d['provider-icon'] = ICON_UNKNOWN; break;
+            }
+        });
+    };
+
+
+
+	PREPROCESSING.extendKeywordsWithColorCategory = function(){
+
+		var extent = d3.extent(keywords, function(k){ return k['repeated']; });
+		var range = (extent[1] - extent[0]) * 0.15;   // / TAG_CATEGORIES;
+        //console.log('extent --> ' + extent[0] + ' - ' + extent[1]);
+        //console.log('range = ' + range);
+        catArray = [];
+        for(var i = 0; i < TAG_CATEGORIES; i++)
+            catArray[i] = 0;
+
+		keywords.forEach(function(k){
+			var colorCategory = parseInt((k['repeated'] - extent[0]) / range);
+            colorCategory = (colorCategory < TAG_CATEGORIES) ? colorCategory : TAG_CATEGORIES - 1;
+            k['colorCategory'] = colorCategory;
+                catArray[k.colorCategory]++;
+		});
+/*
+        var inf = extent[0];
+        catArray.forEach(function(c, i){
+            console.log('Category ' + i + " ** " + (inf)  + ' - ' + (inf + range) + ' --> ' + c + 'keywords');
+            inf = inf + range;
+        });
+        */
+	};
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	var HEADER = {};
+
+
+    HEADER.internal = {
+        validateFinishedTask : function(){
+            /*
+            var numberOfSelectedItems = $(selectedItemsClass).length;
+            if(numberOfSelectedItems < SELECTED_ITEMS_REQUIRED){
+                alert("You must select exactly " + SELECTED_ITEMS_REQUIRED + " items from the list" +
+                     "\n Items selected = " + numberOfSelectedItems);
+                return false;
+            }
+            else if(numberOfSelectedItems > SELECTED_ITEMS_REQUIRED){
+                alert("You must select exactly " + SELECTED_ITEMS_REQUIRED + " items from the list" +
+                     "\n Items selected = " + numberOfSelectedItems);
+                return false;
+            }*/
+            return true;
+        }
+
+    };
+
+
+    HEADER.showInfoInHeader = function(){
+        // Display number of results on the left of header
+		$(headerInfoSection).html("Number of Items: " + data.length);
+
+        // Display task on the left of header
+        $(headerTaskSection).html('TASK: ' + task);
+
+        $(topicTextSection).html(topicText);
+    }
+
+
+	HEADER.addItemToListOfSelected = function(index){
+
+        if(!data[index].isSelected){
+            var selectedItemContainer = d3.select(selectedItemsSection).append('div')
+                .attr('class', 'eexcess_selected_item')
+                .attr('original-index', index);
+
+            selectedItemContainer.append('span').text(data[index].title);
+            selectedItemContainer.append('img').attr("src", REMOVE_SMALL_ICON);
+
+            $(selectedItemsSection).find("div[original-index='" + index + "']").click(function(){ EVTHANDLER.removeSelectedItemIconClicked(index); });
+        }
+        else{
+            HEADER.removeItemFromListOfSelected(index);
+        }
+    };
+
+
+
+    HEADER.removeItemFromListOfSelected = function(index) {
+        $(selectedItemsSection).find("div[original-index='" + index + "']").remove();
+    };
+
+
+    HEADER.finishTask = function(){
+
+        if(HEADER.internal.validateFinishedTask()){
+            var elapsedTime = parseInt($.now() - startTime).toTime();
+            console.log(elapsedTime);
+
+            var selectedItems = [];
+            $(selectedItemsClass).each(function(i, item){
+                var index = $(item).attr('original-index');
+                var datumToSave = data[index];
+                datumToSave['original-index'] = index;
+                selectedItems.push(datumToSave);
+            });
+
+            var obj = {
+                'dataset-id': dataset['dataset-id'],
+                'description': dataset['description'],
+                'tool-aided': dataset['tool-aided'],
+                'time': elapsedTime,
+                'selected-items': selectedItems
+            };
+            console.log(obj);
+        }
     };
 
 
@@ -458,16 +480,8 @@
                 .attr('tag-pos', function(k, i){ return i; })
                 .style( "background", function(k){ return getGradientString(tagColorScale(k.colorCategory+1), [1, 0.7, 1]); })
 				.text( function(k){ return k.term; })
-				.on( "mouseover", function(){
-                    d3.select(this)
-                        .style( "background", function(k){ return getGradientString("#0066ff", [1, 0.8, 1]); })
-                        .style("color", "#eee");
-                })
-				.on( "mouseout", function(){
-                    d3.select(this)
-                        .style( "background", function(k){ return getGradientString(tagColorScale(k.colorCategory+1), [1, 0.7, 1]); })
-                        .style("color", "#111");
-                });
+				.on( "mouseover", EVTHANDLER.tagInBoxMouseOvered)
+				.on( "mouseout", EVTHANDLER.tagInBoxMouseOuted);
 
 		// bind drag behavior to each tag
 		$(tagClass).draggable( BEHAVIOR.draggableOptions );
@@ -525,8 +539,8 @@
             .style("background", function(){ return "rgba("+ rgbSequence + ", 0.6)"; })
             .style("color", "")
             .style("border", "solid 0.2em " + aux)
-            .on("mouseover", function(){})
-			.on("mouseout", function(){});
+            .on("mouseover", "")
+            .on("mouseout", "");
 
         // Reset the draggability
         tag.draggable('destroy');
@@ -608,8 +622,11 @@
 
         // Restore style
         d3.select(tag)
-            .style("background", function(k){ return tagColorScale(k.colorCategory+1); })
-            .style("border", "");
+            .style("background", function(k){ return getGradientString(tagColorScale(k.colorCategory+1), [1, 0.7, 1]) })
+            .style("border", "")
+            .style("color", "#111")
+            .on( "mouseover", EVTHANDLER.tagInBoxMouseOvered)
+            .on( "mouseout", EVTHANDLER.tagInBoxMouseOuted);
 
 		$(tag).draggable(BEHAVIOR.draggableOptions);
 	};
@@ -1237,20 +1254,27 @@
                     word += c;
                 }
                 else{
-                    var wordStem = word.stem();
-                    if(keywordsInBox.getIndexOf(wordStem, "stem") > -1)
-                        word = "<strong style=\"color:" + weightColorScale(wordStem) + "\">" + word + "</strong>";
+                    word = DOCPANEL.internal.getStyledWord(word, keywordsInBox);
                     textWithKeywords += word + c;
                     word = "";
                 }
             });
+            if(word != "")
+                textWithKeywords += this.getStyledWord(word, keywordsInBox);
             return textWithKeywords;
+        },
+
+        getStyledWord : function(word, keywordsInBox){
+            var wordStem = word.stem();
+            if(keywordsInBox.getIndexOf(wordStem, "stem") > -1)
+                return "<strong style=\"color:" + weightColorScale(wordStem) + "\">" + word + "</strong>";
+            return word;
         }
 
     };
 
     DOCPANEL.showDocument = function(index){
-        $(documentDetailsTitle).html(data[index].title);
+        $(documentDetailsTitle).html(this.internal.highlightKeywordsInText(data[index].title));
         $(documentDetailsYear).html(data[index].facets.year);
         $(documentDetailsLanguage).html(data[index].facets.language);
         $(documentDetailsProvider).html(data[index].facets.provider);
@@ -1279,16 +1303,17 @@
      * */
     (function(){
 
+        getStaticElementsReady();
+
         dataset = JSON.parse($("#dataset").text());
         console.log(dataset);
 
-        PREPROCESSING.bindEventHandlers();
         rankingVis = new RankingVis(root, width, height, self);
 
         data = dataset['data'];													// contains the data to be visualized
         query = dataset['query'];													// string representing the query that triggered the current recommendations
 		keywords = dataset['keywords'];
-        message = dataset['text'];
+        topicText = dataset['text'];
         task = dataset['task'];
         dataRanking = [];
 		indicesToHighlight = [];
@@ -1313,6 +1338,22 @@
     })();
 
 
+
+    function getStaticElementsReady(){
+
+        var offsetTop = $(btnShowList).offset().top + $(btnShowList).height() + 10;
+        var offsetLeft = $(selectedItemsSection).parent().offset().left + 10;
+        $(selectedItemsSection).width($(headerControlsSection).width() - 20).css("top", offsetTop).css("left", offsetLeft);
+        $(topicTextSection).width($(headerControlsSection).width() - 20).css("top", offsetTop).css("left", offsetLeft);
+
+        $(btnReset).click( function(){ EVTHANDLER.btnResetClicked(); });
+        $(btnRankByOverall).click(function(){ EVTHANDLER.rankButtonClicked(this); });
+        $(btnRankByMax).click(function(){ EVTHANDLER.rankButtonClicked(this); });
+        $(btnShowList).click(EVTHANDLER.btnListClicked);
+        $(btnFinished).click(function(){ EVTHANDLER.btnFinishedClicked(); });
+        $(window).resize(function(){ EVTHANDLER.canvasResized(); });
+        $(mainPanel).resize(function(){ EVTHANDLER.canvasResized(); });
+	};
 
 
 

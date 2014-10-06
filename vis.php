@@ -50,7 +50,12 @@ and open the template in the editor.
 	    	  <p></p>
 	  		</section>
 	  		<section id="eexcess_header_control_section">
+                <input type="button" id="eexcess_list_button" value="Show List" />
+                <input type="button" id="eexcess_text_button" value="Show Text" />
                 <input type="button" id="eexcess_finished_button" value="Finished" />
+
+                <section id="eexcess_selected_items_section" style="display:none"></section>
+                <section id="eexcess_topic_text_section" style="display:none"></section>
             </section>
       	</header>
 

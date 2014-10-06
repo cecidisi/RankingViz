@@ -30,15 +30,17 @@ EVT.selectDatasetChanged = function(){
         task = dataset.task;
     }
 
-    $("#section-text").find("p").text(text);
-    $("#section-task").find("p").text(task);
+    $("#section-text").find("p").html(text);
+    $("#section-task").find("p").html(task);
 };
 
 
 
 EVT.startButtonClicked = function(){
-    if(datasetId != "NO_DATASET")
+    if(datasetId != "NO_DATASET"){
+        $("#eexcess_loading").css("display", "block");
         startVisualization();
+    }
 };
 
 
@@ -49,7 +51,6 @@ function startVisualization(){
     // console.log("Status: Testing with Dataset " + datasetId);
     dataset['tool-aided'] = $("#select-tool-condition").val();
     dataset = getDataWithKeywords(dataset);
-    //dataset["keywords"] = averageKeywordScores(dataset.data);
     dataset["keywords"] = getGlobalKeywords(dataset.data);
 
     $("input[name='dataset']").val(JSON.stringify(dataset));
@@ -118,7 +119,7 @@ function getGlobalKeywords(results) {
 
 
     var sortedKeywords = [];
-    var minRepetitions = 4;//parseInt(results.length * 0.05);
+    var minRepetitions = parseInt(results.length * 0.05);
 
     keywords.forEach(function(k){
         if(k.repeated > minRepetitions)
@@ -162,107 +163,10 @@ function getGlobalKeywords(results) {
         }
         return shortestTerm;
     }
-
-
-
   //  console.log('sorted keywords -- ' + sortedKeywords.length);
   //  console.log(JSON.stringify(sortedKeywords));
 
     return sortedKeywords
-}
-
-
-
-function averageKeywordScores(results){
-
-
-    getGlobalKeywords(results);
-
-    var keywords = [];
-    var min = Number.MAX_VALUE;
-
-    results.forEach(function(d){
-       d.keywords.forEach(function(k) {
-           var kIndex = keywords.getIndexOf(k.term, 'term');
-           if(kIndex == -1){
-               keywords.push({ 'term': k.term, 'stem': k.term.stem(), 'score': k.score, 'repeated': 1 });
-           }
-           else{
-               var score = keywords[kIndex].score + k.score;
-               var repeated = keywords[kIndex].repeated + 1;
-               keywords[kIndex].score = score;
-               keywords[kIndex].repeated = repeated;
-           }
-       });
-    });
-
-    var sortedKeywords = new Array();
-
-    keywords.forEach(function(k, i){
-
-        k.score = k.score / results.length;
-
-        if(k.repeated > 1){
-            var index = findIndexToInsert(k);
-            if(index < sortedKeywords.length )
-                sortedKeywords.splice(index, 0, k);
-            else
-                sortedKeywords.push(k);
-        }
-    });
-
-
-    function findIndexToInsert(keyword){
-
-        var i = 0;
-        while(i < sortedKeywords.length && keyword.repeated < sortedKeywords[i].repeated)
-            i++;
-        return i;
-    }
-
-
-    /// not in use
-    function findIndexInSortedKeywords(keyword){
-
-        var center, inf = 0, sup = sortedKeywords.length - 1, wasGreater = false, wasLess = false;
-
-        if(sortedKeywords.length == 0 || keyword.score > sortedKeywords[0].score)
-            return 0;                           // keyword has the highest score and is to be inserted in the first position
-        if(keyword.score < sortedKeywords[sup].score)
-            return keywords.length;             // keyword has the lowest score and is to be inserted after the last item
-
-        while(inf <= sup){
-            center = parseInt((inf + sup) / 2);
-            if(keyword.score == sortedKeywords[center].score)
-                return center;
-            else{
-                if(keyword.score < sortedKeywords[center].score){
-                    if(wasLess)
-                        return inf;
-                    sup = center - 1;
-                    wasLess = true;
-                }
-                else{
-                    if(wasGreater)
-                        return sup - 1;
-                    inf = center + 1;
-                    wasGreater = true;
-                }
-            }
-        }
-        if(wasLess)
-            return inf;
-        return sup + 1;
-    }
-
-
-
-/*
-    sortedKeywords.forEach(function(k, i){
-        console.log('index = ' + i + ' -  term = ' + k.term + ' - score = ' + k.score);
-    });
-    */
-    return sortedKeywords;
 }
 
 
@@ -273,12 +177,11 @@ $(document).ready(function(){
     // Fill dataset select options and bind event handler
     dsm = new datasetManager();
     var datasets = dsm.getDataset();
-    var datasetOptions = "<option value=\"NO_DATASET\">Select dataset...</option>";
 
+    var datasetOptions = "<option value=\"NO_DATASET\">Select dataset...</option>";
     datasets.forEach(function(dataset){
         datasetOptions += "<option value=\"" + dataset["dataset-id"] + "\">" + dataset.description + "</option>";
     });
-
     $("#select-dataset").html(datasetOptions);
 
     // Bind event handlers for dataset select and start button
