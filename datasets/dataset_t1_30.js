@@ -1,7 +1,7 @@
-function getDataset_t1_40() {
+function getDataset_t1_30() {
 
 
-    var dataset_t1_20 = {
+    var dataset_t1_30 = {
         "query":"women in workforce",
         "dataset-id" : "T1-40",
         "description" : "Topic 1- 40 items",
@@ -450,5 +450,5 @@ function getDataset_t1_40() {
     };
 
 
-    return dataset_t1_20;
+    return dataset_t1_30;
 }

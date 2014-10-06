@@ -3,15 +3,15 @@
 function datasetManager(){
 
     var datasets = {
-        "T1-20" : getDataset_t1_20(),
-        "T1-40" : getDataset_t1_40(),
+        "T1-30" : getDataset_t1_30(),
         "T1-60" : getDataset_t1_60(),
         "T2-60" : getDataset_t2_60(),
-        "T3-60" : getDataset_t3_60()
+        "T3-60" : getDataset_t3_60(),
+        "T4-60" : getDataset_t4_60()
     };
 
 
-    //checkDuplicatedItems(datasets['T2-60']);
+    //checkDuplicatedItems(datasets['T4-60']);
     function checkDuplicatedItems(dataset) {
 
         var idsArray = [];

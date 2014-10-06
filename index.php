@@ -13,11 +13,12 @@
         <script type="text/javascript" src="scripts/utils.js" charset="utf-8"></script>
 
         <script type="text/javascript" src="datasets/datasetManager.js" charset="utf-8" ></script>
-        <script type="text/javascript" src="datasets/dataset_t1_20.js" charset="utf-8" ></script>
-        <script type="text/javascript" src="datasets/dataset_t1_40.js" charset="utf-8" ></script>
+        <script type="text/javascript" src="datasets/dataset_t1_30.js" charset="utf-8" ></script>
         <script type="text/javascript" src="datasets/dataset_t1_60.js" charset="utf-8" ></script>
         <script type="text/javascript" src="datasets/dataset_t2_60.js" charset="utf-8" ></script>
         <script type="text/javascript" src="datasets/dataset_t3_60.js" charset="utf-8" ></script>
+        <script type="text/javascript" src="datasets/dataset_t4_60.js" charset="utf-8" ></script>
+
 
         <link rel="stylesheet" type="text/css" href="css/general-style.css" />
         <link rel="stylesheet" type="text/css" href="css/index-style.css" />
