@@ -5,25 +5,35 @@ function datasetManager(){
     var datasets = {
         "T1-30" : getDataset_t1_30(),
         "T1-60" : getDataset_t1_60(),
+        "T1-60b" : getDataset_t1_60b(),
         "T2-60" : getDataset_t2_60(),
         "T3-60" : getDataset_t3_60(),
         "T4-60" : getDataset_t4_60()
     };
 
 
-    //checkDuplicatedItems(datasets['T4-60']);
     function checkDuplicatedItems(dataset) {
 
+        var dataCopy =[];
         var idsArray = [];
         console.log('**************************** Duplicated items for ' + dataset['dataset-id'] + ' ****************************');
         dataset.data.forEach(function(d, i){
             if(idsArray.indexOf(d.id) == -1){
                 idsArray.push(d.id);
+                dataCopy.push(d);
             }
             else{
                 console.log("Id : " + d.id + "; title : " + d.title);
             }
         });
+
+        if(dataCopy.length == dataset.data.length)
+            console.log(' **** No replicated items **** ');
+        else{
+            console.log(' **** ' + (dataset.data.length - dataCopy.length) + ' replicated items **** ');
+            console.log(JSON.stringify(dataCopy));
+        }
+        dataset.data = dataCopy;
     }
 
 
@@ -31,6 +41,7 @@ function datasetManager(){
 
         if(typeof datasetId != 'undefined' && datasetId != 'undefined'){
             var dataset = datasets[datasetId];
+            checkDuplicatedItems(dataset);
             dataset.data.shuffle();
             return dataset;
         }

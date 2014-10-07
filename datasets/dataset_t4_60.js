@@ -479,19 +479,6 @@ function getDataset_t4_60() {
                  }
               },
               {
-                 "id":"f188d779-de36-314b-93d6-ac6dcdf651dc",
-                 "title":"Analytics: The real-world use of big data",
-                 "uri":"http://www.mendeley.com/catalog/analytics-realworld-big-data-1/",
-                 "eexcessURI":"http://www.mendeley.com/catalog/analytics-realworld-big-data-1/",
-                 "creator":"Michael Schroeck, Rebecca Shockley, Janet Smart, Dolores Romero-Morales, Peter Tufano",
-                 "description":"&ldquo;Big data&rdquo; &ndash; which admittedly means many things to many people &ndash; is no longer confined to the realm of technology. Today it is a business priority, given its ability to profoundly affect commerce in the globally integrated economy. In addition to providing solutions to long-standing business challenges, big data inspires new ways to transform processes, organizations, entire industries and even society itself. Yet extensive media coverage makes it hard to distinguish hype from reality &ndash; what is really happening? Our newest research finds that organizations are using big data to target customer-centric outcomes, tap into internal data and build a better information ecosystem.",
-                 "collectionName":"IBM Global Business Services Sa&iuml;d Business School at the University of Oxford",
-                 "facets":{
-                    "provider":"mendeley",
-                    "year":"2012"
-                 }
-              },
-              {
                  "id":"f35781f5-c4ee-3dab-901e-301e7f038aad",
                  "title":"The Recognition Concept of Species",
                  "uri":"http://www.mendeley.com/catalog/recognition-concept-species/",

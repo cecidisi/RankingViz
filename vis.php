@@ -55,7 +55,9 @@ and open the template in the editor.
                 <input type="button" id="eexcess_finished_button" value="Finished" />
 
                 <section id="eexcess_selected_items_section" style="display:none"></section>
-                <section id="eexcess_topic_text_section" style="display:none"></section>
+                <section id="eexcess_topic_text_section" style="display:none">
+                    <p></p>
+                </section>
             </section>
       	</header>
 

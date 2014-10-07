@@ -38,7 +38,6 @@ EVT.selectDatasetChanged = function(){
 
 EVT.startButtonClicked = function(){
     if(datasetId != "NO_DATASET"){
-        $("#eexcess_loading").css("display", "block");
         startVisualization();
     }
 };
@@ -49,8 +48,10 @@ EVT.startButtonClicked = function(){
 
 function startVisualization(){
     // console.log("Status: Testing with Dataset " + datasetId);
-    dataset['tool-aided'] = $("#select-tool-condition").val();
-    dataset = getDataWithKeywords(dataset);
+    $("#eexcess_loading").fadeIn('fast');
+
+    dataset['tool-aided'] = $("#select-tool-condition").val() || 'yes';
+    dataset["data"] = getDataWithKeywords(dataset.data);
     dataset["keywords"] = getGlobalKeywords(dataset.data);
 
     $("input[name='dataset']").val(JSON.stringify(dataset));
@@ -58,15 +59,15 @@ function startVisualization(){
 }
 
 
-function getDataWithKeywords(testDataset){
+function getDataWithKeywords(data){
 
-    testDataset.data.forEach(function(d, i){
+    data.forEach(function(d, i){
         var document = (d.description !== "undefined") ? (d.title +'. '+ d.description).toLocaleLowerCase() : (d.title + '. ').toLowerCase();
         tfidf.addDocument(document);    // stemming in natural
         $.merge(allTokens, tokenizer.tokenize(document));
     });
 
-    testDataset.data.forEach(function(d, i){
+    data.forEach(function(d, i){
         d.keywords = [];
 
         tfidf.listTerms(i).forEach(function(item){
@@ -78,11 +79,11 @@ function getDataWithKeywords(testDataset){
         //   }
         });
    });
-    return testDataset;
+    return data;
 }
 
 
-function getGlobalKeywords(results) {
+function getGlobalKeywords(data) {
 
     var keywords = [];
 
@@ -111,7 +112,7 @@ function getGlobalKeywords(results) {
   //  console.log('keywords length after 1st cut = ' + keywords.length);
 
     keywords.forEach(function(k){
-        results.forEach(function(d){
+        data.forEach(function(d){
             if(d.keywords.getIndexOf(k.stem, 'term') > -1)
                 k.repeated++;
         });
@@ -119,10 +120,10 @@ function getGlobalKeywords(results) {
 
 
     var sortedKeywords = [];
-    var minRepetitions = parseInt(results.length * 0.05);
+    var minRepetitions = parseInt(data.length * 0.08);
 
     keywords.forEach(function(k){
-        if(k.repeated > minRepetitions)
+        if(k.repeated >= minRepetitions)
             sortedKeywords.splice(findIndexToInsert(k), 0, k);
     });
 
@@ -172,7 +173,7 @@ function getGlobalKeywords(results) {
 
 
 
-$(document).ready(function(){
+(function(){
 
     // Fill dataset select options and bind event handler
     dsm = new datasetManager();
@@ -183,11 +184,12 @@ $(document).ready(function(){
         datasetOptions += "<option value=\"" + dataset["dataset-id"] + "\">" + dataset.description + "</option>";
     });
     $("#select-dataset").html(datasetOptions);
+    datasetId = "NO_DATASET";
 
     // Bind event handlers for dataset select and start button
     $("#select-dataset").change(EVT.selectDatasetChanged);
     $("#start-button").click(EVT.startButtonClicked);
-});
+})();
 
 
 

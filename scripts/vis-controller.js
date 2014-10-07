@@ -13,7 +13,7 @@
     var headerPanel = "#eexcess_header";                                        // header dom element
     var headerInfoSection = "#eexcess_header_info_section span";
     var headerTaskSection = "#eexcess_header_task_section p";						// Section wrapping #items, task, finish and expand/collapse buttons
-    var headerControlsSection = "eexcess_header_control_section";
+    var headerControlsSection = "#eexcess_header_control_section";
     var btnShowList = "#eexcess_list_button";
     var btnShowText = "#eexcess_text_button";
     var btnFinished = "#eexcess_finished_button";                               // Finishes the task and redirects back to the initial screeen
@@ -210,9 +210,7 @@
 	////////	Droppable	////////
 
 	EVTHANDLER.dropped = function(event, ui){
-
 		TAGCLOUD.dropTagInTagBox( ui.draggable );
-
 		ui.draggable.draggable( BEHAVIOR.draggableOptions );
 		isOverDroppable = true;
 	};
@@ -239,7 +237,8 @@
     };
 
 
-    EVTHANDLER.removeSelectedItemIconClicked = function(index) {
+    EVTHANDLER.removeSelectedItemIconClicked = function(event, index) {
+        event.stopPropagation();
         HEADER.removeItemFromListOfSelected(index);
         LIST.switchFaviconOnOrOff(index);
     };
@@ -247,14 +246,18 @@
 
     ////////	Show List button	////////
 
-    EVTHANDLER.btnListClicked = function(){
+    EVTHANDLER.btnListClicked = function(event){
+        event.stopPropagation();
+        $(topicTextSection).slideUp();
         $(selectedItemsSection).slideToggle();
     };
 
 
     ////////	Show Text button	////////
 
-    EVTHANDLER.btnTextClicked = function(){
+    EVTHANDLER.btnTextClicked = function(event){
+        event.stopPropagation();
+        $(selectedItemsSection).slideUp();
         $(topicTextSection).slideToggle();
     };
 
@@ -356,7 +359,7 @@
         // Display task on the left of header
         $(headerTaskSection).html('TASK: ' + task);
 
-        $(topicTextSection).html(topicText);
+        $(topicTextSection).find('p').html(topicText);
     }
 
 
@@ -370,7 +373,7 @@
             selectedItemContainer.append('span').text(data[index].title);
             selectedItemContainer.append('img').attr("src", REMOVE_SMALL_ICON);
 
-            $(selectedItemsSection).find("div[original-index='" + index + "']").click(function(){ EVTHANDLER.removeSelectedItemIconClicked(index); });
+            $(selectedItemsSection).find("div[original-index='" + index + "']").click(function(event){ EVTHANDLER.removeSelectedItemIconClicked(event, index); });
         }
         else{
             HEADER.removeItemFromListOfSelected(index);
@@ -1296,20 +1299,35 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    function getStaticElementsReady(){
+        var offsetTop = $(btnShowList).offset().top + $(btnShowList).height() + 10;
+        var offsetLeft = $(selectedItemsSection).parent().offset().left + 10;
+        $(selectedItemsSection).width($(headerControlsSection).width() - 20).css("top", offsetTop).css("left", offsetLeft);
+        $(topicTextSection).width($(headerControlsSection).width() - 20).css("top", offsetTop).css("left", offsetLeft);
+        $('html').click(function(){
+            $(selectedItemsSection).slideUp();
+            $(topicTextSection).slideUp();
+        });
+
+        $(btnReset).click( function(){ EVTHANDLER.btnResetClicked(); });
+        $(btnRankByOverall).click(function(){ EVTHANDLER.rankButtonClicked(this); });
+        $(btnRankByMax).click(function(){ EVTHANDLER.rankButtonClicked(this); });
+        $(btnShowList).click(EVTHANDLER.btnListClicked);
+        $(btnShowText).click(EVTHANDLER.btnTextClicked);
+        $(btnFinished).click(EVTHANDLER.btnFinishedClicked);
+        $(window).resize(function(){ EVTHANDLER.canvasResized(); });
+        $(mainPanel).resize(function(){ EVTHANDLER.canvasResized(); });
+	}
 
     /**
      * 	Initizialization function self-invoked
      *
      * */
     (function(){
-
-        getStaticElementsReady();
-
         dataset = JSON.parse($("#dataset").text());
         console.log(dataset);
 
         rankingVis = new RankingVis(root, width, height, self);
-
         data = dataset['data'];													// contains the data to be visualized
         query = dataset['query'];													// string representing the query that triggered the current recommendations
 		keywords = dataset['keywords'];
@@ -1322,6 +1340,7 @@
 		PREPROCESSING.extendKeywordsWithColorCategory();
         HEADER.showInfoInHeader();
         LIST.buildContentList();
+        getStaticElementsReady();
 
         if(dataset['tool-aided'] == 'yes'){
             // Initialize template's elements
@@ -1337,23 +1356,6 @@
         startTime = $.now();
     })();
 
-
-
-    function getStaticElementsReady(){
-
-        var offsetTop = $(btnShowList).offset().top + $(btnShowList).height() + 10;
-        var offsetLeft = $(selectedItemsSection).parent().offset().left + 10;
-        $(selectedItemsSection).width($(headerControlsSection).width() - 20).css("top", offsetTop).css("left", offsetLeft);
-        $(topicTextSection).width($(headerControlsSection).width() - 20).css("top", offsetTop).css("left", offsetLeft);
-
-        $(btnReset).click( function(){ EVTHANDLER.btnResetClicked(); });
-        $(btnRankByOverall).click(function(){ EVTHANDLER.rankButtonClicked(this); });
-        $(btnRankByMax).click(function(){ EVTHANDLER.rankButtonClicked(this); });
-        $(btnShowList).click(EVTHANDLER.btnListClicked);
-        $(btnFinished).click(function(){ EVTHANDLER.btnFinishedClicked(); });
-        $(window).resize(function(){ EVTHANDLER.canvasResized(); });
-        $(mainPanel).resize(function(){ EVTHANDLER.canvasResized(); });
-	};
 
 
 
