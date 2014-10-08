@@ -631,7 +631,26 @@ THE SOFTWARE.
 
 // a list of commonly used words that have little meaning and can be excluded
 // from analysis.
-var words = [
+var words =
+    [
+    'all', 'another', 'any', 'both', 'each', 'other', 'others', 'same', 'such', 'the',
+    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
+    'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '$', '1',
+    '2', '3', '4', '5', '6', '7', '8', '9', '0', '_', 'i', 'ii', 'iii', 'iv', 'v'
+    'copyright', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'first', 'second', 'third', 'fourth', 'fifth', 'minor', 'data', 'left',
+    'right', 'sample', 'analysis', 'test', 'author', 'article', 'day', 'month', 'year', 'decade', 'century', 'least', 'review', 'worst', 'survey', 'study', 'show',
+    'paper', 'research', 'researcher', 'end', 'lack', 'detail', 'focus', 'need', 'elsevier', 'approach', 'method', 'methodology', 'technique', 'type', 'situation',
+    'rather', 'hypothesis', 'part', 'deal', 'way', 'story', 'process', 'return', 'phase', 'finding', 'purpose', 'position', 'explanation', 'evidence', 'hand', 'half',
+    'model', 'design', 'limitation', 'implication', 'originality', 'value', 'reason', 'result', 'theory', 'effect', 'publication', 'abstract', 'fact', 'factor',
+    'alternative', 'within', 'view', 'insight', 'range', 'point', 'assumption', 'field', 'majority', 'minority', 'statistic', 'discussion', 'question', 'address',
+    'instance', 'aspect', 'actor', 'citation', 'strategy', 'overview', 'context', 'cause', 'future', 'retrospective', 'setting', 'outcome', 'measure', 'age', 'number',
+    'forecast', 'conclusion', 'motivation', 'exploration', 'literature', 'type', 'variable', 'composition', 'phenomenon', 'mechanism', 'log', 'size', 'area', 'self',
+    'sector', 'pattern', 'support', 'group', 'challenge', 'focu', 'period', 'attempt', 'report',
+    '__key'
+    ];
+
+
+/*[
     'about', 'after', 'all', 'also', 'am', 'an', 'and', 'another', 'any', 'are', 'as', 'at', 'be',
     'because', 'been', 'before', 'being', 'between', 'both', 'but', 'by', 'came', 'can',
     'come', 'could', 'did', 'do', 'each', 'for', 'from', 'get', 'got', 'has', 'had',
@@ -660,7 +679,7 @@ var words = [
     'focus', 'shap', 'mer', 'review', 'need', 'recent', 'late', 'later', 'other', 'others', 'furthermore', 'present', 'propose', 'include', 'discuss', 'apply', 'even',
     'discuss', 'pre', 'un', 'elsevier', 'based', 'better', 'best', 'approach', 'method', 'technique', 'large', 'study', 'type', 'typical', 'various', 'applic', 'situation',
     'rather', '__key'];
-
+*/
 // tell the world about the noise words.
 exports.words = words;
 });
@@ -5019,11 +5038,7 @@ function buildDocument(text, key) {
     //    console.log('*******************************************');
     //    console.log(document);
     //    console.log(term);
-        if(!stopOut || (isNaN(term) && stopwords.indexOf(term) < 0 && stopwords.indexOf(term.stem()) < 0 )){
-            if(term.stem() == 'focus'){
-                console.log('term => ' + term + ' - index = ' + stopwords.indexOf(term));
-                console.log('stem => ' + term.stem() + ' - index = ' + stopwords.indexOf(term.stem()));
-            }
+        if(!stopOut || stopwords.indexOf(term) < 0 && stopwords.indexOf(term.stem()) < 0 )){
             document[term.stem()] = (document[term.stem()] ? document[term.stem()] + 1 : 1);
         }
 

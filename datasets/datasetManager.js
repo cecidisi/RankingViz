@@ -41,8 +41,8 @@ function datasetManager(){
 
         if(typeof datasetId != 'undefined' && datasetId != 'undefined'){
             var dataset = datasets[datasetId];
-            checkDuplicatedItems(dataset);
-            dataset.data.shuffle();
+            //checkDuplicatedItems(dataset);
+            //dataset.data.shuffle();
             return dataset;
         }
         // If dataset id is not specified, return array with all the datasets

@@ -22,6 +22,11 @@ and open the template in the editor.
         <script type="text/javascript" src="libs/colorbrewer.js" charset="utf-8"></script>
         <link rel="stylesheet" type="text/css" href="libs/ui/jquery-ui-1.10.4.custom.min.css">
 
+        <script type="text/javascript" src="scripts/pos/lexer.js" charset="utf-8"></script>
+        <script type="text/javascript" src="scripts/pos/lexicon.js" charset="utf-8"></script>
+        <script type="text/javascript" src="scripts/pos/POSTagger.js" charset="utf-8"></script>
+        <script type="text/javascript" src="scripts/pos/pos.js" charset="utf-8"></script>
+
 		<script type="text/javascript" src="scripts/rankingvis.js" charset="utf-8"></script>
         <script type="text/javascript" src="scripts/settings.js" charset="utf-8"></script>
         <script type="text/javascript" src="scripts/utils.js" charset="utf-8"></script>

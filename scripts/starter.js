@@ -11,7 +11,9 @@ var tfidf = new natural.TfIdf();
 stemmer.attach();
 nounInflector.attach();
 
-//var pos = require('pos');
+var pos = new Pos();
+var lexer = new pos.Lexer();
+var tagger = new pos.Tagger();
 
 var allTokens = [];
 var allKeywords = [];
@@ -62,7 +64,28 @@ function startVisualization(){
 function getDataWithKeywords(data){
 
     data.forEach(function(d, i){
-        var document = (d.description !== "undefined") ? (d.title +'. '+ d.description).toLocaleLowerCase() : (d.title + '. ').toLowerCase();
+        var document = (d.description !== "undefined") ? d.title +'. '+ d.description : d.title;
+        document = document.toLowerCase();
+
+
+        var words = lexer.lex(document);
+        var taggedWords = tagger.tag(words);
+        document = '';
+        var gerundLikeNouns = ['training, ceiling, computing'];
+
+        taggedWords.forEach(function(tw){
+            switch(tw[1]){
+                case 'NN':
+                    document += tw[0] + ' '; break;
+                case 'NNS':
+                    document += tw[0].singularizeNoun() + ' '; break;
+                case 'VBG':
+                    if(gerundLikeNouns.indexOf(tw[0]) > -1)
+                        document += tw[0] + ' ';
+                    break;
+            }
+        });
+
         tfidf.addDocument(document);    // stemming in natural
         $.merge(allTokens, tokenizer.tokenize(document));
     });
@@ -71,12 +94,16 @@ function getDataWithKeywords(data){
         d.keywords = [];
 
         tfidf.listTerms(i).forEach(function(item){
-        //   if(d.keywords.length < 30){
-               if(isNaN(item.term) && parseFloat(item.tfidf) > 0 ){
-                   d.keywords.push( { 'term': item.term, 'score': item.tfidf } );
-                   allKeywords.push(item.term);
-                }
-        //   }
+           if(isNaN(item.term) && parseFloat(item.tfidf) > 0 ){
+               d.keywords.push({ 'term': item.term, 'score': item.tfidf });
+               allKeywords.push(item.term);
+               /*
+               var kIndex = allKeywords.getIndexOf(item.term, 'stem');
+               if(kIndex > -1){
+                   allKeywords[kIndex].repeated++;
+                   if(allKeywords[kIndex].variations.indexOf())
+               }*/
+            }
         });
    });
     return data;
@@ -94,22 +121,19 @@ function getGlobalKeywords(data) {
     tfidf.listTerms(0).forEach(function(item){
         keywords.push({ 'term': '', 'stem': item.term, 'score': item.tfidf, 'repeated': 0, 'variations': [] });
         scoreSum += item.tfidf;
-        //console.log("term = " + item.term + ' -- score = ' + item.tfidf + ' --- sumScore = ' + scoreSum);
     });
 
     var scoreMean = scoreSum / keywords.length;
     var cutIndex = 0;
-   /*
+
     console.log('****************************************************');
-    console.log('scoreSum = ' + scoreSum);
-    console.log('scoreMean = ' + scoreMean);
     console.log('keywords length = ' + keywords.length);
-    */
+
     while(keywords[cutIndex].score >= scoreMean)
         cutIndex++;
     keywords.splice(cutIndex, keywords.length - cutIndex);
 
-  //  console.log('keywords length after 1st cut = ' + keywords.length);
+    console.log('keywords length after 1st cut = ' + keywords.length);
 
     keywords.forEach(function(k){
         data.forEach(function(d){
@@ -120,21 +144,14 @@ function getGlobalKeywords(data) {
 
 
     var sortedKeywords = [];
-    var minRepetitions = parseInt(data.length * 0.08);
+    var minRepetitions = parseInt(data.length * 0.05);
 
     keywords.forEach(function(k){
         if(k.repeated >= minRepetitions)
-            sortedKeywords.splice(findIndexToInsert(k), 0, k);
+            sortedKeywords.splice(findIndexToInsert(sortedKeywords, k), 0, k);
     });
 
-    function findIndexToInsert(keyword){
-        var i = 0;
-        while(i < sortedKeywords.length && keyword.repeated < sortedKeywords[i].repeated)
-            i++;
-        return i;
-    }
-
-   // console.log('keywords length after 2nd cut = ' + sortedKeywords.length);
+    console.log('keywords length after 2nd cut = ' + sortedKeywords.length);
 
     allTokens.forEach(function(token){
         var kIndex = sortedKeywords.getIndexOf(token.stem(), 'stem');
@@ -146,35 +163,42 @@ function getGlobalKeywords(data) {
     sortedKeywords.forEach(function(k){
         k.term = getTerm(k);
     });
-
-
-    function getTerm(k){
-
-        if(k.variations.length == 1)
-            return k.variations[0];
-
-        var stemIndex = k.variations.indexOf(k.stem);
-        if(stemIndex > -1)
-            return k.variations[stemIndex];
-
-        var shortestTerm = k.variations[0];
-        for(var i = 1; i < k.variations.length; i++){
-            if(k.variations[i].length < shortestTerm.length)
-                shortestTerm = k.variations[i];
-        }
-        return shortestTerm;
-    }
-  //  console.log('sorted keywords -- ' + sortedKeywords.length);
-  //  console.log(JSON.stringify(sortedKeywords));
+    console.log('sorted keywords -- ' + sortedKeywords.length);
+    console.log(JSON.stringify(sortedKeywords));
 
     return sortedKeywords
 }
 
 
 
+function findIndexToInsert(kArray, keyword){
+    var i = 0;
+    while(i < kArray.length && keyword.repeated < kArray[i].repeated)
+        i++;
+    return i;
+}
+
+
+
+function getTerm(k){
+    if(k.variations.length == 1)
+        return k.variations[0];
+
+    var stemIndex = k.variations.indexOf(k.stem);
+    if(stemIndex > -1)
+        return k.variations[stemIndex];
+
+    var shortestTerm = k.variations[0];
+    for(var i = 1; i < k.variations.length; i++){
+        if(k.variations[i].length < shortestTerm.length)
+            shortestTerm = k.variations[i];
+    }
+    return shortestTerm;
+}
+
+
 
 (function(){
-
     // Fill dataset select options and bind event handler
     dsm = new datasetManager();
     var datasets = dsm.getDataset();

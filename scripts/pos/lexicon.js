@@ -1,13 +1,30 @@
 /*
  * Javascript version of Eric Brill's English lexicon.
  */
+function Lexicon() {
+//module.exports = {
 
-module.exports = {
+return {
     "\'": [
         "\""
     ],
     "\"": [
         "\""
+    ],
+    "%": [
+        "%"
+    ],
+    "/": [
+        "/"
+    ],
+    "-": [
+        "-"
+    ],
+    "IT": [
+        "NNP"
+    ],
+    "equivalent": [
+        "JJ"
     ],
     "Ranavan": [
         "NNP"
@@ -297829,3 +297846,5 @@ module.exports = {
         "NN"
     ]
 };
+
+}

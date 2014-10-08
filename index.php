@@ -20,6 +20,11 @@
         <script type="text/javascript" src="datasets/dataset_t3_60.js" charset="utf-8" ></script>
         <script type="text/javascript" src="datasets/dataset_t4_60.js" charset="utf-8" ></script>
 
+        <script type="text/javascript" src="scripts/pos/lexer.js" charset="utf-8"></script>
+        <script type="text/javascript" src="scripts/pos/lexicon.js" charset="utf-8"></script>
+        <script type="text/javascript" src="scripts/pos/POSTagger.js" charset="utf-8"></script>
+        <script type="text/javascript" src="scripts/pos/pos.js" charset="utf-8"></script>
+
 
         <link rel="stylesheet" type="text/css" href="css/general-style.css" />
         <link rel="stylesheet" type="text/css" href="css/index-style.css" />
