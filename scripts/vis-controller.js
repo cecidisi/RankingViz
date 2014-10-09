@@ -104,9 +104,9 @@
 
     //
     var stemmer = natural.PorterStemmer;
+    var nounInflector = new natural.NounInflector();
     stemmer.attach();
-
-
+    nounInflector.attach();
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -301,7 +301,7 @@
 	PREPROCESSING.extendKeywordsWithColorCategory = function(){
 
 		var extent = d3.extent(keywords, function(k){ return k['repeated']; });
-		var range = (extent[1] - extent[0]) * 0.15;   // / TAG_CATEGORIES;
+		var range = (extent[1] - extent[0]) * 0.1;   // / TAG_CATEGORIES;
         //console.log('extent --> ' + extent[0] + ' - ' + extent[1]);
         //console.log('range = ' + range);
         catArray = [];
@@ -314,13 +314,6 @@
             k['colorCategory'] = colorCategory;
                 catArray[k.colorCategory]++;
 		});
-/*
-        var inf = extent[0];
-        catArray.forEach(function(c, i){
-            console.log('Category ' + i + " ** " + (inf)  + ' - ' + (inf + range) + ' --> ' + c + 'keywords');
-            inf = inf + range;
-        });
-        */
 	};
 
 
@@ -603,25 +596,10 @@
 	 * */
 	TAGCLOUD.restoreTagFromBoxToCloud = function(tag){
 
-        // Remove from tag box
-		$(tag).detach();
-		$(tag).children().remove();					// delete icon and slider removed
-
+		// Remove icon and slider
+        $(tag).children().remove();
         // Change class
         $(tag).removeClass("eexcess_keyword_tag_in_box").addClass("eexcess_keyword_tag");
-
-        // Re-append to tag container, in the corresponding postion
-        var tagIndex = parseInt($(tag).attr('tag-pos'));
-        var i = tagIndex - 1;
-        var firstTagIndex = $(tagContainer).find(tagClass + ':eq(0)').attr('tag-pos');
-
-        while(i >= firstTagIndex && $.isEmptyObject($(tagContainer).find(tagId + '' + i)) )
-            --i;
-
-        if(i >= firstTagIndex)    // The current tag should be inserted after another (tag-pos == i)
-            $(tagId + '' + i).after(tag);
-        else                      // The current tag is inserted in the first position of tag container
-            $(tagContainer).prepend(tag);
 
         // Restore style
         d3.select(tag)
@@ -632,6 +610,20 @@
             .on( "mouseout", EVTHANDLER.tagInBoxMouseOuted);
 
 		$(tag).draggable(BEHAVIOR.draggableOptions);
+        // Re-append to tag container, in the corresponding postion
+        var tagIndex = parseInt($(tag).attr('tag-pos'));
+        var i = tagIndex - 1;
+        var firstTagIndex = $(tagContainer).find(tagClass + ':eq(0)').attr('tag-pos');
+
+        while(i >= firstTagIndex && $.isEmptyObject($(tagContainer).find(tagId + '' + i)) )
+            --i;
+
+        // Remove from tag box
+		$(tag).detach();
+        if(i >= firstTagIndex)    // The current tag should be inserted after another (tag-pos == i)
+            $(tagId + '' + i).after(tag);
+        else                      // The current tag is inserted in the first position of tag container
+            $(tagContainer).prepend(tag);
 	};
 
 
@@ -1248,40 +1240,55 @@
 
     DOCPANEL.internal = {
 
-        highlightKeywordsInText : function(text){
-            var textWithKeywords = "", word = "";
+        highlightKeywordsInText : function(text, isTitle){
+            var textWithKeywords = isTitle ? '' : '<p>',
+                word = "";
             var keywordsInBox = TAGCLOUD.getWeightedKeywordsInBox();
 
             text.split('').forEach(function(c){
                 if(c.match(/\w/)){
                     word += c;
                 }
-                else{
-                    word = DOCPANEL.internal.getStyledWord(word, keywordsInBox);
+                else if(c == '\n'){
+                    textWithKeywords += '</p><p>'
+                }
+                else {
+                    if(word != '')
+                        word = DOCPANEL.internal.getStyledWord(word, keywordsInBox);
                     textWithKeywords += word + c;
                     word = "";
                 }
             });
             if(word != "")
                 textWithKeywords += this.getStyledWord(word, keywordsInBox);
+            if(isTitle)
+                textWithKeywords +='</p>';
+
             return textWithKeywords;
         },
+
 
         getStyledWord : function(word, keywordsInBox){
             var wordStem = word.stem();
             if(keywordsInBox.getIndexOf(wordStem, "stem") > -1)
                 return "<strong style=\"color:" + weightColorScale(wordStem) + "\">" + word + "</strong>";
+
+            wordStem = word.singularizeNoun().stem();
+            if(keywordsInBox.getIndexOf(wordStem, "stem") > -1)
+                return "<strong style=\"color:" + weightColorScale(wordStem) + "\">" + word + "</strong>";
+
             return word;
         }
 
     };
 
+
     DOCPANEL.showDocument = function(index){
-        $(documentDetailsTitle).html(this.internal.highlightKeywordsInText(data[index].title));
+        $(documentDetailsTitle).html(this.internal.highlightKeywordsInText(data[index].title, true));
         $(documentDetailsYear).html(data[index].facets.year);
         $(documentDetailsLanguage).html(data[index].facets.language);
         $(documentDetailsProvider).html(data[index].facets.provider);
-        $(documentViewer).find('p').html(this.internal.highlightKeywordsInText(data[index].description));
+        $(documentViewer).html(this.internal.highlightKeywordsInText(data[index].description));
     };
 
 
@@ -1290,7 +1297,7 @@
         $(documentDetailsYear).empty();
         $(documentDetailsLanguage).empty();
         $(documentDetailsProvider).empty();
-        $(documentViewer).find('p').empty();
+        $(documentViewer).empty();
     };
 
 

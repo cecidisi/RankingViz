@@ -633,19 +633,20 @@ THE SOFTWARE.
 // from analysis.
 var words =
     [
-    'all', 'another', 'any', 'both', 'each', 'other', 'others', 'same', 'such', 'the',
-    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
-    'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '$', '1',
-    '2', '3', '4', '5', '6', '7', '8', '9', '0', '_', 'i', 'ii', 'iii', 'iv', 'v'
-    'copyright', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'first', 'second', 'third', 'fourth', 'fifth', 'minor', 'data', 'left',
-    'right', 'sample', 'analysis', 'test', 'author', 'article', 'day', 'month', 'year', 'decade', 'century', 'least', 'review', 'worst', 'survey', 'study', 'show',
-    'paper', 'research', 'researcher', 'end', 'lack', 'detail', 'focus', 'need', 'elsevier', 'approach', 'method', 'methodology', 'technique', 'type', 'situation',
-    'rather', 'hypothesis', 'part', 'deal', 'way', 'story', 'process', 'return', 'phase', 'finding', 'purpose', 'position', 'explanation', 'evidence', 'hand', 'half',
-    'model', 'design', 'limitation', 'implication', 'originality', 'value', 'reason', 'result', 'theory', 'effect', 'publication', 'abstract', 'fact', 'factor',
-    'alternative', 'within', 'view', 'insight', 'range', 'point', 'assumption', 'field', 'majority', 'minority', 'statistic', 'discussion', 'question', 'address',
-    'instance', 'aspect', 'actor', 'citation', 'strategy', 'overview', 'context', 'cause', 'future', 'retrospective', 'setting', 'outcome', 'measure', 'age', 'number',
-    'forecast', 'conclusion', 'motivation', 'exploration', 'literature', 'type', 'variable', 'composition', 'phenomenon', 'mechanism', 'log', 'size', 'area', 'self',
-    'sector', 'pattern', 'support', 'group', 'challenge', 'focu', 'period', 'attempt', 'report',
+        'all', 'another', 'any', 'both', 'each', 'other', 'others', 'same', 'such', 'the', 'and', 'that',
+        'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
+        'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '$', '1',
+        '2', '3', '4', '5', '6', '7', '8', '9', '0', '_', 'i', 'ii', 'iii', 'iv', 'v',
+        'copyright', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'first', 'second', 'third', 'fourth', 'fifth', 'minor', 'data', 'left',
+        'right', 'sample', 'analysis', 'test', 'author', 'article', 'day', 'month', 'year', 'decade', 'century', 'least', 'review', 'worst', 'survey', 'study', 'show',
+        'paper', 'research', 'researcher', 'end', 'lack', 'detail', 'focus', 'need', 'elsevier', 'approach', 'method', 'methodology', 'technique', 'type', 'situation',
+        'rather', 'hypothesis', 'part', 'deal', 'way', 'story', 'process', 'return', 'phase', 'finding', 'purpose', 'position', 'explanation', 'evidence', 'hand', 'half',
+        'model', 'design', 'limitation', 'implication', 'originality', 'value', 'reason', 'result', 'theory', 'effect', 'publication', 'abstract', 'fact', 'factor',
+        'alternative', 'within', 'view', 'insight', 'range', 'point', 'assumption', 'field', 'majority', 'minority', 'statistic', 'discussion', 'question', 'address',
+        'instance', 'aspect', 'actor', 'citation', 'strategy', 'overview', 'context', 'cause', 'future', 'retrospective', 'setting', 'outcome', 'measure', 'age', 'number',
+        'forecast', 'conclusion', 'motivation', 'exploration', 'literature', 'type', 'variable', 'composition', 'phenomenon', 'mechanism', 'log', 'size', 'area', 'self',
+        'sector', 'pattern', 'support', 'group', 'challenge', 'focu', 'period', 'attempt', 'report', 'evaluation', 'mean', 'seek', 'regression', 'quantile', 'panel',
+        'today', 'example', 'novel', 'account', 'investigation',
     '__key'
     ];
 
@@ -4681,6 +4682,8 @@ var NounInflector = function() {
     this.addIrregular("foot", "feet");
     this.addIrregular("tooth", "teeth");
     this.addIrregular("goose", "geese");
+    this.addIrregular("initiative", "initiatives");
+    this.addIrregular("cause", "causes");
 
     // see if it is possible to unify the creation of both the singular and
     // plural regexes or maybe even just have one list. with a complete list
@@ -5035,13 +5038,9 @@ function buildDocument(text, key) {
     }
 
     return text.reduce(function(document, term) {
-    //    console.log('*******************************************');
-    //    console.log(document);
-    //    console.log(term);
-        if(!stopOut || stopwords.indexOf(term) < 0 && stopwords.indexOf(term.stem()) < 0 )){
+        if(!stopOut || stopwords.indexOf(term) < 0 && stopwords.indexOf(term.stem()) < 0 ){
             document[term.stem()] = (document[term.stem()] ? document[term.stem()] + 1 : 1);
         }
-
 
         return document;
     }, {__key: key});
