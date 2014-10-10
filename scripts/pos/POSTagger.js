@@ -16,6 +16,8 @@ function POSTagger(){
     */
 
     this.lexicon = Lexicon();
+    this.gerundLikeNouns = ['training', 'ceiling', 'computing', 'engineering', 'learning', 'storytelling'];
+    this.singularNounsSEnding = ['autonomous'];
 
     /**
      * Indicates whether or not this string starts with the specified string.
@@ -53,6 +55,8 @@ function POSTagger(){
         var ret = new Array(words.length);
         for (var i = 0, size = words.length; i < size; i++) {
             var ss = this.lexicon[words[i]];
+            if(words[i] == 'autonomous')
+                console.log(words[i] + ' --- ' + ss);
             // 1/22/2002 mod (from Lisp code): if not in hash, try lower case:
             if (!ss)
                 ss = this.lexicon[words[i].toLowerCase()];
@@ -107,10 +111,10 @@ function POSTagger(){
                 ret[i] = "VB";
             // rule 7: if a word has been categorized as a common noun and it ends with "s",
             //         then set its type to plural common noun (NNS)
-            if (ret[i] == "NN" && endsWith(words[i], "s"))
+            if (ret[i] == "NN" && endsWith(words[i], "s") && this.singularNounsSEnding.indexOf(words[i]) == -1)
                 ret[i] = "NNS";
             // rule 8: convert a common noun to a present participle verb (i.e., a gerund)
-            if (startsWith(ret[i], "NN") && endsWith(words[i], "ing"))
+            if (startsWith(ret[i], "NN") && endsWith(words[i], "ing") && this.gerundLikeNouns.indexOf(words[i]) == -1)
                 ret[i] = "VBG";
         }
         var result = new Array();

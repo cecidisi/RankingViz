@@ -43,7 +43,7 @@ function getDataset_t2_60() {
                         "uri": "http://www.mendeley.com/research/humanrobot-communication-collaborative-decision-making-probabilistic-approach/",
                         "eexcessURI": "http://www.mendeley.com/research/humanrobot-communication-collaborative-decision-making-probabilistic-approach/",
                         "creator": "Tobias Kaupp, Alexei Makarenko, Hugh Durrant-Whyte",
-                        "description": "Humans and robots need to exchange information if the objective is to achieve a task collaboratively. Two questions are considered in this paper: what and when to communicate. To answer these questions, we developed a human-robot communication framework which makes use of common probabilistic robotics representations. The data stored in the representation determines what to communicate, and probabilistic inference mechanisms determine when to communicate. One application domain of the framework is collaborative human-robot decision making: robots use decision theory to select actions based on perceptual information gathered from their sensors and human operators. In this paper, operators are regarded as remotely located, valuable information sources which need to be managed carefully. Robots decide when to query operators using Value-Of-Information theory, i.e.??humans are only queried if the expected benefit of their observation exceeds the cost of obtaining it. This can be seen as a mechanism for adjustable autonomy whereby adjustments are triggered at run-time based on the uncertainty in the robots' beliefs related to their task. This semi-autonomous system is demonstrated using a navigation task and evaluated by a user study. Participants navigated a robot in simulation using the proposed system and via classical teleoperation. Results show that our system has a number of advantages over teleoperation with respect to performance, operator workload, usability, and the users' perception of the robot. We also show that despite these advantages, teleoperation may still be a preferable driving mode depending on the mission priorities. Crown Copyright ?? 2010.",
+                        "description": "Humans and robots need to exchange information if the objective is to achieve a task collaboratively. Two questions are considered in this paper: what and when to communicate. To answer these questions, we developed a human-robot communication framework which makes use of common probabilistic robotics representations. The data stored in the representation determines what to communicate, and probabilistic inference mechanisms determine when to communicate. One application domain of the framework is collaborative human-robot decision making: robots use decision theory to select actions based on perceptual information gathered from their sensors and human operators. In this paper, operators are regarded as remotely located, valuable information sources which need to be managed carefully. Robots decide when to query operators using Value-Of-Information theory, i.e. humans are only queried if the expected benefit of their observation exceeds the cost of obtaining it. This can be seen as a mechanism for adjustable autonomy whereby adjustments are triggered at run-time based on the uncertainty in the robots' beliefs related to their task. This semi-autonomous system is demonstrated using a navigation task and evaluated by a user study. Participants navigated a robot in simulation using the proposed system and via classical teleoperation. Results show that our system has a number of advantages over teleoperation with respect to performance, operator workload, usability, and the users' perception of the robot. We also show that despite these advantages, teleoperation may still be a preferable driving mode depending on the mission priorities. Crown Copyright ?? 2010.",
                         "collectionName": "Robotics and Autonomous Systems",
                         "facets": {
                             "provider": "mendeley",
@@ -56,7 +56,7 @@ function getDataset_t2_60() {
                         "uri": "http://www.mendeley.com/catalog/social-interactions-hri-robot-view/",
                         "eexcessURI": "http://www.mendeley.com/catalog/social-interactions-hri-robot-view/",
                         "creator": "Cynthia Breazeal",
-                        "description": "This paper explores the topic of human-robot interaction (HRI) from the perspective of designing sociable autonomous robots-robots designed to interact with people in a human-like way. There are a growing number of applications for robots that people can engage as capable creatures or as partners rather than tools, yet little is understood about how to best design robots that interact with people in this way. The related field of human-computer interaction (HCI) offers important insights, however autonomous robots are a very different technology from desktop computers. In this paper, we look at the field of HRI from an HCI perspective, pointing out important similarities yet significant differences that may ultimately make HRI a distinct area of inquiry. One outcome of this discussion is that it is important to view the design and evaluation problem from the robot's perspective as well as that of the human. Taken as a whole, this paper provides a framework with which to design and evaluate sociable robots from a HRI perspective.",
+                        "description": "This paper explores the topic of human-robot interaction (HRI) from the perspective of designing sociable autonomous robots - robots designed to interact with people in a human-like way-. There are a growing number of applications for robots that people can engage as capable creatures or as partners rather than tools, yet little is understood about how to best design robots that interact with people in this way. The related field of human-computer interaction (HCI) offers important insights, however autonomous robots are a very different technology from desktop computers. In this paper, we look at the field of HRI from an HCI perspective, pointing out important similarities yet significant differences that may ultimately make HRI a distinct area of inquiry. One outcome of this discussion is that it is important to view the design and evaluation problem from the robot's perspective as well as that of the human. Taken as a whole, this paper provides a framework with which to design and evaluate sociable robots from a HRI perspective.",
                         "collectionName": "IEEE Transactions on Systems, Man and Cybernetics Part C: Applications and Reviews",
                         "facets": {
                             "provider": "mendeley",
@@ -147,7 +147,7 @@ function getDataset_t2_60() {
                         "uri": "http://www.mendeley.com/catalog/robots-teammates-benchmarks-humanrobot-teams/",
                         "eexcessURI": "http://www.mendeley.com/catalog/robots-teammates-benchmarks-humanrobot-teams/",
                         "creator": "Victoria Groom, Clifford Nass",
-                        "description": "The team has become a popular model to organize joint human–robot behavior. Robot teammates are designed with high-levels of autonomy and well-developed coordination skills to aid humans in unpredictable environments. In this paper, we challenge the assumption that robots will succeed as teammates alongside humans. Drawing from the literature on human teams, we evaluate robots’ po- tential to meet the requirements of successful teammates. We argue that lacking humanlike mental models and a sense of self, robots may prove untrustworthy and will be rejected from human teams. Benchmarks for evaluating human–ro- bot teams are included, as are guidelines for defining alternative structures for human–robot groups.",
+                        "description": "The team has become a popular model to organize joint human–robot behavior. Robot teammates are designed with high-levels of autonomy and well-developed coordination skills to aid humans in unpredictable environments. In this paper, we challenge the assumption that robots will succeed as teammates alongside humans. Drawing from the literature on human teams, we evaluate robots’ po- tential to meet the requirements of successful teammates. We argue that lacking humanlike mental models and a sense of self, robots may prove untrustworthy and will be rejected from human teams. Benchmarks for evaluating human–robot teams are included, as are guidelines for defining alternative structures for human–robot groups.",
                         "collectionName": "Interaction Studies",
                         "facets": {
                             "provider": "mendeley",
@@ -251,7 +251,7 @@ function getDataset_t2_60() {
                         "uri": "http://www.mendeley.com/catalog/autonomous-robots-biological-inspiration-implementation-control/",
                         "eexcessURI": "http://www.mendeley.com/catalog/autonomous-robots-biological-inspiration-implementation-control/",
                         "creator": "George A Bekey",
-                        "description": "Autonomous robots are intelligent machines capable of performing tasks in the world by themselves, without explicit human control. Examples range from autonomous helicopters to Roomba, the robot vacuum cleaner. In this book, George Bekey offers an introduction to the science and practice of autonomous robots that can be used both in the classroom and as a reference for industry professionals. He surveys the hardware implementations of more than 300 current systems, reviews some of their application areas, and examines the underlying technology, including control, architectures, learning, manipulation, grasping, navigation, and mapping. Living systems can be considered the prototypes of autonomous systems, and Bekey explores the biological inspiration that forms the basis of many recent developments in robotics. He also discusses robot control issues and the design of control architectures. After an overview of the field that introduces some of its fundamental concepts, the book presents background material on hardware, control (from both biological and engineering perspectives), software architecture, and robot intelligence. It then examines a broad range of implementations and applications, including locomotion (wheeled, legged, flying, swimming, and crawling robots), manipulation (both arms and hands), localization, navigation, and mapping. The many case studies and specific applications include robots built for research, industry, and the military, among them underwater robotic vehicles, walking machines with four, six, and eight legs, and the famous humanoid robots Cog, Kismet, ASIMO,\"and QRIO. The book concludes with reflections on the future of robotics -- the potential benefits as well as the possible dangers that may arise from large numbers of increasingly intelligent and autonomous robots.",
+                        "description": "Autonomous robots are intelligent machines capable of performing tasks in the world by themselves, without explicit human control. Examples range from autonomous helicopters to Roomba, the robot vacuum cleaner. In this book, George Bekey offers an introduction to the science and practice of autonomous robots that can be used both in the classroom and as a reference for industry professionals. He surveys the hardware implementations of more than 300 current systems, reviews some of their application areas, and examines the underlying technology, including control, architectures, learning, manipulation, grasping, navigation, and mapping. Living systems can be considered the prototypes of autonomous systems, and Bekey explores the biological inspiration that forms the basis of many recent developments in robotics. He also discusses robot control issues and the design of control architectures. After an overview of the field that introduces some of its fundamental concepts, the book presents background material on hardware, control (from both biological and engineering perspectives), software architecture, and robot intelligence. It then examines a broad range of implementations and applications, including locomotion (wheeled, legged, flying, swimming, and crawling robots), manipulation (both arms and hands), localization, navigation, and mapping. The many case studies and specific applications include robots built for research, industry, and the military, among them underwater robotic vehicles, walking machines with four, six, and eight legs, and the famous humanoid robots Cog, Kismet, ASIMO, and QRIO. The book concludes with reflections on the future of robotics -- the potential benefits as well as the possible dangers that may arise from large numbers of increasingly intelligent and autonomous robots.",
                         "collectionName": "Communication",
                         "facets": {
                             "provider": "mendeley",
@@ -293,7 +293,7 @@ function getDataset_t2_60() {
                         "uri": "http://www.mendeley.com/catalog/twotiered-global-path-planning-strategy-limited-memory-mobile-robots/",
                         "eexcessURI": "http://www.mendeley.com/catalog/twotiered-global-path-planning-strategy-limited-memory-mobile-robots/",
                         "creator": "Praneel Chand, Dale A. Carnegie",
-                        "description": "Multi-robot systems have inherent advantages such as the ability to allocate and redistribute tasks across the team of robots. For multi-robot tasks such as exploration of large environments, some of the available robots may only possess simple embedded controllers with limited memory capacity. However, in some situations these limited robots may be required to perform global path planning to navigate beyond localised regions of the large environment. Global path planning can be problematic for the limited memory robots if they are unable to store the entire map in their local memory. Hence, this paper presents and evaluates a two-tiered path planning technique to permit global path planning. A set of local maps describing the global map is searched using a two-tiered                          A* algorithm that executes entirely on the limited memory robots. Planning time, data communication and path length are evaluated for various combinations of local and global maps. Employing smaller local map sizes in large global maps is capable of yielding superior or comparable execution times to non-memory constrained planning. ?? 2011 Elsevier B.V. All rights reserved.",
+                        "description": "Multi-robot systems have inherent advantages such as the ability to allocate and redistribute tasks across the team of robots. For multi-robot tasks such as exploration of large environments, some of the available robots may only possess simple embedded controllers with limited memory capacity. However, in some situations these limited robots may be required to perform global path planning to navigate beyond localised regions of the large environment. Global path planning can be problematic for the limited memory robots if they are unable to store the entire map in their local memory. Hence, this paper presents and evaluates a two-tiered path planning technique to permit global path planning. A set of local maps describing the global map is searched using a two-tiered A* algorithm that executes entirely on the limited memory robots. Planning time, data communication and path length are evaluated for various combinations of local and global maps. Employing smaller local map sizes in large global maps is capable of yielding superior or comparable execution times to non-memory constrained planning. ?? 2011 Elsevier B.V. All rights reserved.",
                         "collectionName": "Robotics and Autonomous Systems",
                         "facets": {
                             "provider": "mendeley",
@@ -319,7 +319,7 @@ function getDataset_t2_60() {
                         "uri": "http://www.mendeley.com/catalog/introduction-autonomous-mobile-robots-50/",
                         "eexcessURI": "http://www.mendeley.com/catalog/introduction-autonomous-mobile-robots-50/",
                         "creator": "Roland Siegwart, Illah R Nourbakhsh",
-                        "description": "Mobile robots range from the teleoperated Sojourner on the Mars Pathfinder mission to cleaning robots in the Paris Metro. Introduction to Autonomous Mobile Robots offers students and other interested readers an overview of the technology of mobilitythe mechanisms that allow a mobile robot to move through a real world environment to perform its tasksincluding locomotion, sensing, localization, and motion planning. It discusses all facets of mobile robotics, including hardware design, wheel design, kinematics analysis, sensors and perception, localization, mapping, and robot control architectures.The design of any successful robot involves the integration of many different disciplines, among them kinematics, signal analysis, information theory, artificial intelligence, and probability theory. Reflecting this, the book presents the techniques and technology that enable mobility in a series of interacting modules. Each chapter covers a different aspect of mobility, as the book moves from low-level to high-level details. The first two chapters explore low-level locomotory ability, examining robots' wheels and legs and the principles of kinematics. This is followed by an in-depth view of perception, including descriptions of many \"off-the-shelf\" sensors and an analysis of the interpretation of sensed data. The final two chapters consider the higher-level challenges of localization and cognition, discussing successful localization strategies, autonomous mapping, and navigation competence. Bringing together all aspects of mobile robotics into one volume, Introduction to Autonomous Mobile Robots can serve as a textbook for coursework or a working tool for beginners in the field.",
+                        "description": "Mobile robots range from the teleoperated Sojourner on the Mars Pathfinder mission to cleaning robots in the Paris Metro. Introduction to Autonomous Mobile Robots offers students and other interested readers an overview of the technology of mobility the mechanisms that allow a mobile robot to move through a real world environment to perform its tasksincluding locomotion, sensing, localization, and motion planning. It discusses all facets of mobile robotics, including hardware design, wheel design, kinematics analysis, sensors and perception, localization, mapping, and robot control architectures.The design of any successful robot involves the integration of many different disciplines, among them kinematics, signal analysis, information theory, artificial intelligence, and probability theory. Reflecting this, the book presents the techniques and technology that enable mobility in a series of interacting modules. Each chapter covers a different aspect of mobility, as the book moves from low-level to high-level details. The first two chapters explore low-level locomotory ability, examining robots' wheels and legs and the principles of kinematics. This is followed by an in-depth view of perception, including descriptions of many \"off-the-shelf\" sensors and an analysis of the interpretation of sensed data. The final two chapters consider the higher-level challenges of localization and cognition, discussing successful localization strategies, autonomous mapping, and navigation competence. Bringing together all aspects of mobile robotics into one volume, Introduction to Autonomous Mobile Robots can serve as a textbook for coursework or a working tool for beginners in the field.",
                         "collectionName": "Robotica",
                         "facets": {
                             "provider": "mendeley",
@@ -363,32 +363,6 @@ function getDataset_t2_60() {
                         "facets": {
                             "provider": "mendeley",
                             "year": "1992"
-                        },
-                    },
-                    {
-                        "id": "b47d17f8-3ca7-39dd-9b49-628a5d310a2b",
-                        "title": "Monocular-SLAM-based navigation for autonomous micro helicopters in GPS-denied environments",
-                        "uri": "http://www.mendeley.com/catalog/monocularslambased-navigation-autonomous-micro-helicopters-gpsdenied-environments/",
-                        "eexcessURI": "http://www.mendeley.com/catalog/monocularslambased-navigation-autonomous-micro-helicopters-gpsdenied-environments/",
-                        "creator": "Stephan Weiss, Davide Scaramuzza, Roland Siegwart",
-                        "description": "Autonomous micro aerial vehicles (MAVs) will soon play a major role in tasks such as search and rescue, environment monitoring, surveillance, and inspection. They allow us to easily access environments to which no humans or other vehicles can get access. This reduces the risk for both the people and the environment. For the above applications, it is, however, a requirement that the vehicle is able to navigate without using GPS, or without relying on a preexisting map, or without specific assumptions about the environment. This will allow operations in unstructured, unknown, and GPS-denied environments.We present a novel solution for the task of autonomous navigation of a micro helicopter through a completely unknown environment by using solely a single camera and inertial sensors onboard. Many existing solutions suffer from the problem of drift in the xy plane or fromthe dependency on a clean GPS signal. The novelty in the here-presented approach is to use a monocular simultaneous localization and mapping (SLAM) framework to stabilize the vehicle in six degrees of freedom. Thisway,we overcome the problem of both the drift and the GPS dependency. The pose estimated by the visual SLAM algorithm is used in a linear optimal controller that allows us to perform all basicmaneuvers such as hovering, set point and trajectory following, vertical takeoff, and landing. All calculations including SLAM and controller are running in real time and online while the helicopter is flying. No offline processing or preprocessing is done.We show real experiments that demonstrate that the vehicle can fly autonomously in an unknown and unstructured environment. To the best of our knowledge, the here-presented work describes the first aerial vehicle that uses onboard monocular vision as a main sensor to navigate through an unknown GPS-denied environment and independently of any external artificial aids.",
-                        "collectionName": "Journal of Field Robotics",
-                        "facets": {
-                            "provider": "mendeley",
-                            "year": "2011"
-                        },
-                    },
-                    {
-                        "id": "73626a25-d01a-3cc2-a1ba-b64de7a1d099",
-                        "title": "Enabling Autonomous Robots to Perform Complex Tasks",
-                        "uri": "http://www.mendeley.com/research/enabling-autonomous-robots-perform-complex-tasks/",
-                        "eexcessURI": "http://www.mendeley.com/research/enabling-autonomous-robots-perform-complex-tasks/",
-                        "creator": "Michael Beetz, Tom Arbuckle, Thorsten Belker, Maren Bennewitz, Armin Cremers, Dirk Hähnel, Dirk Schulz",
-                        "description": "Recent extensions of the RHINO control system, a system for controlling autonomous mobile robots, have further enhanced its ability to perform complex, dynamically changing, tasks. We present an overview of the extended RHINO system, sketching the functionality of its main components and their inter-relationships as well as long-term experiments demonstrating the practicality of its approach. Pointers are also provided to the detailed technical references.",
-                        "collectionName": "KI - K{ü}nstliche Intelligenz; Special Issue on Autonomous Robots",
-                        "facets": {
-                            "provider": "mendeley",
-                            "year": "2000"
                         },
                     },
                     {
@@ -470,32 +444,6 @@ function getDataset_t2_60() {
                         },
                     },
                     {
-                        "id": "e932b3ca-0a89-3b3c-8ee4-794874a7dbcd",
-                        "title": "General Purpose Hands for Bin-Picking Robots",
-                        "uri": "http://www.mendeley.com/catalog/general-purpose-hands-binpicking-robots/",
-                        "eexcessURI": "http://www.mendeley.com/catalog/general-purpose-hands-binpicking-robots/",
-                        "creator": "Richard Tella, John R. Birk, Robert B. Kelley",
-                        "description": "Bin-picking robots acquire a workpiece from a bin, reorient it, and place it into a machine. However, to achieve adaptability the system must incorporate general purpose hands capable of working with a wide variety of workpieces. To this end, eight guidelines for the design of general purpose hands for bin-picking robots have been identified on the basis of functional requirements. Using the eight guidelines as a framework, three hands were designed. The first design utilized a single vacuum cup which can sense contact, adapt to unknown surface angles, sense grip, and maintain a fixed hand-to-workpiece relationship. The second is a contour adapting vacuum gripper comprised of an array of 20 vacuum-gripping units which are capable of sensing discrete surface contour points while grasping. The third is a parallel jaw arrangement similar to those commonly found in industry, except that it has the capability of sensing overload and the presence of a workpiece within the hand. Each of the hands is described in terms of design features, control systems, and mode of operation. Advantages and disadvantages are indicated.",
-                        "collectionName": "IEEE Transactions on Systems, Man, and Cybernetics",
-                        "facets": {
-                            "provider": "mendeley",
-                            "year": "1982"
-                        },
-                    },
-                    {
-                        "id": "7f6ed105-59e9-338d-856d-f3c0104383a4",
-                        "title": "FCL: A general purpose library for collision and proximity queries",
-                        "uri": "http://www.mendeley.com/catalog/fcl-general-purpose-library-collision-proximity-queries/",
-                        "eexcessURI": "http://www.mendeley.com/catalog/fcl-general-purpose-library-collision-proximity-queries/",
-                        "creator": "Jia Pan, Sachin Chitta, Dinesh Manocha",
-                        "description": "We present a new collision and proximity library that integrates several techniques for fast and accurate collision checking and proximity computation. Our library is based on hierarchical representations and designed to perform multiple proximity queries on different model representations. The set of queries includes discrete collision detection, continuous collision detection, separation distance computation and penetration depth estimation. The input models may correspond to triangulated rigid or deformable models and articulated models. Moreover, FCL can perform probabilistic collision checking between noisy point clouds that are captured using cameras or LIDAR sensors. The main benefit of FCL lies in the fact that it provides a unified interface that can be used by various applications. Furthermore, its flexible architecture makes it easier to implement new algorithms within this framework. The runtime performance of the library is comparable to state of the art collision and proximity algorithms. We demonstrate its performance on synthetic datasets as well as motion planning and grasping computations performed using a two-armed mobile manipulation robot.",
-                        "collectionName": "Proceedings - IEEE International Conference on Robotics and Automation",
-                        "facets": {
-                            "provider": "mendeley",
-                            "year": "2012"
-                        },
-                    },
-                    {
                         "id": "6dfc7297-c206-3b5d-a78d-249ff1eda690",
                         "title": "Individual and cooperative tasks performed by autonomous MAV teams driven by embodied neural network controllers",
                         "uri": "http://www.mendeley.com/catalog/individual-cooperative-tasks-performed-autonomous-mav-teams-driven-embodied-neural-network-controlle/",
@@ -564,19 +512,6 @@ function getDataset_t2_60() {
                         },
                     },
                     {
-                        "id": "81fc954b-b5f2-3786-badf-9b97a391af07",
-                        "title": "General purpose technologies",
-                        "uri": "http://www.mendeley.com/catalog/general-purpose-technologies/",
-                        "eexcessURI": "http://www.mendeley.com/catalog/general-purpose-technologies/",
-                        "creator": "Timothy Bresnahan",
-                        "description": "This chapter selectively surveys the literature on general purpose technologies (GPTs), focusing on incentives and aggregate growth implications. The literature on classical GPTs (steam, electricity, computers) and on classical great economic transformations (industrial revolutions, the information age) are linked to the theoretical and empirical literatures. The implications of GPT analysis for understanding the history of productivity growth in the late twentieth century are taken up on the concluding remarks. ?? 2010 Elsevier B.V.",
-                        "collectionName": "Handbook of the Economics of Innovation",
-                        "facets": {
-                            "provider": "mendeley",
-                            "year": "2010"
-                        },
-                    },
-                    {
                         "id": "a556304a-b837-3788-8eff-6dd7f3b3742e",
                         "title": "Human-centered robot navigation - Toward a harmoniously coexisting multi-human and multi-robot environment",
                         "uri": "http://www.mendeley.com/catalog/humancentered-robot-navigation-toward-harmoniously-coexisting-multihuman-multirobot-environment/",
@@ -629,19 +564,6 @@ function getDataset_t2_60() {
                         },
                     },
                     {
-                        "id": "adc67b57-0e22-30b6-939f-baf3c3e06e77",
-                        "title": "Mahonia invasions in different habitats: Local adaptation or general-purpose genotypes?",
-                        "uri": "http://www.mendeley.com/catalog/mahonia-invasions-different-habitats-local-adaptation-generalpurpose-genotypes/",
-                        "eexcessURI": "http://www.mendeley.com/catalog/mahonia-invasions-different-habitats-local-adaptation-generalpurpose-genotypes/",
-                        "creator": "Christel A. Ross, Daniela Faust, Harald Auge",
-                        "description": "Abstract  Rapid evolutionary adaptations and phenotypic plasticity have been suggested to be two important, but not mutually exclusive, mechanisms contributing to the spread of invasive species. Adaptive evolution in invasive plants has been shown to occur at large spatial scales to different climatic regions, but local adaptation at a smaller scale, e.g. to different habitats within a region, has rarely been studied. Therefore, we performed a case study on invasive Mahonia populations to investigate whether local adaptation may have contributed to their spread. We hypothesized that the invasion success of these populations is promoted by adaptive differentiation in response to local environmental conditions, in particular to the different soils in these habitats. To test this hypothesis, we carried out a reciprocal transplantation experiment in the field using seedlings from five Mahonia populations in Germany that are representative for the range of habitats invaded, and a greenhouse experiment that specifically compared the responses to the different soils of these habitats. We found no evidence for local adaptation of invasive Mahonia populations because seedlings from all populations responded similarly to different habitats and soils. In a second greenhouse experiment we examined genetic variation within populations, but seedlings from different maternal families did not vary in their responses to soil conditions. We therefore suggest that local adaptation of seedlings does not play a major role for the invasion success of Mahonia populations and that phenotypic plasticity, instead, could be an important trait in this stage of the life cycle.",
-                        "collectionName": "Biological Invasions",
-                        "facets": {
-                            "provider": "mendeley",
-                            "year": "2009"
-                        },
-                    },
-                    {
                         "id": "e20e4b7d-f231-30d3-80f3-245a320a2dee",
                         "title": "Coordinated multi-robot exploration",
                         "uri": "http://www.mendeley.com/catalog/coordinated-multirobot-exploration/",
@@ -652,32 +574,6 @@ function getDataset_t2_60() {
                         "facets": {
                             "provider": "mendeley",
                             "year": "2005"
-                        },
-                    },
-                    {
-                        "id": "b5736824-2a8b-3bd5-bf98-601f0a8e6405",
-                        "title": "Robots, gender & sensemaking: Sex segregation's impact on workers making sense of a mobile autonomous robot",
-                        "uri": "http://www.mendeley.com/research/robots-gender-sensemaking-sex-segregations-impact-workers-making-sense-mobile-autonomous-robot/",
-                        "eexcessURI": "http://www.mendeley.com/research/robots-gender-sensemaking-sex-segregations-impact-workers-making-sense-mobile-autonomous-robot/",
-                        "creator": "Rosanne M. Siino, Pamela J. Hinds",
-                        "description": "  This ethnographic study suggests that social structures such as the sex segregation of jobs may impact how different groups of workers make sense of robots in their work environment. Designers may need to take such structures into account if mobile autonomous robots are to operate successfully alongside humans in the workplace. ",
-                        "collectionName": "Proceedings - IEEE International Conference on Robotics and Automation",
-                        "facets": {
-                            "provider": "mendeley",
-                            "year": "2005"
-                        },
-                    },
-                    {
-                        "id": "39e1c367-9945-306f-a3eb-88e794dd58f3",
-                        "title": "Extracting general-purpose features from LIDAR data",
-                        "uri": "http://www.mendeley.com/catalog/extracting-generalpurpose-features-lidar-data/",
-                        "eexcessURI": "http://www.mendeley.com/catalog/extracting-generalpurpose-features-lidar-data/",
-                        "creator": "Yangming Li, Edwin B. Olson",
-                        "description": "The detection of features from Light Detection and Ranging (LIDAR) data is a fundamental component of feature-based mapping and SLAM systems. Existing detectors tend to exploit characteristics of specific environments: corners and lines from indoor (rectilinear) environments, and trees from outdoor environments. While these detectors work well in their intended environments, their performance in different environments can be very poor. We describe a general purpose feature detector for LIDAR data that is applicable to virtually any environment. Our methods adapt classic feature detection methods from the image processing literature, specifically the multi-scale Kanade-Tomasi corner detector. Our resulting method is capable of identifying stable features at a variety of spatial scales and produces uncertainty estimates for use in a state estimation algorithm. We present results on standard datasets, including Victoria Park and Intel Research Center (both 2D), and the MIT DARPA Urban Challenge dataset (3D).",
-                        "collectionName": "Proceedings - IEEE International Conference on Robotics and Automation",
-                        "facets": {
-                            "provider": "mendeley",
-                            "year": "2010"
                         },
                     },
                     {
@@ -699,7 +595,7 @@ function getDataset_t2_60() {
                         "uri": "http://www.mendeley.com/catalog/humancentered-robot-navigationtowards-harmoniously-humanrobot-coexisting-environment/",
                         "eexcessURI": "http://www.mendeley.com/catalog/humancentered-robot-navigationtowards-harmoniously-humanrobot-coexisting-environment/",
                         "creator": "Chi Pang Lam, Chen Tun Chou, Kuo Hung Chiang, Li Chen Fu",
-                        "description": "This paper proposes a navigation algorithm that considers the states of humans and robots in order to achieve harmonious coexistence between them. A robot navigation in the presence of humans and other robots is rarely considered in the field of robotics. When navigating through a space filled with humans and robots with different functions, a robot should not only pay attention to obstacle avoidance and goal seeking, it should also take into account whether it interferes with other people or robots. To deal with this problem, we propose several harmonious rules, which guarantee a safe and smooth navigation in a human-obot environment. Based on these rules, a practical navigation method \"human-centered sensitive navigation (HCSN)\" is proposed. HCSN considers the fact that both humans and robots have sensitive zones, depending on their security regions or on a human's psychological state. We model these zones as various sensitive fields with priorities, whereby robots tend to yield socially acceptable movements.",
+                        "description": "This paper proposes a navigation algorithm that considers the states of humans and robots in order to achieve harmonious coexistence between them. A robot navigation in the presence of humans and other robots is rarely considered in the field of robotics. When navigating through a space filled with humans and robots with different functions, a robot should not only pay attention to obstacle avoidance and goal seeking, it should also take into account whether it interferes with other people or robots. To deal with this problem, we propose several harmonious rules, which guarantee a safe and smooth navigation in a human-robot environment. Based on these rules, a practical navigation method \"human-centered sensitive navigation (HCSN)\" is proposed. HCSN considers the fact that both humans and robots have sensitive zones, depending on their security regions or on a human's psychological state. We model these zones as various sensitive fields with priorities, whereby robots tend to yield socially acceptable movements.",
                         "collectionName": "IEEE Transactions on Robotics",
                         "facets": {
                             "provider": "mendeley",
@@ -717,19 +613,6 @@ function getDataset_t2_60() {
                         "facets": {
                             "provider": "mendeley",
                             "year": "2007"
-                        },
-                    },
-                    {
-                        "id": "9563628c-2e74-3196-805f-cac4c1df7f64",
-                        "title": "Robot games for elderly",
-                        "uri": "http://www.mendeley.com/catalog/robot-games-elderly/",
-                        "eexcessURI": "http://www.mendeley.com/catalog/robot-games-elderly/",
-                        "creator": "S.T. Hansen",
-                        "description": "This video presents a study on how a physical game based on a mobile robot can be used as a persuasive tool for promoting physical activity among elderly. The goal of the game is to take a ball from a robot, and afterwards try to hand it back while the robot moves. The robot records the behavior patterns of each individual player and gradually adapts the challenge of the game to the player’s skill. The game was investigated in two independent field studies. The primary goal was to observe how the robot adapts to players with different mobility problems, secondly to obtain knowledge about the different play patterns and get ideas about future improvements of the game. The video shows different examples of how the elderly would play with the robot and illustrates the variety of play styles.",
-                        "collectionName": "Proceedings of the 6th international conference on Human-robot interaction",
-                        "facets": {
-                            "provider": "mendeley",
-                            "year": "2011"
                         },
                     },
 
@@ -759,19 +642,6 @@ function getDataset_t2_60() {
                         "facets": {
                             "provider": "mendeley",
                             "year": "2004"
-                        },
-                    },
-                    {
-                        "id": "ba67d4bf-0f0a-376f-9a7e-f1e75236c4c3",
-                        "title": "Interactive humanoid robots for a science museum",
-                        "uri": "http://www.mendeley.com/catalog/interactive-humanoid-robots-science-museum/",
-                        "eexcessURI": "http://www.mendeley.com/catalog/interactive-humanoid-robots-science-museum/",
-                        "creator": "Masahiro Shiomi, Takayuki Kanda, Hiroshi Ishiguro, Norihiro Hagita",
-                        "description": "One objective of the Intelligent Robotics and Communication Laboratories is to develop an intelligent communication robot that supports people in an open everyday environment by interacting with them. A humanoid robot can help achieve this objective because its physical structure lets it interact through human-like body movements such as shaking hands, greeting, and pointing. Both adults and children are more likely to understand such interactions than interactions with an electronic interface such as a touch panel or buttons. To behave intelligently during an interaction, a robot requires many types of information about its environment and the people with whom it interacts. However, in open everyday environments, simple recognition functions such as identifying an individual are difficult because the presence and movement of a large number of people as well as unfavorable illumination and background conditions affect the robot's sensing ability. We integrated humanoid robots and ubiquitous sensors in an autonomous system to assist visitors at an Osaka Science Museum exhibit",
-                        "collectionName": "IEEE Intelligent Systems",
-                        "facets": {
-                            "provider": "mendeley",
-                            "year": "2007"
                         },
                     },
                     {
@@ -889,19 +759,6 @@ function getDataset_t2_60() {
                         "facets": {
                             "provider": "mendeley",
                             "year": "2007"
-                        },
-                    },
-                    {
-                        "id": "a18fa2ed-d0f9-34cc-ae8d-3e87e0d287ab",
-                        "title": "Humanoid Robots  From Fiction to Reality?",
-                        "uri": "http://www.mendeley.com/catalog/humanoid-robots-fiction-reality/",
-                        "eexcessURI": "http://www.mendeley.com/catalog/humanoid-robots-fiction-reality/",
-                        "creator": "Sven Behnke, Sven Behnke",
-                        "description": "Humanoid robots have been fascinating people ever since the invention of robots. They are the embodiment of arti cial intelligence. While in science  ction, human-like robots act autonomously in complex human-populated environments, in reality, the capabilities of humanoid robots are quite limited. This article reviews the history of humanoid robots, discusses the state-of-the-art and speculates about future developments in the  eld",
-                        "collectionName": "KI-Zeitschrift",
-                        "facets": {
-                            "provider": "mendeley",
-                            "year": "2008"
                         },
                     },
                     {

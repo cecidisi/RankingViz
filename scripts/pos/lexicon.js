@@ -6,7 +6,7 @@ function Lexicon() {
 
 return {
     "\'": [
-        "\""
+        "\'"
     ],
     "\"": [
         "\""
@@ -176761,6 +176761,9 @@ return {
     "Ceilings": [
         "NNS"
     ],
+    "Ceiling": [
+        "NN"
+    ],
     "pressure-volume-temperature": [
         "NN"
     ],
@@ -239845,6 +239848,7 @@ return {
         "NNP"
     ],
     "autonomous": [
+        "NN",
         "JJ"
     ],
     "articulate": [
@@ -269864,7 +269868,6 @@ return {
         "NNS"
     ],
     "human": [
-        "JJ",
         "NN"
     ],
     "rocket-propelled": [

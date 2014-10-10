@@ -7,6 +7,7 @@ var stemmer = natural.PorterStemmer; //natural.LancasterStemmer;
 var tokenizer = new natural.WordTokenizer;
 var nounInflector = new natural.NounInflector();
 var tfidf = new natural.TfIdf();
+var stopWords = natural.stopwords;
 
 stemmer.attach();
 nounInflector.attach();
@@ -68,28 +69,22 @@ function getDataWithKeywords(data){
 
     data.forEach(function(d, i){
         var document = (d.description !== "undefined") ? d.title +'. '+ d.description : d.title;
-        var words = lexer.lex(tokenizer.tokenize(document.toLowerCase()).join(' '));
+        document = document.replace(/our/g, 'or')/*.replace(/IT/g, 'I.T.')*/.replace(/[-=]/g, ' ').replace(/[()\"]/g,'');
+        var words = lexer.lex(document);
         var taggedWords = tagger.tag(words);
         document = '';
-        var gerundLikeNouns = ['training', 'ceiling', 'computing', 'engineering'];
 
         taggedWords.forEach(function(tw){
-
-            if(tw[0].contains('women') && tw[0] != 'women')
-                console.log(tw[0]);
             switch(tw[1]){
                 case 'NN':
-                    if(tw[0] == 'women')
-                        console.log('entra en NN');
                     document += tw[0] + ' '; break;
                 case 'NNS':
                     document += tw[0].singularizeNoun() + ' ';
-                    if(tw[0] == 'women')
                     break;
-                case 'VBG':
+               /* case 'VBG':
                     if(gerundLikeNouns.indexOf(tw[0]) > -1)
                         document += tw[0] + ' ';
-                    break;
+                    break;*/
             }
         });
 
@@ -107,19 +102,17 @@ function getDataWithKeywords(data){
                 scores += item.tfidf;
             }
         });
+
         var mean = scores / d.keywords.length;
-        var j = 0;
-
-        while(d.keywords[j].score >= mean){
+        for(var j = 0; j < d.keywords.length; ++j){
             var kIndex = keywordsArray.getIndexOf(d.keywords[j].term, 'stem')
-            if(kIndex > -1)
-                keywordsArray[kIndex].repeated++;
-            else
+            if(d.keywords[j].score >= mean && kIndex == -1)
                 keywordsArray.push({ 'stem': d.keywords[j].term, 'term': '', 'repeated': 1, 'variations': [] });
-            ++j;
+            else if(kIndex > -1)
+                keywordsArray[kIndex].repeated++;
         }
-
     });
+
     return data;
 }
 
@@ -127,9 +120,9 @@ function getDataWithKeywords(data){
 
 function getGlobalKeywords2(data) {
     var sortedKeywords = [];
-    var minRepetitions = parseInt(data.length * 0.03);
+    var minRepetitions = parseInt(data.length * 0.05);
 
-    console.log('keywords array -- ' + keywordsArray.length);
+    //console.log('keywords array -- ' + keywordsArray.length);
     keywordsArray.forEach(function(k){
         if(k.repeated >= minRepetitions)
             sortedKeywords.splice(findIndexToInsert(sortedKeywords, k), 0, k);
@@ -137,7 +130,7 @@ function getGlobalKeywords2(data) {
 
     allTokens.forEach(function(token){
         var kIndex = sortedKeywords.getIndexOf(token.stem(), 'stem');
-        if(kIndex >= 0 && sortedKeywords[kIndex].variations.indexOf(token) < 0 ){
+        if(kIndex >= 0 && sortedKeywords[kIndex].variations.indexOf(token) < 0 && stopWords.indexOf(token.toLowerCase()) == -1){
             sortedKeywords[kIndex].variations.push(token);
         }
     });
@@ -146,7 +139,7 @@ function getGlobalKeywords2(data) {
         k.term = getTerm(k);
     });
     console.log('sorted keywords -- ' + sortedKeywords.length);
-    console.log(JSON.stringify(sortedKeywords));
+ //   console.log(JSON.stringify(sortedKeywords));
 
     return sortedKeywords
 }
@@ -232,12 +225,19 @@ function getTerm(k){
     if(stemIndex > -1)
         return k.variations[stemIndex];
 
+    if(k.variations.length == 2 && k.variations[0].toLowerCase() === k.variations[0].toLowerCase())
+        return k.variations[0].toLowerCase();
+
+    for(var i = 0; i < k.variations.length; ++i)
+        if(k.variations[i].match(/ion$/))
+            return k.variations[i].toLowerCase();
+
     var shortestTerm = k.variations[0];
     for(var i = 1; i < k.variations.length; i++){
         if(k.variations[i].length < shortestTerm.length)
             shortestTerm = k.variations[i];
     }
-    return shortestTerm;
+    return shortestTerm.toLowerCase();
 }
 
 

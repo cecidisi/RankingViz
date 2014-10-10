@@ -646,7 +646,7 @@ var words =
         'instance', 'aspect', 'actor', 'citation', 'strategy', 'overview', 'context', 'cause', 'future', 'retrospective', 'setting', 'outcome', 'measure', 'age', 'number',
         'forecast', 'conclusion', 'motivation', 'exploration', 'literature', 'type', 'variable', 'composition', 'phenomenon', 'mechanism', 'log', 'size', 'area', 'self',
         'sector', 'pattern', 'support', 'group', 'challenge', 'focu', 'period', 'attempt', 'report', 'evaluation', 'mean', 'seek', 'regression', 'quantile', 'panel',
-        'today', 'example', 'novel', 'account', 'investigation',
+        'today', 'example', 'novel', 'account', 'investigation', 'book', 'participant', 'goal', 'characteristic', 'case',
     '__key'
     ];
 
@@ -4684,6 +4684,7 @@ var NounInflector = function() {
     this.addIrregular("goose", "geese");
     this.addIrregular("initiative", "initiatives");
     this.addIrregular("cause", "causes");
+    this.addIrregular("drive", "drives");
 
     // see if it is possible to unify the creation of both the singular and
     // plural regexes or maybe even just have one list. with a complete list
@@ -5038,7 +5039,7 @@ function buildDocument(text, key) {
     }
 
     return text.reduce(function(document, term) {
-        if(!stopOut || stopwords.indexOf(term) < 0 && stopwords.indexOf(term.stem()) < 0 ){
+        if(!stopOut || (stopwords.indexOf(term) < 0 && stopwords.indexOf(term.stem()) < 0 )){
             document[term.stem()] = (document[term.stem()] ? document[term.stem()] + 1 : 1);
         }
 

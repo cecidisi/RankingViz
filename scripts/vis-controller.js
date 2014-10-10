@@ -301,19 +301,20 @@
 	PREPROCESSING.extendKeywordsWithColorCategory = function(){
 
 		var extent = d3.extent(keywords, function(k){ return k['repeated']; });
-		var range = (extent[1] - extent[0]) * 0.1;   // / TAG_CATEGORIES;
-        //console.log('extent --> ' + extent[0] + ' - ' + extent[1]);
-        //console.log('range = ' + range);
+		var range = (extent[1] - 1/*extent[0]*/) * 0.1;   // / TAG_CATEGORIES;
+        console.log('extent --> ' + extent[0] + ' - ' + extent[1]);
+        console.log('range = ' + range);
         catArray = [];
         for(var i = 0; i < TAG_CATEGORIES; i++)
             catArray[i] = 0;
 
 		keywords.forEach(function(k){
-			var colorCategory = parseInt((k['repeated'] - extent[0]) / range);
-            colorCategory = (colorCategory < TAG_CATEGORIES) ? colorCategory : TAG_CATEGORIES - 1;
-            k['colorCategory'] = colorCategory;
-                catArray[k.colorCategory]++;
+			var colorCategory = parseInt((k['repeated'] - 1/*extent[0]*/) / range);
+            k['colorCategory'] = (colorCategory < TAG_CATEGORIES) ? colorCategory : TAG_CATEGORIES - 1;
+          //  console.log('******* ' + k.term + ' --- repeated = ' + k.repeated + ' --- color category = ' + k.colorCategory);
+            catArray[k.colorCategory]++;
 		});
+        //console.log(catArray);
 	};
 
 
@@ -1269,7 +1270,7 @@
 
 
         getStyledWord : function(word, keywordsInBox){
-            var wordStem = word.stem();
+            var wordStem = word.replace(/our$/g, 'or').stem();
             if(keywordsInBox.getIndexOf(wordStem, "stem") > -1)
                 return "<strong style=\"color:" + weightColorScale(wordStem) + "\">" + word + "</strong>";
 
