@@ -4,7 +4,7 @@ function getDataset_t2_60() {
     var dataset_t2_60 = {
         "query":"robots",
         "dataset-id" : "T2-60",
-        "description" : "Topic 2- 60 items",
+        "description" : "Topic 2 - 60 items",
         "text": "General-purpose autonomous robots can perform a variety of functions independently. General-purpose autonomous robots typically can navigate independently in known spaces, handle their own re-charging needs, interface with electronic doors and elevators and perform other basic tasks. Like computers, general-purpose robots can link with networks, software and accessories that increase their usefulness. They may recognize people or objects, talk, provide companionship, monitor environmental quality, respond to alarms, pick up supplies and perform other useful tasks. General-purpose robots may perform a variety of functions simultaneously or they may take on different roles at different times of day. Some such robots try to mimic human beings and may even resemble people in appearance; this type of robot is called a humanoid robot. Humanoid robots are still in a very limited stage, as no humanoid robot can, as of yet, actually navigate around a room that it has never been in.[citation needed] Thus, humanoid robots are really quite limited, despite their intelligent behaviors in their well-known environments.",
         "task": "Considering the given text, select the 5 most relevant items from the list",
         "totalResults":"60",
@@ -379,19 +379,6 @@ function getDataset_t2_60() {
                         },
                     },
                     {
-                        "id": "682c8543-7223-3c2a-9ce4-c641838418fc",
-                        "title": "Web-enabled robots",
-                        "uri": "http://www.mendeley.com/catalog/webenabled-robots/",
-                        "eexcessURI": "http://www.mendeley.com/catalog/webenabled-robots/",
-                        "creator": "Moritz Tenorth, Ulrich Klank, Dejan Pangercic, Michael Beetz",
-                        "description": "As robots are starting to perform everyday manipulation tasks, such as cleaning up, setting a table, or preparing simple meals, their control programs must become much more knowledgeable than they are today. Typically, everyday manipulation tasks are vaguely specified, and the robot must therefore infer by itself how to do the appropriate actions on objects in an appropriate manner to accomplish these tasks. These inferences can only be done if the robot has access to the necessary knowledge, including knowledge about how the objects look, what their properties are, where they can be found, and what might happen if particular actions are performed on them.",
-                        "collectionName": "IEEE Robotics and Automation Magazine",
-                        "facets": {
-                            "provider": "mendeley",
-                            "year": "2011"
-                        },
-                    },
-                    {
                         "id": "5f1f989e-285d-3f2a-8147-f89b26f5cd5b",
                         "title": "Self-assembly on demand in a group of physical autonomous mobile robots navigating rough terrain",
                         "uri": "http://www.mendeley.com/catalog/selfassembly-demand-group-physical-autonomous-mobile-robots-navigating-rough-terrain/",
@@ -496,19 +483,6 @@ function getDataset_t2_60() {
                         "facets": {
                             "provider": "mendeley",
                             "year": "2006"
-                        },
-                    },
-                    {
-                        "id": "36e0df0b-67bf-3120-ace3-866c4d5e561c",
-                        "title": "Locality-preserving hash functions for general purpose parallel computation",
-                        "uri": "http://www.mendeley.com/catalog/localitypreserving-hash-functions-general-purpose-parallel-computation/",
-                        "eexcessURI": "http://www.mendeley.com/catalog/localitypreserving-hash-functions-general-purpose-parallel-computation/",
-                        "creator": "A. Chin",
-                        "description": "Consider the problem of efficiently simulating the shared-memory parallel random access machine (PRAM) model on massively parallel architectures with physically distributed memory. To prevent network congestion and memory bank contention, it may be advantageous to hash the shared memory address space. The decision on whether or not to use hashing depends on (1) the communication latency in the network and (2) the locality of memory accesses in the algorithm.",
-                        "collectionName": "Algorithmica",
-                        "facets": {
-                            "provider": "mendeley",
-                            "year": "1994"
                         },
                     },
                     {

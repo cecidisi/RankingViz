@@ -5,10 +5,11 @@ function datasetManager(){
     var datasets = {
         "T1-30" : getDataset_t1_30(),
         "T1-60" : getDataset_t1_60(),
-        "T1-60b" : getDataset_t1_60b(),
         "T2-60" : getDataset_t2_60(),
         "T3-60" : getDataset_t3_60(),
-        "T4-60" : getDataset_t4_60()
+        "T4-60" : getDataset_t4_60(),
+        "T5-60" : getDataset_t5_60(),
+        "T6-60" : getDataset_t6_60()
     };
 
 
@@ -41,7 +42,7 @@ function datasetManager(){
 
         if(typeof datasetId != 'undefined' && datasetId != 'undefined'){
             var dataset = datasets[datasetId];
-            //checkDuplicatedItems(dataset);
+            checkDuplicatedItems(dataset);
             //dataset.data.shuffle();
             return dataset;
         }

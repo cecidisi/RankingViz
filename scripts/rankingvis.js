@@ -26,7 +26,7 @@ function RankingVis( domRoot, iWidth, iHeight, visTemplate ){
 	RANKING.Evt = {};
 
 
-    RANKING.Evt.itemClicked = function(i){
+    RANKING.Evt.itemClicked = function(d, i){
         RANKING.Render.selectItem(i, false);
     };
 
@@ -79,7 +79,7 @@ function RankingVis( domRoot, iWidth, iHeight, visTemplate ){
         }
 
         data.forEach(function(d){
-            var index = d.weightedKeywords.getIndexOf(term, 'term');$
+            var index = d.weightedKeywords.getIndexOf(term, 'term');
             if( index != -1 && d.weightedKeywords[index].weightedScore > 0 ){
                 var j = 0;
 
@@ -118,8 +118,8 @@ function RankingVis( domRoot, iWidth, iHeight, visTemplate ){
                 .enter().append("g")
                     .attr("class", "stackedbar")
                     .attr("id", function(d, i){ return "stackedbar-" + i; })
-                    .attr( "transform", function(d) { return "translate(0, " + y(d.title) + ")"; } )
-                    .on('click', function(d, i){ RANKING.Evt.itemClicked(i); })
+                    .attr( "transform", function(d, i) { return "translate(0, " + y(i) + ")"; } )
+                    .on('click', RANKING.Evt.itemClicked)
                     .on('mouseover', RANKING.Evt.itemMouseOvered)
                     .on('mouseout', RANKING.Evt.itemMouseOuted);
 
@@ -294,7 +294,7 @@ function RankingVis( domRoot, iWidth, iHeight, visTemplate ){
 			.rangeRound( [0, width] );
 
 		y = d3.scale.ordinal()
-			.domain(data.map(function(d){ return d.title; }))
+			.domain(data.map(function(d, i){ return i; }))
 			.rangeBands( [0, height], .02);
 
         color = colorScale;
@@ -393,7 +393,7 @@ function RankingVis( domRoot, iWidth, iHeight, visTemplate ){
 		x0 = x.domain([0, RANKING.Internal.topLimit(data, rankingCriteria)]).copy();
 
         y.rangeBands( [0, height], .02);
-		y0 = y.domain(data.map(function(d){ return d.title; })).copy();
+		y0 = y.domain(data.map(function(d, i){ return i; })).copy();
 
         color = colorScale;
 

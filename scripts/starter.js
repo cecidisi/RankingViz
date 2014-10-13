@@ -69,7 +69,7 @@ function getDataWithKeywords(data){
 
     data.forEach(function(d, i){
         var document = (d.description !== "undefined") ? d.title +'. '+ d.description : d.title;
-        document = document.replace(/our/g, 'or')/*.replace(/IT/g, 'I.T.')*/.replace(/[-=]/g, ' ').replace(/[()\"]/g,'');
+        document = document/*.replace(/our/g, 'or').replace(/IT/g, 'I.T.')*/.replace(/[-=]/g, ' ').replace(/[()\"]/g,'');
         var words = lexer.lex(document);
         var taggedWords = tagger.tag(words);
         document = '';
@@ -79,12 +79,7 @@ function getDataWithKeywords(data){
                 case 'NN':
                     document += tw[0] + ' '; break;
                 case 'NNS':
-                    document += tw[0].singularizeNoun() + ' ';
-                    break;
-               /* case 'VBG':
-                    if(gerundLikeNouns.indexOf(tw[0]) > -1)
-                        document += tw[0] + ' ';
-                    break;*/
+                    document += tw[0].singularizeNoun() + ' '; break;
             }
         });
 
@@ -229,7 +224,7 @@ function getTerm(k){
         return k.variations[0].toLowerCase();
 
     for(var i = 0; i < k.variations.length; ++i)
-        if(k.variations[i].match(/ion$/))
+        if(k.variations[i].match(/ion$/) || k.variations[i].match(/ment$/) || k.variations[i].match(/ism$/))
             return k.variations[i].toLowerCase();
 
     var shortestTerm = k.variations[0];

@@ -17,7 +17,7 @@ function POSTagger(){
 
     this.lexicon = Lexicon();
     this.gerundLikeNouns = ['training', 'ceiling', 'computing', 'engineering', 'learning', 'storytelling'];
-    this.singularNounsSEnding = ['autonomous'];
+    this.singularNounsSEnding = ['autonomous', 'crisis', 'colitis', 'cutaneous'];
 
     /**
      * Indicates whether or not this string starts with the specified string.
@@ -55,8 +55,6 @@ function POSTagger(){
         var ret = new Array(words.length);
         for (var i = 0, size = words.length; i < size; i++) {
             var ss = this.lexicon[words[i]];
-            if(words[i] == 'autonomous')
-                console.log(words[i] + ' --- ' + ss);
             // 1/22/2002 mod (from Lisp code): if not in hash, try lower case:
             if (!ss)
                 ss = this.lexicon[words[i].toLowerCase()];

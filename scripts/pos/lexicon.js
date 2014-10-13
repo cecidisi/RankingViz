@@ -23,6 +23,9 @@ return {
     "IT": [
         "NNP"
     ],
+    "colitis": [
+        "NNP"
+    ],
     "equivalent": [
         "JJ"
     ],
@@ -161948,7 +161951,6 @@ return {
         "NNS"
     ],
     "Renaissance": [
-        "NNP",
         "NN"
     ],
     "ultra-high-speed": [
@@ -168027,7 +168029,6 @@ return {
     ],
     "renaissance": [
         "NN",
-        "NNP"
     ],
     "VS": [
         "NNP"
@@ -212914,7 +212915,7 @@ return {
         "JJ"
     ],
     "Circular": [
-        "NNP",
+        "NN",
         "JJ"
     ],
     "spread-eagled": [
@@ -238320,8 +238321,8 @@ return {
         "VB"
     ],
     "circular": [
-        "JJ",
-        "NN"
+        "NN",
+        "JJ"
     ],
     "Widuri": [
         "NNP"
@@ -278757,7 +278758,7 @@ return {
         "JJ"
     ],
     "RENAISSANCE": [
-        "NNP"
+        "NN"
     ],
     "non-dealer": [
         "JJ"

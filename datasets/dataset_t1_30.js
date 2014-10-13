@@ -4,7 +4,7 @@ function getDataset_t1_30() {
     var dataset_t1_30 = {
         "query":"women in workforce",
         "dataset-id" : "T1-30",
-        "description" : "Topic 1- 30 items",
+        "description" : "Topic 1 - 30 items",
         "text": "hdbfusyvdfusvdfosjdpfocjnspdojcmsp;dco",
         "task": "Considering the given text, select the 5 most relevant items from the list",
         "totalResults":"30",

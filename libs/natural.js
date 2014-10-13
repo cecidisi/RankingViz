@@ -646,7 +646,11 @@ var words =
         'instance', 'aspect', 'actor', 'citation', 'strategy', 'overview', 'context', 'cause', 'future', 'retrospective', 'setting', 'outcome', 'measure', 'age', 'number',
         'forecast', 'conclusion', 'motivation', 'exploration', 'literature', 'type', 'variable', 'composition', 'phenomenon', 'mechanism', 'log', 'size', 'area', 'self',
         'sector', 'pattern', 'support', 'group', 'challenge', 'focu', 'period', 'attempt', 'report', 'evaluation', 'mean', 'seek', 'regression', 'quantile', 'panel',
-        'today', 'example', 'novel', 'account', 'investigation', 'book', 'participant', 'goal', 'characteristic', 'case',
+        'today', 'example', 'novel', 'account', 'investigation', 'book', 'participant', 'goal', 'characteristic', 'case', 'introduction', 'scenario', 'implementation',
+        'domain', 'footstep', 'selection', 'generalization', 'feedback', 'framework', 'addition', 'search', 'scale', 'trial', 'issue', 'degree', 'application', 'step',
+        'function', 'module', 'state', 'level', 'concept', 'advantage', 'disadvantage', 'representation', 'problem', 'use', 'person', 'source', 'argument', 'essay',
+        'notion', 'struggle', 'responsibility', 'response', 'principle', 'moment', 'kind', 'sorce', 'guideline', 'recommendation', 'rate', 'cas', 'ratio', 'estimate',
+        'term', 'percent', 'basis', 'amount', 'indicator',
     '__key'
     ];
 
