@@ -4,7 +4,7 @@ function getDataset_t3_60() {
     var dataset = {
         "query":"renaissance italy century europe art italian new history florence",
         "dataset-id" : "T3-60",
-        "description" : "Topic 3 - 60 items",
+        "description" : "Topic 3 - 60 items Re",
         "text": "In all, the Renaissance could be viewed as an attempt by intellectuals to study and improve the secular and worldly, both through the revival of ideas from antiquity, and through novel approaches to thought. Some scholars, such as Rodney Stark, play down the Renaissance in favor of the earlier innovations of the Italian city states in the High Middle Ages, which married responsive government, Christianity and the birth of capitalism. This analysis argues that, whereas the great European states (France and Spain) were absolutist monarchies, and others were under direct Church control, the independent city republics of Italy took over the principles of capitalism invented on monastic estates and set off a vast unprecedented commercial revolution which preceded and financed the Renaissance.",
         "task": "Considering the given text, select the 5 most relevant items from the list",
         "totalResults":"60",

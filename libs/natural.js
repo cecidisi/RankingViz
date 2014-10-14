@@ -650,7 +650,7 @@ var words =
         'domain', 'footstep', 'selection', 'generalization', 'feedback', 'framework', 'addition', 'search', 'scale', 'trial', 'issue', 'degree', 'application', 'step',
         'function', 'module', 'state', 'level', 'concept', 'advantage', 'disadvantage', 'representation', 'problem', 'use', 'person', 'source', 'argument', 'essay',
         'notion', 'struggle', 'responsibility', 'response', 'principle', 'moment', 'kind', 'sorce', 'guideline', 'recommendation', 'rate', 'cas', 'ratio', 'estimate',
-        'term', 'percent', 'basis', 'amount', 'indicator',
+        'term', 'percent', 'basis', 'amount', 'indicator', 'utilization', 'ltd', 'amp',
     '__key'
     ];
 
@@ -4689,6 +4689,8 @@ var NounInflector = function() {
     this.addIrregular("initiative", "initiatives");
     this.addIrregular("cause", "causes");
     this.addIrregular("drive", "drives");
+    this.addIrregular("gas", "gases");
+    this.addIrregular("syndrome", "syndromes");
 
     // see if it is possible to unify the creation of both the singular and
     // plural regexes or maybe even just have one list. with a complete list

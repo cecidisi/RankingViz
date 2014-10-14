@@ -2,7 +2,7 @@
 
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>RankingViz</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
 

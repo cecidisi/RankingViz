@@ -246941,7 +246941,7 @@ return {
         "NN"
     ],
     "goods": [
-        "NNS"
+        "NN"
     ],
     "Bart": [
         "NNP"
@@ -274364,6 +274364,7 @@ return {
         "RB"
     ],
     "mobile": [
+        "NN",
         "JJ"
     ],
     "performances": [

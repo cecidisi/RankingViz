@@ -287,10 +287,9 @@
     padding: .4em 0em;
     z-index: 999;
     background: white;
-    box-shadow: .5em .5em 1em #555, -.5em -.5em 1em #555, .5em -.5em 1em #555, -.5em .5em 1em #555;
+    box-shadow: .5em .5em 1em #555, -.5em .5em 1em #555;
     text-align: center;
 }
-
 
 .eexcess_selected_item {
     display: inline-flex;

@@ -17,7 +17,7 @@ function POSTagger(){
 
     this.lexicon = Lexicon();
     this.gerundLikeNouns = ['training', 'ceiling', 'computing', 'engineering', 'learning', 'storytelling'];
-    this.singularNounsSEnding = ['autonomous', 'crisis', 'colitis', 'cutaneous'];
+    this.singularNounsSEnding = ['autonomous', 'crisis', 'colitis', 'cutaneous', 'gas'];
 
     /**
      * Indicates whether or not this string starts with the specified string.

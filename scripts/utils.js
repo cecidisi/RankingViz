@@ -92,6 +92,26 @@ String.prototype.toBool = function() {
 };
 
 
+String.prototype.clean = function(){
+    var text = this;
+    // Clean strings separated by -. E.g. deve- lopment -> development
+    if(text.match(/\w+-\s/g)){
+        var textArray = [],
+            splitText = text.split(' ');
+        for(var i = 0; i < splitText.length; ++i) {
+            if(splitText[i].match(/\w+-$/)){
+                textArray.push(splitText[i].replace('-', '') + splitText[i+1]);
+                ++i;
+            }
+            else
+                textArray.push(splitText[i]);
+        }
+        text = textArray.join(' ');
+    }
+    return text;
+}
+
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 /**
  * jQuery functions (for DOM elements)

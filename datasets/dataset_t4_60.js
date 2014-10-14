@@ -5,7 +5,7 @@ function getDataset_t4_60() {
         {
            "query":"augmented reality",
            "dataset-id":"T4-60",
-           "description":"Topic 4 - 60 items",
+           "description":"Topic 4 - 60 items AR",
            "text":"Augmented reality (AR) is a live direct or indirect view of a physical, real-world environment whose elements are augmented (or supplemented) by computer-generated sensory input such as sound, video, graphics or GPS data. It is related to a more general concept called mediated reality, in which a view of reality is modified (possibly even diminished rather than augmented) by a computer. As a result, the technology functions by enhancing one&rsquo;s current perception of reality. By contrast, virtual reality replaces the real world with a simulated one. Augmentation is conventionally in real-time and in semantic context with environmental elements, such as sports scores on TV during a match. With the help of advanced AR technology (e.g. adding computer vision and object recognition) the information about the surrounding real world of the user becomes interactive and digitally manipulable. Artificial information about the environment and its objects can be overlaid on the real world.",
            "task":"Considering the given text, select the 5 most relevant items from the list",
            "totalResults":"60",

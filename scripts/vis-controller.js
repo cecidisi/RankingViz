@@ -92,6 +92,7 @@
 	var indicesToHighlight = [];		// array containing the indices of <li> elements to be highlighted in content list
     var rankingCriteria = 'overall_score';
     var startTime;
+    var showRanking;
 
 	// Chart objects
 	var  rankingVis;
@@ -1208,28 +1209,35 @@
 	var VISPANEL = {};
 
 	VISPANEL.drawRanking = function(isRankingChanged){
-        rankingVis.draw(dataRanking, data, weightColorScale, rankingCriteria, isRankingChanged);
-        $(visPanelCanvas).scrollTo('top');
+        if(showRanking){
+            rankingVis.draw(dataRanking, data, weightColorScale, rankingCriteria, isRankingChanged);
+            $(visPanelCanvas).scrollTo('top');
+        }
 	};
 
     VISPANEL.resetRanking = function(){
-        rankingVis.reset();
+        if(showRanking)
+            rankingVis.reset();
     };
 
     VISPANEL.selectItemInRanking = function(actualIndex){
-        rankingVis.selectItem(actualIndex);
+        if(showRanking)
+            rankingVis.selectItem(actualIndex);
     };
 
     VISPANEL.hoverItem = function(index){
-        rankingVis.hoverItem(index);
+        if(showRanking)
+            rankingVis.hoverItem(index);
     };
 
     VISPANEL.unhoverItem = function(index){
-        rankingVis.unhoverItem(index);
+        if(showRanking)
+            rankingVis.unhoverItem(index);
     };
 
     VISPANEL.resizeRanking = function(){
-        rankingVis.resize();
+        if(showRanking)
+            rankingVis.resize();
     };
 
 
@@ -1335,7 +1343,6 @@
         dataset = JSON.parse($("#dataset").text());
         console.log(dataset);
 
-        rankingVis = new RankingVis(root, width, height, self);
         data = dataset['data'];													// contains the data to be visualized
         query = dataset['query'];													// string representing the query that triggered the current recommendations
 		keywords = dataset['keywords'];
@@ -1351,14 +1358,25 @@
         getStaticElementsReady();
 
         if(dataset['tool-aided'] == 'yes'){
+            rankingVis = new RankingVis(root, width, height, self);
             // Initialize template's elements
             TAGCLOUD.clearTagbox();
             TAGCLOUD.buildTagCloud();
             VISPANEL.resetRanking();
+            showRanking = true;
         }
         else{
-            $("#eexcess_vis").css('display', 'none');
-            $(contentPanel).css('float', 'none');
+            $('#eexcess_main_panel').css('justifyContent', 'center');
+            $('#eexcess_controls_left_panel').css('display', 'none');
+            $('#eexcess_vis_panel').css('width', '30%');
+            $('#eexcess_vis_panel_controls').css('display', 'none');
+            $('#eexcess_canvas').css('display', 'none');
+            $('#eexcess_vis_panel_canvas').css('height', '100%');
+            $(contentPanel).css('float', 'right').css('width', '100%');
+            $('#eexcess_document_panel').css('float', '').css('width', '23%').css('marginLeft', '.5em');
+            $('#eexcess_selected_items_section').css('boxShadow', '.5em .5em 1em #aaa, -.5em .5em 1em #aaa, .5em .5em 1em #aaa');
+            $('#eexcess_topic_text_section').css('boxShadow', '.5em .5em 1em #aaa, -.5em .5em 1em #aaa, .5em .5em 1em #aaa');
+            showRanking = false;
         }
 
         startTime = $.now();

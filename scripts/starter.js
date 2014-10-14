@@ -57,7 +57,7 @@ function startVisualization(){
 
     dataset['tool-aided'] = $("#select-tool-condition").val() || 'yes';
     dataset["data"] = getDataWithKeywords(dataset.data);
-    dataset["keywords"] = getGlobalKeywords2(dataset.data);
+    dataset["keywords"] = getGlobalKeywords(dataset.data);
 
     $("input[name='dataset']").val(JSON.stringify(dataset));
     $("form").submit();
@@ -68,6 +68,9 @@ function startVisualization(){
 function getDataWithKeywords(data){
 
     data.forEach(function(d, i){
+
+        d.title = d.title.clean();
+        d.description = d.description.clean();
         var document = (d.description !== "undefined") ? d.title +'. '+ d.description : d.title;
         document = document/*.replace(/our/g, 'or').replace(/IT/g, 'I.T.')*/.replace(/[-=]/g, ' ').replace(/[()\"]/g,'');
         var words = lexer.lex(document);
@@ -77,6 +80,7 @@ function getDataWithKeywords(data){
         taggedWords.forEach(function(tw){
             switch(tw[1]){
                 case 'NN':
+                case 'NNP':
                     document += tw[0] + ' '; break;
                 case 'NNS':
                     document += tw[0].singularizeNoun() + ' '; break;
@@ -95,6 +99,9 @@ function getDataWithKeywords(data){
                 d.keywords.push({ 'term': item.term, 'score': item.tfidf });
                // allKeywords.push(item.term);
                 scores += item.tfidf;
+                if(i==28){
+                    console.log(item.term);
+                }
             }
         });
 
@@ -113,7 +120,8 @@ function getDataWithKeywords(data){
 
 
 
-function getGlobalKeywords2(data) {
+
+function getGlobalKeywords(data) {
     var sortedKeywords = [];
     var minRepetitions = parseInt(data.length * 0.05);
 
@@ -123,10 +131,18 @@ function getGlobalKeywords2(data) {
             sortedKeywords.splice(findIndexToInsert(sortedKeywords, k), 0, k);
     });
 
-    allTokens.forEach(function(token){
+    var words = lexer.lex(allTokens.join(' '));
+    var taggedTokens = tagger.tag(words);
+
+    taggedTokens.forEach(function(t){
+        var token = (t[1] != 'NNS') ? t[0] : t[0].singularizeNoun();
         var kIndex = sortedKeywords.getIndexOf(token.stem(), 'stem');
-        if(kIndex >= 0 && sortedKeywords[kIndex].variations.indexOf(token) < 0 && stopWords.indexOf(token.toLowerCase()) == -1){
-            sortedKeywords[kIndex].variations.push(token);
+        if(kIndex >= 0 && stopWords.indexOf(token.toLowerCase()) == -1){
+            var vIndex = sortedKeywords[kIndex].variations.getIndexOf(token, 'term');
+            if(vIndex < 0)
+                sortedKeywords[kIndex].variations.push({ 'term': token, 'repeated': 1 });
+            else
+                sortedKeywords[kIndex].variations[vIndex].repeated++;
         }
     });
 
@@ -142,67 +158,6 @@ function getGlobalKeywords2(data) {
 
 
 
-function getGlobalKeywords(data) {
-
-    var keywords = [];
-
-    tfidf = new natural.TfIdf();
-    tfidf.addDocument(allKeywords.join(' '));
-
-    var scoreSum = 0;
-    tfidf.listTerms(0).forEach(function(item){
-        keywords.push({ 'term': '', 'stem': item.term, 'score': item.tfidf, 'repeated': 0, 'variations': [] });
-        scoreSum += item.tfidf;
-    });
-
-    var scoreMean = scoreSum / keywords.length;
-    var cutIndex = 0;
-
-   // console.log('****************************************************');
-    //console.log('keywords length = ' + keywords.length);
-
-    while(keywords[cutIndex].score >= scoreMean)
-        cutIndex++;
-    keywords.splice(cutIndex, keywords.length - cutIndex);
-
-   // console.log('keywords length after 1st cut = ' + keywords.length);
-
-    keywords.forEach(function(k){
-        data.forEach(function(d){
-            if(d.keywords.getIndexOf(k.stem, 'term') > -1)
-                k.repeated++;
-        });
-    });
-
-
-    var sortedKeywords = [];
-    var minRepetitions = parseInt(data.length * 0.08);
-
-    keywords.forEach(function(k){
-        if(k.repeated >= minRepetitions)
-            sortedKeywords.splice(findIndexToInsert(sortedKeywords, k), 0, k);
-    });
-
-  //  console.log('keywords length after 2nd cut = ' + sortedKeywords.length);
-
-    allTokens.forEach(function(token){
-        var kIndex = sortedKeywords.getIndexOf(token.stem(), 'stem');
-        if(kIndex >= 0 && sortedKeywords[kIndex].variations.indexOf(token) < 0 ){
-            sortedKeywords[kIndex].variations.push(token);
-        }
-    });
-
-    sortedKeywords.forEach(function(k){
-        k.term = getTerm(k);
-    });
-  //  console.log('sorted keywords -- ' + sortedKeywords.length);
-  //  console.log(JSON.stringify(sortedKeywords));
-
-    return sortedKeywords
-}
-
-
-
 function findIndexToInsert(kArray, keyword){
     var i = 0;
     while(i < kArray.length && keyword.repeated < kArray[i].repeated)
@@ -214,23 +169,30 @@ function findIndexToInsert(kArray, keyword){
 
 function getTerm(k){
     if(k.variations.length == 1)
-        return k.variations[0];
+        return k.variations[0].term;
 
-    var stemIndex = k.variations.indexOf(k.stem);
-    if(stemIndex > -1)
-        return k.variations[stemIndex];
+    if(k.variations.length == 2 && k.variations[0].term.toLowerCase() === k.variations[0].term.toLowerCase())
+        return k.variations[0].term.toLowerCase();
 
-    if(k.variations.length == 2 && k.variations[0].toLowerCase() === k.variations[0].toLowerCase())
-        return k.variations[0].toLowerCase();
+    var repetitions = 0;
+    for(var i = 0; i < k.variations.length; ++i)
+        repetitions += k.variations[i].repeated;
+    for(var i = 0; i < k.variations.length; ++i)
+        if(k.variations[i].repeated >= parseInt(repetitions * 0.75))
+            return k.variations[i].term;
 
     for(var i = 0; i < k.variations.length; ++i)
-        if(k.variations[i].match(/ion$/) || k.variations[i].match(/ment$/) || k.variations[i].match(/ism$/))
-            return k.variations[i].toLowerCase();
+        if(k.variations[i].term.match(/ion$/) || k.variations[i].term.match(/ment$/) || k.variations[i].term.match(/ism$/))
+            return k.variations[i].term.toLowerCase();
 
-    var shortestTerm = k.variations[0];
+    var stemIndex = k.variations.getIndexOf(k.stem, 'term');
+    if(stemIndex > -1)
+        return k.variations[stemIndex].term;
+
+    var shortestTerm = k.variations[0].term;
     for(var i = 1; i < k.variations.length; i++){
-        if(k.variations[i].length < shortestTerm.length)
-            shortestTerm = k.variations[i];
+        if(k.variations[i].term.length < shortestTerm.length)
+            shortestTerm = k.variations[i].term;
     }
     return shortestTerm.toLowerCase();
 }
