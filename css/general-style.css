@@ -135,7 +135,7 @@ select {
 
 @media (min-width: 1200px) {
     /*body { font-size: 100%; }*/
-    body { font-size: .8em; }
+    body { font-size: .75em; }
 }
 
 
@@ -143,3 +143,5 @@ select {
     /*body { font-size: 120%; }*/
     body { font-size: .9em; }
 }
+
+

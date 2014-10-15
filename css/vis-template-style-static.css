@@ -959,7 +959,7 @@ VIS PANEL (center of screen)
     margin: .5em 1em;
     font-size: 1.1em;
     line-height: 1.3em;
-    text-align: justify;
+    text-align: left;
     color: #444;
 }
 

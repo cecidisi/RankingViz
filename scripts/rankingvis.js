@@ -1,5 +1,5 @@
 
-function RankingVis( domRoot, iWidth, iHeight, visTemplate ){
+function RankingVis(domRoot, iWidth, iHeight, visTemplate){
 
 	var RANKING = {};
 
@@ -601,7 +601,7 @@ function RankingVis( domRoot, iWidth, iHeight, visTemplate ){
 
         if( itemIndex != selectedIndex ){       // select
             selectedIndex = itemIndex;
-            svg.selectAll('.stackedbar').style('opacity', function(d, i){ if(i == itemIndex) return 1; return 0.2; });
+            svg.selectAll('.stackedbar').style('opacity', function(d, i){ if(i == itemIndex) return 1; return 0.3; });
         }
         else{                                   // deselect
             selectedIndex = 'undefined';

@@ -1131,7 +1131,7 @@
 	 * */
 	LIST.highlightListItems = function(index){
 		if(typeof index !== 'undefined'){
-            $(allListItems).css("opacity", "0.2");
+            $(allListItems).css("opacity", "0.3");
             $(listItem + "" + index).css("opacity", "1");
         }
 		else{
