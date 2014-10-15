@@ -92,6 +92,10 @@ String.prototype.toBool = function() {
 };
 
 
+String.prototype.isAllUpperCase = function() {
+    return this.valueOf().toUpperCase() === this.valueOf();
+};
+
 String.prototype.clean = function(){
     var text = this;
     // Clean strings separated by -. E.g. deve- lopment -> development

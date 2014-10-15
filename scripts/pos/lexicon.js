@@ -21,10 +21,13 @@ return {
         "-"
     ],
     "IT": [
-        "NNP"
+        "NN"
+    ],
+    "ICT": [
+        "NN"
     ],
     "colitis": [
-        "NNP"
+        "NN"
     ],
     "equivalent": [
         "JJ"
@@ -171402,7 +171405,7 @@ return {
     "shareholder\\": [
         "JJ"
     ],
-    "America.": [
+    "America": [
         "NNP"
     ],
     "Charging": [
@@ -279856,9 +279859,9 @@ return {
         "NNP"
     ],
     "Ideal": [
+        "NN",
         "NNP",
-        "JJ",
-        "NN"
+        "JJ"
     ],
     "aku": [
         "FW"
@@ -291992,9 +291995,6 @@ return {
     "barges": [
         "NNS",
         "VBZ"
-    ],
-    "IT": [
-        "PRP"
     ],
     "muffled": [
         "JJ",

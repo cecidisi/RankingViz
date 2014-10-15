@@ -72,18 +72,28 @@ function getDataWithKeywords(data){
         d.title = d.title.clean();
         d.description = d.description.clean();
         var document = (d.description !== "undefined") ? d.title +'. '+ d.description : d.title;
-        document = document/*.replace(/our/g, 'or').replace(/IT/g, 'I.T.')*/.replace(/[-=]/g, ' ').replace(/[()\"]/g,'');
+        document = document.replace(/[-=’‘\']/g, ' ').replace(/[()\"“”]/g,'');
         var words = lexer.lex(document);
         var taggedWords = tagger.tag(words);
         document = '';
 
         taggedWords.forEach(function(tw){
+            /*if(tw[0].match(/our$/) && tw[0].length > 4)
+                tw[0] = tw[0].replace('our', 'or');
+            */
+            if(tw[0].contains('IT'))
+                console.log(tw[0] + ' --- ' + tw[1]);
+
             switch(tw[1]){
-                case 'NN':
-                case 'NNP':
+                case 'NN':          // singular noun
+                    tw[0] = (tw[0].isAllUpperCase()) ? tw[0] : tw[0].toLowerCase();
                     document += tw[0] + ' '; break;
-                case 'NNS':
-                    document += tw[0].singularizeNoun() + ' '; break;
+                case 'NNS':         // plural noun
+                    document += tw[0].toLowerCase().singularizeNoun() + ' ';
+                    break;
+                case 'NNP':         // proper noun
+                    tw[0] = (tagger.wordInLexicon(tw[0].toLowerCase())) ? tw[0].toLowerCase().singularizeNoun() : tw[0];
+                    document += tw[0] + ' '; break;
             }
         });
 
@@ -97,22 +107,18 @@ function getDataWithKeywords(data){
         tfidf.listTerms(i).forEach(function(item){
             if(isNaN(item.term) && parseFloat(item.tfidf) > 0 ){
                 d.keywords.push({ 'term': item.term, 'score': item.tfidf });
-               // allKeywords.push(item.term);
                 scores += item.tfidf;
-                if(i==28){
-                    console.log(item.term);
-                }
             }
         });
 
         var mean = scores / d.keywords.length;
-        for(var j = 0; j < d.keywords.length; ++j){
-            var kIndex = keywordsArray.getIndexOf(d.keywords[j].term, 'stem')
-            if(d.keywords[j].score >= mean && kIndex == -1)
-                keywordsArray.push({ 'stem': d.keywords[j].term, 'term': '', 'repeated': 1, 'variations': [] });
+        d.keywords.forEach(function(k){
+            var kIndex = keywordsArray.getIndexOf(k.term, 'stem')
+            if(k.score >= mean && kIndex == -1)
+                keywordsArray.push({ 'stem': k.term, 'term': '', 'repeated': 1, 'variations': [] });
             else if(kIndex > -1)
                 keywordsArray[kIndex].repeated++;
-        }
+        });
     });
 
     return data;
@@ -125,7 +131,6 @@ function getGlobalKeywords(data) {
     var sortedKeywords = [];
     var minRepetitions = parseInt(data.length * 0.05);
 
-    //console.log('keywords array -- ' + keywordsArray.length);
     keywordsArray.forEach(function(k){
         if(k.repeated >= minRepetitions)
             sortedKeywords.splice(findIndexToInsert(sortedKeywords, k), 0, k);
@@ -137,10 +142,14 @@ function getGlobalKeywords(data) {
     taggedTokens.forEach(function(t){
         var token = (t[1] != 'NNS') ? t[0] : t[0].singularizeNoun();
         var kIndex = sortedKeywords.getIndexOf(token.stem(), 'stem');
+
         if(kIndex >= 0 && stopWords.indexOf(token.toLowerCase()) == -1){
+
             var vIndex = sortedKeywords[kIndex].variations.getIndexOf(token, 'term');
+
             if(vIndex < 0)
                 sortedKeywords[kIndex].variations.push({ 'term': token, 'repeated': 1 });
+
             else
                 sortedKeywords[kIndex].variations[vIndex].repeated++;
         }
@@ -168,6 +177,7 @@ function findIndexToInsert(kArray, keyword){
 
 
 function getTerm(k){
+
     if(k.variations.length == 1)
         return k.variations[0].term;
 

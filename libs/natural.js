@@ -643,7 +643,7 @@ var words =
         'rather', 'hypothesis', 'part', 'deal', 'way', 'story', 'process', 'return', 'phase', 'finding', 'purpose', 'position', 'explanation', 'evidence', 'hand', 'half',
         'model', 'design', 'limitation', 'implication', 'originality', 'value', 'reason', 'result', 'theory', 'effect', 'publication', 'abstract', 'fact', 'factor',
         'alternative', 'within', 'view', 'insight', 'range', 'point', 'assumption', 'field', 'majority', 'minority', 'statistic', 'discussion', 'question', 'address',
-        'instance', 'aspect', 'actor', 'citation', 'strategy', 'overview', 'context', 'cause', 'future', 'retrospective', 'setting', 'outcome', 'measure', 'age', 'number',
+        'instance', 'aspect', 'actor', 'citation', 'strategy', 'overview', 'cause', 'future', 'retrospective', 'setting', 'outcome', 'measure', 'age', 'number',
         'forecast', 'conclusion', 'motivation', 'exploration', 'literature', 'type', 'variable', 'composition', 'phenomenon', 'mechanism', 'log', 'size', 'area', 'self',
         'sector', 'pattern', 'support', 'group', 'challenge', 'focu', 'period', 'attempt', 'report', 'evaluation', 'mean', 'seek', 'regression', 'quantile', 'panel',
         'today', 'example', 'novel', 'account', 'investigation', 'book', 'participant', 'goal', 'characteristic', 'case', 'introduction', 'scenario', 'implementation',
@@ -5037,7 +5037,11 @@ function buildDocument(text, key) {
     var stopOut;
 
     if(typeof text === 'string') {
-        text = tokenizer.tokenize(text.toLowerCase());
+        text = tokenizer.tokenize(text/*.toLowerCase()*/);
+        text.forEach(function(t){
+            t = (!t.isAllUpperCase()) ? t.toLowerCase() : t;
+        });
+
         stopOut = true;
     } else if(!_.isArray(text)) {
         return text;

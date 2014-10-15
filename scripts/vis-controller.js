@@ -1278,14 +1278,17 @@
 
 
         getStyledWord : function(word, keywordsInBox){
-            var wordStem = word.replace(/our$/g, 'or').stem();
-            if(keywordsInBox.getIndexOf(wordStem, "stem") > -1)
-                return "<strong style=\"color:" + weightColorScale(wordStem) + "\">" + word + "</strong>";
+            var trickyWords = ['it', 'is', 'us'];
+            var wordStem = word.replace(/our$/, 'or').stem();
 
-            wordStem = word.singularizeNoun().stem();
-            if(keywordsInBox.getIndexOf(wordStem, "stem") > -1)
-                return "<strong style=\"color:" + weightColorScale(wordStem) + "\">" + word + "</strong>";
+            if(trickyWords.indexOf(wordStem) == -1 || word.isAllUpperCase()){
+                if(keywordsInBox.getIndexOf(wordStem, "stem") > -1)
+                    return "<strong style=\"color:" + weightColorScale(wordStem) + "\">" + word + "</strong>";
 
+                wordStem = word.singularizeNoun().stem();
+                if(keywordsInBox.getIndexOf(wordStem, "stem") > -1)
+                    return "<strong style=\"color:" + weightColorScale(wordStem) + "\">" + word + "</strong>";
+            }
             return word;
         }
 

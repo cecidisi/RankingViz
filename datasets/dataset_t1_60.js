@@ -793,7 +793,7 @@ function getDataset_t1_60() {
                   },
                   {
                     "id": "877b8b5a-3290-3718-8c86-bfcb46176aff",
-                    "title": "Task Characteristics as a Bridge Between Macro- and Microlevel Research on Salary Inequality Between Men and Women.",
+                    "title": "Task Characteristics as a Bridge Between Macro and Microlevel Research on Salary Inequality Between Men and Women.",
                     "uri": "http://www.mendeley.com/catalog/task-characteristics-bridge-between-macro-microlevel-research-salary-inequality-between-men-women/",
                     "eexcessURI": "http://www.mendeley.com/catalog/task-characteristics-bridge-between-macro-microlevel-research-salary-inequality-between-men-women/",
                     "creator": "E. R. Auster",

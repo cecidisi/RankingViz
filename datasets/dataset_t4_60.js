@@ -336,19 +336,6 @@ function getDataset_t4_60() {
                  }
               },
               {
-                 "id":"c345bb5d-1dde-3581-b9af-ec30ddf9d8be",
-                 "title":"Object-oriented video: interaction with real-world objects through live video",
-                 "uri":"http://www.mendeley.com/catalog/objectoriented-video-interaction-realworld-objects-through-live-video/",
-                 "eexcessURI":"http://www.mendeley.com/catalog/objectoriented-video-interaction-realworld-objects-through-live-video/",
-                 "creator":"Masayuki Tani, Kimiya Yamaashi, Koichiro Tanikoshi",
-                 "description":"Graphics and live video are widely employed in remotely-controlled systems like industrial plants. Interaction with live video is, however, more limited compared with graphics as users cannot interact with objects being observed in the former. Object-Oriented Video techniques are described allowing object-oriented interactions, including the use of real-world objects in live video as reference cues, direct manipulation of them, and graphic overlays based on them, which enable users to work in a real spatial context conveyed by the video. Users thereby understand intuitively what they are operating and see the result of their operation.",
-                 "collectionName":"Proc.of the SIGCHI conference on human factors in computing system",
-                 "facets":{
-                    "provider":"mendeley",
-                    "year":"1992"
-                 }
-              },
-              {
                  "id":"326b56ed-02e4-3510-a6c0-d3f0dcd8cae0",
                  "title":"Annotating real-world objects using augmented reality",
                  "uri":"http://www.mendeley.com/catalog/annotating-realworld-objects-using-augmented-reality-12/",
@@ -388,19 +375,6 @@ function getDataset_t4_60() {
                  }
               },
               {
-                 "id":"7f3ea3d0-9a30-3ccf-bfff-72edc499cc01",
-                 "title":"Real-world data is dirty: Data cleansing and the merge/purge problem",
-                 "uri":"http://www.mendeley.com/catalog/realworld-data-dirty-data-cleansing-mergepurge-problem/",
-                 "eexcessURI":"http://www.mendeley.com/catalog/realworld-data-dirty-data-cleansing-mergepurge-problem/",
-                 "creator":"Data Mining, Knowledge Discovery, M A Hern&aacute;ndez, S J Stolfo",
-                 "description":"The problem of merging multiple databases of information about common entities is frequently encountered in KDD and decision support applications in large commercial and government organizations. The problem we study is often called the Merge/Purge problem and is difficult to solve both in scale and accuracy. Large repositories of data typically have numerous duplicate information entries about the same entities that are difficult to cull together without an intelligent \"equational theory\" that identifies equivalent items by a complex, domain-dependent matching process. We have developed a system for accomplishing this Data Cleansing task and demonstrate its use for cleansing lists of names of potential customers in a direct marketing-type application. Our results for statistically generated data are shown to be accurate and effective when processing the data multiple times using different keys for sorting on each successive pass. Combing results of individual passes using transitive closure over the independent results, produces far more accurate results at lower cost. The system provides a rule programming module that is easy to program and quite good at finding duplicates especially in an environment with massive amounts of data. This paper details improvements in our system, and reports on the successful implementation for a real-world database that conclusively validates our results previously achieved for statistically generated data. &copy; 1998 Kluwer Academic Publishers,.",
-                 "collectionName":"Data Mining and Knowledge Discovery",
-                 "facets":{
-                    "provider":"mendeley",
-                    "year":"1998"
-                 }
-              },
-              {
                  "id":"17e9dbf3-c719-3e16-a048-277ecd009cee",
                  "title":"Modeling of sensor data and context for the real world internet",
                  "uri":"http://www.mendeley.com/catalog/modeling-sensor-data-context-real-world-internet/",
@@ -411,32 +385,6 @@ function getDataset_t4_60() {
                  "facets":{
                     "provider":"mendeley",
                     "year":"2010"
-                 }
-              },
-              {
-                 "id":"58238a4f-e4e1-39f5-ba19-871fb87374af",
-                 "title":"Real world teleconferencing",
-                 "uri":"http://www.mendeley.com/catalog/real-world-teleconferencing/",
-                 "eexcessURI":"http://www.mendeley.com/catalog/real-world-teleconferencing/",
-                 "creator":"Mark Billinghurst, Adrian Cheok, Simon Prince, Hirokazu Kato",
-                 "description":" We've been exploring how augmented reality (AR) technology can create fundamentally new forms of remote collaboration for mobile devices. AR involves the overlay of virtual graphics and audio on reality. Typically, the user views the world through a handheld or head-mounted display (HMD) that's either see-through or overlays graphics on video of the surrounding environment. Unlike other computer interfaces that draw users away from the real world and onto the screen, AR interfaces enhance the real world experience. For example, with this technology doctors could see virtual ultrasound information superimposed on a patient's body.",
-                 "collectionName":"IEEE Computer Graphics and Applications",
-                 "facets":{
-                    "provider":"mendeley",
-                    "year":"2002"
-                 }
-              },
-              {
-                 "id":"1f5733d7-aba0-3457-80ed-5aae780a1d33",
-                 "title":"Computer-Augmented Environments: Back to the Real World",
-                 "uri":"http://www.mendeley.com/catalog/computeraugmented-environments-back-real-world/",
-                 "eexcessURI":"http://www.mendeley.com/catalog/computeraugmented-environments-back-real-world/",
-                 "creator":"Pierre Wellner, Wendy Mackay, Rich Gold",
-                 "description":"Introduction to a special issue on computer augmented environments; articles are dominated by virtual environment; computer augmented environments merge electronic systems into the physical world instead of attempting to replace them.",
-                 "collectionName":"Communications of the ACM",
-                 "facets":{
-                    "provider":"mendeley",
-                    "year":"1993"
                  }
               },
               {
@@ -476,45 +424,6 @@ function getDataset_t4_60() {
                  "facets":{
                     "provider":"mendeley",
                     "year":"2012"
-                 }
-              },
-              {
-                 "id":"f35781f5-c4ee-3dab-901e-301e7f038aad",
-                 "title":"The Recognition Concept of Species",
-                 "uri":"http://www.mendeley.com/catalog/recognition-concept-species/",
-                 "eexcessURI":"http://www.mendeley.com/catalog/recognition-concept-species/",
-                 "creator":"H E H Paterson",
-                 "description":"Wallace's view of species has prevailed to this day in a modified form as the so-called Biological Species Concept or Isolation Concept of Species. This concept suffers from serious problems, since it cannot be made to accomodate the only Class I (empirically supported) Model of Speciation, Geographic or Allopatric Speciation. Problems arise and are outlined within the Class II Model of Speciation proposed to accomodate the Isolation Concept: Speciation by the reinforcement of Isolating Mechanisms. All these difficulties fall away if a relational concept of species is abandoned. The Recognition Concept of Species is outlined in some detail for the first time and the mode of allopatric speciation it determines is discussed. Its wide significance for various fields of population biology is outlined.",
-                 "collectionName":"Speciation and its consequences",
-                 "facets":{
-                    "provider":"mendeley",
-                    "year":"1985"
-                 }
-              },
-              {
-                 "id":"63796c20-0ce8-3eaa-8c4e-1054a87db8ff",
-                 "title":"Mediated Reality with implementations for everyday life",
-                 "uri":"http://www.mendeley.com/catalog/mediated-reality-implementations-everyday-life/",
-                 "eexcessURI":"http://www.mendeley.com/catalog/mediated-reality-implementations-everyday-life/",
-                 "creator":"Steve Mann",
-                 "description":"Mixed Reality exists in many forms along a continuum from Augmented Reality (reality enhanced by graphics, such as Sutherland's work from more than 30 years ago) to more recent efforts at Augmented Virtuality (graphics enhanced by reality, graphics enhanced by video, etc.). Mixed Reality provides numerous ways to add together (mix) various proportions of real and virtual worlds. However, Mediated Reality is an even older tradition, introduced by Stratton more than 100 years ago. Stratton presented two important ideas:  1. the idea of constructing special eyeglasses to modify how he saw the world; and  2. the ecologically motivated approach to conducting his experiments within the domain of his own everyday personal life.  Stratton's seminal work has inspired a wide variety of devices that can be used to augment, deliberately diminish, or otherwise alter human visual perception. The first half of this paper presents some of the problems with the existing taxonomies (e.g. mixed reality) and distinctions (e.g. optical versus video see-through), that arise when we consider reality-modifying devices. The second half of the paper presents various new designs for reality-modifying devices, especially those used to modify only a portion of the visual reality stream, suitable for use in everyday life. These devices have the appearance of ordinary bifocal eyeglasses and reading glasses. Finally, a new kind of reality mediator that uses the eyeglass frames themselves as the mediating element is presented. This design makes it impossible for those other than the wearer, even upon very close inspection, to determine whether or not the eyeglasses contain a reality mediator. Such designs make possible livelong experiments and mediated reality experiences in personal everyday life, without the social stigma associated with obvious reality--modifying devices.  ",
-                 "collectionName":"Presence: Teleoperators and Virtual Environments",
-                 "facets":{
-                    "provider":"mendeley",
-                    "year":"2002"
-                 }
-              },
-              {
-                 "id":"bd13ba8c-9efb-39cb-aa1e-9162b4734a32",
-                 "title":"Integrating haptics with augmented reality in a femoral palpation and needle insertion training simulation",
-                 "uri":"http://www.mendeley.com/catalog/integrating-haptics-augmented-reality-femoral-palpation-needle-insertion-training-simulation/",
-                 "eexcessURI":"http://www.mendeley.com/catalog/integrating-haptics-augmented-reality-femoral-palpation-needle-insertion-training-simulation/",
-                 "creator":"Timothy R. Coles, Nigel W. John, Derek Gould, Darwin G. Caldwell",
-                 "description":"This paper presents a virtual environment for training femoral palpation and needle insertion, the opening steps of many interventional radiology procedures. A novel augmented reality simulation called PalpSim has been developed that allows the trainees to feel a virtual patient using their own hands. The palpation step requires both force and tactile feedback. For the palpation haptics effect, two off-the-shelf force feedback devices have been linked together to provide a hybrid device that gives five degrees of force feedback. This is combined with a custom built hydraulic interface to provide a pulse like tactile effect. The needle interface is based on a modified PHANTOM Omni end effector that allows a real interventional radiology needle to be mounted and used during simulation. While using the virtual environment, the haptics hardware is masked from view using chroma-key techniques. The trainee sees a computer generated patient and needle, and interacts using their own hands. This simulation provides a high level of face validity and is one of the first medical simulation devices to integrate haptics with augmented reality.",
-                 "collectionName":"IEEE Transactions on Haptics",
-                 "facets":{
-                    "provider":"mendeley",
-                    "year":"2011"
                  }
               },
               {
@@ -580,19 +489,6 @@ function getDataset_t4_60() {
                  "facets":{
                     "provider":"mendeley",
                     "year":"2011"
-                 }
-              },
-              {
-                 "id":"7b91bedd-915c-35a6-bfef-2b842ccfd010",
-                 "title":"Mediated learning experience and concept maps: a pedagogical tool for achieving meaningful learning in medical physiology students.",
-                 "uri":"http://www.mendeley.com/catalog/mediated-learning-experience-concept-maps-pedagogical-tool-achieving-meaningful-learning-medical-phy-2/",
-                 "eexcessURI":"http://www.mendeley.com/catalog/mediated-learning-experience-concept-maps-pedagogical-tool-achieving-meaningful-learning-medical-phy-2/",
-                 "creator":"Hilda Leonor Gonz&aacute;lez, Alberto Pardo Palencia, Luis Alfredo Uma&ntilde;a, Leonor Galindo, Luz Adriana Villafrade M",
-                 "description":"Even though comprehension of human physiology is crucial in the clinical setting, students frequently learn part of this subject using rote memory and then are unable to transfer knowledge to other contexts or to solve clinical problems. This study evaluated the impact of articulating the concept map strategy with the mediated learning experience on meaningful learning during the cardiovascular module of a medical physiology course at Universidad Aut&oacute;noma de Bucaramanga. This research was based on the ideas of David Ausubel (meaningful learning), Joseph Novak (concept maps), and Reuven Feuerstein (mediated learning experience). Students were randomly allocated to either an intervention group (mediated learning experience articulated with concept mapping) or a control group (traditional methodology). The intervention group constructed concept maps related to cardiovascular physiology and used them to solve problems related to this subject. The control group attended traditional discussion sessions and problem-solving sessions. All students were evaluated with two types of exams: problem-solving and multiple-choice exams. The intervention group performed significantly better on the problem-solving exams, but the difference was not significant in the multiple-choice exam. It was concluded that intervention promoted meaningful learning that allowed the students to transfer this knowledge to solve problems. The implemented strategy had a greater impact on the students who came into the study with the lowest cognitive competence, possibly because they were empowered by the intervention.",
-                 "collectionName":"Advances in physiology education",
-                 "facets":{
-                    "provider":"mendeley",
-                    "year":"2008"
                  }
               },
               {
@@ -892,19 +788,6 @@ function getDataset_t4_60() {
                  "facets":{
                     "provider":"mendeley",
                     "year":"2013"
-                 }
-              },
-              {
-                 "id":"8789cfec-cfcf-3b8b-a81b-4786300a29b0",
-                 "title":"Intel's Computer Vision Library: applications in calibration, stereo segmentation, tracking, gesture, face and object recognition",
-                 "uri":"http://www.mendeley.com/research/intels-computer-vision-library-applications-calibrationstereo-segmentation-tracking-gesture-face-obj/",
-                 "eexcessURI":"http://www.mendeley.com/research/intels-computer-vision-library-applications-calibrationstereo-segmentation-tracking-gesture-face-obj/",
-                 "creator":"G.R. Bradski, V. Pisarevsky",
-                 "description":"Intel's Microcomputer Research Lab has been developing a highly optimized Computer Vision Library (CVLib) that automatically detects processor type and loads the appropriate MMX&lt;sup&gt;TM&lt;/sup&gt; technology assembly tuned module for that processor. MMX optimized functions are from 2 to 8 times faster than optimized C functions. We will be demonstrating various algorithms supported by CVLib and handing out CDs containing the library",
-                 "collectionName":"Proceedings IEEE Conference on Computer Vision and Pattern Recognition. CVPR 2000 (Cat. No.PR00662)",
-                 "facets":{
-                    "provider":"mendeley",
-                    "year":"2000"
                  }
               }
            ]
