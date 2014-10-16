@@ -1,16 +1,13 @@
 function getDataset_t2_60() {
 
-
-    var dataset_t2_60 = {
+    return {
         "query":"robots",
         "dataset-id" : "T2-60",
         "description" : "Topic 2 - 60 items Ro",
-        "text": "General-purpose autonomous robots can perform a variety of functions independently. General-purpose autonomous robots typically can navigate independently in known spaces, handle their own re-charging needs, interface with electronic doors and elevators and perform other basic tasks. Like computers, general-purpose robots can link with networks, software and accessories that increase their usefulness. They may recognize people or objects, talk, provide companionship, monitor environmental quality, respond to alarms, pick up supplies and perform other useful tasks. General-purpose robots may perform a variety of functions simultaneously or they may take on different roles at different times of day. Some such robots try to mimic human beings and may even resemble people in appearance; this type of robot is called a humanoid robot. Humanoid robots are still in a very limited stage, as no humanoid robot can, as of yet, actually navigate around a room that it has never been in.[citation needed] Thus, humanoid robots are really quite limited, despite their intelligent behaviors in their well-known environments.",
+        "text": "General-purpose autonomous robots can perform a variety of functions independently. General-purpose autonomous robots typically can navigate independently in known spaces, handle their own re-charging needs, interface with electronic doors and elevators and perform other basic tasks. Like computers, general-purpose robots can link with networks, software and accessories that increase their usefulness. They may recognize people or objects, talk, provide companionship, monitor environmental quality, respond to alarms, pick up supplies and perform other useful tasks. General-purpose robots may perform a variety of functions simultaneously or they may take on different roles at different times of day. Some such robots try to mimic human beings and may even resemble people in appearance; this type of robot is called a humanoid robot. Humanoid robots are still in a very limited stage, as no humanoid robot can, as of yet, actually navigate around a room that it has never been in. Thus, humanoid robots are really quite limited, despite their intelligent behaviors in their well-known environments.",
         "task": "Considering the given text, select the 5 most relevant items from the list",
         "totalResults":"60",
         "data": [
-
-            ///// QUERY: "robots robot jump retrieved robotics can used also human may"
                     {
                         "id": "1f10f8b2-7772-3e90-87d4-b984b351d291",
                         "title": "Robotics, motor learning, and neurologic recovery.",
@@ -69,7 +66,7 @@ function getDataset_t2_60() {
                         "uri": "http://www.mendeley.com/catalog/theory-evaluation-human-robot-interactions-20/",
                         "eexcessURI": "http://www.mendeley.com/catalog/theory-evaluation-human-robot-interactions-20/",
                         "creator": "Jean Scholtz",
-                        "description": "Human-robot interaction (HRI) for mobile robots is still in its infancy. Most user interactions with robots have been limited to tele-operation capabilities where the most common interface provided to the user has been the video feed from the robotic platform and some way of directing the path of the robot. control systems, exhibit autonomy and cognition, and which operate in changing, real-world environments. In addition For mobile robots with semi-autonomous capabilities, the user is also provided with a means of setting way points. More importantly, most HRI capabilities have been developed by robotics experts for use by robotics experts. As robots increase in capabilities and are able to perform more tasks in an autonomous manner we need to think about the interactions that humans will have with robots and what software architecture and user interface designs can accommodate the human in-the-loop. We also need to design systems that can be used by domain experts but not robotics experts. This paper outlines a theory interaction and proposes the interactions of human-robot and information needed by both humans and robots for the different levels of interaction, including an evaluation methodology based on situational awareness.",
+                        "description": "Human-robot interaction (HRI) for mobile robots is still in its infancy. Most user interactions with robots have been limited to tele-operation capabilities where the most common interface provided to the user has been the video feed from the robotic platform and some way of directing the path of the robot. Control systems exhibit autonomy and cognition, and which operate in changing, real-world environments. In addition For mobile robots with semi-autonomous capabilities, the user is also provided with a means of setting way points. More importantly, most HRI capabilities have been developed by robotics experts for use by robotics experts. As robots increase in capabilities and are able to perform more tasks in an autonomous manner we need to think about the interactions that humans will have with robots and what software architecture and user interface designs can accommodate the human in-the-loop. We also need to design systems that can be used by domain experts but not robotics experts. This paper outlines a theory interaction and proposes the interactions of human-robot and information needed by both humans and robots for the different levels of interaction, including an evaluation methodology based on situational awareness.",
                         "collectionName": "36th Annual Hawaii International Conference on System Sciences, 2003. Proceedings of the",
                         "facets": {
                             "provider": "mendeley",
@@ -208,7 +205,7 @@ function getDataset_t2_60() {
                     },
                     {
                         "id": "fd94ceab-f501-3b11-9608-e531281436c9",
-                        "title": "Prediction of human behavior in human - Robot interaction using psychological scales for anxiety and negative attitudes toward robots",
+                        "title": "Prediction of human behavior in human-robot interaction using psychological scales for anxiety and negative attitudes toward robots",
                         "uri": "http://www.mendeley.com/catalog/prediction-human-behavior-human-robot-interaction-using-psychological-scales-anxiety-negative-attitu/",
                         "eexcessURI": "http://www.mendeley.com/catalog/prediction-human-behavior-human-robot-interaction-using-psychological-scales-anxiety-negative-attitu/",
                         "creator": "Tatsuya Nomura, Takayuki Kanda, Tomohiro Suzuki, Kensuke Kato",
@@ -271,9 +268,6 @@ function getDataset_t2_60() {
                             "year": "2004"
                         },
                     },
-
-    ///// QUERY: "general-purpose robots can perform independently autonomous functions tasks typically navigate"
-
             		{
                         "id": "40ad8325-d0ef-3743-8b16-a822b77678fe",
                         "title": "CONRO: towards deployable robots with inter-robot metamorphic capabilities",
@@ -807,5 +801,4 @@ function getDataset_t2_60() {
                 ]
     };
 
-    return dataset_t2_60;
 }

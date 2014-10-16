@@ -564,6 +564,7 @@ VIS PANEL (center of screen)
 	overflow-x: hidden;
     overflow-y: auto;
     display: inline-flex;
+    flex-wrap: wrap;
     align-items: center;
     float: right;
     width: 60%;
@@ -590,19 +591,19 @@ VIS PANEL (center of screen)
 	text-align: left;
 	min-width: 14%;
     height: 2em;
-	margin: 0em .1em;
+	margin: 0.8em .3em 0.2em 0.3em;
     padding: .2em;
 	border-radius: 0.3em;
 	-webkit-border-radius: 0.3em;
-	-webkit-box-shadow: 0em 7px 6px -6px #888;
-    box-shadow: 0em 7px 6px -6px #888;
+	-webkit-box-shadow: 0em 7px 6px -6px #333;
+    box-shadow: 0em 7px 6px -6px #333;
     -webkit-text-shadow: -0.1em 0.1em 0.5em #eee;
     text-shadow: -0.1em 0.1em 0.5em #eee;
 
 }
 
 .eexcess_keyword_tag_in_box:hover {
-    box-shadow: 2px 2px 5px #888, -2px -2px 5px #888;
+    box-shadow: 2px 2px 5px #555, -2px -2px 5px #555;
 }
 
 
@@ -939,8 +940,8 @@ VIS PANEL (center of screen)
 }
 
 #eexcess_document_details div h3 strong {
-    /*text-shadow: none;*/
-    text-shadow: 0em .1em .5em white, 0em -.1em .5em white;
+    /*text-shadow: 0em .1em .5em white, 0em -.1em .5em white;*/
+    text-shadow: 0em .1em #444;
 }
 
 #eexcess_document_details div span {
@@ -962,7 +963,11 @@ VIS PANEL (center of screen)
     text-align: left;
     color: #444;
 }
-
+/*
+#eexcess_document_viewer p strong {
+    text-shadow: 0em .1em #444;
+}
+*/
 
 
 

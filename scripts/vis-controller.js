@@ -101,7 +101,10 @@
 	// Color scales
 	var tagColorScale = d3.scale.ordinal().domain(d3.range(0, TAG_CATEGORIES, 1)).range(colorbrewer.Blues[TAG_CATEGORIES + 1]);
     var textTagColorScale = d3.scale.ordinal().range(['#eee', '#ddd', '#333', '#222', '#222']);
-    var weightColorScale = d3.scale.ordinal().range( colorbrewer.Set1[9] );
+    var weightColorRange = colorbrewer.Set1[9];
+    weightColorRange.splice(weightColorRange.indexOf("#ffff33"), 1, "#ffd700");
+    var weightColorScale = d3.scale.ordinal().range(weightColorRange);
+
 
     //
     var stemmer = natural.PorterStemmer;
@@ -303,8 +306,8 @@
 
 		var extent = d3.extent(keywords, function(k){ return k['repeated']; });
 		var range = (extent[1] - 1/*extent[0]*/) * 0.1;   // / TAG_CATEGORIES;
-        console.log('extent --> ' + extent[0] + ' - ' + extent[1]);
-        console.log('range = ' + range);
+        //console.log('extent --> ' + extent[0] + ' - ' + extent[1]);
+        //console.log('range = ' + range);
         catArray = [];
         for(var i = 0; i < TAG_CATEGORIES; i++)
             catArray[i] = 0;
@@ -1301,6 +1304,7 @@
         $(documentDetailsLanguage).html(data[index].facets.language);
         $(documentDetailsProvider).html(data[index].facets.provider);
         $(documentViewer).html(this.internal.highlightKeywordsInText(data[index].description));
+        $(documentViewer).scrollTo('top');
     };
 
 
@@ -1327,6 +1331,8 @@
             $(selectedItemsSection).slideUp();
             $(topicTextSection).slideUp();
         });
+        $(selectedItemsSection).click(function(event){ event.stopPropagation(); });
+        $(topicTextSection).click(function(event){ event.stopPropagation(); });
 
         $(btnReset).click( function(){ EVTHANDLER.btnResetClicked(); });
         $(btnRankByOverall).click(function(){ EVTHANDLER.rankButtonClicked(this); });

@@ -1,7 +1,6 @@
 function getDataset_t3_60() {
 
-
-    var dataset = {
+    return {
         "query":"renaissance italy century europe art italian new history florence",
         "dataset-id" : "T3-60",
         "description" : "Topic 3 - 60 items Re",
@@ -875,5 +874,4 @@ function getDataset_t3_60() {
             ]
     };
 
-    return dataset;
 }

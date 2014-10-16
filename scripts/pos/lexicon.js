@@ -54197,8 +54197,9 @@ return {
         "NNP"
     ],
     "fiberglass": [
-        "NNS",
-        "NN"
+        "NN",
+        "NNS"
+
     ],
     "ever-lovin": [
         "JJ"
@@ -64286,8 +64287,8 @@ return {
         "NNP"
     ],
     "augmented": [
-        "VBN",
         "JJ",
+        "VBN",
         "VBD"
     ],
     "low-load": [
@@ -115532,8 +115533,8 @@ return {
         "NN"
     ],
     "social": [
-        "JJ",
-        "NN"
+        "NN",
+        "JJ"
     ],
     "sweetness": [
         "NN"

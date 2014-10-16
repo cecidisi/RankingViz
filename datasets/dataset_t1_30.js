@@ -1,7 +1,7 @@
 function getDataset_t1_30() {
 
 
-    var dataset_t1_30 = {
+    return {
         "query":"women in workforce",
         "dataset-id" : "T1-30",
         "description" : "Topic 1 - 30 items WW",
@@ -221,18 +221,18 @@ function getDataset_t1_30() {
                     }
                   },
                   {
-                    "id": "3aef74fa-12d0-355c-b856-d12f11373a8d",
-                    "title": "Working for the Woman? Female Managers and the Gender Wage Gap",
-                    "uri": "http://www.mendeley.com/catalog/working-woman-female-managers-gender-wage-gap/",
-                    "eexcessURI": "http://www.mendeley.com/catalog/working-woman-female-managers-gender-wage-gap/",
-                    "creator": "P. N. Cohen, M. L. Huffman",
-                    "description": "Most previous research on gender inequality and management has been concerned with the question of access to managerial jobs and the “glass ceiling.” We offer the first largescale analysis that turns this question around, asking whether the gender characteristics of managers-specifically, the gender composition and relative status of female managers-affect inequality for the nonmanagerial workers beneath them. Results from three-level hierarchical linear models, estimated on a unique nested data set drawn from the 2000 Census, suggest that greater representation of women in management does narrow the gender wage gap. Model predictions show, however, that the presence of high-status female managers has a much larger impact on gender wage inequality. We conclude that the promotion of women into management positions may benefit all women, but only if female managers reach relatively high-status positions.",
-                    "collectionName": "American Sociological Review",
+                    "id": "442f9c92-8f3f-3d77-9e95-3121c5423c6f",
+                    "title": "Women, War, and Wages: The Effect of Female Labor Supply on the Wage Structure at Midcentury",
+                    "uri": "http://www.mendeley.com/catalog/women-war-wages-effect-female-labor-supply-wage-structure-midcentury-15/",
+                    "eexcessURI": "http://www.mendeley.com/catalog/women-war-wages-effect-female-labor-supply-wage-structure-midcentury-15/",
+                    "creator": "Daron Acemoglu, David H. Autor, David Lyle",
+                    "description": "We exploit the military mobilization for World War II to investigate the effects of female labor supply on the wage structure. The mobilization drew many women into the workforce permanently. But the impact was not uniform across states. In states with greater mobilization of men, women worked more after the war and in 1950, though not in 1940. These induced shifts in female labor supply lowered female and male wages and increased earnings inequality between high school– and college‐educated men. It appears that at midcentury, women were closer substitutes for high school men than for those with lower skills.",
+                    "collectionName": "Journal of Political Economy",
                     "facets": {
                       "provider": "mendeley",
                       "type": "unkown",
                       "language": "unkown",
-                      "year": "2007"
+                      "year": "2004"
                     }
                   },
                   {
@@ -386,18 +386,18 @@ function getDataset_t1_30() {
                     }
                   },
                   {
-                    "id": "0d81c28a-a891-3da9-b19d-d4718cdf0f76",
-                    "title": "Changes in wage-and-salary returns to skill and the recent rise in female self-employment",
-                    "uri": "http://www.mendeley.com/research/changes-wageandsalary-returns-skill-recent-rise-female-selfemployment/",
-                    "eexcessURI": "http://www.mendeley.com/research/changes-wageandsalary-returns-skill-recent-rise-female-selfemployment/",
-                    "creator": "T. J. Devine",
-                    "description": "A steady increase in the number of females choosing to work for themselves, instead of someone else, represents one of the more striking recent trends in the US labor market. This trend raises an obvious question, namely, what was happening to female earnings opportunities in self-employment, relative to earnings opportunities in wage-and-salary employment? Findings presented in this paper indicate the following: self-employment increased more for females who faced increasing potential earnings in wage-and-salary employment, suggesting that returns to skill were increasing by even more in self-employment; increasing relative returns to skill may explain at least part of the recent rise in female self-employment; there is an absence of a sharp difference in self-employment rates between women in the top and middle segments of the skill distribution: women with relatively low skill levels who faced declining real wages in wage-and-salary employment did not turn to self-employment in the same proportions as women with higher skill levels. Results presented here suggest that the recent rise in female self-employment may have added to the increasing earnings inequality that has been documented previously for females in wage-and-salary employment, a finding that is clearly worth further investigation. -from Author",
-                    "collectionName": "American Economic Review",
+                    "id": "77dd4ed5-7a8e-3a3d-9f35-f4ef9cfb8bce",
+                    "title": "Workforce segregation and the gender wage gap: Is \"women\'s\" work valued as highly as \"men\'s\"?",
+                    "uri": "http://www.mendeley.com/research/workforce-segregation-gender-wage-gap-womens-work-valued-highly-mens/",
+                    "eexcessURI": "http://www.mendeley.com/research/workforce-segregation-gender-wage-gap-womens-work-valued-highly-mens/",
+                    "creator": "Christine Alksnis, Serge Desmarais, James Curtis",
+                    "description": "This study focuses on gender segregation and its implications for the salaries assigned to male and female-typed jobs. We used a between-subjects design to examine whether participants would assign different pay to 3 types of jobs wherein the actual responsibilities and duties carried out by men and women were the same, but the job was situated in either a traditionally masculine or traditionally feminine domain. We found pay differentials between jobs defined as \"male\" and \"female,\" which suggest that gender-based discrimination, arising from occupational stereotyping and the devaluation of the work typically done by women, influences salary allocation. The ways in which the results fit with contemporary theorizing about sexism and with the shifting standards model (Biernat, 1995, 2003) are discussed.",
+                    "collectionName": "Journal of Applied Social Psychology",
                     "facets": {
                       "provider": "mendeley",
                       "type": "unkown",
                       "language": "unkown",
-                      "year": "1994"
+                      "year": "2008"
                     }
                   },
                   {
@@ -464,6 +464,4 @@ function getDataset_t1_30() {
 
     };
 
-
-    return dataset_t1_30;
 }

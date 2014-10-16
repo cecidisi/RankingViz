@@ -5,6 +5,7 @@ function datasetManager(){
     var datasets = {
         "T1-30" : getDataset_t1_30(),
         "T1-60" : getDataset_t1_60(),
+        "T2-30" : getDataset_t2_30(),
         "T2-60" : getDataset_t2_60(),
         "T3-60" : getDataset_t3_60(),
         "T4-60" : getDataset_t4_60(),
@@ -42,7 +43,7 @@ function datasetManager(){
 
         if(typeof datasetId != 'undefined' && datasetId != 'undefined'){
             var dataset = datasets[datasetId];
-            checkDuplicatedItems(dataset);
+            //checkDuplicatedItems(dataset);
             //dataset.data.shuffle();
             return dataset;
         }
