@@ -1359,7 +1359,7 @@
         task = dataset['task'];
         dataRanking = [];
 		indicesToHighlight = [];
-
+        console.log(dataset.questions);
         PREPROCESSING.extendDataWithAncillaryDetails();
 		PREPROCESSING.extendKeywordsWithColorCategory();
         HEADER.showInfoInHeader();
