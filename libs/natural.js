@@ -650,41 +650,10 @@ var words =
         'domain', 'footstep', 'selection', 'generalization', 'feedback', 'framework', 'addition', 'search', 'scale', 'trial', 'issue', 'degree', 'application', 'step',
         'function', 'module', 'state', 'level', 'concept', 'advantage', 'disadvantage', 'representation', 'problem', 'use', 'person', 'source', 'argument', 'essay',
         'notion', 'struggle', 'responsibility', 'response', 'principle', 'moment', 'kind', 'sorce', 'guideline', 'recommendation', 'rate', 'cas', 'ratio', 'estimate',
-        'term', 'percent', 'basis', 'amount', 'indicator', 'utilization', 'ltd', 'amp', 'chapter',
+        'term', 'percent', 'basis', 'amount', 'indicator', 'utilization', 'ltd', 'amp', 'chapter', 'such', 'different',
     '__key'
     ];
 
-
-/*[
-    'about', 'after', 'all', 'also', 'am', 'an', 'and', 'another', 'any', 'are', 'as', 'at', 'be',
-    'because', 'been', 'before', 'being', 'between', 'both', 'but', 'by', 'came', 'can',
-    'come', 'could', 'did', 'do', 'each', 'for', 'from', 'get', 'got', 'has', 'had',
-    'he', 'have', 'her', 'here', 'him', 'himself', 'his', 'how', 'if', 'in', 'into',
-    'is', 'it', 'like', 'make', 'many', 'me', 'might', 'more', 'most', 'much', 'must',
-    'my', 'never', 'now', 'of', 'on', 'only', 'or', 'other', 'our', 'out', 'over',
-    'said', 'same', 'see', 'should', 'since', 'some', 'still', 'such', 'take', 'than',
-    'that', 'the', 'their', 'them', 'then', 'there', 'these', 'they', 'this', 'those',
-    'through', 'to', 'too', 'under', 'up', 'very', 'was', 'way', 'we', 'well', 'were',
-    'what', 'where', 'which', 'while', 'who', 'with', 'would', 'you', 'your',
-    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
-    'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '$', '1',
-    '2', '3', '4', '5', '6', '7', '8', '9', '0', '_',
-    'beneath', 'moreover', 'nowadays', 'so', 'several', 'usual', 'among', 'when', 'copyright', 'its', 'within', 'however', 'themselves',
-    'I', 'you', 'he', 'she', 'it', 'we', 'they', 'across', 'accross', 'whom', 'i', 'ii', 'iii', 'iv', 'v', 'especially', 'not', 'why', 'towards', 'likely',
-    'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'though', 'although', 'despite', 'spite', 'always', 'almost', 'half', 'few',
-    'high', 'low', 'first', 'second', 'third', 'fourth', 'fifth', 'minor', 'major', 'negative', 'positive', 'self', 'regarding', 'away', 'different', 'thus',
-    'therefore', 'use', 'uses', 'used', 'specifically', 'report', 'reported', 'reports', 'may', 'might', 'include', 'includes', 'main', 'whereby', 'fine',
-    'often', 'us', 'yet', 'again', 'against', 'last', 'made', 'undefined', 'data', 'left', 'right', 'behind', 'front', 'explained', 'explains', 'explain',
-    'sample', 'wide', 'analysis', 'alone', 'really', 'during', 'small', 'big', 'related', 'fully', 'concerning', 'new', 'somehow', 'does', 'even', 'arent',
-    'different', 'perceive', 'perceived', 'perceives', 'useful', 'observe', 'observes', 'observed', 'registers', 'registered', 'find', 'finds', 'found',
-    'test', 'tests', 'tested', 'author', 'article', 'unless', 'useless', 'day', 'days', 'month', 'months', 'year', 'years', 'describe', 'describes', 'described',
-    'least', 'current', 'review', 'around', 'worse', 'worst', 'either', 'non', 'will', 'down', 'up', 'no', 'survey', 'study', 'far', 'beyond', 'lower', 'actual', 'actually', 'aren', 'whether',
-    'little', 'enough', 'show', 'suggests', 'suggest', 'suggested', 'suggesting', 'full', 'fulfill', 'hold', 'using', 'further', 'paper', 'less', 'have', 'recent',
-    'argue', 'seek', 'per', 'imply', 'research', 'cannot', 'do', 'long', 'off', 'once', 'main', 'mainly', 'log', 'brief', 'old', 'end', 'right', 'past', 'lack', 'detail',
-    'focus', 'shap', 'mer', 'review', 'need', 'recent', 'late', 'later', 'other', 'others', 'furthermore', 'present', 'propose', 'include', 'discuss', 'apply', 'even',
-    'discuss', 'pre', 'un', 'elsevier', 'based', 'better', 'best', 'approach', 'method', 'technique', 'large', 'study', 'type', 'typical', 'various', 'applic', 'situation',
-    'rather', '__key'];
-*/
 // tell the world about the noise words.
 exports.words = words;
 });

@@ -1,794 +1,976 @@
 function getDataset_t4_60() {
 
+
     return {
-        "query":"augmented reality",
+        "query":"circular economy",
         "dataset-id":"T4-60",
-        "description":"Topic 4 - 60 items AR",
-        "text":"Augmented reality (AR) is a live direct or indirect view of a physical, real-world environment whose elements are augmented (or supplemented) by computer-generated sensory input such as sound, video, graphics or GPS data. It is related to a more general concept called mediated reality, in which a view of reality is modified (possibly even diminished rather than augmented) by a computer. As a result, the technology functions by enhancing one&amp;rsquo;s current perception of reality. By contrast, virtual reality replaces the real world with a simulated one. Augmentation is conventionally in real-time and in semantic context with environmental elements, such as sports scores on TV during a match. With the help of advanced AR technology (e.g. adding computer vision and object recognition) the information about the surrounding real world of the user becomes interactive and digitally manipulable. Artificial information about the environment and its objects can be overlaid on the real world.",
+        "description":"Topic 4 - 60 items CE",
+        "text":"The circular economy is a generic term for an industrialized economy that is by design or intention, restorative; products and systems are designed in such a way that they can be returned and the materials recycled, reused or remanufactured. A circular economy naturally encompasses a shift from fossil fuels to the use of renewable energy, the eradication of waste and the role of diversity as a characteristic of resilient and productive systems.",
         "task":"Considering the given text, select the 5 most relevant items from the list",
         "totalResults":"60",
         "data":[
             {
-                "id":"7fafc327-a439-3ec8-ba4b-704c776f25d7",
-                "title":"Augmented reality: an application of heads-up display technology to manual manufacturing processes",
-                "uri":"http://www.mendeley.com/catalog/augmented-reality-application-headsup-display-technology-tomanual-manufacturing-processes/",
-                "eexcessURI":"http://www.mendeley.com/catalog/augmented-reality-application-headsup-display-technology-tomanual-manufacturing-processes/",
-                "creator":"T.P. Caudell, D.W. Mizell",
-                "description":"The authors describe the design and prototyping steps they have taken toward the implementation of a heads-up, see-through, head-mounted display (HUDset). Combined with head position sensing and a real world registration system, this technology allows a computer-produced diagram to be superimposed and stabilized on a specific position on a real-world object. Successful development of the HUDset technology will enable cost reductions and efficiency improvements in many of the human-involved operations in aircraft manufacturing, by eliminating templates, formboard diagrams, and other masking devices",
-                "collectionName":"Proceedings of the Twenty-Fifth Hawaii International Conference on System Sciences",
+                "id":"00dfee92-fe34-375b-91d2-0c376a2cab16",
+                "title":"The circular economy in China",
+                "uri":"http://www.mendeley.com/research/circular-economy-china-5/",
+                "eexcessURI":"http://www.mendeley.com/research/circular-economy-china-5/",
+                "creator":"Ren Yong",
+                "description":"This article makes an attempt to answer the three questions of why China is devoting its full effort to promoting a circular economy, what a circular economy is, and how to implement a circular economy in China. The evolutionary process of a circular economy in China, from introduction of the concept and the relevant actions of national decision making to demonstration of the system nationwide, has taken only around 6 years, with strong encouragement from politicians and the urgent need to cope with environmental pollution and a severe shortage of natural resources. The circular economy in China is now being actively implemented at three levels: enterprises, eco-industrial parks, and regions. The consolidated theoretical bases of ecology and economics have helped the circular economy to define its position as a new economic model to effectively resolve the problems of resources and the environment. In this regard, material flow management is naturally a unique planning and management method for implementation of a circular economy, and eco-efficiency is a good indicator to measure circular economic activities. Of particular significance has been initiation of the legislative process for the Circular Economy Law, which is among a number of initiatives developing core policies for a circular economy in China. Stringent enforcement of a set of policies for energy saving and pollution abatement nowadays in China will certainly create an enabling environment for the development of a circular economy.",
+                "collectionName":"Journal of Material Cycles and Waste Management",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"1992"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2007",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"22752240-1c70-36f9-9b61-81046ab20d50",
-                "title":"Real-time video annotations for augmented reality",
-                "uri":"http://www.mendeley.com/catalog/realtime-video-annotations-augmented-reality/",
-                "eexcessURI":"http://www.mendeley.com/catalog/realtime-video-annotations-augmented-reality/",
-                "creator":"Edward Rosten, Gerhard Reitmayr, Tom Drummond",
-                "description":"Augmented reality (AR) provides an intuitive user interface to present information in the context of the real world. A common application is to overlay screen-aligned annotations for real world objects to create in-situ information displays for users. While the referenced object&amp;rsquo;s location is fixed in the view the annotating labels should be placed in such a way as to not interfere with other content of interest such as other labels or objects in the real world. We present a new approach to determine and track areas with less visual interest based on feature density and to automatically compute label layout from this information. The algorithm works in under 5ms per frame, which is fast enough that it can be used with existing AR systems. Moreover, it provides flexible constraints for controlling label placement behaviour to the application designer. The resulting overlays are demonstrated with a simple hand-held augmented reality system for information display in a lab environment.",
-                "collectionName":"Lecture Notes in Computer Science (including subseries Lecture Notes in Artificial Intelligence and Lecture Notes in Bioinformatics)",
+                "id":"a99aae2c-726e-3927-bf86-bd258f02bdbb",
+                "title":"Towards a Circular Economy - Economic and Business Rationale for an Accelerated Transition",
+                "uri":"http://www.mendeley.com/catalog/towards-circular-economy-economic-business-rationale-accelerated-transition/",
+                "eexcessURI":"http://www.mendeley.com/catalog/towards-circular-economy-economic-business-rationale-accelerated-transition/",
+                "creator":" The Ellen MacArthur Foundation",
+                "description":"This report is the first ever to look at the economic and business rationale for an accelerated transition towards a circular economy. The report was commissioned by the Ellen MacArthur Foundation with the support of its Founding Partners, B&amp;Q, BT, Cisco, National Grid and Renault. McKinsey &amp; Company, a global management consulting firm, provided the overall project management, developed the fact base and delivered the analytics. The report draws from the input and expertise of a wide range of academic and business leaders.",
+                "collectionName":"Greener Management International",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2005"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2012",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"b1477783-aeed-3101-84bc-2b98024e1929",
-                "title":"An augmented virtuality approach to 3D videoconferencing",
-                "uri":"http://www.mendeley.com/catalog/augmented-virtuality-approach-3d-videoconferencing/",
-                "eexcessURI":"http://www.mendeley.com/catalog/augmented-virtuality-approach-3d-videoconferencing/",
-                "creator":"H. Regenbrecht, C. Ott, M. Wagner, T. Lum, P. Kohler, W. Wilke, E. Mueller",
-                "description":" This paper describes the concept, prototypical implementation, and usability evaluation of an augmented virtuality (AV) based videoconferencing (VC) system: \"cAR/PE!\". We present a first solution which allows three participants at different locations to communicate over a network in an environment simulating a traditional face-to-face meeting. Integrated into the AV environment are live video streams of the participants spatially arranged around a virtual table, a large virtual presentation screen for 2D display and application sharing, and 3D geometry (models) within the room and on top of the table.",
-                "collectionName":"The Second IEEE and ACM International Symposium on Mixed and Augmented Reality, 2003. Proceedings.",
+                "id":"f97c45de-c74a-3c72-84f5-dcb56d992cb2",
+                "title":"Methodological Aspects of Applying Life Cycle Assessment to Industrial Symbioses",
+                "uri":"http://www.mendeley.com/catalog/methodological-aspects-applying-life-cycle-assessment-industrial-symbioses-1/",
+                "eexcessURI":"http://www.mendeley.com/catalog/methodological-aspects-applying-life-cycle-assessment-industrial-symbioses-1/",
+                "creator":"Tuomas Mattila, Suvi Lehtoranta, Laura Sokka, Matti Melanen, Ari Nissinen",
+                "description":"In view of recent studies of the historical development and current status of industrial symbiosis (IS), life cycle assessment (LCA) is proposed as a general framework for quantifying the environmental performance of by-product exchange. Recent guidelines for LCA (International Reference Life Cycle Data System [ILCD] guidelines) are applied to answer the main research questions in the IS literature reviewed. A typology of five main research questions is proposed: (1) analysis, (2) improvement, and (3) expansion of existing systems; (4) design of new eco-industrial parks, and (5) restructuring of circular economies. The LCA guidelines were found useful in framing the question and choosing an appropriate reference case for comparison. The selection of a correct reference case reduces the risk of overestimating the benefits of by-product exchange. In the analysis of existing systems, environmentally extended input-output analysis (EEIOA) can be used to streamline the analysis and provide an industry average baseline for comparison. However, when large-scale changes are applied to the system, more sophisticated tools are necessary for assessment of the consequences, from market analysis to general equilibrium modeling and future scenario work. Such a rigorous application of systems analysis was not found in the current IS literature, but would benefit the field substantially, especially when the environmental impact of large-scale economic changes is analyzed.",
+                "collectionName":"Journal of Industrial Ecology",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2003"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2012",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"dc723497-17e2-3f60-9b7f-81ebb718ae70",
-                "title":"Real-time vision-based camera tracking for augmented reality applications",
-                "uri":"http://www.mendeley.com/catalog/realtime-visionbased-camera-tracking-augmented-reality-applications/",
-                "eexcessURI":"http://www.mendeley.com/catalog/realtime-visionbased-camera-tracking-augmented-reality-applications/",
-                "creator":"Dieter Koller, Gudrun Klinker, Eric Rose, David Breen, Ross Whitaker, Mihran Tuceryan",
-                "description":"Augmented reality deals with the problem of dynamically augmenting or enhancing (images or live video of) the real world with computer generated data (e.g., graphics of virtual objects). This poses two major problems: (a) determining the precise alignment of real and virtual coordinate frames for overlay, and (b) capturing the 3D environment including camera and object motions. The latter is important for interactive augmented reality applications where users can interact with both real and virtual objects. Here we address the problem of accurately tracking the 3D motion of a monocular camera in a known 3D environment and dynamically estimating the 3D camera location. We utilize fully automated landmark-based camera calibration to initialize the motion estimation and employ extended Kalman filter techniques to track landmarks and to estimate the camera location. The implementation of our approach has been proven to be efficient and robust and our system successfully tracks in real-time at approximately 10 Hz.",
-                "collectionName":"Proceedings of the ACM symposium on Virtual reality software and technology - VRST '97",
+                "id":"18a48537-9888-3c58-a0cf-d9e33e700500",
+                "title":"Cradle to Cradle",
+                "uri":"http://www.mendeley.com/catalog/cradle-cradle-1/",
+                "eexcessURI":"http://www.mendeley.com/catalog/cradle-cradle-1/",
+                "creator":"William McDonough, Michael Braungart",
+                "description":"Architect William McDonough and chemist Michael Braungart argue that human industry need not damage the natural world. They explain how products can be designed so that, after their useful lives, they will provide nourishment for something new.",
+                "collectionName":"Chemical and Engineering News",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"1997"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2002",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"00edb47c-a449-32f9-8f99-5c3ab275ec96",
-                "title":"A stereoscopic video see-through augmented reality system based on real-time vision-based registration",
-                "uri":"http://www.mendeley.com/catalog/stereoscopic-video-seethrough-augmented-reality-system-based-onrealtime-visionbased-registration/",
-                "eexcessURI":"http://www.mendeley.com/catalog/stereoscopic-video-seethrough-augmented-reality-system-based-onrealtime-visionbased-registration/",
-                "creator":"M. Kanbara, T. Okuma, H. Takemura, N. Yokoya",
-                "description":"In an augmented reality system, it is required to obtain the position and orientation of the user's viewpoint in order to display the composed image while maintaining a correct registration between the real and virtual worlds. All the procedures must be done in real time. This paper proposes a method for augmented reality with a stereo vision sensor and a video see-through head-mounted display (HMD). It can synchronize the display timing between the virtual and real worlds so that the alignment error is reduced. The method calculates camera parameters from three markers in image sequences captured by a pair of stereo cameras mounted on the HMD. In addition, it estimates the real-world depth from a pair of stereo images in order to generate a composed image maintaining consistent occlusions between real and virtual objects. The depth estimation region is efficiently limited by calculating the position of the virtual object by using the camera parameters. Finally, we have developed a video see-through augmented reality system which mainly consists of a pair of stereo cameras mounted on the HMD and a standard graphics workstation. The feasibility of the system has been successfully demonstrated with experiments",
-                "collectionName":"Proceedings IEEE Virtual Reality 2000 (Cat. No.00CB37048)",
+                "id":"9294ac1e-48b0-3d28-84b4-2569acd056ad",
+                "title":"Current options for the valorization of food manufacturing waste: A review",
+                "uri":"http://www.mendeley.com/catalog/current-options-valorization-food-manufacturing-waste-review/",
+                "eexcessURI":"http://www.mendeley.com/catalog/current-options-valorization-food-manufacturing-waste-review/",
+                "creator":"Nadia Mirabella, Valentina Castellani, Serenella Sala",
+                "description":"The production of food waste covers all the food life cycle: from agriculture, up to industrial manufacturing and processing, retail and household consumption. In developed countries, 42% of food waste is produced by households, while 39% losses occur in the food manufacturing industry, 14% in food service sector and remaining 5% in retail and distribution. Increasingly, industrial ecology concepts such as cradle to cradle and circular economy are considered leading principle for eco-innovation, aiming at \"zero waste economy\" in which waste are used as raw material for new products and applications. The large amount of waste produced by the food industry, in addition to being a great loss of valuable materials, also raises serious management problems, both from the economic and environmental point of view. Many of these residues, however, have the potential to be reused into other production systems, trough e.g. biorefineries. The present work focuses on the use of food waste coming from food manufacturing (FWm). Through extensive literature review, the authors present feasibility and constraints of applying industrial symbiosis in recovering waste from food processing, focusing on recycling (excluding energy recovery) of the solid and liquid waste from food processing industry. The main uses of functional ingredients derived from this transformation are presented and discussed, highlighting mainstream sectors of application, e.g. in the nutraceutical and pharmaceutical industry. ?? 2013 Elsevier Ltd. All rights reserved.",
+                "collectionName":"Journal of Cleaner Production",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2000"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2014",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"e42f8109-4a95-34d8-b295-3e81d6d5f683",
-                "title":"Taxonomy of mixed reality visual displays",
-                "uri":"http://www.mendeley.com/catalog/taxonomy-mixed-reality-visual-displays-2/",
-                "eexcessURI":"http://www.mendeley.com/catalog/taxonomy-mixed-reality-visual-displays-2/",
-                "creator":"Paul Milgram, Fumio Kishino",
-                "description":"This paper focuses on Mixed Reality (MR) visual displays, a particular subset of Virtual Reality (VR) related technologies that involve the merging of real and virtual worlds somewhere along the \"virtuality continuum\" which connects completely real environments to completely virtual ones. Probably the best known of these is Augmented Reality (AR), which refers to all cases in which the display of an otherwise real environment is augmented by means of virtual (computer graphic) objects. The converse case on the virtuality continuum is therefore Augmented Virtuality (AV). Six classes of hybrid MR display environments are identified. However, an attempt to distinguish these classes on the basis of whether they are primarily video or computer graphics based, whether the real world is viewed directly or via some electronic display medium, whether the viewer is intended to feel part of the world or on the outside looking in, and whether or not the scale of the display is intended to map orthoscopically onto the real world leads to quite different groupings among the six identified classes, thereby demonstrating the need for an efficient taxonomy, or classification framework, according to which essential differences can be identified. The 'obvious' distinction between the terms \"real\" and \"virtual\" is shown to have a number of different aspects, depending on whether one is dealing with real or virtual objects, real or virtual images, and direct or non-direct viewing of these. An (approximately) three dimensional taxonomy is proposed, comprising the following dimensions: Extent of World Knowledge (\"how much do we know about the world being displayed?\"), Reproduction Fidelity (\"how 'realistically' are we able to display it?\"), and Extent of Presence Metaphor (\"what is the extent of the illusion that the observer is present within that world?\"). key words: virtual reality (VR), augmented reality (AR), mixed reality (MR)",
-                "collectionName":"IEICE Transactions on Information and Systems",
+                "id":"49f33ed6-8778-3732-a6f1-d411d474b514",
+                "title":"Cradle to Cradle: Remaking the Way We Make Things",
+                "uri":"http://www.mendeley.com/catalog/cradle-cradle-remaking-way-we-make-things/",
+                "eexcessURI":"http://www.mendeley.com/catalog/cradle-cradle-remaking-way-we-make-things/",
+                "creator":"Mark Peterson",
+                "description":"A manifesto for a radically different philosophy and practice of manufacture and environmentalism. \"Reduce, reuse, recycle,\" urge environmentalists-in other words, do more with less in order to minimize damage. As this book argues, however, this approach perpetuates a one-way \"cradle to grave\" manufacturing model that casts off as much as 90 percent of the materials it uses as waste, much of it toxic. Why not challenge the notion that human industry must inevitably damage the natural world, they ask. Products might be designed so that, after their useful life, they provide nourishment for something new. Elaborating their principles from experience (re)designing everything from carpeting to corporate campuses, the authors make an exciting and viable case for change.-From publisher description.",
+                "collectionName":"Journal of Macromarketing",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"1994"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2004",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"6e1e4ab3-8034-395f-832f-6a3b1ce0a3ed",
-                "title":"Marker tracking and HMD calibration for a video-based augmented reality conferencing system",
-                "uri":"http://www.mendeley.com/catalog/marker-tracking-hmd-calibration-videobased-augmentedreality-conferencing-system/",
-                "eexcessURI":"http://www.mendeley.com/catalog/marker-tracking-hmd-calibration-videobased-augmentedreality-conferencing-system/",
-                "creator":"H. Kato, M. Billinghurst",
-                "description":"We describe an augmented reality conferencing system which uses the overlay of virtual images on the real world. Remote collaborators are represented on virtual monitors which can be freely positioned about a user in space. Users can collaboratively view and interact with virtual objects using a shared virtual whiteboard. This is possible through precise virtual image registration using fast and accurate computer vision techniques and head mounted display (HMD) calibration. We propose a method for tracking fiducial markers and a calibration method for optical see-through HMD based on the marker tracking",
-                "collectionName":"Proceedings 2nd IEEE and ACM International Workshop on Augmented Reality (IWAR'99)",
+                "id":"6155868f-b7a6-37c1-be72-e9dbe5dff893",
+                "title":"Material flow and circular economy.",
+                "uri":"http://www.mendeley.com/research/material-flow-circular-economy-1/",
+                "eexcessURI":"http://www.mendeley.com/research/material-flow-circular-economy-1/",
+                "creator":"Jian Zhong Chen",
+                "description":"At present, the economy is increasingly internationally interconnected. Economic globalization requires systems approaches to promote sustainable economic development. The theory of material flow (MF) is one of the new theories that could positively contribute to the economic globalization. The theory of MF is also closely related to the concept of circular economy, as the pattern of material flow can be considered as a closed feedback process for circulatory purpose that is consisted of &amp;lsquo;resources-production-material flow-consumption-recycled resources&amp;rsquo;. It corresponds to the circular economy's development pattern of &amp;lsquo;resources-products-recycled resources&amp;rsquo;. In view of the pattern of material flow and its relevance to the circular economy, it is concluded that the theory of MF will contribute to the recirculation of natural resources, optimal utilization of resources, improving natural environment and especially the sustainable global economic development. Copyright &amp;copy; 2009 John Wiley &amp; Sons, Ltd. [ABSTRACT FROM AUTHOR]",
+                "collectionName":"Systems Research &amp; Behavioral Science",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"1999"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2009",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"643c8a34-ee4a-34b4-9a8d-8e2b7c8ace93",
-                "title":"Rendering Methods for Augmented Reality",
-                "uri":"http://www.mendeley.com/catalog/rendering-methods-augmented-reality/",
-                "eexcessURI":"http://www.mendeley.com/catalog/rendering-methods-augmented-reality/",
-                "creator":"Jan Fischer",
-                "description":"Augmented reality (AR) has become a promising and fast-growing application of computer graphics over the course of the last years. Augmented reality systems overlay computer-generated graphical information over the view of the real world. Several main research challenges can be identified in the field of augmented reality. These are the design of advanced display devices (e.g., head-mounted displays), camera tracking, system design, user interaction, and rendering. While a major part of the previous work focused on the problems of system design, camera tracking, and applications of AR, this thesis puts a different emphasis on the relatively underrepresented aspect of rendering techniques. In this thesis, several novel methods for displaying augmented video streams are explored. In the first part of this thesis in Chapter 2, the design and implementation of a novel system for medical augmented reality are discussed. The ARGUS framework is a new augmented reality system based on a commercial surgical navigation device. Since it does not require any additional hardware components, a transition into the clinical practice can be facilitated. Several extensions of the basic framework are described, including a hybrid tracking scheme, a user interaction library, and amethod for handling occlusion. The latter algorithm makes it possible to correctly render the occlusion of graphical objects by the anatomy of the patient, leading to a more realistic and easily comprehensible output. This approach is one of the advanced rendering methods for augmented reality investigated in the context of this thesis. The second part of this thesis, Chapter 3, introduces the concept of stylized augmented reality, which applies artistic or illustrative stylization methods to augmented reality video streams. Since the same type of stylization is applied to virtual and real scene elements, they become difficult to distinguish. This way, a novel augmented reality experience is created, and possibly even a better immersion. Real-time algorithms for cartoon-like and painterly brush stroke stylization of augmented video streams are described. The exploitation of programmable graphics hardware for this purpose is discussed. Moreover, the results of a psychophysical study on the discernability of virtual objects in stylized augmented reality are presented. At the beginning of Chapter 4, which is the third part of this thesis, a novel illustrative visualization method is described. This new rendering algorithm for iso-surfaces and polygonal models generates an illustrative representation of a surface and structures hidden behind it. The method is designed for the programmable rendering pipelines of modern graphics hardware and is capable of displaying complex models in real-time. An extension of this newly developed illustrative display style was also applied to augmented reality video streams. This system constitutes another realization of the concept of stylized augmented reality.",
-                "collectionName":"Arbeit",
+                "id":"eceec057-3c8a-3ae4-9ec2-f6734b072f79",
+                "title":"Progress Toward a Circular Economy in China",
+                "uri":"http://www.mendeley.com/catalog/progress-toward-circular-economy-china/",
+                "eexcessURI":"http://www.mendeley.com/catalog/progress-toward-circular-economy-china/",
+                "creator":"John a Mathews, Hao Tan",
+                "description":"Eco-industrial initiatives, which close industrial loops by turning wastes at one point in a value chain into inputs at another point, are attracting growing interest as a solution to the problem of sustainability of industrial systems. Although Germany and Japan have made important advances in building recycling incentives into their industrial systems and sought competitive advantage from doing so, China is arguably taking the issue even further (in principle) through its pursuit of a circular economy, now enshrined in law as an official national development goal. In this article, we review a number of the eco-industrial initiatives taken in China and compare them using a common graphical representation with comparable initiatives taken in the West and elsewhere in East Asia. Our aim is to demonstrate some common themes across the case studies, such as the transformation from the former linear economy to a circular economy and the evolutionary processes in which dynamic linkages are gradually established over time. We discuss the drivers of these eco-industrial initiatives as well as the inhibitors, setting the initiatives in an evolutionary framework and introducing a notion of Pareto eco-efficiency to evaluate them. We make the argument that China might be capturing latecomer advantages through its systematic promotion of eco-industrial initiatives within a circular economy framework.",
+                "collectionName":"Journal of Industrial Ecology",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2006"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2011",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"4ce6bd90-f63b-3fc3-be43-39ccb8ded1a2",
-                "title":"Augmented reality: A class of displays on the reality-virtuality continuum",
-                "uri":"http://www.mendeley.com/catalog/augmented-reality-class-displays-realityvirtuality-continuum/",
-                "eexcessURI":"http://www.mendeley.com/catalog/augmented-reality-class-displays-realityvirtuality-continuum/",
-                "creator":"Paul; Haruo Takemura; Akira Utsumi; Fumio Kishino Milgram",
-                "description":"In this paper we discuss augmented reality (AR) displays in a general sense, within the context of a reality-virtuality (RV) continuum, encompassing a large class of `mixed reality' (MR) displays, which also includes augmented virtuality (AV). MR displays are defined by means of seven examples of existing display concepts in which real objects and virtual objects are juxtaposed. Essential factors which distinguish different MR display systems from each other are presented, first by means of a table in which the nature of the underlying scene, how it is viewed, and the observer's reference to it are compared, and then by means of a three dimensional taxonomic framework comprising: extent of world knowledge, reproduction fidelity, and extent of presence metaphor. A principal objective of the taxonomy is to clarify terminology issues and to provide a framework for classifying research across different disciplines.",
-                "collectionName":"Telemanipulator and Telepresence Technologies",
+                "id":"e7c3ec7f-333e-3d5a-999f-d851a4cbdbae",
+                "title":"Remaking the industrial economy",
+                "uri":"http://www.mendeley.com/research/remaking-industrial-economy/",
+                "eexcessURI":"http://www.mendeley.com/research/remaking-industrial-economy/",
+                "creator":"Hanh Nguyen, Martin Stuchtey, Markus Zils",
+                "description":"A regenerative economic model&amp;mdash;the circular economy&amp;mdash; is starting to help companies create more value while reducing their dependence on scarce resources.",
+                "collectionName":"McKinsey Quarterly",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"1995"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2014",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"571961d8-e0e0-3267-95a0-7784dfe55f76",
-                "title":"A survey of augmented reality",
-                "uri":"http://www.mendeley.com/catalog/survey-augmented-reality/",
-                "eexcessURI":"http://www.mendeley.com/catalog/survey-augmented-reality/",
-                "creator":"Ronald Azuma, Ronald Azuma",
-                "description":"This paper surveys the field of Augmented Reality, in which 3-D virtual objects are integrated into a 3-D real environment in real time. It describes the  medical, manufacturing, visualization, path planning, entertainment and military applications that have been explored. This paper describes the characteristics of  Augmented Reality systems, including a detailed discussion of the tradeoffs between optical and video blending approaches. Registration and sensing errors are two of the biggest problems in building effective Augmented Reality systems, so this paper summarizes current efforts to overcome these problems. Future directions and areas  requiring further research are discussed. This survey provides a starting point for anyone interested in researching or using Augmented Reality.",
-                "collectionName":"Presence: Teleoperators and Virtual Environments",
+                "id":"3baf8da8-e6cf-367b-92b9-de13cea940b5",
+                "title":"Cradle to cradle: Reverse logistics strategies and opportunities across three industry sectors",
+                "uri":"http://www.mendeley.com/catalog/cradle-cradle-reverse-logistics-strategies-opportunities-across-three-industry-sectors/",
+                "eexcessURI":"http://www.mendeley.com/catalog/cradle-cradle-reverse-logistics-strategies-opportunities-across-three-industry-sectors/",
+                "creator":"Sameer Kumar, Valora Putnam",
+                "description":"Manufacturers have experienced institutional pressures in the form of market and regulatory demands to conform to the standards dictated by environmental regulations. The primary forces are studied for three industry sectors (automotive, consumer appliances and electronic) to close the supply chain loop in the product lifecycle. The first deals with identifying the drivers of a growing market for recycled and remanufactured products. The second relates to the creation of economically efficient end-of-life product returns and reuse/recycling practices. The third deals with enabling supply chain coordination for redesign of products, disassembly methods and practices, and services. ?? 2008 Elsevier B.V. All rights reserved.",
+                "collectionName":"International Journal of Production Economics",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"1997"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2008",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"0ebacefb-ef02-3ebe-9a6a-19444794391a",
-                "title":"Augmented reality and photogrammetry: A synergy to visualize physical and virtual city environments",
-                "uri":"http://www.mendeley.com/catalog/augmented-reality-photogrammetry-synergy-visualize-physical-virtual-city-environments/",
-                "eexcessURI":"http://www.mendeley.com/catalog/augmented-reality-photogrammetry-synergy-visualize-physical-virtual-city-environments/",
-                "creator":"Cristina Portal&amp;eacute;s, Jos&amp;eacute; Luis Lerma, Santiago Navarro",
-                "description":"Close-range photogrammetry is based on the acquisition of imagery to make accurate measurements and, eventually, three-dimensional (3D) photo-realistic models. These models are a photogrammetric product per se. They are usually integrated into virtual reality scenarios where additional data such as sound, text or video can be introduced, leading to multimedia virtual environments. These environments allow users both to navigate and interact on different platforms such as desktop PCs, laptops and small hand-held devices (mobile phones or PDAs). In very recent years, a new technology derived from virtual reality has emerged: Augmented Reality (AR), which is based on mixing real and virtual environments to boost human interactions and real-life navigations. The synergy of AR and photogrammetry opens up new possibilities in the field of 3D data visualization, navigation and interaction far beyond the traditional static navigation and interaction in front of a computer screen. In this paper we introduce a low-cost outdoor mobile AR application to integrate buildings of different urban spaces. High-accuracy 3D photo-models derived from close-range photogrammetry are integrated in real (physical) urban worlds. The augmented environment that is presented herein requires for visualization a see-through video head mounted display (HMD), whereas user's movement navigation is achieved in the real world with the help of an inertial navigation sensor. After introducing the basics of AR technology, the paper will deal with real-time orientation and tracking in combined physical and virtual city environments, merging close-range photogrammetry and AR. There are, however, some software and complex issues, which are discussed in the paper. &amp;copy; 2009 International Society for Photogrammetry and Remote Sensing, Inc. (ISPRS).",
-                "collectionName":"ISPRS Journal of Photogrammetry and Remote Sensing",
+                "id":"900ddddd-2c51-3523-a9bf-dbaffcb57c08",
+                "title":"Cradle-to-cradle design: creating healthy emissions - a strategy for eco-effective product and system design",
+                "uri":"http://www.mendeley.com/catalog/cradletocradle-design-creating-healthy-emissions-strategy-ecoeffective-product-system-design/",
+                "eexcessURI":"http://www.mendeley.com/catalog/cradletocradle-design-creating-healthy-emissions-strategy-ecoeffective-product-system-design/",
+                "creator":"Michael Braungart, William McDonough, Andrew Bollinger",
+                "description":"Eco-effectiveness and cradle-to-cradle design present an alternative design and production concept to the strategies of zero emission and eco-efficiency. Where eco-efficiency and zero emission seek to reduce the unintended negative consequences of processes of production and consumption, eco-effectiveness is a positive agenda for the conception and production of goods and services that incorporate social, economic, and environmental benefit, enabling triple top line growth. Eco-effectiveness moves beyond zero emission approaches by focusing on the development of products and industrial systems that maintain or enhance the quality and productivity of materials through subsequent life cycles. The concept of eco-effectiveness also addresses the major shortcomings of eco-efficiency approaches: their inability to address the necessity for fundamental redesign of material flows, their inherent antagonism towards long-term economic growth and innovation, and their insufficiency in addressing toxicity issues. A central component of the eco-effectiveness concept, cradle-to-cradle design provides a practical design framework for creating products and industrial systems in a positive relationship with ecological health and abundance, and long-term economic growth. Against this background, the transition to eco-effective industrial systems is a five-step process beginning with an elimination of undesirable substances and ultimately calling for a reinvention of products by reconsidering how they may optimally fulfill the need or needs for which they are actually intended while simultaneously being supportive of ecological and social systems. This process necessitates the creation of an eco-effective system of \"nutrient\" management to coordinate the material flows amongst actors in the product system. The concept of intelligent materials pooling illustrates how such a system might take shape, in reality. ?? 2006.",
+                "collectionName":"Journal of Cleaner Production",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2010"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2007",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"4fb2cb6e-b354-3186-9063-f41dbc48b160",
-                "title":"Collaborative augmented reality ping-pong via markerless real rackets",
-                "uri":"http://www.mendeley.com/catalog/collaborative-augmented-reality-pingpong-via-markerless-real-rackets/",
-                "eexcessURI":"http://www.mendeley.com/catalog/collaborative-augmented-reality-pingpong-via-markerless-real-rackets/",
-                "creator":"Yong Yan, Xiaowu Chen, Xin Li",
-                "description":"This article proposes a method of constructing a ping-pong system via marker less real rackets in collaborative augmented reality. Except a pair of video cameras, without any other sensors or artificial markers, users can use real rackets to hit virtual ping-pong ball on a virtual table and interact with remote partners in augmented reality scene just as they were playing ping-pong in the same place. First, the real racket can be detected and tracked in real-time in the video captured by a single camera in each site. By 3D registration, the real racket can seamlessly interact with the virtual ping-pong ball and table. Then, a communication scheme is designed for the consistent perception between users in collaborative augmented reality ping-pong system. To achieve real-time interaction, the whole method is implemented in a parallel computing environment through multi-core processors. Experimental results demonstrate that our system can provide consistent perception and natural user interaction with low latency and high precision.",
-                "collectionName":"Proceedings - 2011 International Conference on Virtual Reality and Visualization, ICVRV 2011",
+                "id":"213dd1eb-c862-38af-9a1d-ac24409d9278",
+                "title":"Towards the Circular Economy",
+                "uri":"http://www.mendeley.com/catalog/towards-circular-economy-22/",
+                "eexcessURI":"http://www.mendeley.com/catalog/towards-circular-economy-22/",
+                "creator":"Ellen Macarthur",
+                "description":"Activities over the past several years, however, clearly show that CE is emerging as an economic strategy rather than a purely environmental strategy. The major objec- tive of the government is to promote the sustainable de- velopment of economy and society, while it also helps to achieve sustainable en- vironmental protection.",
+                "collectionName":"Journal of Industrial Ecology",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2011"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2013",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"b38d8fa2-7dc9-3575-af22-5284694d84d7",
-                "title":"Real-time markerless tracking for augmented reality: The virtual visual servoing framework",
-                "uri":"http://www.mendeley.com/catalog/realtime-markerless-tracking-augmented-reality-virtual-visual-servoing-framework/",
-                "eexcessURI":"http://www.mendeley.com/catalog/realtime-markerless-tracking-augmented-reality-virtual-visual-servoing-framework/",
-                "creator":"Andrew I. Comport, Eric Marchand, Muriel Pressigout, Fran&amp;ccedil;ois Chaumette",
-                "description":"Tracking is a very important research subject in a real-time augmented reality context. The main requirements for trackers are high accuracy and little latency at a reasonable cost. In order to address these issues, a real-time, robust, and efficient 3D model-based tracking algorithm is proposed for a \"video see through\" monocular vision system. The tracking of objects in the scene amounts to calculating the pose between the camera and the objects. Virtual objects can then be projected into the scene using the pose. Here, nonlinear pose estimation is formulated by means of a virtual visual servoing approach. In this context, the derivation of point-to-curves interaction matrices are given for different 3D geometrical primitives including straight lines, circles, cylinders, and spheres. A local moving edges tracker is used in order to provide real-time tracking of points normal to the object contours. Robustness is obtained by integrating an M-estimator into the visual control law via an iteratively reweighted least squares implementation. This approach is then extended to address the 3D model-free augmented reality problem. The method presented in this paper has been validated on several complex image sequences including outdoor environments. Results show the method to be robust to occlusion, changes in illumination, and mistracking.",
-                "collectionName":"IEEE Transactions on Visualization and Computer Graphics",
+                "id":"8f12072e-bfe0-340c-ac49-6fadef02e14e",
+                "title":"Developing country experience with eco-industrial parks: a case study of the Tianjin Economic-Technological Development Area in China",
+                "uri":"http://www.mendeley.com/catalog/developing-country-experience-ecoindustrial-parks-case-study-tianjin-economictechnological-developme/",
+                "eexcessURI":"http://www.mendeley.com/catalog/developing-country-experience-ecoindustrial-parks-case-study-tianjin-economictechnological-developme/",
+                "creator":"Han Shi, Marian Chertow, Yuyan Song",
+                "description":"To address the pollution that accompanies rapid industrial growth in China, a National Eco-industrial Park Demonstration Program was launched in 2000. This article provides a case study of the Tianjin Economic-Technological Development Area (TEDA). The emergence of an environmental institution in TEDA is used as a backdrop to assess how TEDA has transformed itself into one of the top three national eco-industrial parks in China. Following two years of field research, a network of 81 inter-firm symbiotic relationships formed in TEDA during the past 16 years were identified involving the utility, automobile, electronics, biotechnology, food and beverage, and resource recovery clusters. The article assesses the environmental benefits of the key symbiotic exchanges in TEDA and summarizes some unique characteristics of EIP progress in a developing country. &amp;copy; 2009 Elsevier Ltd. All rights reserved.",
+                "collectionName":"Journal of Cleaner Production",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2006"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2010",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"432c7359-3645-3296-b0cb-a7eade1daf8f",
-                "title":"Explorations in the Use of Augmented Reality for Geographic Visualization",
-                "uri":"http://www.mendeley.com/catalog/explorations-augmented-reality-geographic-visualization/",
-                "eexcessURI":"http://www.mendeley.com/catalog/explorations-augmented-reality-geographic-visualization/",
-                "creator":"Nicholas R. Hedley, Mark Billinghurst, Lori Postner, Richard May, Hirokazu Kato",
-                "description":"In this paper, we describe two explorations in the use of hybrid user interfaces for collaborative geographic data visualization. Our first interface combines three technologies: augmented reality (AR), immersive virtual reality (VR), and computer vision-based hand and object tracking. Wearing a lightweight display with an attached camera, users can look at a real map and see three-dimensional virtual terrain models overlaid on the map. From this AR interface, they can fly in and experience the model immersively, or use free hand gestures or physical markers to change the data representation. Building on this work, our second interface explores alternative interface techniques, including a zoomable user interface, paddle interactions, and pen annotations. We describe the system hardware and software and the implications for GIS and spatial science applications.",
-                "collectionName":"Presence: Teleoperators and Virtual Environments",
+                "id":"0878b78e-a1e6-3909-afab-8e321682d595",
+                "title":"A purview of waste management evolution: Special emphasis on USA",
+                "uri":"http://www.mendeley.com/catalog/purview-waste-management-evolution-special-emphasis-usa/",
+                "eexcessURI":"http://www.mendeley.com/catalog/purview-waste-management-evolution-special-emphasis-usa/",
+                "creator":"Naushad Kollikkathara, Huan Feng, Eric Stern",
+                "description":"The generation of waste in urban regions over time is seen to impact the balance of anthropogenic and natural resources. Various national and international initiatives to manage urban solid waste are in place and has thus have evolved at present to form an assortment of different subcomponents involving environmental, administrative, regulatory, scientific, market, technology, and socio-economic factors, which has increasing bearing on the US due to its volume and nature of discards. This paper draws together the various aspects of municipal solid waste (MSW) management as it evolved, particularly in the American society through reviewing works and findings. In many parts of the country, waste management at present, primarily involves landfilling, incineration with and without energy recovery, recycling and composting. Legislation, nature of wastes and market trends continue to redefine management operations and its responsibilities and impacts. Complexities are added to it by the nature of urban development as well. New studies and concepts like 3Rs, cradle-to-cradle, industrial ecology, and integrated waste management are adding new dimensions for solving waste problems towards achieving sustainable resource use. Local initiatives, both public and private are in the forefront of adopting alternate waste management procedures. The assistance from various government and private bodies, supporting shifts in waste management approaches, have immense value, as according to the new paradigms, nothing goes to waste. ?? 2008 Elsevier Ltd.",
+                "collectionName":"Waste Management",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2002"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2009",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"c6bd683b-cf1f-398e-80c4-43f53629a049",
-                "title":"Simulated augmented reality windshield display as a cognitive mapping aid for elder driver navigation",
-                "uri":"http://www.mendeley.com/catalog/simulated-augmented-reality-windshield-display-cognitive-mapping-aid-elder-driver-navigation/",
-                "eexcessURI":"http://www.mendeley.com/catalog/simulated-augmented-reality-windshield-display-cognitive-mapping-aid-elder-driver-navigation/",
-                "creator":"SeungJun Kim, SeungJun Kim, Anind K. Dey, Anind K. Dey",
-                "description":"A common effect of aging is decline in spatial cognition. This is an issue for all elders, but particularly for elder drivers. To address this driving issue, we propose a novel concept of an in-vehicle navigation display system that displays navigation information directly onto the vehicle's windshield, superimposing it on the driver's view of the actual road. An evaluation of our simulated version of this display shows that it results in a significant reduction in navigation errors and distraction-related measures compared to a typical in-car navigation display for elder drivers. These results help us understand how context-sensitive information and a simulated augmented reality representation can be combined to minimize the cognitive load in translating between virtual/information spaces and the real world.",
-                "collectionName":"CHI",
+                "id":"1604f692-ecfe-30ba-b82f-32c8a9201970",
+                "title":"The Impact of Scale, Recycling Boundary, and Type of Waste on Symbiosis and Recycling: An Empirical Study of Japanese Eco-Towns",
+                "uri":"http://www.mendeley.com/catalog/impact-scale-recycling-boundary-type-waste-symbiosis-recycling-empirical-study-japanese-ecotowns/",
+                "eexcessURI":"http://www.mendeley.com/catalog/impact-scale-recycling-boundary-type-waste-symbiosis-recycling-empirical-study-japanese-ecotowns/",
+                "creator":"Xudong Chen, Tsuyoshi Fujita, Satoshi Ohnishi, Minoru Fujii, Yong Geng",
+                "description":"Innovativewaste recycling through industrial processes such as industrial and urban symbiosis has long been practiced and recently received much attention in the field of industrial ecology, with researchers making efforts to identify key contributing factors to successful industrial symbiosis. By analyzing 88 sample recycling projects in 23 eco-towns in Japan, this article focuses on the factors of project scale, recycling boundary, and types of waste in relationship to environmental benefits and operational performance. The results showed that larger eco-towns achieved more savings of virgin materials and higher stability in operation. Large-scale projects tended to locate closer to the users of recycled products than did small-scale projects. For treating similar types of waste, projects producing recycled products for special users (e.g., feedstock to a blast furnace for iron production) tended to locate closer to the users than those not producing for special users. The type of waste had a strong effect on the savings of virgin materials and recycling boundaries, while local factors had significant impacts on operational performance. The results also showed that agglomeration did not significantly contribute to the environmental benefits or operational performance of eco-town projects. Another finding was that national agencies were helpful for facilitating cross-prefecture transportation and long-distance transaction of wastes. Implications of the findings are also discussed.",
+                "collectionName":"Journal of Industrial Ecology",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2009"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2012",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"37ae15a1-985d-3501-ab36-0e5edf23153b",
-                "title":"Interactive mediated reality",
-                "uri":"http://www.mendeley.com/catalog/interactive-mediated-reality/",
-                "eexcessURI":"http://www.mendeley.com/catalog/interactive-mediated-reality/",
-                "creator":"R. Grasset, J.-D. Gascuel, Schmalstieg Schmalstieg",
-                "description":" Mediated reality describes the concept of filtering or vision of reality, typically using a head-worn video mixing display. In this paper, we propose a generalized concept and new tools for interactively mediated reality. We present also our first prototype system for painting, grabbing and gluing together real and virtual elements.",
-                "collectionName":"The Second IEEE and ACM International Symposium on Mixed and Augmented Reality, 2003. Proceedings.",
+                "id":"f7a8c0af-6e4a-3edb-9a6b-ce23da6731dc",
+                "title":"Ecological utilization of leather tannery waste with circular economy model",
+                "uri":"http://www.mendeley.com/catalog/ecological-utilization-leather-tannery-waste-circular-economy-model/",
+                "eexcessURI":"http://www.mendeley.com/catalog/ecological-utilization-leather-tannery-waste-circular-economy-model/",
+                "creator":"Jing Hu, Zuobing Xiao, Rujun Zhou, Weijun Deng, Mingxi Wang, Shuangshuang Ma",
+                "description":"Circular economy (CE) focuses on resource-productivity and eco-efficiency improvement in a comprehensive way, especially on the industrial structure optimization of new technology development and application, equipment renewal and management renovation. The leather industry on the one side boosts the local economic development, on the other side however leads to the tremendous environment pollution and biological chains destruction. The CE model has been implemented as a new way of raw materials, water and energy consumption reduction in the leather industry. Reduce, Reuse, Recycle and Recover of the tannery effluents have been discussed in detail according to the different operation processes. The successful treatment approaches with analysis in the aspects such as wastewater, solid waste, sulfide, Chemical Oxygen Demand (COD), ammonium salt, chloride and chrome of the leather tannery with CE model provide guidance for the sustainable development of leather industry in the future. &amp;copy; 2010 Elsevier Ltd. All rights reserved.",
+                "collectionName":"Journal of Cleaner Production",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2003"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2011",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"79a3cf03-407f-3490-ad3d-e514ccb16c54",
-                "title":"Recent advances in augmented reality",
-                "uri":"http://www.mendeley.com/catalog/recent-advances-augmented-reality-1/",
-                "eexcessURI":"http://www.mendeley.com/catalog/recent-advances-augmented-reality-1/",
-                "creator":"R. Azuma, Y. Baillot, R. Behringer, S. Feiner, S. Julier, B. MacIntyre",
-                "description":"In 1997, Azuma published a survey on augmented reality (AR). Our goal is to complement, rather than replace, the original survey by presenting representative examples of the new advances. We refer one to the original survey for descriptions of potential applications (such as medical visualization, maintenance and repair of complex equipment, annotation, and path planning); summaries of AR system characteristics (such as the advantages and disadvantages of optical and video approaches to blending virtual and real, problems in display focus and contrast, and system portability); and an introduction to the crucial problem of registration, including sources of registration error and error-reduction strategies",
-                "collectionName":"IEEE Computer Graphics and Applications",
+                "id":"fb5a690b-b0fb-3c8c-a54d-9c7e03ca5418",
+                "title":"A systems and thermodynamics perspective on technology in the circular economy",
+                "uri":"http://www.mendeley.com/research/systems-thermodynamics-perspective-technology-circular-economy/",
+                "eexcessURI":"http://www.mendeley.com/research/systems-thermodynamics-perspective-technology-circular-economy/",
+                "creator":"C F Rammelt, P T Crisp",
+                "description":"Several discourses on environment and sustainability are characterised by a strong confidence in the potential of technology to address, if not solve, the ecological impacts resulting from physically expanding systems of production and consumption. The optimism is further encouraged by leading environmental engineering concepts, including cradle-to-cradle and industrial ecology, as well as broader frameworks, such as natural capitalism and the circular economy. This paper explores the viability of their promise from a biophysical perspective, which is based on insights from system dynamics and thermodynamics. Such an ecological reality check is generally ignored or underestimated in the literature on aforementioned concepts and frameworks. The paper ultimately reflects on what role society can realistically assign to technology for resolving its ecological concerns. While environmental engineering undoubtedly has something to offer, it will end up chasing its tail if the social and economic forces driving up production and consumption are not addressed.",
+                "collectionName":"Real-World Economics Review",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2001"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2014",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"bc4b713f-bc08-3724-9975-2631d713b987",
-                "title":"Trends in augmented reality tracking, interaction and display: A review of ten years of ISMAR",
-                "uri":"http://www.mendeley.com/catalog/trends-augmented-reality-tracking-interaction-display-review-ten-years-ismar/",
-                "eexcessURI":"http://www.mendeley.com/catalog/trends-augmented-reality-tracking-interaction-display-review-ten-years-ismar/",
-                "creator":"Feng Zhou, Henry Been Lirn Dun, Mark Billinghurst",
-                "description":"Although Augmented Reality technology was first developed over forty years ago, there has been little survey work giving an overview of recent research in the field. This paper reviews the ten-year development of the work presented at the ISMAR conference and its predecessors with a particular focus on tracking, interaction and display research. It provides a roadmap for future augmented reality research which will be of great value to this relatively young field, and also for helping researchers decide which topics should be explored when they are beginning their own studies in the area.",
-                "collectionName":"Proceedings - 7th IEEE International Symposium on Mixed and Augmented Reality 2008, ISMAR 2008",
+                "id":"2fe8fbb4-9c3f-32be-a642-372cb12cd387",
+                "title":"Industrial symbiosis and waste recovery in an Indian industrial area",
+                "uri":"http://www.mendeley.com/catalog/industrial-symbiosis-waste-recovery-indian-industrial-area/",
+                "eexcessURI":"http://www.mendeley.com/catalog/industrial-symbiosis-waste-recovery-indian-industrial-area/",
+                "creator":"Ariana Bain, Megha Shenoy, Weslynne Ashton, Marian Chertow",
+                "description":"Recovery, reuse and recycling of industrial residuals, often dismissed as wastes, are common in India and other industrializing countries largely due to lower associated costs. Some wastes are reused within the facility where they are generated, others are reused directly by nearby industrial facilities, and some are recycled via the formal and informal recycling markets. Direct inter-firm reuse is the cornerstone of the phenomenon termed industrial symbiosis, where firms cooperate in the exchange of material and energy resources. This study applies material flow analysis to an economically diverse industrial area in South India to characterize the recovery, reuse and recycling of industrial residuals. It quantifies the generation of waste materials from 42 companies as well as the materials that are directly traded across facilities and those that are recycled or disposed. This study encompasses a business cluster in Mysore in the State of Karnataka, and is the first in India to thoroughly quantify material flows to identify existing symbiotic connections in an industrial area. Examined industries in this industrial area generate 897,210 metric tons of waste residuals annually, and recovered 99.5% of these, 81% with reused by the companies that generated them, with one company, a sugar refinery, processing most of this amount. Geographic data show that operations within 20km of the industrial area receive over 90% of residuals exiting facility gates. Two-thirds of this amount goes directly to other economic actors for reuse. This study makes key contributions to the literature in distinguishing how particular types of materials are reused in different ways, the geographic extent of symbiotic activities and the important role of the informal sector in industrial waste management in industrializing regions. &amp;copy; 2010 Elsevier B.V.",
+                "collectionName":"Resources, Conservation and Recycling",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2008"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2010",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"6f806b4e-1402-3d18-8f9f-b2fb66e464b6",
-                "title":"Spatial Augmented Reality Merging Real and Virtual Worlds",
-                "uri":"http://www.mendeley.com/catalog/spatial-augmented-reality-merging-real-virtual-worlds/",
-                "eexcessURI":"http://www.mendeley.com/catalog/spatial-augmented-reality-merging-real-virtual-worlds/",
-                "creator":"Oliver Bimber, Ramesh Raskar",
-                "description":"Like virtual reality, augmented reality is becoming an emerging platform in new application areas for museums, edutainment, home entertainment, research, industry, and the art communities using novel approaches which have taken augmented reality beyond traditional eye-worn or hand-held displays. In this book, the authors discuss spatial augmented reality approaches that exploit optical elements, video projectors, holograms, radio frequency tags, and tracking technology, as well as interactive rendering algorithms and calibration techniques in order to embed synthetic supplements into the real environment or into a live video of the real environment. Special Features Comprehensive overview Detailed mathematical equations Code fragments Implementation instructions Examples of Spatial AR displays",
-                "collectionName":"Scientist",
+                "id":"e0d84708-9f4e-3dcb-9175-fe4888ca1d0c",
+                "title":"Regional industrial ecology: examples from regional economic systems of forest industry and energy supply in Finland.",
+                "uri":"http://www.mendeley.com/catalog/regional-industrial-ecology-examples-regional-economic-systems-forest-industry-energy-supply-finland/",
+                "eexcessURI":"http://www.mendeley.com/catalog/regional-industrial-ecology-examples-regional-economic-systems-forest-industry-energy-supply-finland/",
+                "creator":"J Korhonen",
+                "description":"Industrial ecology (IE) promotes the development of industrial systems based on recycling of matter and cascading of energy through cooperation. In this paper, the local/regional industrial ecosystem approach is reflected in two examples from Finland. The local forest industry system is based on renewable resources, waste materials and energy utilisation between forestry companies, a saw-mill, a pulp mill, a paper mill and a forest industry power plant. Waste energy from electricity production is used for production of heat and process steam. Regional city energy supply systems in Finland are also to a large extent arranged around power plants that utilise waste energy. The potential of combining the forest industry system with the energy supply systems of cities is considered and the conditions for success in the Finnish case are discussed.",
+                "collectionName":"Journal of environmental management",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2005"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2001",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"fd2779b4-12d1-3dbc-8584-ba04befa0089",
-                "title":"Augmented Reality: An Overview",
-                "uri":"http://www.mendeley.com/catalog/augmented-reality-overview/",
-                "eexcessURI":"http://www.mendeley.com/catalog/augmented-reality-overview/",
-                "creator":"Julie Carmigniani, Borko Furht",
-                "description":"We define Augmented Reality (AR) as a real-time direct or indirect view of a physical real-world environment that has been enhanced/ augmented by adding virtual computer-generated information to it 1. AR is both interactive and registered in 3D as well as combines real and virtual objects. Milgrams Reality-Virtuality Continuum is defined by Paul Milgram and Fumio Kishino as a continuum that spans between the real environment and the virtual environment comprise Augmented Reality and Augmented Virtuality (AV) in between, where AR is closer to the real world and AV is closer to a pure virtual environment, as seen in Fig. 1.1 2.",
-                "collectionName":"Handbook of Augmented Reality",
+                "id":"995d5c0b-5471-3efe-8317-1cfa8358b31b",
+                "title":"Promoting industrial symbiosis network through public-private partnership: A case study of TEDA",
+                "uri":"http://www.mendeley.com/catalog/promoting-industrial-symbiosis-network-through-publicprivate-partnership-case-study-teda/",
+                "eexcessURI":"http://www.mendeley.com/catalog/promoting-industrial-symbiosis-network-through-publicprivate-partnership-case-study-teda/",
+                "creator":"Yu Qi, Huiming Li, Junfeng Wang",
+                "description":"As Circular Economy (CE) and sustainable development have been widely recognized in the world, industrial solid waste exchange as a sort of typical industrial symbiosis phenomenon is being opened, mined and utmost importance for resources-saving and environment-friendly society. Commercial businesses and manufacturers are under pressure to be responsible both environmentally and economically in China; the increasing cost of industrial solid waste treatment has led local governments to examine if this service is best provided by the public sector or can better be provided by the private sector. Public-private partnerships have emerged as a promising alternative to improve industrial solid waste management performance with privately owned enterprises often outperforming publicly owned ones. In 2004, an EU-China Environmental Management Cooperation Program (EMCP) of state government agencies, private business, not-for-profits and educational institutions met to discuss the potential for a industrial solid waste exchange in Tianjin Economic and Technological Development Area (TEDA) EIP, China. This paper discusses public-private partnerships as a method in which private sector working with government, private business, and educational organizations developed a collaborative statewide program involving the exchange of materials from manufacturers and commercial business in TEDA EIP. The paper also figures out the case of industrial symbiosis network in TEDA and the benefits and challenges gained by related behavior activities during the process of production, development and evolvement of industrial symbiosis network. Analysis of alternatives for private sector involvement in waste management is considered and management approaches are outlined.",
+                "collectionName":"3rd International Conference on Bioinformatics and Biomedical Engineering, iCBBE 2009",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2011"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2009",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"8dc07664-eaab-3b7b-804f-3832467ff1af",
-                "title":"An image overlay system for medical data visualization.",
-                "uri":"http://www.mendeley.com/catalog/image-overlay-system-medical-data-visualization/",
-                "eexcessURI":"http://www.mendeley.com/catalog/image-overlay-system-medical-data-visualization/",
-                "creator":"M Blackwell, C Nikou, A M DiGioia, T Kanade",
-                "description":"Image Overlay is a computer display technique which superimposes computer images over the user's direct view of the real world. The images are transformed in real-time so they appear to the user to be an integral part of the surrounding environment. By using Image Overlay with three-dimensional medical images such as CT reconstructions, a surgeon can visualize the data 'in-vivo', exactly positioned within the patient's anatomy, and potentially enhance the surgeon's ability to perform a complex procedure. This paper describes prototype Image Overlay systems and initial experimental results from those systems.",
-                "collectionName":"Medical image analysis",
+                "id":"622a9a8a-fa64-3c75-9faa-2dfd86c15e80",
+                "title":"Developing country experience with industrial symbiosis: A case study of The Beijiang Power plant complex in Tianjin, China",
+                "uri":"http://www.mendeley.com/catalog/developing-country-experience-industrial-symbiosis-case-study-beijiang-power-plant-complex-tianjin-c/",
+                "eexcessURI":"http://www.mendeley.com/catalog/developing-country-experience-industrial-symbiosis-case-study-beijiang-power-plant-complex-tianjin-c/",
+                "creator":"Peng Mei Li",
+                "description":"Industrial symbiosis activities are being implemented in the philosophy of circular economy in China. Integrating industrial symbiosis into the corporate development plans to optimize materials and energy flows is a feasible strategy for many corporations in their transition between nonsustainable and sustainable development. The Beijiang Power Plant complex is the largest circular economy pilot in China. This study expounds on its transition course, and in which three factors are essential to making this symbiosis achievable: integration guiding principle; enterprises take the initiative; advanced technology support. We hope to point to a feasible development path for similar corporations.",
+                "collectionName":"2011 International Conference on Electric Technology and Civil Engineering, ICETCE 2011 - Proceedings",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2000"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2011",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"5fc4264a-809a-3368-9e99-883c3b82e7f1",
-                "title":"The World through the Computer: Computer Augmented Interaction with Real World Environments",
-                "uri":"http://www.mendeley.com/catalog/world-through-computer-computer-augmented-interaction-real-world-environments/",
-                "eexcessURI":"http://www.mendeley.com/catalog/world-through-computer-computer-augmented-interaction-real-world-environments/",
-                "creator":"Jun Rekimoto, Katashi Nagao",
-                "description":"Current user interface techniques such as WIMP or the desk- top metaphor do not support real world tasks, because the focus of these user interfaces is only on humancomputer in- teractions, not on humanreal world interactions. In this pa- per, we propose a method of building computer augmented environments using a situation-aware portable device. This device, called NaviCam, has the ability to recognize the users situation by detecting color-code IDs in real world environ- ments. It displays situation sensitive information by superim- posing messages on its video see-through screen. Combina- tion of ID-awareness and portable video-see-through display solves several problems with current ubiquitous computers systems and augmented reality systems.",
-                "collectionName":"Proc 8th Ann ACM Symp User Interface and Software Technology UIST ACM Press",
+                "id":"c0f5767e-5f18-3602-b6fb-511da50895c5",
+                "title":"Planning and uncovering industrial symbiosis: Comparing the Rotterdam and Oestergoetland regions",
+                "uri":"http://www.mendeley.com/catalog/planning-uncovering-industrial-symbiosis-comparing-rotterdam-stergtland-regions/",
+                "eexcessURI":"http://www.mendeley.com/catalog/planning-uncovering-industrial-symbiosis-comparing-rotterdam-stergtland-regions/",
+                "creator":"Leo Baas",
+                "description":"Industrial ecology is defined as the study of material and energy flows through industrial systems and as such may focus on a geographic area, resource and/or industry sector. In these types of setting, industrial ecology is also often known as industrial symbiosis (IS). The proximity of companies in industrial estates facilitates the linking of utilities and the exchange of wastes and by-products, which may eventually be useful inputs for adjacent industrial processes. The typical model that has been applied in several regions of the world is one where an anchor-tenant organization with energy and by-product linkages is connected to companies physically located nearby. In the case of biomass symbiosis, however, the resource chains are not explicitly arranged by their industrial setting and the supply of waste and by-products is able to be organized in a more scattered way.\\nIn this article, the role of industrial symbiosis is analyzed in respect of the planned industrial symbiosis activities in the Rotterdam Harbour and Industry Complex in the Netherlands and in the application of renewable energy in the &amp;Ouml;sterg&amp;ouml;tland region in Sweden.\\nThe objective of this article is to discuss the similarities and differences between the planned industrial symbiosis activities in Rotterdam and the unplanned biomass and industrial symbiosis activities in the &amp;Ouml;sterg&amp;ouml;tland region. By presenting this knowledge in this article, it is anticipated that further development of industrial symbiosis application processes may be achieved. Copyright &amp;copy; 2011 John Wiley &amp; Sons, Ltd and ERP Environment.",
+                "collectionName":"Business Strategy and the Environment",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"1995"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2011",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"d539eee5-fe9a-359b-aaab-20ad8768951e",
-                "title":"Handbook of augmented reality",
-                "uri":"http://www.mendeley.com/catalog/handbook-augmented-reality-1/",
-                "eexcessURI":"http://www.mendeley.com/catalog/handbook-augmented-reality-1/",
-                "creator":"Borko Furht",
-                "description":"Augmented Reality (AR) refers to a live view of physical real world environment whose elements are merged with augmented computer-generated images creating a mixed reality. The augmentation is typically done in real time and in semantic context with environmental elements. By using the latest AR techniques and technologies, the information about the surrounding real world becomes interactive and digitally usable. The objective of this Handbook is to provide comprehensive guidelines on the current and future trends in augmented reality technologies and applications. This Handbook is carefully edited book contributors are worldwide experts in the field of augmented reality and its applications. The Handbook Advisory Board, comprised of 11 researchers and practitioners from academia and industry, helped in reshaping the Handbook and selecting the right topics and creative and knowledgeable contributors. TheHandbook comprises of two parts,which consist of 33 chapters. The first part on Technologies includes articles dealing with fundamentals of augmented reality, augmented reality technologies, visualization techniques, head-mounted projection displays, evaluation of AR systems, mobile AR systems, and other innovative AR concepts. The second part on Applications includes various articles on AR applications in- cluding applications in psychology,medical education, edutainment, reality games, rehabilitation engineering, automotive safety, product development and manufac- turing, military applications, exhibition and entertainment, geographic information systems, and others. With the dramatic growth of augmented reality and its applications, this Hand- book can be the definitive resource for persons working in this field as researchers, scientists, programmers, engineers, and users. The book is intended for a wide vari- ety of people including academicians, designers, developers, educators, engineers, practitioners, researchers, and graduate students. This book can also be beneficial for business managers, entrepreneurs, and investors. The book can have a great potential to be adopted as a textbook in current and new courses on Augmented Reality. The main features of this Handbook can be summarized as: 1. The Handbook describes and evaluates the current state-of-the-art in the field of augmented reality. 2. The book presents current trends and concepts of augmented reality, technologies and techniques,AR devices, interfaces, tools, and systems applied in AR, as well as current and future applications. 3. Contributors to the Handbook are the leading researchers from academia and practitioners from industry. We would like to thank the authors for their contributions.Without their expertise and effort thisHandbookwould never come to fruition. Springer editors and staff also deserve our sincere recognition for their support throughout the project.",
-                "collectionName":"Handbook of Augmented Reality",
+                "id":"5f5e0059-283b-398e-859d-879bc391eeac",
+                "title":"Industrial symbiosis: High purity recovery of metals from Waelz sintering waste by aqueous SO2 solution",
+                "uri":"http://www.mendeley.com/catalog/industrial-symbiosis-high-purity-recovery-metals-waelz-sintering-waste-aqueous-so2-solution/",
+                "eexcessURI":"http://www.mendeley.com/catalog/industrial-symbiosis-high-purity-recovery-metals-waelz-sintering-waste-aqueous-so2-solution/",
+                "creator":"Mehmet &amp;Ccedil;opur, Turgay Pekdemir, Sabri &amp;Ccedil;olak, Asim K&amp;uuml;nk&amp;uuml;l",
+                "description":"Sintering operation in the production of Zn, Cd, and Pb by Waelz process produces a powdery waste containing mainly (about 70%) ZnO, CdO, and PbO. The waste may be referred to as Waelz sintering waste (WSW). The aim of this study is to develop a process for the separation and recovery of the metals from WSW with high purities. The process is based on the dissolution of the WSW in aqueous SO2 solution. The research reported here concentrated on the effect of some important operational parameters on dissolution process. The parameters investigated and their ranges were as follows: SO2 gas flow rate (V); 38-590 ml/min, stirring speed (W); 100-1000 rpm, reaction temperature (T); 13-60 &amp;deg;C, reaction time (t); 1-16 min, and solid-liquid ratio (S/L); 0.1-0.5 g/ml. The results showed that the dissolution rate increased with increasing W, V, and S/L and decreasing T. The best dissolution conditions were found to be V = 325 ml/min, W = 600 rpm, t = 6 min, T = 21 &amp;deg;C, and S/L = 0.1 g/ml. Separation of Zn from Cd involved precipitation of ZnSO3 from a mixture solution. The best pH level for the precipitation was observed to be 6. &amp;copy; 2007 Elsevier B.V. All rights reserved.",
+                "collectionName":"Journal of Hazardous Materials",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2011"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2007",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"229ddc61-e38e-3902-8796-ab21ac34867f",
-                "title":"An Approach for Real World Data Modelling with the 3D Terrestrial Laser Scanner for Built Environment",
-                "uri":"http://www.mendeley.com/catalog/approach-real-world-data-modelling-3d-terrestrial-laser-scanner-built-environment-2/",
-                "eexcessURI":"http://www.mendeley.com/catalog/approach-real-world-data-modelling-3d-terrestrial-laser-scanner-built-environment-2/",
-                "creator":"Y Arayici",
-                "description":"Capturing and modelling 3D information of the built environment is a big challenge. A number of techniques and technologies are now in use. These include EDM, GPS, and photogrammetric application, remote sensing and traditional building surveying applications. However, use of these technologies cannot be practical and efficient in regard to time, cost and accuracy. Furthermore, a multi disciplinary knowledge base, created from the studies and research about the regeneration aspects is fundamental: historical, architectural, archeologically, environmental, social, economic, etc. In order to have an adequate diagnosis of regeneration, it is necessary to describe buildings and surroundings by means of documentation and plans. However, at this point in time the foregoing is considerably far removed from the real situation, since more often than not it is extremely difficult to obtain full documentation and cartography, of an acceptable quality, since the material, constructive pathologies and systems are often insufficient or deficient (flat that simply reflects levels, isolated photographs,..). Sometimes the information in reality exists, but this fact is not known, or it is not easily accessible, leading to the unnecessary duplication of efforts and resources. In this paper, we discussed 3D laser scanning technology, which can acquire high density point data in an accurate, fast way. Besides, the scanner can digitize all the 3D information concerned with a real world object such as buildings, trees and terrain down to millimetre detail Therefore, it can provide benefits for refurbishment process in regeneration in the Built Environment and it can be the potential solution to overcome the challenges above. The paper introduce an approach for scanning buildings, processing the point cloud raw data, and a modelling approach for CAD extraction and building objects classification by a pattern matching approach in IFC (Industry Foundation Classes) format. The approach presented in this paper from an undertaken research can lead to parametric design and Building Information Modelling (BIM) for existing structures. Two case studies are introduced to demonstrate the use of laser scanner technology in the Built Environment. These case studies are the Jactin House Building in East Manchester and the Peel building in the campus of University Salford. Through these case studies, while use of laser scanners are explained, the integration of it with various technologies and systems are also explored for professionals in Built Environment",
-                "collectionName":"Automation in Construction",
+                "id":"fd15d10f-724a-3add-b281-d6614e90bf16",
+                "title":"A case study of industrial symbiosis: Nanning Sugar Co., Ltd. in China",
+                "uri":"http://www.mendeley.com/catalog/case-study-industrial-symbiosis-nanning-sugar-co-ltd-china/",
+                "eexcessURI":"http://www.mendeley.com/catalog/case-study-industrial-symbiosis-nanning-sugar-co-ltd-china/",
+                "creator":"Shanlin Yang, Nanping Feng",
+                "description":"Industrial symbiosis activities are being implemented in the philosophy of \"circular economy\" in China. Integrating industrial symbiosis into the corporate development plans to optimize materials and energy flows is a feasible strategy for many corporations in their transition between nonsustainable and sustainable development. By constructing industrial ecosystems, Nanning Sugar Co., Ltd. in China, has achieved the successful transition from a traditional corporation to a sustainable corporation, or rather, a circular corporation. This study expounds on its whole transition course to a circular complex in the past decade, in which four factors are essential to making this symbiosis achievable: rational production structures; raw materials advantages; technical supports and correct diversification. The corporation is in charge of almost all the aspects of its affiliated companies and the management mode, in particular, differing from that of industrial symbiosis systems in Kalundborg, is considered another potential factor contributing to the corporate success. The transition mode in question is hoped to point to a feasible development path for similar corporations. ?? 2007 Elsevier B.V. All rights reserved.",
+                "collectionName":"Resources, Conservation and Recycling",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2007"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2008",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"3fe4a058-1f8b-32ec-8a74-a9cfc7ae18b4",
-                "title":"Missing data analysis: making it work in the real world.",
-                "uri":"http://www.mendeley.com/catalog/missing-data-analysis-making-it-work-real-world-1/",
-                "eexcessURI":"http://www.mendeley.com/catalog/missing-data-analysis-making-it-work-real-world-1/",
-                "creator":"John W Graham",
-                "description":"This review presents a practical summary of the missing data literature, including a sketch of missing data theory and descriptions of normal-model multiple imputation (MI) and maximum likelihood methods. Practical missing data analysis issues are discussed, most notably the inclusion of auxiliary variables for improving power and reducing bias. Solutions are given for missing data challenges such as handling longitudinal, categorical, and clustered data with normal-model MI; including interactions in the missing data model; and handling large numbers of variables. The discussion of attrition and nonignorable missingness emphasizes the need for longitudinal diagnostics and for reducing the uncertainty about the missing data mechanism under attrition. Strategies suggested for reducing attrition bias include using auxiliary variables, collecting follow-up data on a sample of those initially missing, and collecting data on intent to drop out. Suggestions are given for moving forward with research on missing data and attrition.",
-                "collectionName":"Annual review of psychology",
+                "id":"c8edac25-4a4e-3f61-bbf6-6d3df960f714",
+                "title":"Environmental and economic gains of industrial symbiosis for Chinese iron/steel industry: Kawasaki's experience and practice in Liuzhou and Jinan",
+                "uri":"http://www.mendeley.com/catalog/environmental-economic-gains-industrial-symbiosis-chinese-ironsteel-industry-kawasakis-experience-pr/",
+                "eexcessURI":"http://www.mendeley.com/catalog/environmental-economic-gains-industrial-symbiosis-chinese-ironsteel-industry-kawasakis-experience-pr/",
+                "creator":"Liang Dong, Hui Zhang, Tsuyoshi Fujita, Satoshi Ohnishi, Huiquan Li, Minoru Fujii, Huijuan Dong",
+                "description":"With material and energy flow features, iron/steel industry has unique advantage in the industrial symbiosis (IS) formation to realize environmental and economic benefit simultaneously. The quantification of the scale and significance of IS benefits is valuable for IS promotion, while there is much few attention to it, especially in China. Under this circumstance, this paper evaluates and compares the number, scale and the related environmental/economic gains of IS activities in iron/steel-centered industrial areas in Liuzhou and Jinan in China, and Kawasaki in Japan. Results show that: in Liuzhou, there are three symbiosis activities between industries. The annual by-product/waste exchange is more than 2 million ton/y, gaining economic revenue more than 36.55 million USD for the iron/steel company. In Jinan, seven symbiotic links are between industries, and two are between urban community and iron/steel plant. The total by-product/waste exchange is over 8 million ton/y and the economic gains account to 158 million USD. In Kawasaki, iron/steel industry relates to four symbiotic links, the total by-product/waste exchange amount is about 500 kton/y, with the economic gains over 54 million USD. The form and the complexity of the IS network are different in the three cases. IS in Liuzhou and Jinan are with the features of large number and scale, but single types. While in Kawasaki, IS includes not only traditional exchanges between iron/steel plant and the other industries, but also the innovative utilization of urban refuse by industrial area. Finally, from the perspective of technology, legislative framework and support policy, circular technology inventory, integrated waste management system, information platform and national subsidies are needed to support the ever-improvement of IS promotion in China's iron/steel industry. &amp;copy; 2013 Elsevier Ltd. All rights reserved.",
+                "collectionName":"Journal of Cleaner Production",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2009"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2013",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"326b56ed-02e4-3510-a6c0-d3f0dcd8cae0",
-                "title":"Annotating real-world objects using augmented reality",
-                "uri":"http://www.mendeley.com/catalog/annotating-realworld-objects-using-augmented-reality-12/",
-                "eexcessURI":"http://www.mendeley.com/catalog/annotating-realworld-objects-using-augmented-reality-12/",
-                "creator":"Eric Rose, Eric Rose, David Breen, David Breen, Klaus H. Ahlers, Klaus H. Ahlers, Chris Crampton, Chris Crampton, Mihran Tuceryan, Mihran Tuceryan, Ross Whitaker, Ross Whitaker, Douglas Greer, Douglas Greer",
-                "description":"We describe a system for annotating real-world objects using augmented reality. A virtual form (model) of a real-world object is matched to the real object, allowing one to visually annotate the real components with information from the corresponding model. Augmented reality provides a natural method for presenting the &amp;ldquo;enhancing&amp;rdquo; computer-based information by merging graphics with a view of the real object. User queries on the real object can be translated into queries on the model, producing feedback that can augment the user&amp;rsquo;s view of the real world.",
-                "collectionName":"Computer graphics: developments in virtual environments",
+                "id":"b9d3b766-af8e-3a87-a711-66b252dd0f4f",
+                "title":"An analysis on the resource recycling pathway in industrial symbiosis network based on circular economy theory",
+                "uri":"http://www.mendeley.com/catalog/analysis-resource-recycling-pathway-industrial-symbiosis-network-based-circular-economy-theory/",
+                "eexcessURI":"http://www.mendeley.com/catalog/analysis-resource-recycling-pathway-industrial-symbiosis-network-based-circular-economy-theory/",
+                "creator":"Yin Jianhua, Wang Zhaohua",
+                "description":"Industrial symbiosis network (ISN) is an efficient organizational form for improving resource recycling and efficiency in industrial cluster area. Because of the variety of industrial cluster area formation model, the industrial symbiosis network is different with each other. Based on the circular economy theory, combing with international tendency of cluster area, the paper puts forward the relying-on-oriented industrial symbiosis network. Meanwhile, it also analyzes resource recycling organizational mechanism, operating pattern and environmental performance. Through the above efforts, we hope it could be helpful for industry cluster area sustainable development in China.",
+                "collectionName":"2009 IEEE/INFORMS International Conference on Service Operations, Logistics and Informatics, SOLI 2009",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"1995"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2009",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"67980657-cb39-3e06-9dcf-aab89ae16df9",
-                "title":"Zooming Interfaces for Augmented Reality Browsers",
-                "uri":"http://www.mendeley.com/catalog/zooming-interfaces-augmented-reality-browsers/",
-                "eexcessURI":"http://www.mendeley.com/catalog/zooming-interfaces-augmented-reality-browsers/",
-                "creator":"Mulloni Alessandro, Andreas D&amp;uuml;nser, Dieter Schmalstieg",
-                "description":"Augmented Reality combines real world and virtual information in interactive visualizations. Since phones started integrating GPS, compass and accelerometer, several Augmented Reality browsers for phones have hit the market. These are applications that access large amounts of geo-referenced information from online sources and present it at corresponding physical locations, superimposed onto a live video stream. However, Augmented Reality is constrained by the camera's field of view and restricted to first- person views, limiting the amount of overview that users can gain. We present two zooming interfaces that compensate for these constraints by enabling users to smoothly zoom between the Augmented Reality view and (1) an egocentric panoramic view of 360, and (2) an exocentric top-down view. We present the results from two studies that show how in most search tasks our zooming interfaces are faster and require less panning than an overlay- based tool, scaling better as the amount of information grows.",
-                "collectionName":"Information Systems Journal",
+                "id":"e386f08d-eff4-3d63-a178-e1485052151e",
+                "title":"Life cycle assessment of an industrial symbiosis based on energy recovery from dried sludge and used oil",
+                "uri":"http://www.mendeley.com/catalog/life-cycle-assessment-industrial-symbiosis-based-energy-recovery-dried-sludge-used-oil/",
+                "eexcessURI":"http://www.mendeley.com/catalog/life-cycle-assessment-industrial-symbiosis-based-energy-recovery-dried-sludge-used-oil/",
+                "creator":"Qiang Liu, Peipei Jiang, Jun Zhao, Bo Zhang, Huadan Bian, Guangren Qian",
+                "description":"Recovering energy from wastes is a useful strategy for integrated waste and energy management in an eco-industrial park (EIP) and gives promising reduction of wastes, total energy consumption and operation cost. In Jinqiao EIP, Pudong New Area, Shanghai, an industrial symbiosis, based on the energy recovery from municipal sewage sludge and re-refined oil, was proposed in the central heat-supplying company of Jinqiao EIP. It is expected that hot off-gas or part of the steam from the central heat-supplying company could be used for sludge drying and used oil re-refining while the dried sludge and refined oil can be partial substitution for fossil fuel. For the purpose of assessing the environmental performance of this industrial symbiosis, life cycle assessment (LCA) was used and different scenarios were set up in this study to evaluate the Global warming Potential (GWP), Acidification Potential (AP), Eutrophication Potential (EP), Human toxicity air (HTA) and Total Environmental Impact Potential (TEIP) of the system. Results indicate that when the substitute ratio of coal by sludge is 14%, the proposed industrial symbiosis has the least environmental impact. Compared with the current situation (sludge is landfilled), co-combustion of dried sludge and re-refined oil with coal at optimal scale will release less CO2, CH4, NOx, N2O and CO, but more SO2, H2S, NH3, HCl, polycyclic aromatic hydrocarbons (PAHs), non-methane volatile organic compounds (NMVOC) and heavy metals. &amp;copy; 2011 Elsevier Ltd. All rights reserved.",
+                "collectionName":"Journal of Cleaner Production",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2010"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2011",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"e2c993be-41fd-3a6e-8b72-fd3cd350b08f",
-                "title":"Pro Android augmented reality",
-                "uri":"http://www.mendeley.com/catalog/pro-android-augmented-reality/",
-                "eexcessURI":"http://www.mendeley.com/catalog/pro-android-augmented-reality/",
-                "creator":"R Sood",
-                "description":"Augmented reality (AR)offers alive direct or indirect view of a physical, real-world environment, where the elements and surroundingsare augmented by computer-generated sensory input such as graphics and GPS data. It makes a game more real. Your social media app puts you where want to be or go. Pro Android Augmented Reality walks you through the foundations of building an augmented reality application. From using various software and Android hardware sensors, such as an accelerometer or a magnetometer (compass), you'll learn the building blocks of augmented reality for both marker- and location-based apps. Case studies are included in this one-of-a-kind book, which pairs nicely with other Android development books.After readingPro Android Augmented Reality, you'll be able to buildaugmented realityrich media apps orintegrate all the bestaugmented realityinto yourfavorite Android smartphone and/or tablet. What youll learn How to use most Android cameras How to find the user's location with GPS data How to detect movement and orientation of the device How to program against the accelerometer and compass How to use the AndAR library in marker recognition How to create an artificial horizon for your app How to integrate the Google Maps API into AR apps How to build enterpriseaugmented realityapps using the case studies in this book Who this book is for This book is for Android developers familiar with Android programming, but new to the camera, accelerometer, magnetometer and buildingaugmented realityapplications in general. Table of Contents Applicationsof Augmented Reality Basics of Augmented Reality on the Android Platform Adding Overlays Artificial Horizons Other Features of Augmented Reality A Simple App Using AR A More Complex Project Using More AR Features A Project Using All AR Features An AR Game",
-                "collectionName":"AndAR",
+                "id":"4356b766-0216-321d-8456-bdcfcdb07047",
+                "title":"Quantitative assessment of industrial symbiosis for the promotion of circular economy: a case study of the printed circuit boards industry in China's Suzhou New District",
+                "uri":"http://www.mendeley.com/research/quantitative-assessment-industrial-symbiosis-promotion-circular-economy-case-study-printed-circuit-b/",
+                "eexcessURI":"http://www.mendeley.com/research/quantitative-assessment-industrial-symbiosis-promotion-circular-economy-case-study-printed-circuit-b/",
+                "creator":"Zongguo Wen, Xiaoyan Meng",
+                "description":"By strengthening material metabolism among collocated enterprises in leading industrial production chains in eco-industrial parks (EIPs), an industrial symbiosis (IS) system can be constructed, which is effective in strengthening the circular economy (CE). It has become important for EIPs to quantitatively evaluate the CE performance of the production chain while also seeking specific measures that could promote resources utilization efficiency. In this paper, we combine the substance flow analysis (SFA) approach with the resource productivity (RP) indicator to evaluate the contribution of IS to the development of circular economy. Through questionnaires and field surveys of key enterprises in Suzhou New District (SND), a substance flow analysis and resource productivity indicator were developed for core materials (copper, water and energy) in printed circuit boards (PCB) production under the excluding waste utilization scenario and including waste utilization scenario. The results show that the RPCu of chain from electrolytic copper production enterprises (ECPE) to electrolytic copper foil production enterprises is respectively 21.38 and 23.15 thousand yuan per ton, from ECPE to copper clad laminate (CCL) production enterprises is respectively 64.15 and 71.32 thousand yuan per ton, and from ECPE to PCB production enterprises is respectively 176.47and 211.21 thousand yuan per ton under the two scenarios. RP is enhanced by prolonging the industrial production chain and the RP under the excluding waste utilization scenario is higher than the including waste utilization scenario for the same chain, which can be achieved through greater IS. Finally we propose further implications on developing CE in EIPs. ?? 2014 Elsevier Ltd. All rights reserved.",
+                "collectionName":"Journal of Cleaner Production",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2012"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2014",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"17e9dbf3-c719-3e16-a048-277ecd009cee",
-                "title":"Modeling of sensor data and context for the real world internet",
-                "uri":"http://www.mendeley.com/catalog/modeling-sensor-data-context-real-world-internet/",
-                "eexcessURI":"http://www.mendeley.com/catalog/modeling-sensor-data-context-real-world-internet/",
-                "creator":"Claudia Villalonga, Martin Bauer, Vincent Huang, Jes&amp;uacute;s Bernat, Payam Barnaghill",
-                "description":"The Internet is expanding to reach the real world, integrating the physical world into the digital world in what is called the Real World Internet (RWI). Sensor and actuator networks deployed all over the Internet will play the role of collecting sensor data and context information from the physical world and integrating it into the future RWI. In this paper we present the SENSEI architecture approach for the RWI; a layered architecture composed of one or several context frameworks on top of a sensor framework, which allows the collection of sensor data as well as context information from the real world. We focus our discussion on how the modeling of information is done for different levels (sensor and context data), present a multi-layered information model, its representation and the mapping between its layers.",
-                "collectionName":"2010 8th IEEE International Conference on Pervasive Computing and Communications Workshops, PERCOM Workshops 2010",
+                "id":"095ad529-955c-3fc2-a198-ed0003c65753",
+                "title":"The legacy of fossil fuels",
+                "uri":"http://www.mendeley.com/research/legacy-fossil-fuels/",
+                "eexcessURI":"http://www.mendeley.com/research/legacy-fossil-fuels/",
+                "creator":"Nicola Armaroli, Vincenzo Balzani",
+                "description":"Currently, over 80% of the energy used by mankind comes from fossil fuels. Harnessing coal, oil and gas, the energy resources contained in the store of our spaceship, Earth, has prompted a dramatic expansion in energy use and a substantial improvement in the quality of life of billions of individuals in some regions of the world. Powering our civilization with fossil fuels has been very convenient, but now we know that it entails severe consequences. We treat fossil fuels as a resource that anyone anywhere can extract and use in any fashion, and Earth's atmosphere, soil and oceans as a dump for their waste products, including more than 30 Gt/y of carbon dioxide. At present, environmental legacy rather than consistence of exploitable reserves, is the most dramatic problem posed by the relentless increase of fossil fuel global demand. Harmful effects on the environment and human health, usually not incorporated into the pricing of fossil fuels, include immediate and short-term impacts related to their discovery, extraction, transportation, distribution, and burning as well as climate change that are spread over time to future generations or over space to the entire planet. In this essay, several aspects of the fossil fuel legacy are discussed, such as alteration of the carbon cycle, carbon dioxide rise and its measurement, greenhouse effect, anthropogenic climate change, air pollution and human health, geoengineering proposals, land and water degradation, economic problems, indirect effects on the society, and the urgent need of regulatory efforts and related actions to promote a gradual transition out of the fossil fuel era. While manufacturing sustainable solar fuels appears to be a longer-time perspective, alternatives energy sources already exist that have the potential to replace fossil fuels as feedstocks for electricity production.",
+                "collectionName":"Chemistry - An Asian Journal",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2010"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2011",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"1b285429-85d2-3b55-b738-4b2083dbde9a",
-                "title":"Augmented reality",
-                "uri":"http://www.mendeley.com/research/augmented-reality-144/",
-                "eexcessURI":"http://www.mendeley.com/research/augmented-reality-144/",
-                "creator":" Wikipedia contributors",
-                "description":"Augmented reality (AR) is a live, direct or indirect, view of a physical, real-world environment whose elements are augmented by computer-generated sensory input such as sound, video, graphics or GPS data. It is related to a more general concept called mediated reality, in which a view of reality is modified (possibly even diminished rather than augmented) by a computer. As a result, the technology functions by enhancing one&amp;rsquo;s current perception of reality.[1] By contrast, virtual reality replaces the real world with a simulated one.[2][3] Augmentation is conventionally in real-time and in semantic context with environmental elements, such as sports scores on TV during a match. With the help of advanced AR technology (e.g. adding computer vision and object recognition) the information about the surrounding real world of the user becomes interactive and digitally manipulable. Artificial information about the environment and its objects can be overlaid on the real world.",
-                "collectionName":"Wikipedia",
+                "id":"eef81e67-b1e1-35fc-af22-9e4fb2361d05",
+                "title":"Oil shale and climate policy in the shift to a low carbon and more resilient economy",
+                "uri":"http://www.mendeley.com/catalog/oil-shale-climate-policy-shift-low-carbon-more-resilient-economy/",
+                "eexcessURI":"http://www.mendeley.com/catalog/oil-shale-climate-policy-shift-low-carbon-more-resilient-economy/",
+                "creator":"D. Pasqualini, A. M. Bassi",
+                "description":"Policy makers worldwide are recently debating options to implement an effective climate policy that would put a cap on green house gas emissions. At the same time, investors are carefully evaluating the profitability of unconventional fossil fuels such as shale oil. To enhance the understanding of the impacts of a climate policy such as the American Clean Energy and Security Act of 2009, on oil shale production - and vice versa - we have customized an integrated assessment model, the Climate and Energy Assessment for Resiliency model for Unconventional Fossil Fuels to the U.S. Western Energy Corridor. Our analysis indicates that while the bill would increase the production cost of oil shale, the industry remains highly profitable in the longer-term, generating a potential profit of about $10 to $16 billion per year by 2040 at 2.5. million barrels per day. These results suggest that the oil shale industry may comfortably face the enactment of a carbon policy, albeit with some caveats. Furthermore, while its potential economic impact on non-compliant industries may be severe, it would generate mounting profits for those achieving energy efficiency gains, thereby increasing the profitability of energy efficiency investments. ?? 2013.",
+                "collectionName":"Technological Forecasting and Social Change",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2013"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2014",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"d8b63226-3000-3e04-afdd-f2a31a3da6e9",
-                "title":"Puzzle assembly training: Real world vs. virtual environment",
-                "uri":"http://www.mendeley.com/catalog/puzzle-assembly-training-real-world-vs-virtual-environment/",
-                "eexcessURI":"http://www.mendeley.com/catalog/puzzle-assembly-training-real-world-vs-virtual-environment/",
-                "creator":"Mike Oren, Patrick Carlson, Stephen Gilbert, Judy M. Vance",
-                "description":"While training participants to assemble a 3D wooden burr puzzle, we compared results of training in a stereoscopic, head tracked virtual assembly environment utilizing haptic devices and data gloves with real world training. While virtual training took participants about three times longer, the group that used the virtual environment was able to assemble the physical test puzzle about three times faster than the group trained with the physical puzzle. We present several possible cognitive explanations for these results and our plans for future exploration of the factors that improve the effectiveness of virtual process training over real world experience.",
-                "collectionName":"Proceedings - IEEE Virtual Reality",
+                "id":"7bd1936b-4154-34d3-a293-da44f31b2951",
+                "title":"Depletion of fossil fuels and anthropogenic climate change-A review",
+                "uri":"http://www.mendeley.com/catalog/depletion-fossil-fuels-anthropogenic-climate-changea-review/",
+                "eexcessURI":"http://www.mendeley.com/catalog/depletion-fossil-fuels-anthropogenic-climate-changea-review/",
+                "creator":"Mikael H&amp;ouml;&amp;ouml;k, Xu Tang",
+                "description":"Future scenarios with significant anthropogenic climate change also display large increases in world production of fossil fuels, the principal CO2 emission source. Meanwhile, fossil fuel depletion has also been identified as a future challenge. This chapter reviews the connection between these two issues and concludes that limits to availability of fossil fuels will set a limit for mankind's ability to affect the climate. However, this limit is unclear as various studies have reached quite different conclusions regarding future atmospheric CO2 concentrations caused by fossil fuel limitations. It is concluded that the current set of emission scenarios used by the IPCC and others is perforated by optimistic expectations on future fossil fuel production that are improbable or even unrealistic. The current situation, where climate models largely rely on emission scenarios detached from the reality of supply and its inherent problems are problematic. In fact, it may even mislead planners and politicians into making decisions that mitigate one problem but make the other one worse. It is important to understand that the fossil energy problem and the anthropogenic climate change problem are tightly connected and need to be treated as two interwoven challenges necessitating a holistic solution. &amp;copy; 2012 Elsevier Ltd.",
+                "collectionName":"Energy Policy",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2012"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2013",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"96c0c021-e9fe-33ce-aad8-088dadb369ba",
-                "title":"Haptic Augmented Reality to monitor human arm's stiffness in rehabilitation",
-                "uri":"http://www.mendeley.com/catalog/haptic-augmented-reality-monitor-human-arms-stiffness-rehabilitation/",
-                "eexcessURI":"http://www.mendeley.com/catalog/haptic-augmented-reality-monitor-human-arms-stiffness-rehabilitation/",
-                "creator":"Maryam Khademi, Hossein Mousavi Hondori, Cristina Videira Lopes, Lucy Dodakian, Steve C. Cramer",
-                "description":"Augmented Reality (AR) is a live, direct or indirect, view of a physical, real-world environment whose elements are overlaid by virtual, computer generated objects. In this paper, AR is combined with haptics in order to observe human arm's stiffness. A haptic, hand-held device is used to measure the human arm's impedance. While a computer vision system tracks and records the position of the hand, a computer screen displays the impedance diagrams superimposed on the hand in a real-time video feed. The visual augmentation is also performed using a video projector that project's the diagrams on the hand as it moves.",
-                "collectionName":"2012 IEEE-EMBS Conference on Biomedical Engineering and Sciences, IECBES 2012",
+                "id":"5ca8604a-cf6b-36dc-a64b-da9d53422d7d",
+                "title":"Lean consumption",
+                "uri":"http://www.mendeley.com/catalog/lean-consumption/",
+                "eexcessURI":"http://www.mendeley.com/catalog/lean-consumption/",
+                "creator":"James P. Womack, Daniel T. Jones",
+                "description":"During the past 20 years, the real price of most consumer goods has fallen worldwide, the variety of goods and the range of sales channels offering them have continued to grow, and product quality has steadily improved. So why is consumption often so frustrating? It doesn't have to be--and shouldn't be--the authors say. They argue that it's time to apply lean thinking to the processes of consumption--to give consumers the full value they want from goods and services with the greatest efficiency and the least pain. Companies may think they save time and money by off-loading work to the consumer but, in fact, the opposite is true. By streamlining their systems for providing goods and services, and by making it easier for customers to buy and use those products and services, a growing number of companies are actually lowering costs while saving everyone time. In the process, these businesses are learning more about their customers, strengthening consumer loyalty, and attracting new customers who are defecting from less user-friendly competitors. The challenge lies with the retailers, service providers, manufacturers, and suppliers that are not used to looking at total cost from the standpoint of the consumer and even less accustomed to working with customers to optimize the consumption process. Lean consumption requires a fundamental shift in the way companies think about the relationship between provision and consumption, and the role their customers play in these processes. It also requires consumers to change the nature of their relationships with the companies they patronize. Lean production has clearly triumphed over similar obstacles in recent years to become the dominant global manufacturing model. Lean consumption, its logical companion, can't be far behind.",
+                "collectionName":"Harvard Business Review",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2012"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2005",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"c30582e7-eb4f-3c8d-a8e3-8f5e36a90775",
-                "title":"Evaluating label placement for augmented reality view management",
-                "uri":"http://www.mendeley.com/catalog/evaluating-label-placement-augmented-reality-view-management/",
-                "eexcessURI":"http://www.mendeley.com/catalog/evaluating-label-placement-augmented-reality-view-management/",
-                "creator":"R. Azuma, C. Furmanski",
-                "description":" View management, a relatively new area of research in Augmented Reality (AR) applications, is about the spatial layout of 2D virtual annotations in the view plane. This paper represents the first study in an actual AR application of a specific view management task: evaluating the placement of 2D virtual labels that identify information about real counterparts. Here, we objectively evaluated four different placement algorithms, including a novel algorithm for placement based on identifying existing clusters. The evaluation included both a statistical analysis of traditional metrics (e.g. counting overlaps) and an empirical user study guided by principles from human cognition. The numerical analysis of the three real-time algorithms revealed that our new cluster-based method recorded the best average placement accuracy while requiring only relatively moderate computation time. Measures of objective readability from the user study demonstrated that in practice, human subjects were able to read labels fastest with the algorithms that most quickly prevented overlap, even if placement wasn't ideal.",
-                "collectionName":"The Second IEEE and ACM International Symposium on Mixed and Augmented Reality, 2003. Proceedings.",
+                "id":"2b7259a7-c5b5-31ae-8db4-eef62f373ff1",
+                "title":"An econometrics view of worldwide fossil fuel consumption and the role of US",
+                "uri":"http://www.mendeley.com/research/econometrics-view-worldwide-fossil-fuel-consumption-role/",
+                "eexcessURI":"http://www.mendeley.com/research/econometrics-view-worldwide-fossil-fuel-consumption-role/",
+                "creator":"Shahriar Shafiee, Erkan Topal",
+                "description":"Crude oil, coal and gas, known as fossil fuels, play a crucial role in the global economy. This paper proposes new econometrics modelling to demonstrate the trend of fossil fuels consumption. The main variables affecting consumption trends are: world reserves, the price of fossil fuels, US production and US net imports. All variables have been analysed individually for more than half a century. The research found that while the consumption of fossil fuels worldwide has increased trends in the US production and net imports have been dependent on the type of fossil fuels. Most of the US coal and gas production has been for domestic use, which is why it does not have a strong influence on worldwide fossil fuel prices. Moreover, the reserves of fossil fuels have not shown any diminution during the last couple of decades and predictions that they were about to run out are not substantiated. The nominal and real price of fossil fuels was found to change depending on the type. Finally, estimates of three econometric models for the consumption of fossil fuels from 1949 to 2006 are presented which identify the effects of significant variables. Crown Copyright ?? 2007.",
+                "collectionName":"Energy Policy",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2003"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2008",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"7202be3f-140d-3ca6-86b0-da55efb00769",
-                "title":"PixMix: A real-time approach to high-quality Diminished Reality",
-                "uri":"http://www.mendeley.com/research/pixmix-realtime-approach-highquality-diminished-reality/",
-                "eexcessURI":"http://www.mendeley.com/research/pixmix-realtime-approach-highquality-diminished-reality/",
-                "creator":"Jan Herling, Wolfgang Broll",
-                "description":"Diminished Reality (DR) allows to remove objects from a video stream while preseving a frame to frame coherence. Some approaches apply a pseudo-DR, allowing for the removal of objects only, while their background can be observed by a second camera. Most real DR approaches are highly computational expensive, not even allowing for interactive rates and/or apply significant restrictions regarding the uniformity of the background, or allow linear camera movements or even a static camera only. In this paper we will present a real-time capable Diminished Reality approach for high-quality image manipulation. Our approach achieves a significantly better performance and image quality for almost planar but non-trivial image backgrounds. Our Diminished Reality pipeline provides coherent video streams even for nonlinear camera movements due to the integration of homography based object tracking.",
-                "collectionName":"ISMAR 2012 - 11th IEEE International Symposium on Mixed and Augmented Reality 2012, Science and Technology Papers",
+                "id":"056cd3b2-f3a7-35ee-8a8c-74fd9802897b",
+                "title":"Carbon Dioxide Emissions Embodied in International Trade of Goods",
+                "uri":"http://www.mendeley.com/catalog/carbon-dioxide-emissions-embodied-international-trade-goods/",
+                "eexcessURI":"http://www.mendeley.com/catalog/carbon-dioxide-emissions-embodied-international-trade-goods/",
+                "creator":"Nadim Ahmad, Andrew Wyckoff",
+                "description":"Efforts such as the Kyoto Protocol to reduce emissions that may be linked to climate change focus on six greenhouse gases (GHG). Carbon dioxide is by far the largest of these by volume, representing about 80% of the total emissions of these six gases. Almost all carbon dioxide is emitted during the combustion of fossil fuels and OECD countries account for over half of the total carbon dioxide emission in the world while an additional four countries (Brazil, China, India and Russia) together account for a further quarter of the global total. Many policies designed to reduce these emissions set emission reduction goals based on some previous level (e.g. 1990 in the case of Kyoto for many countries) which is used as a benchmark for success and compliance to the protocol. But changes in emissions at the national level can occur for many reasons: including the relocation of production abroad, and/or by import substitution. This may have a negligible impact on global emissions but, if the imports use more GHG intensive production processes than the domestically produced goods that they displace, global emissions could well be higher. The objective of this paper is to explore the role of trade in goods in this context by creating an indicator that estimates CO2 emissions related to domestic demand, for 24 countries (responsible for 80% of global CO2 emissions), as a complement to the more common indicator of emissions associated with domestic production of emissions, such as that used in the Kyoto Protocol. Using conservative assumptions the paper shows that estimates of CO2 emissions generated to satisfy domestic demand in the OECD in 1995 were 5% higher than emissions related to production. To put this figure into perspective only six countries in the world directly emitted more CO2 in 1995.",
+                "collectionName":"Technology",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2012"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2003",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"67971b5d-7b19-36b3-ac04-09d6b5039d1f",
-                "title":"Modified virtual reality for intuitive semantic information visualization",
-                "uri":"http://www.mendeley.com/catalog/modified-virtual-reality-intuitive-semantic-information-visualization/",
-                "eexcessURI":"http://www.mendeley.com/catalog/modified-virtual-reality-intuitive-semantic-information-visualization/",
-                "creator":"Katja Einsfeld, Achim Ebert, J&amp;uuml;rgen W&amp;ouml;lle",
-                "description":"In order to make use of domain knowledge and thus to create less abstract visualizations of the available information, we propose to integrate information visualization techniques in 3D visualizations of the application subject. We describe a framework that is build on an ontology, an hierarchical visualization toolkit, and a modular concept of modeling 3D layouts. This allows us to integrate semantically related information directly in the scene. We achieve this integration by modifying the real world geometry in several ways. Our concept helps non-expert users to intuitively interact with the system and to understand what is going on.",
-                "collectionName":"Proceedings of the International Conference on Information Visualisation",
+                "id":"15160706-d598-3caf-be3c-cd5d0fa5233e",
+                "title":"The role of bio-fuels in satisfying US transportation fuel demands",
+                "uri":"http://www.mendeley.com/catalog/role-biofuels-satisfying-transportation-fuel-demands/",
+                "eexcessURI":"http://www.mendeley.com/catalog/role-biofuels-satisfying-transportation-fuel-demands/",
+                "creator":"Berk Akinci, Paul G. Kassebaum, Jonathan V. Fitch, Robert W. Thompson",
+                "description":"In spite of the abundant interest in conversion of agricultural products into useful energy carriers, there have been relatively few studies assessing the magnitude of the impact these fuels can make on satisfying US energy demands. There have been fewer studies of unintended consequences stemming from these enterprises, although several research groups have begun questioning the appropriate levels of subsidies provided to individuals and companies to stimulate production of bio-fuels. In this paper, the production capacities for bio-fuels-ethanol and biodiesel-are evaluated for their potential impact on the US energy market. Several ramifications of these technologies are reviewed. This study concludes that ethanol or biodiesel production do not appear scalable to make a significant difference on the US fossil fuel demand for transportation. Aspects of this study point to systemic changes that may be required in lifestyles and attitudes toward energy consumption. Finally, comments regarding US energy policies are included to stimulate discussion. ?? 2008 Elsevier Ltd. All rights reserved.",
+                "collectionName":"Energy Policy",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2008"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2008",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"f8152632-9251-3113-b668-e72f9215efa5",
-                "title":"Reality-based interaction: a framework for post-WIMP interfaces",
-                "uri":"http://www.mendeley.com/catalog/realitybased-interaction-framework-postwimp-interfaces/",
-                "eexcessURI":"http://www.mendeley.com/catalog/realitybased-interaction-framework-postwimp-interfaces/",
-                "creator":"RJK Jacob, RJK Jacob, A Girouard, A Girouard, LM Hirshfield, LM Hirshfield,  MS,  MS,  2008,  2008",
-                "description":"We are in the midst of an explosion of emerging human-computer interaction techniques that redefine our understanding of both computers and interaction. We propose the notion of Reality-Based Interaction (RBI) as a unifying concept that ties together a large subset of these emerging interaction styles. Based on this concept of RBI, we provide a framework that can be used to understand, compare, and relate current paths of recent HCI research as well as to analyze specific interaction designs. We believe that viewing interaction through the lens of RBI provides insights for design and uncovers gaps or opportunities for future research.",
-                "collectionName":"portal.acm.org",
+                "id":"6bcf7cb2-7468-3a85-b709-25f0998cf3af",
+                "title":"Sustainable chemical technologies in production of clean fuels from fossil fuels",
+                "uri":"http://www.mendeley.com/research/sustainable-chemical-technologies-production-clean-fuels-fossil-fuels/",
+                "eexcessURI":"http://www.mendeley.com/research/sustainable-chemical-technologies-production-clean-fuels-fossil-fuels/",
+                "creator":"Marian Taniewski",
+                "description":"Some aspects of the present and the possible future role of sustainable chemical technologies in the production of clean liquid and gaseous fuels from fossil fuels are discussed. The state-of-the-art and the vision of possible sources and alternative routes which may lead to clean fuels from fossil fuels due to the progress in crude oil, natural gas and coal processing are briefly presented. The possible future role of the Fischer-Tropsch synthesis, methanol synthesis, dimethylether synthesis, and a group of methanol transformation processes is also discussed.",
+                "collectionName":"Clean - Soil, Air, Water",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2008"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2008",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"7d9f8470-0d47-37b9-8a4c-5bf2068e8218",
-                "title":"Altered reality: Augmenting and diminishing reality in real time",
-                "uri":"http://www.mendeley.com/catalog/altered-reality-augmenting-diminishing-reality-real-time/",
-                "eexcessURI":"http://www.mendeley.com/catalog/altered-reality-augmenting-diminishing-reality-real-time/",
-                "creator":"Crystian Wendel M Le&amp;atilde;o, Jo&amp;atilde;o Paulo Lima, Veronica Teichrieb, Eduardo S. Albuquerque, Judith Keiner",
-                "description":"The demo Augmented Reality applications overlap virtual objects over a real scene, taking into account context, in order to add information to the end user. Nowadays, more advanced applications also make use of Diminished Reality that removes real objects from a scene. This paper describes an approach that combines Augmented Reality and Diminished Reality techniques to modify real objects present in applications. The proposed approach removes an object and replaces it with its purposely-modified replica. The solution uses dynamic texture techniques and Inpaint to enhance the visual response of the modification performed. The results are promising considering both realism of the modified real object and performance of the application.",
-                "collectionName":"Proceedings - IEEE Virtual Reality",
+                "id":"b3705495-bdb0-351b-abb8-f1e23ab0127f",
+                "title":"Ecosystem services of the tropical seascape: Interactions, substitutions and restoration",
+                "uri":"http://www.mendeley.com/catalog/ecosystem-services-tropical-seascape-interactions-substitutions-restoration/",
+                "eexcessURI":"http://www.mendeley.com/catalog/ecosystem-services-tropical-seascape-interactions-substitutions-restoration/",
+                "creator":"Fredrik Moberg, Patrik R&amp;ouml;nnb&amp;auml;ck",
+                "description":"The tropical coastal \"seascape\" often includes a patchwork of mangroves, seagrass beds, and coral reefs that produces a variety of natural resources and ecosystem services. By looking into a limited number of attempts at substitution and restoration of ecosystem services (e.g. artificial reefs, aquaculture in mangroves, artificial seawalls), we address the questions: (1) To what degree can technologies substitute for ecosystem services in the seascape? (2) How can ecosystem restoration reestablish not only the functions of direct value to humans, but also the ability of the systems to cope with future disturbance? Substitutions often imply the replacement of a function provided free by a solar powered, self-repairing resilient ecosystem, with a fossil-fuel-powered, expensive, artificial substitute that needs maintenance. Further, restoration usually does not focus on large-scale processes such as the physical, biological and biogeochemical interactions between mangroves, seagrass beds and coral reefs. Nonetheless, restoration might be the only viable management alternative when the system is essentially locked into an undesired community state (stability domain) after a phase-shift. We conclude that ecosystem services cannot be readily replaced, restored or sustained without extensive knowledge of the dynamics, multifunctionality and interconnectedness of ecosystems. &amp;copy; 2002 Elsevier Science Ltd. All rights reserved.",
+                "collectionName":"Ocean and Coastal Management",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2011"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2003",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"5a19dba6-bf97-3294-9618-343f79f1c71f",
-                "title":"EXMAR: EXpanded view of mobile augmented reality",
-                "uri":"http://www.mendeley.com/catalog/exmar-expanded-view-mobile-augmented-reality/",
-                "eexcessURI":"http://www.mendeley.com/catalog/exmar-expanded-view-mobile-augmented-reality/",
-                "creator":"Sungjae Hwang, Hyungeun Jo, Jung Hee Ryu",
-                "description":"There have been many studies to minimize the psychological and physical load increase caused by mobile augmented reality systems. In this paper, we propose a new technique called &amp;amp;amp;#x201C;EXMAR&amp;amp;amp;#x201D;, which enables the user to explore his/her surroundings with an expanded field of view, resulting in a decrease of physical movement. Through this novel interaction technique, the user can explore off-screen point of interests with environmental contextual information by simple dragging gestures. To evaluate this initial approach, we conducted a proof of concept usability test under a set of scenarios such as &amp;amp;amp;#x201C;Exploring objects behind the user&amp;amp;amp;#x201D;, &amp;amp;amp;#x201C;Avoiding the invasion of personal space&amp;amp;amp;#x201D; and &amp;amp;amp;#x201C;Walk and type with front-view.&amp;amp;amp;#x201D; Through this initial examination, we found that users can explore off-screen point of interests and grasp the spatial relations without the increase of mental effort. We believe that this preliminary study gives a meaningful indication that employing the interactive field of view can be a useful method to decrease the physical load without any additional mental efforts in a mixed and augmented reality environment.",
-                "collectionName":"9th IEEE International Symposium on Mixed and Augmented Reality 2010: Science and Technology, ISMAR 2010 - Proceedings",
+                "id":"e6654dc2-5a55-3af1-a6ef-6139cde2b2ef",
+                "title":"Economic growth, CO2 emissions, and fossil fuels consumption in Iran",
+                "uri":"http://www.mendeley.com/research/economic-growth-co2-emissions-fossil-fuels-consumption-iran-1/",
+                "eexcessURI":"http://www.mendeley.com/research/economic-growth-co2-emissions-fossil-fuels-consumption-iran-1/",
+                "creator":"Mohammad Reza Lotfalipour, Mohammad Ali Falahi, Malihe Ashena",
+                "description":"Environmental issues have attracted renewed interest and more attention during recent years due to climatic problems associated with the increased levels of pollution and the deterioration of the environmental quality as a result of increased human activity. This paper investigates the causal relationships between economic growth, carbon emission, and fossil fuels consumption, using the relatively new time series technique known as the Toda-Yamamoto method for Iran during the period 1967-2007. Total fossil fuels, petroleum products, and natural gas consumption are used as three proxies for energy consumption. Empirical results suggest a unidirectional Granger causality running from GDP and two proxies of energy consumption (petroleum products and natural gas consumption) to carbon emissions, and no Granger causality running from total fossil fuels consumption to carbon emissions in the long run. The results also show that carbon emissions, petroleum products, and total fossil fuels consumption do not lead to economic growth, though gas consumption does. ?? 2010 Elsevier Ltd.",
+                "collectionName":"Energy",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2010"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2010",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"1e011166-6f83-3c19-a57d-3cc5573e0d5c",
-                "title":"View management for virtual and augmented reality",
-                "uri":"http://www.mendeley.com/catalog/view-management-virtual-augmented-reality/",
-                "eexcessURI":"http://www.mendeley.com/catalog/view-management-virtual-augmented-reality/",
-                "creator":"Blaine Bell, Steven Feiner, Tobias H&amp;ouml;llerer",
-                "description":"We describe a view-management component for interactive 3D user interfaces. By view management, we mean maintaining visual constraints on the projections of objects on the view plane, such as locating related objects near each other, or preventing objects from occluding each other. Our view-management component accomplishes this by modifying selected object properties, including position, size, and transparency, which are tagged to indicate their constraints. For example, some objects may have geometric properties that are determined entirely by a physical simulation and which cannot be modified, while other objects may be annotations whose position and size are flexible.We introduce algorithms that use upright rectangular extents to represent on the view plane a dynamic and efficient approximation of the occupied space containing the projections of visible portions of 3D objects, as well as the unoccupied space in which objects can be placed to avoid occlusion. Layout decisions from previous frames are taken into account to reduce visual discontinuities. We present augmented reality and virtual reality examples to which we have applied our approach, including a dynamically labeled and annotated environment.",
-                "collectionName":"Proceedings of the 14th annual ACM symposium on User interface software and technology - UIST '01",
+                "id":"3d6af089-c01c-3727-9342-fd3050622bb6",
+                "title":"COLLECTIVE-CONSUMPTION SERVICES OF INDIVIDUAL-CONSUMPTION GOODS.",
+                "uri":"http://www.mendeley.com/catalog/collectiveconsumption-services-individualconsumption-goods/",
+                "eexcessURI":"http://www.mendeley.com/catalog/collectiveconsumption-services-individualconsumption-goods/",
+                "creator":"Burton A Weisbrod",
+                "description":"The article examines collective-consumption services of individual-consumption goods. The principal objectives of this article are: (1) to point out that a number of significant commodities exist which are apparently of a pure individual-consumption variety, but which also possess characteristics of a pure collective-consumption good; and (2) to discuss some implications of this observation, in particular showing that even if some apparently individual-consumption goods cannot profitably be provided by private enterprise it may serve the social welfare to subsidize their production. The author begins by considering an extreme case of a commodity the purchase of which is infrequent and uncertain, and production of which cannot be reinitiated at any cost once it has been halted and the inputs devoted to other uses. The collective-good aspect of the commodity--in satisfying the option demand--may be viewed as an external economy from current production; that is, current production enters",
+                "collectionName":"Quarterly Journal of Economics",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2001"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"1964",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"eac86e25-8c02-363b-84bd-c4a9d4072cc2",
-                "title":"EyeTap Devices for Augmented, Deliberately Diminished, or Otherwise Altered Visual Perception of Rigid Planar Patches of Real-World Scenes",
-                "uri":"http://www.mendeley.com/catalog/eyetap-devices-augmented-deliberately-diminished-otherwise-altered-visual-perception-rigid-planar-pa/",
-                "eexcessURI":"http://www.mendeley.com/catalog/eyetap-devices-augmented-deliberately-diminished-otherwise-altered-visual-perception-rigid-planar-pa/",
-                "creator":"Steve Mann, James Fung",
-                "description":"Diminished reality is as important as augmented reality, and both are possible with a device called the Reality Mediator. Over the past two decades, we have designed, built, worn, and tested many different embodiments of this device in the context of wearable computing. Incorporated into the Reality Mediator is an &ldquo;EyeTap&rdquo; system, which is a device that quantifies and resynthesizes light that would otherwise pass through one or both lenses of the eye(s) of a wearer. The functional principles of EyeTap devices are discussed, in detail. The EyeTap diverts into a spatial measurement system at least a portion of light that would otherwise pass through the center of projection of at least one lens of an eye of a wearer. The Reality Mediator has at least one mode of operation in which it reconstructs these rays of light, under the control of a wearable computer system. The computer system then uses new results in algebraic projective geometry and comparametric equations to perform head tracking, as well as to track motion of rigid planar patches present in the scene. We describe how our tracking algorithm allows an EyeTap to alter the light from a particular portion of the scene to give rise to a computer-controlled, selectively mediated reality. An important difference between mediated reality and augmented reality includes the ability to not just augment but also deliberately diminish or otherwise alter the visual perception of reality. For example, diminished reality allows additional information to be inserted without causing the user to experience information overload. Our tracking algorithm also takes into account the effects of automatic gain control, by performing motion estimation in both spatial as well as tonal motion coordinates.",
-                "collectionName":"Teleoperators and Virtual Environments",
+                "id":"0b346079-1bf7-34ed-b87e-64cb1679cf5b",
+                "title":"Consumption-based accounting of CO2 emissions.",
+                "uri":"http://www.mendeley.com/catalog/consumptionbased-accounting-co2-emissions/",
+                "eexcessURI":"http://www.mendeley.com/catalog/consumptionbased-accounting-co2-emissions/",
+                "creator":"Steven J Davis, Ken Caldeira",
+                "description":"CO(2) emissions from the burning of fossil fuels are the primary cause of global warming. Much attention has been focused on the CO(2) directly emitted by each country, but relatively little attention has been paid to the amount of emissions associated with the consumption of goods and services in each country. Consumption-based accounting of CO(2) emissions differs from traditional, production-based inventories because of imports and exports of goods and services that, either directly or indirectly, involve CO(2) emissions. Here, using the latest available data, we present a global consumption-based CO(2) emissions inventory and calculations of associated consumption-based energy and carbon intensities. We find that, in 2004, 23% of global CO(2) emissions, or 6.2 gigatonnes CO(2), were traded internationally, primarily as exports from China and other emerging markets to consumers in developed countries. In some wealthy countries, including Switzerland, Sweden, Austria, the United Kingdom, and France, &amp;gt;30% of consumption-based emissions were imported, with net imports to many Europeans of &amp;gt;4 tons CO(2) per person in 2004. Net import of emissions to the United States in the same year was somewhat less: 10.8% of total consumption-based emissions and 2.4 tons CO(2) per person. In contrast, 22.5% of the emissions produced in China in 2004 were exported, on net, to consumers elsewhere. Consumption-based accounting of CO(2) emissions demonstrates the potential for international carbon leakage. Sharing responsibility for emissions among producers and consumers could facilitate international agreement on global climate policy that is now hindered by concerns over the regional and historical inequity of emissions.",
+                "collectionName":"Proceedings of the National Academy of Sciences of the United States of America",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2002"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2010",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"e48aa505-f3b0-37c1-b02a-19860456ff83",
-                "title":"Multiview paraperspective projection model for diminished reality",
-                "uri":"http://www.mendeley.com/catalog/multiview-paraperspective-projection-model-diminished-reality/",
-                "eexcessURI":"http://www.mendeley.com/catalog/multiview-paraperspective-projection-model-diminished-reality/",
-                "creator":"S. Zokai, J. Esteve, Y. Genc, N. Navab",
-                "description":" This paper introduces a \"diminished reality\" technique for removing an object or collection of objects and replacing it with an appropriate background image. Diminished reality can be considered an important part of many mixed and augmented reality applications. Our target application is the use of augmented reality (AR) to revamp procedures in industrial plants. An object or a region of interest is delineated on a single reference image. A paraperspective projection model is used to generate the correct background from multiple calibrated views of the scene. We propose methods to deal with approximately planar backgrounds with different orientations. We also propose a multi-resolution approach to deal with non-planar backgrounds. Different sets of experimental results demonstrate the success and limits of the algorithms. Results on real data from water treatment and power plants show the usefulness of this method for industrial applications.",
-                "collectionName":"The Second IEEE and ACM International Symposium on Mixed and Augmented Reality, 2003. Proceedings.",
+                "id":"06c9eadf-eeb9-3cab-bc59-b5af7e5d3cee",
+                "title":"Hydrogen as a renewable and sustainable solution in reducing global fossil fuel consumption",
+                "uri":"http://www.mendeley.com/catalog/hydrogen-renewable-sustainable-solution-reducing-global-fossil-fuel-consumption/",
+                "eexcessURI":"http://www.mendeley.com/catalog/hydrogen-renewable-sustainable-solution-reducing-global-fossil-fuel-consumption/",
+                "creator":"Adnan Midilli, Ibrahim Dincer",
+                "description":"In this paper, hydrogen is considered as a renewable and sustainable solution for reducing global fossil fuel consumption and combating global warming and studied exergetically through a parametric performance analysis. The environmental impact results are then compared with the ones obtained for fossil fuels. In this regard, some exergetic expressions are derived depending primarily upon the exergetic utilization ratios of fossil fuels and hydrogen: the fossil fuel based global waste exergy factor, hydrogen based global exergetic efficiency, fossil fuel based global irreversibility coefficient and hydrogen based global exergetic indicator. These relations incorporate predicted exergetic utilization ratios for hydrogen energy from non-fossil fuel resources such as water, etc., and are used to investigate whether or not exergetic utilization of hydrogen can significantly reduce the fossil fuel based global irreversibility coefficient (ranging from 1 to +&amp;infin;) indicating the fossil fuel consumption and contribute to increase the hydrogen based global exergetic indicator (ranging from 0 to 1) indicating the hydrogen utilization at a certain ratio of fossil fuel utilization. In order to verify all these exergetic expressions, the actual fossil fuel consumption and production data are taken from the literature. Due to the unavailability of appropriate hydrogen data for analysis, it is assumed that the utilization ratios of hydrogen are ranged between 0 and 1. For the verification of these parameters, the variations of fossil fuel based global irreversibility coefficient and hydrogen based global exergetic indicator as the functions of fossil fuel based global waste exergy factor, hydrogen based global exergetic efficiency and exergetic utilization of hydrogen from non-fossil fuels are analyzed and discussed in detail. Consequently, if exergetic utilization ratio of hydrogen from non-fossil fuel sources at a certain exergetic utilization ratio of fossil fuels increases, the fossil fuel based global irreversibility coefficient will decrease and the hydrogen based global exergetic indicator will increase. &amp;copy; 2008 International Association for Hydrogen Energy.",
+                "collectionName":"International Journal of Hydrogen Energy",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2003"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2008",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"2185247d-3de8-3176-ac87-c169249a9aaf",
-                "title":"Advanced self-contained object removal for realizing real-time diminished reality in unconstrained environments",
-                "uri":"http://www.mendeley.com/research/advanced-selfcontained-object-removal-realizing-realtime-diminished-reality-unconstrained-environmen/",
-                "eexcessURI":"http://www.mendeley.com/research/advanced-selfcontained-object-removal-realizing-realtime-diminished-reality-unconstrained-environmen/",
-                "creator":"Jan Herling, Wolfgang Broll",
-                "description":"While Augmented Reality has always been restricted to adding artificial content to the real environment, Diminished Reality allows for removing real world content. Existing approaches however, either require complex setups or are not applicable in real-time. In this paper we present our approach for removing real-world objects from a live video stream of the user's real environment. Our approach is based on a simple setup and neither requires any pre-processing nor any information on the structure and location of the objects to be removed or on their background. Our approach is based on the identification of the objects to be removed combined with an image completion and synthesis algorithm. The performance of our approach is one to two magnitudes better than that of previous work in the area of image completion, providing real-time object cancellation on standard laptop or tablet computers.",
-                "collectionName":"9th IEEE International Symposium on Mixed and Augmented Reality 2010: Science and Technology, ISMAR 2010 - Proceedings",
+                "id":"df56573d-b504-34af-a213-8d753740a5c9",
+                "title":"Do alternative energy sources displace fossil fuels?",
+                "uri":"http://www.mendeley.com/research/alternative-energy-sources-displace-fossilfuels/",
+                "eexcessURI":"http://www.mendeley.com/research/alternative-energy-sources-displace-fossilfuels/",
+                "creator":"Richard York",
+                "description":"A fundamental, generally implicit, assumption of the Intergovernmental Panel on Climate Change reports and many energy analysts is that each unit of energy supplied by non-fossil-fuel sources takes the place of a unit of energy supplied by fossil-fuel sources. However, owing to the complexity of economic systems and human behaviour, it is often the case that changes aimed at reducing one type of resource consumption, either through improvements in efficiency of use or by developing substitutes, do not lead to the intended outcome when net effects are considered5, 6, 7, 8, 9. Here, I show that the average pattern across most nations of the world over the past fifty years is one where each unit of total national energy use from non-fossil-fuel sources displaced less than one-quarter of a unit of fossil-fuel energy use and, focusing specifically on electricity, each unit of electricity generated by non-fossil-fuel sources displaced less than one-tenth of a unit of fossil-fuel-generated electricity. These results challenge conventional thinking in that they indicate that suppressing the use of fossil fuel will require changes other than simply technical ones such as expanding non-fossil-fuel energy production.",
+                "collectionName":"Nature Climate Change",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2010"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2012",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"ea8e2abe-94fe-39ab-875f-4b5c17cdd1ff",
-                "title":"Exploring tiny images: The roles of appearance and contextual information for machine and human object recognition",
-                "uri":"http://www.mendeley.com/catalog/exploring-tiny-images-roles-appearance-contextual-information-machine-human-object-recognition/",
-                "eexcessURI":"http://www.mendeley.com/catalog/exploring-tiny-images-roles-appearance-contextual-information-machine-human-object-recognition/",
-                "creator":"Devi Parikh, C. Lawrence Zitnick, Tsuhan Chen",
-                "description":"Typically, object recognition is performed based solely on the appearance of the object. However, relevant information also exists in the scene surrounding the object. In this paper, we explore the roles that appearance and contextual information play in object recognition. Through machine experiments and human studies, we show that the importance of contextual information varies with the quality of the appearance information, such as an image's resolution. Our machine experiments explicitly model context between object categories through the use of relative location and relative scale, in addition to co-occurrence. With the use of our context model, our algorithm achieves state-of-the-art performance on the MSRC and Corel data sets. We perform recognition tests for machines and human subjects on low and high resolution images, which vary significantly in the amount of appearance information present, using just the object appearance information, the combination of appearance and context, as well as just context without object appearance information (blind recognition). We also explore the impact of the different sources of context (co-occurrence, relative-location, and relative-scale). We find that the importance of different types of contextual information varies significantly across data sets such as MSRC and PASCAL.",
-                "collectionName":"IEEE Transactions on Pattern Analysis and Machine Intelligence",
+                "id":"697746ae-9d9c-3c52-9613-eaf875f2f18a",
+                "title":"Ecological goods and services of coral reef ecosystems",
+                "uri":"http://www.mendeley.com/catalog/ecological-goods-services-coral-reef-ecosystems-5/",
+                "eexcessURI":"http://www.mendeley.com/catalog/ecological-goods-services-coral-reef-ecosystems-5/",
+                "creator":"Fredrik Moberg, Carl Folke",
+                "description":"This article identifies ecological goods and services of coral reef ecosystems, with special emphasis on how they are generated. Goods are divided into renewable resources and reef mining. Ecological services are classified into physical structure services, biotic services, biogeochemical services, information services, and social/cultural services. A review of economic valuation studies reveals that only a few of the goods and services of reefs have been captured. We synthesize current understanding of the relationships between ecological services and functional groups of Species and biological communities of coral reefs in different regions of the world. The consequences of human impacts on coral reefs are also discussed, including loss of resilience, or buffer capacity. Such loss may impair the capacity for recovery of coral reefs and as a consequence the quality and quantity of their delivery of ecological goods and services. Conserving the capacity of reefs to generate essential services requires that they are managed as components of a larger seascape-landscape of which human activities are seen as integrated parts.",
+                "collectionName":"Ecological Economics",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2012"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"1999",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"42a426c2-e926-33d8-b8b8-e1347e2c4bd3",
-                "title":"From appearance to context-based recognition: Dense labeling in small images",
-                "uri":"http://www.mendeley.com/catalog/appearance-contextbased-recognition-dense-labeling-small-images/",
-                "eexcessURI":"http://www.mendeley.com/catalog/appearance-contextbased-recognition-dense-labeling-small-images/",
-                "creator":"Devi Parikh, C. Lawrence Zitnick, Tsuhan Chen",
-                "description":"Traditionally, object recognition is performed based solely on the appearance of the object. However, relevant information also exists in the scene surrounding the object. As supported by our human studies, this contextual information is necessary for accurate recognition in low resolution images. This scenario with impoverished appearance information, as opposed to using images of higher resolution, provides an appropriate venue for studying the role of context in recognition. In this paper, we explore the role of context for dense scene labeling in small images. Given a segmentation of an image, our algorithm assigns each segment to an object category based on the segmentpsilas appearance and contextual information. We explicitly model context between object categories through the use of relative location and relative scale, in addition to co-occurrence. We perform recognition tests on low and high resolution images, which vary significantly in the amount of appearance information present, using just the object appearance information, the combination of appearance and context, as well as just context without object appearance information (blind recognition). We also perform these tests in human studies and analyze our findings to reveal interesting patterns. With the use of our context model, our algorithm achieves state-of-the-art performance on MSRC and Corel. datasets.",
-                "collectionName":"26th IEEE Conference on Computer Vision and Pattern Recognition, CVPR",
+                "id":"2b56e50a-4b87-3daa-8795-92e2fe7cb51f",
+                "title":"Energizing historical materialism: Fossil fuels, space and the capitalist mode of production",
+                "uri":"http://www.mendeley.com/catalog/energizing-historical-materialism-fossil-fuels-space-capitalist-mode-production/",
+                "eexcessURI":"http://www.mendeley.com/catalog/energizing-historical-materialism-fossil-fuels-space-capitalist-mode-production/",
+                "creator":"Matthew T. Huber",
+                "description":"In this paper, I present a theoretical argument that fossil fuel represents a historically specific and internally necessary aspect of the capitalist mode of production. Despite sustained attention to distributional conflicts between international capital and energy rich nation-states, few historical-materialists have paid attention to the relations between fossil fuel and capital accumulation in industrial capitalist societies. In opposition to ecological economic notions of fixed thermodynamic \"laws\", I first propose a dialectical conception of energy as embedded in dynamic social processes and power relations. Second, I review the historical importance of the energy shift from solar or biological sources of energy (muscles, wind, and water) to fossilized sources of energy (coal, oil, and gas). I then demonstrate how attention to fossil fuel energy forces a reexamination of the core insights of ecological Marxism and the political economy of nature. In the core argument of the paper, I reconsider the shift from biological to fossil energy as internal to the generalization and extension of capitalist social relations from two basic vantage points - (1) capitalist production based on wage labor; (2) the spatial conditions of capitalist circulation. I conclude by asking whether it is accurate to conceptualize capitalism as a \"fossil fuel mode of production\" and highlight the political urgency of a historical materialist perspective that takes seriously the importance of energy to the reproduction of capitalist social relations. ?? 2008.",
+                "collectionName":"Geoforum",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2008"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2009",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"80b574a5-e101-3f7c-8f11-9f83d9381366",
-                "title":"Learning methods for generic object recognition with invariance to pose and lighting",
-                "uri":"http://www.mendeley.com/catalog/learning-methods-generic-object-recognition-invariance-pose-lighting/",
-                "eexcessURI":"http://www.mendeley.com/catalog/learning-methods-generic-object-recognition-invariance-pose-lighting/",
-                "creator":"Y. LeCun, Fu Jie Huang Fu Jie Huang, L. Bottou",
-                "description":" We assess the applicability of several popular learning methods for the problem of recognizing generic visual categories with invariance to pose, lighting, and surrounding clutter. A large dataset comprising stereo image pairs of 50 uniform-colored toys under 36 azimuths, 9 elevations, and 6 lighting conditions was collected (for a total of 194,400 individual images). The objects were 10 instances of 5 generic categories: four-legged animals, human figures, airplanes, trucks, and cars. Five instances of each category were used for training, and the other five for testing. Low-resolution grayscale images of the objects with various amounts of variability and surrounding clutter were used for training and testing. Nearest neighbor methods, support vector machines, and convolutional networks, operating on raw pixels or on PCA-derived features were tested. Test error rates for unseen object instances placed on uniform backgrounds were around 13% for SVM and 7% for convolutional nets. On a segmentation/recognition task with highly cluttered images, SVM proved impractical, while convolutional nets yielded 16/7% error. A real-time version of the system was implemented that can detect and classify objects in natural scenes at around 10 frames per second.",
-                "collectionName":"Proceedings of the 2004 IEEE Computer Society Conference on Computer Vision and Pattern Recognition, 2004. CVPR 2004.",
+                "id":"feb41083-7ff9-3b46-a512-10914cdf65e3",
+                "title":"Integrated energy, environmental and financial analysis of ethanol production from cellulosic switchgrass",
+                "uri":"http://www.mendeley.com/catalog/integrated-energy-environmental-financial-analysis-ethanol-production-cellulosic-switchgrass/",
+                "eexcessURI":"http://www.mendeley.com/catalog/integrated-energy-environmental-financial-analysis-ethanol-production-cellulosic-switchgrass/",
+                "creator":"Erika Felix, David R. Tilley",
+                "description":"Ethanol production from cellulosic sources such as switchgrass (Panicum virgatum L.) requires the use of natural resources, fossil fuels, electricity, and human-derived goods and services. We used emergy accounting to integrate the ultimate amount of environmental, fossil fuel, and human-derived energy required to produce ethanol from switchgrass. Emergy is the total amount of energy of one form required directly and indirectly to make another form of energy. Forty-four percent of required emergy came from the environment either directly or embodied in purchased goods, 30% came from fossil fuels either directly or embodied in purchased goods, and 25% came from human-derived services indirectly. Ethanol production per petroleum use (emergy/emergy) was 4.0-to-1 under our Baseline Scenario, but dropped to 0.5-to-1 under a scenario that assumed higher input prices, lower conversion efficiencies and less waste recycling. At least 75% of total emergy was from non-renewable sources. Energy 'hidden' in indirect paths such as goods and services was 65% of the total. Cellulosic-ethanol is not a primary fuel source that substitutes for petroleum because its production relies heavily on non-renewable energy and purchased inputs. It is a means for converting natural resources to liquid fuel. ?? 2008 Elsevier Ltd. All rights reserved.",
+                "collectionName":"Energy",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2004"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2009",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"f5322a8c-027a-37f0-a8c2-3408cc4a65fc",
-                "title":"Multiple view geometry in computer vision",
-                "uri":"http://www.mendeley.com/catalog/multiple-view-geometry-computer-vision/",
-                "eexcessURI":"http://www.mendeley.com/catalog/multiple-view-geometry-computer-vision/",
-                "creator":"H. Opower",
-                "description":"A basic problem in computer vision is to reconstruct a real world scene given several images of it. The goal of this course is to provide students with both a good theoretical and intuitive understanding of the intricate relations between multiple views of a scene, and to allow them to use these concepts to compute properties of scene and camera from real world images.",
-                "collectionName":"Optics and Lasers in Engineering",
+                "id":"ba2c4f72-9b13-383a-969d-a99c1af9db25",
+                "title":"The Environmental Relevance of Capital Goods in Life Cycle Assessments of Products and Services",
+                "uri":"http://www.mendeley.com/catalog/environmental-relevance-capital-goods-life-cycle-assessments-products-services/",
+                "eexcessURI":"http://www.mendeley.com/catalog/environmental-relevance-capital-goods-life-cycle-assessments-products-services/",
+                "creator":"Rolf Frischknecht, Hans-j&amp;ouml;rg Althaus, Christian Bauer, Gabor Doka, Thomas Heck, Niels Jungbluth, Daniel Kellenberger, Thomas Nemecek",
+                "description":"Goal and Scope. \nMany life cycle assessment case studies neglect the production of capital goods that are necessary to manufacture a good or to provide a service. In ISO standards 14040 and 14044 the capital goods are explicitly part of the product system. Thus, it is doubtful if capital goods can be excluded per se as has been done in quite a number of case studies and LCA databases. There is yet no clear idea about if and when capital goods play an important role in life cycle assessments. The present paper evaluates the contribution of capital goods in a large number and variety of product and service systems. A classification of product and service groups is proposed to give better guidance on when and where capital goods should be included or can be neglected. \nMethods. \nThe life cycle inventory database ecoinvent data v1.2 forms the basis for the assessment of the environmental importance of capital goods. The importance is assessed on the basis of several hundreds of cradle-to-gate LCAs of heat and electricity supply systems, of materials extraction and production, of agricultural products, and of transport and waste management services. The importance within product (and service) groups is evaluated with statistical methods by comparing the LCA results including and excluding capital goods. The assessment is based on characterised cumulative LCI results using the CML baseline characterisation factors of the impact categories of global warming, acidification, eutrophication, human toxicity, fresh- water acquatic toxicity, terrestrial ecotoxicity, ionising radiation, and land competition, based on proxy indicators (fossil and nuclear) cumulative energy demand, and based on the end- point indicators Eco-indicator 99 (H,A) mineral resources, human health, eco system quality and totals. \nResults. \nThe analysis confirms the fact that capital goods cannot be excluded per se. On one hand, toxicity related environmental impacts such as freshwater ecotoxicity or human toxicity are more sensitive towards an inclusion or exclusion of capital goods. On the other, certain products like photovoltaic and wind electricity are very much or even completely affected by capital goods contributions, no matter which indicator is chosen. Nuclear electricity, agricultural products and processes, and transport services often behave differently (showing a higher or lower share of capital goods contribution) than products from other sectors. \nDiscussions. \nSome indicators analysed in this paper show a rather similar behaviour across all sectors analysed. This is particularly true for 'mineral resources', and - to a lesser extent -; for 'Eco- indicator 99 total', 'acidification' and 'climate change'. On the other hand, 'land use' and 'freshwater ecotoxicity' show the most contrasting behaviour with shares of capital goods' impacts between less than 1% and more than 98%. \nRecommendations. \nCapital goods must be included in the assessment of climate change impacts of non-fossil electricity, agricultural products and processes, transport services and waste management services. They must be included in any sector regarding the assessment of toxic effects. Energy analyses (quantifying the non-renewable cumulative energy demand) of agricultural products and processes, of wooden products and of transport services should include capital goods as well. The mixing of datasets including and excluding capital goods is no problem as long as their share on total impacts is low and partial omissions do not lead to a significant imbalance in comparative assertions. \nPerspectives. \nIf in doubt whether or not to include capital goods, it is recommended to check two things: (1) whether maintenance and depreciation costs of capital equipment form a substantial part of the product price (Heijungs et al. 1992a), and (2) whether actual environmental hot spots occur along the capital goods' supply chain.",
+                "collectionName":"International Journal of Life Cycle Assessment",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2002"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2007",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"ec2219b1-7a4a-3b32-ac7a-03463fa76b6d",
-                "title":"Object recognition and segmentation by a fragment-based hierarchy",
-                "uri":"http://www.mendeley.com/catalog/object-recognition-segmentation-fragmentbased-hierarchy/",
-                "eexcessURI":"http://www.mendeley.com/catalog/object-recognition-segmentation-fragmentbased-hierarchy/",
-                "creator":"Shimon Ullman",
-                "description":"How do we learn to recognize visual categories, such as dogs and cats? Somehow, the brain uses limited variable examples to extract the essential characteristics of new visual categories. Here, I describe an approach to category learning and recognition that is based on recent computational advances. In this approach, objects are represented by a hierarchy of fragments that are extracted during learning from observed examples. The fragments are class-specific features and are selected to deliver a high amount of information for categorization. The same fragments hierarchy is then used for general categorization, individual object recognition and object-parts identification. Recognition is also combined with object segmentation, using stored fragments, to provide a top-down process that delineates object boundaries in complex cluttered scenes. The approach is computationally effective and provides a possible framework for categorization, recognition and segmentation in human vision. ?? 2006 Elsevier Ltd. All rights reserved.",
-                "collectionName":"Trends in Cognitive Sciences",
+                "id":"1854abfc-1fee-3ca1-a37f-4fc8bc13a700",
+                "title":"Peak oil demand: The role of fuel efficiency and alternative fuels in a global oil production decline",
+                "uri":"http://www.mendeley.com/catalog/peak-oil-demand-role-fuel-efficiency-alternative-fuels-global-oil-production-decline/",
+                "eexcessURI":"http://www.mendeley.com/catalog/peak-oil-demand-role-fuel-efficiency-alternative-fuels-global-oil-production-decline/",
+                "creator":"Adam R. Brandt, Adam Millard-Ball, Matthew Ganser, Steven M. Gorelick",
+                "description":"Some argue that peak conventional oil production is imminent due to physical resource scarcity. We examine the alternative possibility of reduced oil use due to improved efficiency and oil substitution. Our model uses historical relationships to project future demand for (a) transport services, (b) all liquid fuels, and (c) substitution with alternative energy carriers, including electricity. Results show great increases in passenger and freight transport activity, but less reliance on oil. Demand for liquids inputs to refineries declines significantly after 2070. By 2100 transport energy demand rises &amp;gt;1000% in Asia, while flattening in North America (+23%) and Europe (-20%). Conventional oil demand declines after 2035, and cumulative oil production is 1900 Gbbl from 2010 to 2100 (close to the U.S. Geological Survey median estimate of remaining oil, which only includes projected discoveries through 2025). These results suggest that effort is better spent to determine and influence the trajectory of oil substitution and efficiency improvement rather than to focus on oil resource scarcity. The results also imply that policy makers should not rely on liquid fossil fuel scarcity to constrain damage from climate change. However, there is an unpredictable range of emissions impacts depending on which mix of substitutes for conventional oil gains dominance-oil sands, electricity, coal-to-liquids, or others.",
+                "collectionName":"Environmental Science and Technology",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2007"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2013",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"8b579d6b-a8f6-3f36-a3ba-223543b63349",
-                "title":"A large-scale hierarchical multi-view RGB-D object dataset",
-                "uri":"http://www.mendeley.com/catalog/largescale-hierarchical-multiview-rgbd-object-dataset/",
-                "eexcessURI":"http://www.mendeley.com/catalog/largescale-hierarchical-multiview-rgbd-object-dataset/",
-                "creator":"Kevin Lai, Liefeng Bo, Xiaofeng Ren, Dieter Fox",
-                "description":"Over the last decade, the availability of public image repositories and recognition benchmarks has enabled rapid progress in visual object category and instance detection. Today we are witnessing the birth of a new generation of sensing technologies capable of providing high quality synchronized videos of both color and depth, the RGB-D (Kinect-style) camera. With its advanced sensing capabilities and the potential for mass adoption, this technology represents an opportunity to dramatically increase robotic object recognition, manipulation, navigation, and interaction capabilities. In this paper, we introduce a large-scale, hierarchical multi-view object dataset collected using an RGB-D camera. The dataset contains 300 objects organized into 51 categories and has been made publicly available to the research community so as to enable rapid progress based on this promising technology. This paper describes the dataset collection procedure and introduces techniques for RGB-D based object recognition and detection, demonstrating that combining color and depth information substantially improves quality of results.",
-                "collectionName":"Proceedings - IEEE International Conference on Robotics and Automation",
+                "id":"347d4d6e-61eb-3d15-999e-f365d9a64377",
+                "title":"The potential environmental gains from recycling waste plastics: Simulation of transferring recycling and recovery technologies to Shenyang, China",
+                "uri":"http://www.mendeley.com/research/potential-environmental-gains-recycling-waste-plastics-simulation-transferring-recycling-recovery-te/",
+                "eexcessURI":"http://www.mendeley.com/research/potential-environmental-gains-recycling-waste-plastics-simulation-transferring-recycling-recovery-te/",
+                "creator":"Xudong Chen, Fengming Xi, Yong Geng, Tsuyoshi Fujita",
+                "description":"With the increasing attention on developing a low-carbon economy, it is necessary to seek appropriate ways on reducing greenhouse gas (GHG) emissions through innovative municipal solid waste management (MSWM), such as urban symbiosis. However, quantitative assessments on the environmental benefits of urban symbiosis, especially in developing countries, are limited because only a limited number of planned synergistic activities have been successful and it is difficult to acquire detailed inventory data from private companies. This paper modifies and applies a two-step simulation system and used it to assess the potential environmental benefits, including the reduction of GHG emissions and saving of fossil fuels, by employing various Japanese plastics recycling/energy-recovery technologies in Shenyang, China. The results showed that among various recycling/energy-recovery technologies, the mechanical waste plastics recycling technology, which produces concrete formwork boards (NF boards), has the greatest potential in terms of reducing GHG emissions (1.66kg CO2e/kg plastics), whereas the technology for the production of refuse plastic fuel (RPF) has the greatest potential on saving fossil fuel consumption (0.77kgce/kg-plastics). Additional benefits can be gained by applying combined technologies that cascade the utilization of waste plastics. Moreover, the development of clean energy in conjunction with the promotion of new waste plastics recycling programs could contribute to additional reductions in GHG emissions and fossil fuel consumption. ?? 2010 Elsevier Ltd.",
+                "collectionName":"Waste Management",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2011"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2011",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"d2a998ac-54e3-350d-8b3b-b3e15ebedd22",
-                "title":"Using spin images for efficient object recognition in cluttered 3D scenes",
-                "uri":"http://www.mendeley.com/catalog/using-spin-images-efficient-object-recognition-cluttered-3d-scenes/",
-                "eexcessURI":"http://www.mendeley.com/catalog/using-spin-images-efficient-object-recognition-cluttered-3d-scenes/",
-                "creator":"Andrew E. Johnson, Martial Hebert",
-                "description":"We present a 3D shape-based object recognition system for simultaneous recognition of multiple objects in scenes containing clutter and occlusion. Recognition is based on matching surfaces by matching points using the spin image representation. The spin image is a data level shape descriptor that is used to match surfaces represented as surface meshes. We present a compression scheme for spin images that results in efficient multiple object recognition which we verify with results showing the simultaneous recognition of multiple objects from a library of 20 models. Furthermore, we demonstrate the robust performance of recognition in the presence of clutter and occlusion through analysis of recognition trials on 100 scenes",
-                "collectionName":"IEEE Transactions on Pattern Analysis and Machine Intelligence",
+                "id":"3b2b8f22-9bac-3eaa-9ce0-38b5f1c32cd6",
+                "title":"Biofuels and their potential to aid the UK towards achieving emissions reduction policy targets",
+                "uri":"http://www.mendeley.com/catalog/biofuels-potential-aid-uk-towards-achieving-emissions-reduction-policy-targets/",
+                "eexcessURI":"http://www.mendeley.com/catalog/biofuels-potential-aid-uk-towards-achieving-emissions-reduction-policy-targets/",
+                "creator":"Adolf A. Acquaye, Tom&amp;aacute;s Sherwen, Andrea Genovese, Johan Kuylenstierna, Sc Lenny Koh, Simon McQueen-Mason",
+                "description":"The potential of biofuels contributing to the UK emission reduction targets in the formulated UK Low Carbon Transition Plan (LCTP) and the UK's obligation in the wider EU emissions reduction targets are assessed using four scenarios. The scenarios were evaluated using hybrid lifecycle assessment developed in a multi-regional input-output (MRIO) framework. In the hybrid MRIO LCA framework, technology-specific processes in the biofuels and fossil fuels LCA systems are integrated into a generalised 2-region (UK and Rest of the World) environmental-economic input-output framework in order to account for economy-wide indirect GHG emissions in the biofuels and fossil fuels LCA systems in addition to other indirect impacts such as indirect land use change. The lifecycle greenhouse gas emissions of biodiesel (soybean, palm, rape, waste cooking oil) and bio-ethanol (sugarcane, sugarbeet, corn) were assessed and compared to fossil fuel (diesel and petrol) baseline. From one of the scenarios, biodiesel production from waste cooking oil and bioethanol from sugarbeet offer the biggest potential for emissions savings relative to fossil fuel equivalent and offering a maximum emission savings of 4.1% observed with a biofuel market share of 10% reached in 2020. It was also established that under current biofuel feedstock mix, to achieve the 6% emissions saving primarily from biofuels as proposed in the LCTP, 23.8% of the transport fuels market would be required to be held by biofuels by 2020. &amp;copy; 2012 Elsevier Ltd. All rights reserved.",
+                "collectionName":"Renewable and Sustainable Energy Reviews",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"1999"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2012",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"02a0c2ca-6e6e-375d-a035-cb973df58cb0",
-                "title":"Robust object recognition with cortex-like mechanisms",
-                "uri":"http://www.mendeley.com/catalog/robust-object-recognition-cortexlike-mechanisms/",
-                "eexcessURI":"http://www.mendeley.com/catalog/robust-object-recognition-cortexlike-mechanisms/",
-                "creator":"Thomas Serre, Lior Wolf, Stanley Bileschi, Maximilian Riesenhuber, Tomaso Poggio",
-                "description":"We introduce a new general framework for the recognition of complex visual scenes, which is motivated by biology: We describe a hierarchical system that closely follows the organization of visual cortex and builds an increasingly complex and invariant feature representation by alternating between a template matching and a maximum pooling operation. We demonstrate the strength of the approach on a range of recognition tasks: From invariant single object recognition in clutter to multiclass categorization problems and complex scene understanding tasks that rely on the recognition of both shape-based as well as texture-based objects. Given the biological constraints that the system had to satisfy, the approach performs surprisingly well: It has the capability of learning from only a few training examples and competes with state-of-the-art systems. We also discuss the existence of a universal, redundant dictionary of features that could handle the recognition of most object categories. In addition to its relevance for computer vision, the success of this approach suggests a plausibility proof for a class of feedforward models of object recognition in cortex.",
-                "collectionName":"IEEE Transactions on Pattern Analysis and Machine Intelligence",
+                "id":"08f9823b-1453-3ace-90e3-de28c605df28",
+                "title":"Ecological input-output modeling for embodied resources and emissions in Chinese economy 2005",
+                "uri":"http://www.mendeley.com/research/ecological-inputoutput-modeling-embodied-resources-emissions-chinese-economy-2005/",
+                "eexcessURI":"http://www.mendeley.com/research/ecological-inputoutput-modeling-embodied-resources-emissions-chinese-economy-2005/",
+                "creator":"Z. M. Chen, G. Q. Chen, J. B. Zhou, M. M. Jiang, B. Chen",
+                "description":"For the embodiment of natural resources and environmental emissions in Chinese economy 2005, a biophysical balance modeling is carried out based on an extension of the economic input-output table into an ecological one integrating the economy with its various environmental driving forces. Included resource flows into the primary resource sectors and environmental emission flows from the primary emission sectors belong to seven categories as energy resources in terms of fossil fuels, hydropower and nuclear energy, biomass, and other sources; freshwater resources; greenhouse gas emissions in terms of CO2, CH4, and N2 O; industrial wastes in terms of waste water, waste gas, and waste solid; exergy in terms of fossil fuel resources, biological resources, mineral resources, and environmental resources; solar emergy and cosmic emergy in terms of climate resources, soil, fossil fuels, and minerals. The resulted database for embodiment intensity and sectoral embodiment of natural resources and environmental emissions is of essential implications in context of systems ecology and ecological economics in general and of global climate change in particular. &amp;copy; 2009 Elsevier B.V. All rights reserved.",
+                "collectionName":"Communications in Nonlinear Science and Numerical Simulation",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2007"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2010",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"e71c1eb4-a64c-3cfd-ae71-2789d863370c",
-                "title":"Beyond sliding windows: Object localization by efficient subwindow search",
-                "uri":"http://www.mendeley.com/catalog/beyond-sliding-windows-object-localization-efficient-subwindow-search/",
-                "eexcessURI":"http://www.mendeley.com/catalog/beyond-sliding-windows-object-localization-efficient-subwindow-search/",
-                "creator":"Christoph H. Lampert, Matthew B. Blaschko, Thomas Hofmann",
-                "description":"Most successful object recognition systems rely on binary classification, deciding only if an object is present or not, but not providing information on the actual object location. To perform localization, one can take a sliding window approach, but this strongly increases the computational cost, because the classifier function has to be evaluated over a large set of candidate subwindows. In this paper, we propose a simple yet powerful branch-and-bound scheme that allows efficient maximization of a large class of classifier functions over all possible subimages. It converges to a globally optimal solution typically in sublinear time. We show how our method is applicable to different object detection and retrieval scenarios. The achieved speedup allows the use of classifiers for localization that formerly were considered too slow for this task, such as SVMs with a spatial pyramid kernel or nearest neighbor classifiers based on the chi&amp;lt;sup&amp;gt;2&amp;lt;/sup&amp;gt;-distance. We demonstrate state-of-the-art performance of the resulting systems on the UIUC Cars dataset, the PASCAL VOC 2006 dataset and in the PASCAL VOC 2007 competition.",
-                "collectionName":"26th IEEE Conference on Computer Vision and Pattern Recognition, CVPR",
+                "id":"df7122ac-f016-325d-b030-eda528a3687c",
+                "title":"Fossil Fuels Without CO 2 Emissions",
+                "uri":"http://www.mendeley.com/catalog/fossil-fuels-without-co-2-emissions/",
+                "eexcessURI":"http://www.mendeley.com/catalog/fossil-fuels-without-co-2-emissions/",
+                "creator":"E A Parson, D W Keith",
+                "description":"Recent work in carbon management (CM)-the separation and sequestration of carbon from fossil-fuel combustion to reduce atmospheric COemissions-has raised estimates of sequestration capacities and lowered estimates of costs, so that CM may offer substantial abatement possibilities more cheaply than nonfossil energy. CM's seeming technological and economic attractiveness has major implications for the political economy of abatement and the design of abatement policies. CM also carries novel environmental risks and raises serious intergenerational equity issues, which urgently require assessment.",
+                "collectionName":"Science",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2008"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"1998",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"75c325fc-dd0f-3bfe-a5f8-872eebf8bc9c",
-                "title":"Context based object categorization: A critical survey",
-                "uri":"http://www.mendeley.com/catalog/context-based-object-categorization-critical-survey-5/",
-                "eexcessURI":"http://www.mendeley.com/catalog/context-based-object-categorization-critical-survey-5/",
-                "creator":"Carolina Galleguillos, Serge Belongie",
-                "description":"The goal of object categorization is to locate and identify instances of an object category within an image. Recognizing an object in an image is difficult when images include occlusion, poor quality, noise or background clutter, and this task becomes even more challenging when many objects are present in the same scene. Several models for object categorization use appearance and context information from objects to improve recognition accuracy. Appearance information, based on visual cues, can successfully identify object classes up to a certain extent. Context information, based on the interaction among objects in the scene or global scene statistics, can help successfully disambiguate appearance inputs in recognition tasks. In this work we address the problem of incorporating different types of contextual information for robust object categorization in computer vision. We review different ways of using contextual information in the field of object categorization, considering the most common levels of extraction of context and the different levels of contextual interactions. We also examine common machine learning models that integrate context information into object recognition frameworks and discuss scalability, optimizations and possible future approaches. ?? 2010 Elsevier Inc.",
-                "collectionName":"Computer Vision and Image Understanding",
+                "id":"0862ca30-c6d9-3c3c-82fd-521b8e2cff23",
+                "title":"Model for cradle-to-gate life cycle assessment of clinker production",
+                "uri":"http://www.mendeley.com/catalog/model-cradletogate-life-cycle-assessment-clinker-production/",
+                "eexcessURI":"http://www.mendeley.com/catalog/model-cradletogate-life-cycle-assessment-clinker-production/",
+                "creator":"Michael Elias Boesch, Annette Koehler, Stefanie Hellweg",
+                "description":"A model for input and technology-dependent cradle-to-gate life cycle assessments (LCA) was constructed to quantify emissions and resource consumption of various clinker production options. The model was compiled using data of more than 100 clinker production lines and complemented with literature data and best judgment from experts. It can be applied by the cement industry for the selection of alternative fuels and raw materials (AFR) and by authorities for decision-support regarding the permission of waste co-processing in cement kilns. In the field of sustainable construction, the model can be used to compare clinker production options. Two case studies are presented. First, co-processing of four different types of waste is analyzed at a modern precalciner kiln system. Second, clinker production is compared between five kiln systems. Results show that the use of waste (tires, prepared industrial waste, dried sewage sludge, blast furnace slag) led to reduced greenhouse gas emissions, decreased resource consumption, and mostly to reduced aggregated environmental impacts. Regarding the different kiln systems, the environmental impact generally increased with decreasing energy efficiency.",
+                "collectionName":"Environmental Science and Technology",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2010"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2009",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"e3dd0288-502d-3846-9e7e-cfe477f30d56",
-                "title":"The role of context in object recognition",
-                "uri":"http://www.mendeley.com/catalog/role-context-object-recognition-16/",
-                "eexcessURI":"http://www.mendeley.com/catalog/role-context-object-recognition-16/",
-                "creator":"Aude Oliva, Antonio Torralba",
-                "description":"In the real world, objects never occur in isolation; they co-vary with other objects and particular environments, providing a rich source of contextual associations to be exploited by the visual system. A natural way of representing the context of an object is in terms of its relationship to other objects. Alternately, recent work has shown that a statistical summary of the scene provides a complementary and effective source of information for contextual inference, which enables humans to quickly guide their attention and eyes to regions of interest in natural scenes. A better understanding of how humans build such scene representations, and of the mechanisms of contextual analysis, will lead to a new generation of computer vision systems. ?? 2007 Elsevier Ltd. All rights reserved.",
-                "collectionName":"Trends in Cognitive Sciences",
+                "id":"ea177fc6-9a9b-3e5c-8bc7-e588cc05831e",
+                "title":"Quantifying the total environmental impacts of an industrial symbiosis-a comparison of process-, hybrid and input-output life cycle assessment",
+                "uri":"http://www.mendeley.com/catalog/quantifying-total-environmental-impacts-industrial-symbiosisa-comparison-process-hybrid-inputoutput/",
+                "eexcessURI":"http://www.mendeley.com/catalog/quantifying-total-environmental-impacts-industrial-symbiosisa-comparison-process-hybrid-inputoutput/",
+                "creator":"Tuomas J. Mattila, Suvi Pakarinen, Laura Sokka",
+                "description":"Industrial symbiosis, representing resource sharing and byproduct use among colocated firms, is a key concept of industrial ecology. Local co-operation in industrial symbioses can reduce raw material use and waste disposal, but material and energy flows extending outside symbiosis boundaries can cause considerable environmental impacts. These external impacts are often ignored in industrial symbiosis studies. In this study, we compared process, hybrid and input-output life cycle assessment (LCA) approaches in quantifying the overall environmental impacts of a forest industrial symbiosis, situated in Kymenlaakso, Finland. Conclusions from an earlier process-LCA were strengthened by the use of hybrid-LCA as local emissions were found to cause less than half of the global impacts. In some impact categories, the whole impact was caused by supply chain emissions (land use, metal depletion and ozone depletion). The cutoff in process-LCA was found to be less than 25%, except in metal depletion and terrestrial ecotoxicity. Input-output LCA approximated hybrid-LCA results well in most impact categories, but seriously underestimated land use and overestimated terrestrial ecotoxicity. Based on the results we conclude, that input-output based LCA can be used to analyze the global impacts of an industrial symbiosis, but a careful interpretation of the results is necessary in order to understand the influence of aggregation and allocation.",
+                "collectionName":"Environmental Science and Technology",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2007"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2010",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"76da05ac-0c3d-3d52-a63f-91d1f72ff54e",
-                "title":"Object recognition from local scale-invariant features",
-                "uri":"http://www.mendeley.com/catalog/object-recognition-local-scaleinvariant-features/",
-                "eexcessURI":"http://www.mendeley.com/catalog/object-recognition-local-scaleinvariant-features/",
-                "creator":"D.G. Lowe",
-                "description":"An object recognition system has been developed that uses a new class of local image features. The features are invariant to image scaling, translation, and rotation, and partially invariant to illumination changes and affine or 3D projection. These features share similar properties with neurons in inferior temporal cortex that are used for object recognition in primate vision. Features are efficiently detected through a staged filtering approach that identifies stable points in scale space. Image keys are created that allow for local geometric deformations by representing blurred image gradients in multiple orientation planes and at multiple scales. The keys are used as input to a nearest neighbor indexing method that identifies candidate object matches. Final verification of each match is achieved by finding a low residual least squares solution for the unknown model parameters. Experimental results show that robust object recognition can be achieved in cluttered partially occluded images with a computation time of under 2 seconds",
-                "collectionName":"Proceedings of the Seventh IEEE International Conference on Computer Vision",
+                "id":"960ee910-fe1a-3216-aebb-bd3342004cf5",
+                "title":"Improving the CO2 performance of cement, part III: the relevance of industrial symbiosis and how to measure its impact",
+                "uri":"http://www.mendeley.com/research/improving-co2-performance-cement-part-iii-relevance-industrial-symbiosis-measure-impact/",
+                "eexcessURI":"http://www.mendeley.com/research/improving-co2-performance-cement-part-iii-relevance-industrial-symbiosis-measure-impact/",
+                "creator":"Jonas Ammenberg, Leenard Baas, Mats Eklund, Roozbeh Feiz, Anton Helgstrand, Richard Marshall",
+                "description":"Cement production contributes to extensive CO2 emissions. However, the climate impact can vary significantly between different production systems and different types of cement products. The market is dominated by ordinary Portland cement, which is based on primary raw materials and commonly associated with combustion of vast amounts of fossil fuels. Therefore, the production of Portland cement can be described as a rather linear process. But there are alternative options, for example, involving large amounts of industrial byproducts and renewable energy which are more cyclic and thus can be characterized as relatively \"synergistic\". The main purpose of this article is to study how relevant the leading ideas of industrial symbiosis are for the cement industry based on a quantitative comparison of the CO2 emissions from different cement production systems and products, both existing and hypothetical. This has been done by studying a group of three cement plants in Germany, denoted as Cluster West, and the production of cement clinker and three selected cement products. Based on this analysis and literature, it is discussed to what extent industrial symbiosis options can lead to reduced CO2 emissions, for Cluster West and the cement industry in general. Utilizing a simplified LCA model (\"cradle to gate\"), it was shown that the CO2 emissions from Cluster West declined by 45% over the period 1997-2009, per tonne of average cement. This was mainly due to a large share of blended cement, i.e., incorporation of byproducts from local industries as supplementary cementitious materials. For producers of Portland cement to radically reduce the climate impact it is necessary to engage with new actors and find fruitful cooperation regarding byproducts, renewable energy and waste heat. Such a development is very much in line with the key ideas of industrial ecology and industrial symbiosis, meaning that it appears highly relevant for the cement industry to move further in this direction. From a climate perspective, it is essential that actors influencing the cement market acknowledge the big difference between different types of cement, where an enlarged share of blended cement products (substituting clinker with byproducts such as slag and fly ash) offers a great scope for future reduction of CO2 emissions. ?? 2014 Elsevier Ltd. All rights reserved.",
+                "collectionName":"Journal of Cleaner Production",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"1999"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2014",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"51166ea6-e3e1-3687-978e-1dfcaa4e5834",
-                "title":"Contextual priming for object detection",
-                "uri":"http://www.mendeley.com/catalog/contextual-priming-object-detection/",
-                "eexcessURI":"http://www.mendeley.com/catalog/contextual-priming-object-detection/",
-                "creator":"Antonio Torralba",
-                "description":"There is general consensus that context can be a rich source of information about an object's identity, location and scale. In fact, the structure of many real-world scenes is governed by strong configurational rules akin to those that apply to a single object. Here we introduce a simple framework for modeling the relationship between context and object properties based on the correlation between the statistics of low-level features across the entire scene and the objects that it contains. The resulting scheme serves as an effective procedure for object priming, context driven focus of attention and automatic scale-selection on real-world scenes.",
-                "collectionName":"International Journal of Computer Vision",
+                "id":"ee9c886d-450b-34aa-bcbf-86214dcf57ef",
+                "title":"Industrial symbiosis of very large-scale photovoltaic manufacturing",
+                "uri":"http://www.mendeley.com/catalog/industrial-symbiosis-very-largescale-photovoltaic-manufacturing/",
+                "eexcessURI":"http://www.mendeley.com/catalog/industrial-symbiosis-very-largescale-photovoltaic-manufacturing/",
+                "creator":"Joshua M. Pearce",
+                "description":"In order to stabilize the global climate, the world's governments must make significant commitments to drastically reduce global greenhouse gas (GHG) emissions. One of the most promising methods of curbing GHG emissions is a world transition from fossil fuels to renewable sources of energy. Solar photovoltaic (PV) cells offer a technically sustainable solution to the projected enormous future energy demands. This article explores utilizing industrial symbiosis to obtain economies of scale and increased manufacturing efficiencies for solar PV cells in order for solar electricity to compete economically with fossil fuel-fired electricity. The state of PV manufacturing, the market and the effects of scale on both are reviewed. Government policies necessary to construct a multi-gigaWatt PV factory and complementary policies to protect existing solar companies are outlined and the technical requirements for a symbiotic industrial system are explored to increase the manufacturing efficiency while improving the environmental impact of PV. The results of the analysis show that an eight-factory industrial symbiotic system can be viewed as a medium-term investment by any government, which will not only obtain direct financial return, but also an improved global environment. The technical concepts and policy limitations to this approach were analyzed and it was found that symbiotic growth will help to mitigate many of the limitations of PV and is likely to catalyze mass manufacturing of PV by transparently demonstrating that large-scale PV manufacturing is technically feasible and reaches an enormous untapped market for PV with low costs. ?? 2007 Elsevier Ltd. All rights reserved.",
+                "collectionName":"Renewable Energy",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2003"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2008",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"27ef8028-7b52-386a-a98f-abc671ed9756",
-                "title":"Context-based vision system for place and object recognition",
-                "uri":"http://www.mendeley.com/catalog/contextbased-vision-system-place-object-recognition/",
-                "eexcessURI":"http://www.mendeley.com/catalog/contextbased-vision-system-place-object-recognition/",
-                "creator":"A. Torralba, K.P. Murphy, W.T. Freeman, M.A. Rubin",
-                "description":"While navigating in an environment, a vision system has to be able to recognize where it is and what the main objects in the scene are. We present a context-based vision system for place and object recognition. The goal is to identify familiar locations (e.g., office 610, conference room 941, main street), to categorize new environments (office, corridor, street) and to use that information to provide contextual priors for object recognition (e.g., tables are more likely in an office than a street). We present a low-dimensional global image representation that provides relevant information for place recognition and categorization, and show how such contextual information introduces strong priors that simplify object recognition. We have trained the system to recognize over 60 locations (indoors and outdoors) and to suggest the presence and locations of more than 20 different object types. The algorithm has been integrated into a mobile system that provides realtime feedback to the user.",
-                "collectionName":"Proceedings Ninth IEEE International Conference on Computer Vision",
+                "id":"971137ee-0bf9-35c0-a3a6-6b3963a5d567",
+                "title":"Exergy Analysis of Waste Emissions",
+                "uri":"http://www.mendeley.com/research/exergy-analysis-waste-emissions/",
+                "eexcessURI":"http://www.mendeley.com/research/exergy-analysis-waste-emissions/",
+                "creator":"Marc A Rosen, Ibrahim Dincer",
+                "description":"Recently, signficant attention has been directed towards the use of exergy analysis in the assessment of thermal and other industrial processes and their environmental impacts since exergy analysis is an e!ective tool both for achieving efficient energy utilization with minimum (or zero) environmental impact and for understanding environmental issues. In this study, the concepts of exergy analysis and the linkages between exergy and environmental impact are discussed, and several issues regarding the exergies of waste emissions are addressed. Exergy is a measure of the degree of disequilibrium between a substance and its environment. The relations between several measures of environmental impact potential and exergy are investigated by comparing current methods used to assess the environmental impact potential of waste emissions and the exergy associated with those emissions. A case study is presented, to highlight the information revealed using exergy, in which the measures of environmental impact potential considered are the Ontario Ministry of Environment's schedule of industrial air emission limits, and two methods of assessing the environmental costs for air emissions resulting from the combustion of three common fossil fuels: coal, oil and natural gas.",
+                "collectionName":"International Journal of Energy Research",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2003"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"1999",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"022ab3c4-c259-3a17-a247-e9bb525bffbc",
-                "title":"Sparse distance learning for object recognition combining RGB and depth information",
-                "uri":"http://www.mendeley.com/catalog/sparse-distance-learning-object-recognition-combining-rgb-depth-information/",
-                "eexcessURI":"http://www.mendeley.com/catalog/sparse-distance-learning-object-recognition-combining-rgb-depth-information/",
-                "creator":"Kevin Lai, Liefeng Bo, Xiaofeng Ren, Dieter Fox",
-                "description":"In this work we address joint object category and instance recognition in the context of RGB-D (depth) cameras. Motivated by local distance learning, where a novel view of an object is compared to individual views of previously seen objects, we define a view-to-object distance where a novel view is compared simultaneously to all views of a previous object. This novel distance is based on a weighted combination of feature differences between views. We show, through jointly learning per-view weights, that this measure leads to superior classification performance on object category and instance recognition. More importantly, the proposed distance allows us to find a sparse solution via Group-Lasso regularization, where a small subset of representative views of an object is identified and used, with the rest discarded. This significantly reduces computational cost without compromising recognition accuracy. We evaluate the proposed technique, Instance Distance Learning (IDL), on the RGB-D Object Dataset, which consists of 300 object instances in 51 everyday categories and about 250,000 views of objects with both RGB color and depth. We empirically compare IDL to several alternative state-of-the-art approaches and also validate the use of visual and shape cues and their combination.",
-                "collectionName":"Proceedings - IEEE International Conference on Robotics and Automation",
+                "id":"14aed560-40ec-3161-a0a3-5622100b8323",
+                "title":"Evaluation of innovative municipal solid waste management through urban symbiosis: A case study of Kawasaki",
+                "uri":"http://www.mendeley.com/catalog/evaluation-innovative-municipal-solid-waste-management-through-urban-symbiosis-case-study-kawasaki-1/",
+                "eexcessURI":"http://www.mendeley.com/catalog/evaluation-innovative-municipal-solid-waste-management-through-urban-symbiosis-case-study-kawasaki-1/",
+                "creator":"Yong Geng, Fujita Tsuyoshi, Xudong Chen",
+                "description":"Industrial symbiosis encourages the establishment of a broad eco-industrial network so that more synergy opportunities can be identified. By linking municipal solid waste management (MSWM) with local industries, i.e., urban symbiosis, new symbiotic opportunities can be generated from the geographic proximity of urban and industrial areas, transferring physical resources from urban refuse directly to industrial applications and improving the overall eco-efficiency of the city as a whole. Using a case study of Kawasaki, this paper simulates and evaluates an innovative waste management initiative in Kawasaki by an scenario simulation model based on the LCA approach. Results show that recycling mixed paper, mixed plastics, and organic wastes and utilizing the recycled materials in industrial production will potentially reduce about 69 kt CO2(e) emissions and 8 kt incineration ashes to be landfilled in 2015. To achieve these outcomes, the total additional cost compared with the current practice is about 1.2 billion JPY. ?? 2010 Elsevier Ltd.",
+                "collectionName":"Journal of Cleaner Production",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2011"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2010",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"7f2098ad-ad73-3429-9640-be3945f5cc87",
-                "title":"Multiclass object recognition with sparse, localized features",
-                "uri":"http://www.mendeley.com/catalog/multiclass-object-recognition-sparse-localized-features/",
-                "eexcessURI":"http://www.mendeley.com/catalog/multiclass-object-recognition-sparse-localized-features/",
-                "creator":"Jim Mutch, David G. Lowe",
-                "description":" We apply a biologically inspired model of visual object recognition to the multiclass object categorization problem. Our model modifies that of Serre, Wolf, and Poggio. As in that work, we first apply Gabor filters at all positions and scales; feature complexity and position/scale invariance are then built up by alternating template matching and max pooling operations. We refine the approach in several biologically plausible ways, using simple versions of sparsification and lateral inhibition. We demonstrate the value of retaining some position and scale information above the intermediate feature level. Using feature selection we arrive at a model that performs better with fewer features. Our final model is tested on the Caltech 101 object categories and the UIUC car localization task, in both cases achieving state-of-the-art performance. The results strengthen the case for using this class of model in computer vision.",
-                "collectionName":"Proceedings of the IEEE Computer Society Conference on Computer Vision and Pattern Recognition",
+                "id":"0f90f19c-3388-33f7-88ca-23aa66daca6b",
+                "title":"Life cycle assessment of electricity generation using fast pyrolysis bio-oil",
+                "uri":"http://www.mendeley.com/research/life-cycle-assessment-electricity-generation-using-fast-pyrolysis-biooil-2/",
+                "eexcessURI":"http://www.mendeley.com/research/life-cycle-assessment-electricity-generation-using-fast-pyrolysis-biooil-2/",
+                "creator":"Jiqing Fan, Tom N. Kalnes, Matthew Alward, Jordan Klinger, Adam Sadehvandi, David R. Shonnard",
+                "description":"Biomass is expected to become an important energy source in U.S. electricity generation under state-lead renewable portfolio standards. This paper investigated the greenhouse gas (GHG) emissions for energy generated from forest resources through pyrolysis-based processing. The GHG emissions of producing pyrolysis bio-oil (pyrolysis oil) from different forest resources were first investigated; logging residues collected from natural regeneration mixed hardwood stands, hybrid poplar cultivated and harvested from abandoned agricultural lands, short rotation forestry (SRF) willow plantations and waste wood available at the site of the pyrolysis plant. Effects of biomass transportation were investigated through a range of distances to a central pyrolysis facility through road transport by semi-truck. Pyrolysis oil is assumed to be converted to electrical power through co-combustion in conventional fossil fuels power plants, gas turbine combined cycle (GTCC) and diesel generators. Life cycle GHG emissions were compared with power generated using fossil fuels and power generated using biomass direct combustion in a conventional Rankine power plant. Life cycle GHG savings of 77%-99% were estimated for power generation from pyrolysis oil combustion relative to fossil fuels combustion, depending on the biomass feedstock and combustion technologies used. Several scenario analyses were conducted to determine effects of pyrolysis oil transportation distance, N-fertilizer inputs to energy crop plantations, and assumed electricity mixes for pyrolysis oil production. ?? 2010 Elsevier Ltd.",
+                "collectionName":"Renewable Energy",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2006"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2011",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"41a551ea-4e54-3437-9862-f10a2f51a23a",
-                "title":"80 million tiny images: A large data set for nonparametric object and scene recognition",
-                "uri":"http://www.mendeley.com/catalog/80-million-tiny-images-large-data-set-nonparametric-object-scene-recognition/",
-                "eexcessURI":"http://www.mendeley.com/catalog/80-million-tiny-images-large-data-set-nonparametric-object-scene-recognition/",
-                "creator":"Antonio Torralba, Rob Fergus, William T. Freeman",
-                "description":"With the advent of the Internet, billions of images are now freely available online and constitute a dense sampling of the visual world. Using a variety of non-parametric methods, we explore this world with the aid of a large dataset of 79,302,017 images collected from the Internet. Motivated by psychophysical results showing the remarkable tolerance of the human visual system to degradations in image resolution, the images in the dataset are stored as 32 x 32 color images. Each image is loosely labeled with one of the 75,062 non-abstract nouns in English, as listed in the Wordnet lexical database. Hence the image database gives a comprehensive coverage of all object categories and scenes. The semantic information from Wordnet can be used in conjunction with nearest-neighbor methods to perform object classification over a range of semantic levels minimizing the effects of labeling noise. For certain classes that are particularly prevalent in the dataset, such as people, we are able to demonstrate a recognition performance comparable to class-specific Viola-Jones style detectors.",
-                "collectionName":"IEEE Transactions on Pattern Analysis and Machine Intelligence",
+                "id":"fbeb4a45-2d68-3d60-b3b9-cda4ec507ea4",
+                "title":"Global and regional drivers of accelerating CO2 emissions.",
+                "uri":"http://www.mendeley.com/catalog/global-regional-drivers-accelerating-co2-emissions/",
+                "eexcessURI":"http://www.mendeley.com/catalog/global-regional-drivers-accelerating-co2-emissions/",
+                "creator":"Michael R Raupach, Gregg Marland, Philippe Ciais, Corinne Le Qu&amp;eacute;r&amp;eacute;, Josep G Canadell, Gernot Klepper, Christopher B Field",
+                "description":"CO2 emissions from fossil-fuel burning and industrial processes have been accelerating at a global scale, with their growth rate increasing from 1.1% y(-1) for 1990-1999 to &amp;gt;3% y(-1) for 2000-2004. The emissions growth rate since 2000 was greater than for the most fossil-fuel intensive of the Intergovernmental Panel on Climate Change emissions scenarios developed in the late 1990s. Global emissions growth since 2000 was driven by a cessation or reversal of earlier declining trends in the energy intensity of gross domestic product (GDP) (energy/GDP) and the carbon intensity of energy (emissions/energy), coupled with continuing increases in population and per-capita GDP. Nearly constant or slightly increasing trends in the carbon intensity of energy have been recently observed in both developed and developing regions. No region is decarbonizing its energy supply. The growth rate in emissions is strongest in rapidly developing economies, particularly China. Together, the developing and least-developed economies (forming 80% of the world's population) accounted for 73% of global emissions growth in 2004 but only 41% of global emissions and only 23% of global cumulative emissions since the mid-18th century. The results have implications for global equity.",
+                "collectionName":"Proceedings of the National Academy of Sciences of the United States of America",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2008"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2007",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },
             {
-                "id":"5a6aadc8-3543-3058-b0ab-14327215b0bc",
-                "title":"Consumer Depth Cameras for Computer Vision",
-                "uri":"http://www.mendeley.com/catalog/consumer-depth-cameras-computer-vision/",
-                "eexcessURI":"http://www.mendeley.com/catalog/consumer-depth-cameras-computer-vision/",
-                "creator":"Kevin Lai, Liefeng Bo, Xiaofeng Ren, Dieter Fox",
-                "description":"Over the last decade, the availability of public image repositories and recognition benchmarks has enabled rapid progress in visual object category and instance detection. Today we are witnessing the birth of a new generation of sensing technologies capable of providing high quality synchronized videos of both color and depth, the RGB-D (Kinect-style) camera. With its advanced sensing capabili- ties and the potential for mass adoption, this technology represents an opportunity to dramatically increase robotic object recognition, manipulation, navigation, and interaction capabilities. We introduce a large-scale, hierarchical multi-view object dataset collected using an RGB-D camera. The dataset consists of two parts: The RGB-D Object Dataset containing views of 300 objects organized into 51 cate- gories, and the RGB-D Scenes Dataset containing 8 video sequences of office and kitchen environments. The dataset has been made publicly available to the research community so as to enable rapid progress based on this promising technology. We describe the dataset collection procedure and present techniques for RGB-D ob- ject recognition and detection of objects in scenes recorded using RGB-D videos, demonstrating that combining color and depth information substantially improves quality of results. K.",
-                "collectionName":"Consumer Depth Cameras for Computer Vision",
+                "id":"0d28df4e-86ac-3617-84dc-5a4a5772569a",
+                "title":"Assessment of the greenhouse effect impact of technologies used for energy recovery from municipal waste: A case for England",
+                "uri":"http://www.mendeley.com/catalog/assessment-greenhouse-effect-impact-technologies-used-energy-recovery-municipal-waste-case-england/",
+                "eexcessURI":"http://www.mendeley.com/catalog/assessment-greenhouse-effect-impact-technologies-used-energy-recovery-municipal-waste-case-england/",
+                "creator":"A. Papageorgiou, J. R. Barton, A. Karagiannidis",
+                "description":"Waste management activities contribute to global greenhouse gas emissions approximately by 4%. In particular the disposal of waste in landfills generates methane that has high global warming potential. Effective mitigation of greenhouse gas emissions is important and could provide environmental benefits and sustainable development, as well as reduce adverse impacts on public health. The European and UK waste policy force sustainable waste management and especially diversion from landfill, through reduction, reuse, recycling and composting, and recovery of value from waste. Energy from waste is a waste management option that could provide diversion from landfill and at the same time save a significant amount of greenhouse gas emissions, since it recovers energy from waste which usually replaces an equivalent amount of energy generated from fossil fuels. Energy from waste is a wide definition and includes technologies such as incineration of waste with energy recovery, or combustion of waste-derived fuels for energy production or advanced thermal treatment of waste with technologies such as gasification and pyrolysis, with energy recovery. The present study assessed the greenhouse gas emission impacts of three technologies that could be used for the treatment of Municipal Solid Waste in order to recover energy from it. These technologies are Mass Burn Incineration with energy recovery, Mechanical Biological Treatment via bio-drying and Mechanical Heat Treatment, which is a relatively new and uninvestigated method, compared to the other two. Mechanical Biological Treatment and Mechanical Heat Treatment can turn Municipal Solid Waste into Solid Recovered Fuel that could be combusted for energy production or replace other fuels in various industrial processes. The analysis showed that performance of these two technologies depends strongly on the final use of the produced fuel and they could produce GHG emissions savings only when there is end market for the fuel. On the other hand Mass Burn Incineration generates greenhouse gas emission savings when it recovers electricity and heat. Moreover the study found that the expected increase on the amount of Municipal Solid Waste treated for energy recovery in England by 2020 could save greenhouse gas emission, if certain Energy from Waste technologies would be applied, under certain conditions. &amp;copy; 2009 Elsevier Ltd. All rights reserved.",
+                "collectionName":"Journal of Environmental Management",
                 "facets":{
                     "provider":"mendeley",
-                    "year":"2013"
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2009",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             }
         ]
     };
+
 
 }

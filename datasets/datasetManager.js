@@ -2,16 +2,23 @@
 
 function datasetManager(){
 
-    var datasets = {
-        "T1-30" : getDataset_t1_30(),
-        "T1-60" : getDataset_t1_60(),
-        "T2-30" : getDataset_t2_30(),
-        "T2-60" : getDataset_t2_60(),
-        "T3-60" : getDataset_t3_60(),
-        "T4-60" : getDataset_t4_60(),
-        "T5-60" : getDataset_t5_60(),
-        "T6-60" : getDataset_t6_60()
-    };
+    var self = this;
+    var datasetsArray = [
+        getDataset_t1_30(),
+        getDataset_t1_60(),
+        getDataset_t2_30(),
+        getDataset_t2_60(),
+        getDataset_t3_30(),
+        getDataset_t3_60(),
+        getDataset_t4_30(),
+        getDataset_t4_60(),
+        getDataset_test()
+    ];
+
+    this.datasets = {};
+    datasetsArray.forEach(function(ds, i){
+        self.datasets[ds["dataset-id"]] = ds;
+    });
 
 
     function checkDuplicatedItems(dataset) {
@@ -38,20 +45,27 @@ function datasetManager(){
         dataset.data = dataCopy;
     }
 
+    this.getDatsetsIDsAndDescriptions = function(){
+        var idsAndDescriptions = [];
+        Object.keys(self.datasets).forEach(function(id, i){
+            idsAndDescriptions.push({ id: id, description: self.datasets[id].description });
+        });
+        return idsAndDescriptions;
+    };
+
 
     this.getDataset = function(datasetId){
 
         if(typeof datasetId != 'undefined' && datasetId != 'undefined'){
-            var dataset = datasets[datasetId];
+            var dataset = self.datasets[datasetId];
             //checkDuplicatedItems(dataset);
             //dataset.data.shuffle();
             return dataset;
         }
         // If dataset id is not specified, return array with all the datasets
-        var datasetIds = Object.keys(datasets);
         var datasetArray = [];
-        datasetIds.forEach(function(id){
-            datasetArray.push(datasets[id]);
+        Object.keys(self.datasets).forEach(function(id){
+            datasetArray.push(self.datasets[id]);
         });
         return datasetArray;
     };

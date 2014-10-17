@@ -31,8 +31,8 @@
 
         if(self.datasetId != "NO_DATASET"){
             self.dataset = dsm.getDataset(self.datasetId);
-            text = this.dataset.text;
-            task = this.dataset.task;
+            text = self.dataset.text;
+            task = self.dataset.task;
         }
         $("#section-text").find("p").html(text);
         $("#section-task").find("p").html(task);
@@ -89,10 +89,11 @@
         });
 
         candidateAdjectives.forEach(function(ca){
-            if(ca.repeated >= data.length)
-                keyAdjectives.push(ca.adj);   //.splice(findIndexToInsert(keyAdjectives, ca), 0, ca.adj);
+            if(ca.repeated >= parseInt(data.length * 0.5))
+                keyAdjectives.push(ca.adj);
         });
 
+        console.log(keyAdjectives);
         // Create each item's document to be processed by tf*idf
         // Save selected words in allTokens (nouns and certain adjectives)
         data.forEach(function(d, i) {
@@ -239,14 +240,13 @@
     (function(){
         // Fill dataset select options and bind event handler
         dsm = new datasetManager();
-        var datasets = dsm.getDataset();
-
+        var idsAndDescriptions = dsm.getDatsetsIDsAndDescriptions();
         var datasetOptions = "<option value=\"NO_DATASET\">Select dataset...</option>";
-        datasets.forEach(function(dataset){
-            datasetOptions += "<option value=\"" + dataset["dataset-id"] + "\">" + dataset.description + "</option>";
+        idsAndDescriptions.forEach(function(ds){
+            datasetOptions += "<option value=\"" + ds.id + "\">" + ds.description + "</option>";
         });
-        $("#select-dataset").html(datasetOptions);
 
+        $("#select-dataset").html(datasetOptions);
         // Bind event handlers for dataset select and start button
         $("#select-dataset").change(selectDatasetChanged);
         $("#start-button").click(startButtonClicked);

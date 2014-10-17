@@ -16,7 +16,7 @@ function POSTagger(){
     */
 
     this.lexicon = Lexicon();
-    this.gerundLikeNouns = ['training', 'ceiling', 'computing', 'engineering', 'learning', 'storytelling'];
+    this.gerundLikeNouns = ['training', 'ceiling', 'computing', 'engineering', 'learning', 'storytelling', 'tracking'];
     this.singularNounsSEnding = ['autonomous', 'crisis', 'colitis', 'cutaneous', 'gas', 'glass'];
 
     /**

@@ -17,10 +17,11 @@
         <script type="text/javascript" src="datasets/dataset_t1_60.js" charset="utf-8" ></script>
         <script type="text/javascript" src="datasets/dataset_t2_30.js" charset="utf-8" ></script>
         <script type="text/javascript" src="datasets/dataset_t2_60.js" charset="utf-8" ></script>
+        <script type="text/javascript" src="datasets/dataset_t3_30.js" charset="utf-8" ></script>
         <script type="text/javascript" src="datasets/dataset_t3_60.js" charset="utf-8" ></script>
+        <script type="text/javascript" src="datasets/dataset_t4_30.js" charset="utf-8" ></script>
         <script type="text/javascript" src="datasets/dataset_t4_60.js" charset="utf-8" ></script>
-        <script type="text/javascript" src="datasets/dataset_t5_60.js" charset="utf-8" ></script>
-        <script type="text/javascript" src="datasets/dataset_t6_60.js" charset="utf-8" ></script>
+        <script type="text/javascript" src="datasets/dataset_test.js" charset="utf-8" ></script>
 
         <script type="text/javascript" src="scripts/pos/lexer.js" charset="utf-8"></script>
         <script type="text/javascript" src="scripts/pos/lexicon.js" charset="utf-8"></script>
