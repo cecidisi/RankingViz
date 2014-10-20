@@ -762,7 +762,7 @@ VIS PANEL (center of screen)
     display: inline-block;
     float: left;
     height: 100%;
-    max-width: 12%;
+    width: 5em;
     padding-left: .3em;
 }
 
@@ -788,7 +788,7 @@ VIS PANEL (center of screen)
 .eexcess_ranking_posmoved {
 	display: inline-block;
 	float: left;
-	/*width: 1.8em;*/
+	width: 2.5em;
 	height: 1.8em;
 	margin-top: 0.3em;
 	margin-left: 0.5em;
@@ -806,7 +806,7 @@ VIS PANEL (center of screen)
 .eexcess_ritem_container {
     display: inline-flex;
     align-items: center;
-    width: 80%;
+    width: calc(100% - 5.7em - 16px);
     height: 100%;
     margin-left: 1%;
     vertical-align: top;
@@ -819,7 +819,8 @@ VIS PANEL (center of screen)
 .eexcess_favicon_section {
     display: inline-flex;
     float: right;
-    width: 5%;
+    width: 16px;
+    margin-right: .2em;
     vertical-align: top;
 }
 
