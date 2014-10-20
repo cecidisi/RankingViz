@@ -11,7 +11,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>RankingViz</title>
+        <title>uRank</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
 
@@ -52,7 +52,8 @@ and open the template in the editor.
 	  			<span></span>
 	  		</section>
             <section id="eexcess_header_task_section">
-	    	  <p></p>
+                <p id="p_task"></p>
+                <p id="p_question"></p>
 	  		</section>
 	  		<section id="eexcess_header_control_section">
                 <input type="button" id="eexcess_list_button" value="Show List" />

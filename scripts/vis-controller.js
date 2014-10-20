@@ -12,7 +12,7 @@
 
     var headerPanel = "#eexcess_header";                                        // header dom element
     var headerInfoSection = "#eexcess_header_info_section span";
-    var headerTaskSection = "#eexcess_header_task_section p";						// Section wrapping #items, task, finish and expand/collapse buttons
+    var headerTaskSection = "#eexcess_header_task_section";						// Section wrapping #items, task, finish and expand/collapse buttons
     var headerControlsSection = "#eexcess_header_control_section";
     var btnShowList = "#eexcess_list_button";
     var btnShowText = "#eexcess_text_button";
@@ -79,17 +79,16 @@
 
 
 	// Main variables
-    var dataset;
-	var data;							// contains the data to be visualized
-	var keywords;
-	var query;							// string representing the query that triggered the current recommendations
-    var topicText, task;
+    var dataset,
+        data,						// contains the data to be visualized
+	    keywords,
+        query,						// string representing the query that triggered the current recommendations
+        topicText, task, questions, currentQuestion;
 
 
 	// Ancillary variables
 	var dataRanking;					// array that represents the current ranking. Each item is an object specifying "originalIndex, "overallScore", "rankingPos" and "positionsChanged"
 	var selectedTags = [];				// array of DOM elements contained in the tag box
-	var indicesToHighlight = [];		// array containing the indices of <li> elements to be highlighted in content list
     var rankingCriteria = 'overall_score';
     var startTime;
     var showRanking;
@@ -334,7 +333,6 @@
 
     HEADER.internal = {
         validateFinishedTask : function(){
-            /*
             var numberOfSelectedItems = $(selectedItemsClass).length;
             if(numberOfSelectedItems < SELECTED_ITEMS_REQUIRED){
                 alert("You must select exactly " + SELECTED_ITEMS_REQUIRED + " items from the list" +
@@ -345,7 +343,7 @@
                 alert("You must select exactly " + SELECTED_ITEMS_REQUIRED + " items from the list" +
                      "\n Items selected = " + numberOfSelectedItems);
                 return false;
-            }*/
+            }
             return true;
         }
 
@@ -357,7 +355,8 @@
 		$(headerInfoSection).html("Number of Items: " + data.length);
 
         // Display task on the left of header
-        $(headerTaskSection).html('TASK: ' + task);
+        $(headerTaskSection).find('#p_task').html('TASK: ' + task);
+        $(headerTaskSection).find('#p_question').html(questions[currentQuestion]);
 
         $(topicTextSection).find('p').html(topicText);
     }
@@ -387,6 +386,11 @@
     };
 
 
+    HEADER.clearListOfSelected = function(index) {
+        $(selectedItemsSection).empty();
+    };
+
+
     HEADER.finishTask = function(){
 
         if(HEADER.internal.validateFinishedTask()){
@@ -409,6 +413,13 @@
                 'selected-items': selectedItems
             };
             console.log(obj);
+
+            currentQuestion++;
+            if(currentQuestion < questions.length)
+                initializeNextQuestion();
+            else
+                self.location = "task_completed.html";
+
         }
     };
 
@@ -1207,6 +1218,11 @@
     };
 
 
+    LIST.clearAllFavicons = function(){
+        d3.selectAll(allListItems).select(favIconClass).select('img').attr('src', FAV_ICON_OFF);
+    };
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1324,6 +1340,22 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    function initializeNextQuestion(){
+        data.forEach(function(d){
+            d['isSelected'] = false;
+        });
+        dataRanking = [];
+        if(dataset["tool-aided"] === 'yes'){
+            TAGCLOUD.clearTagbox();
+            TAGCLOUD.buildTagCloud();
+            VISPANEL.resetRanking();
+        }
+        LIST.buildContentList();
+        HEADER.clearListOfSelected();
+        HEADER.showInfoInHeader();
+    }
+
+
     function getStaticElementsReady(){
         var offsetTop = $(btnShowList).offset().top + $(btnShowList).height() + 10;
         var offsetLeft = $(selectedItemsSection).parent().offset().left + 10;
@@ -1359,9 +1391,9 @@
 		keywords = dataset['keywords'];
         topicText = dataset['text'];
         task = dataset['task'];
+        questions = dataset.questions;
+        currentQuestion = 0;
         dataRanking = [];
-		indicesToHighlight = [];
-        console.log(dataset.questions);
         PREPROCESSING.extendDataWithAncillaryDetails();
 		PREPROCESSING.extendKeywordsWithColorCategory();
         HEADER.showInfoInHeader();
