@@ -762,7 +762,7 @@ VIS PANEL (center of screen)
     display: inline-block;
     float: left;
     height: 100%;
-    width: 5em;
+    max-width: 5em;
     padding-left: .3em;
 }
 

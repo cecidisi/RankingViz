@@ -650,7 +650,7 @@ var words =
         'domain', 'footstep', 'selection', 'generalization', 'feedback', 'framework', 'addition', 'search', 'scale', 'trial', 'issue', 'degree', 'application', 'step',
         'function', 'module', 'state', 'level', 'concept', 'advantage', 'disadvantage', 'representation', 'problem', 'use', 'person', 'source', 'argument', 'essay',
         'notion', 'struggle', 'responsibility', 'response', 'principle', 'moment', 'kind', 'sorce', 'guideline', 'recommendation', 'rate', 'cas', 'ratio', 'estimate',
-        'term', 'percent', 'basis', 'amount', 'indicator', 'utilization', 'ltd', 'amp', 'chapter', 'such', 'different', 'form',
+        'term', 'percent', 'basis', 'amount', 'indicator', 'utilization', 'ltd', 'amp', 'chapter', 'such', 'different', 'form', 'importance', 'new',
     '__key'
     ];
 
