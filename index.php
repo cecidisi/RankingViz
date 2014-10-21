@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <html>
@@ -34,6 +35,12 @@
     </head>
 
     <body>
+
+        <div id="task" style="display:none;">
+            <?php
+                echo htmlspecialchars($_GET["task"]);
+            ?>
+        </div>
         <div style="display: none;">
             <form action="vis.php" method="post">
                 <input type="text" name="dataset" />

@@ -30,6 +30,7 @@ and open the template in the editor.
 		<script type="text/javascript" src="scripts/rankingvis.js" charset="utf-8"></script>
         <script type="text/javascript" src="scripts/settings.js" charset="utf-8"></script>
         <script type="text/javascript" src="scripts/utils.js" charset="utf-8"></script>
+        <script type="text/javascript" src="scripts/taskStorage.js" charset="utf-8"></script>
         <script type="text/javascript" src="scripts/show-and-hide-section.js" charset="utf-8"></script>
 
        <!-- <link rel="stylesheet" type="text/css" href="css/vis.css" /> -->

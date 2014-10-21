@@ -5,7 +5,12 @@ function getDataset_t1_60() {
     "dataset-id" : "T1-60",
     "description" : "Topic 1 - 60 items WW",
     "text": "Restrictions on women's access to and participation in the workforce include the wage gap and the glass ceiling, inequities most identified with industrialized nations with nominal equal opportunity laws; legal and cultural restrictions on access to education and jobs, inequities most identified with developing nations; and unequal access to capital, variable but identified as a difficulty in both industrialized and developing nations. Women are prevented from achieving complete gender equality in the workplace because of the “ideal-worker norm,” which “defines the committed worker as someone who works full time and full force for forty years straight,” a situation designed for the male sex. Women, in contrast, are still expected to fulfill the caretaker role and take time off for domestic needs such as pregnancy and ill family members, preventing them from conforming to the “ideal-worker norm.” With the current norm in place, women are forced to juggle full-time jobs and family care at home.",
-    "task": "Considering the given text, select the 5 most relevant items from the list",
+        "task": "Select the 5 most relevant recommendations for the following text:",
+        "questions":[
+            "Participation of women in the workforce",
+            "Gender wage gap",
+            "Women in the workforce earning wages or a salary are part of a modern phenomenon, one that developed at the same time as the growth of paid employment for men; yet women have been challenged by inequality in the workforce."
+        ],
     "totalResults":"60",
     "data":
         [

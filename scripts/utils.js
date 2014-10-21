@@ -118,6 +118,22 @@ String.prototype.clean = function(){
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 /**
+ * Number prototype gunctionto parse milliseconds to minutes:seconds format
+ *
+ * */
+
+Number.prototype.toTime = function(){
+    var min = (this/1000/60) << 0;
+    var sec = Math.floor((this/1000) % 60);
+    if (min.toString().length == 1) min = '0' + min.toString();
+    if (sec.toString().length == 1) sec = '0' + sec.toString();
+    return min + ':' + sec;
+};
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
  * jQuery functions (for DOM elements)
  *
  * */
@@ -175,19 +191,6 @@ $.fn.scrollTo = function( target, options, callback ){
 
 
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////
-/**
- * Number prototype gunctionto parse milliseconds to minutes:seconds format
- *
- * */
-
-Number.prototype.toTime = function(){
-    var min = (this/1000/60) << 0;
-    var sec = Math.floor((this/1000) % 60);
-    if (min.toString().length == 1) min = '0' + min.toString();
-    if (sec.toString().length == 1) sec = '0' + sec.toString();
-    return min + ':' + sec;
-};
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -220,6 +223,7 @@ function getGradientString(color, shades) {
     gradient += ")";
     return gradient;
 }
+
 
 
 

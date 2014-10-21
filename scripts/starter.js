@@ -53,6 +53,7 @@
         console.log("Status: Testing with Dataset " + this.datasetId);
         $("#eexcess_loading").fadeIn('fast');
 
+        this.dataset['task-number'] = this.task;
         this.dataset['tool-aided'] = $("#select-tool-condition").val() || 'yes';
         this.dataset["data"] = getDataWithKeywords(this.dataset.data);
         this.dataset["keywords"] = getGlobalKeywords(this.dataset.data);
@@ -93,7 +94,7 @@
                 keyAdjectives.push(ca.adj);
         });
 
-        console.log(keyAdjectives);
+        //console.log(keyAdjectives);
         // Create each item's document to be processed by tf*idf
         // Save selected words in allTokens (nouns and certain adjectives)
         data.forEach(function(d, i) {
@@ -250,6 +251,9 @@
         // Bind event handlers for dataset select and start button
         $("#select-dataset").change(selectDatasetChanged);
         $("#start-button").click(startButtonClicked);
+
+        var taskToken = tokenizer.tokenize($('#task').text());
+        this.task = taskToken.length > 0 ? parseInt(taskToken) : 0;
     })();
 
 })();

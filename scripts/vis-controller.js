@@ -78,22 +78,20 @@
     var STR_NO_INDEX = 'no_index'
 
 
-	// Main variables
+	// variables from dataset
     var dataset,
         data,						// contains the data to be visualized
 	    keywords,
         query,						// string representing the query that triggered the current recommendations
-        topicText, task, questions, currentQuestion;
-
+        topicText, task, questions;
 
 	// Ancillary variables
-	var dataRanking;					// array that represents the current ranking. Each item is an object specifying "originalIndex, "overallScore", "rankingPos" and "positionsChanged"
-	var selectedTags = [];				// array of DOM elements contained in the tag box
-    var rankingCriteria = 'overall_score';
-    var startTime;
-    var showRanking;
+	var dataRanking,					// array that represents the current ranking. Each item is an object specifying "originalIndex, "overallScore", "rankingPos" and "positionsChanged"
+        selectedTags = [],				// array of DOM elements contained in the tag box
+        rankingCriteria = 'overall_score',
+        showRanking;
 
-	// Chart objects
+	// Ranking object
 	var  rankingVis;
 
 
@@ -107,11 +105,22 @@
     var weightColorScale = d3.scale.ordinal().range(weightColorRange);
 
 
-    //
+    // NLP
     var stemmer = natural.PorterStemmer;
     var nounInflector = new natural.NounInflector();
     stemmer.attach();
     nounInflector.attach();
+
+    // User Evaluations variables
+    var taskStorage = new TaskStorage(),
+        currentTask,
+        currentQuestion,
+        startTime,
+        taskResults = {
+            'task-number' : 0,
+            'overall-time' : 0,
+            'questions-results' : []
+        };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -394,32 +403,44 @@
     HEADER.finishTask = function(){
 
         if(HEADER.internal.validateFinishedTask()){
-            var elapsedTime = parseInt($.now() - startTime).toTime();
-            console.log(elapsedTime);
+            var elapsedTime = parseInt($.now() - startTime);
 
             var selectedItems = [];
             $(selectedItemsClass).each(function(i, item){
                 var index = $(item).attr('original-index');
-                var datumToSave = data[index];
-                datumToSave['original-index'] = index;
+                var datumToSave = {
+                    id : data[index].id,
+                    title : data[index].title
+                };
                 selectedItems.push(datumToSave);
             });
 
-            var obj = {
+            var questionResult = {
+                'question-number' : currentQuestion + 1,
                 'dataset-id': dataset['dataset-id'],
                 'description': dataset['description'],
                 'tool-aided': dataset['tool-aided'],
                 'time': elapsedTime,
                 'selected-items': selectedItems
             };
-            console.log(obj);
+            taskResults["questions-results"].push(questionResult);
 
             currentQuestion++;
             if(currentQuestion < questions.length)
                 initializeNextQuestion();
-            else
+            else{
+                // calculate overall time
+                taskResults["questions-results"].forEach(function(q, i){
+                    taskResults['overall-time'] += q.time;
+                    q.time = q.time.toTime();
+                });
+                taskResults["task-number"] = currentTask;
+                taskResults['overall-time'] = taskResults['overall-time'].toTime();
+                //console.log(JSON.stringify(taskResults));
+                taskStorage.saveTask(taskResults);
+                console.log(taskStorage.getEvaluationResults());
                 self.location = "task_completed.html";
-
+            }
         }
     };
 
@@ -1012,7 +1033,6 @@
 		//d3.selectAll( allListItems ).on("click", EVTHANDLER.listItemClicked);
         LIST.bindEventHandlersToItems();
 		LIST.selectededListIndex = STR_NO_INDEX;
-
 	};
 
 
@@ -1353,6 +1373,7 @@
         LIST.buildContentList();
         HEADER.clearListOfSelected();
         HEADER.showInfoInHeader();
+        startTime = $.now();
     }
 
 
@@ -1391,8 +1412,11 @@
 		keywords = dataset['keywords'];
         topicText = dataset['text'];
         task = dataset['task'];
-        questions = dataset.questions;
+
+        currentTask = dataset['task-number'];
+        questions = dataset['questions'];
         currentQuestion = 0;
+
         dataRanking = [];
         PREPROCESSING.extendDataWithAncillaryDetails();
 		PREPROCESSING.extendKeywordsWithColorCategory();

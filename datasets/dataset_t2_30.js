@@ -5,7 +5,12 @@ function getDataset_t2_30() {
         "dataset-id" : "T2-30",
         "description" : "Topic 2 - 30 items Ro",
         "text": "General-purpose autonomous robots can perform a variety of functions independently. General-purpose autonomous robots typically can navigate independently in known spaces, handle their own re-charging needs, interface with electronic doors and elevators and perform other basic tasks. Like computers, general-purpose robots can link with networks, software and accessories that increase their usefulness. They may recognize people or objects, talk, provide companionship, monitor environmental quality, respond to alarms, pick up supplies and perform other useful tasks. General-purpose robots may perform a variety of functions simultaneously or they may take on different roles at different times of day. Some such robots try to mimic human beings and may even resemble people in appearance; this type of robot is called a humanoid robot. Humanoid robots are still in a very limited stage, as no humanoid robot can, as of yet, actually navigate around a room that it has never been in. Thus, humanoid robots are really quite limited, despite their intelligent behaviors in their well-known environments.",
-        "task": "Considering the given text, select the 5 most relevant items from the list",
+        "task": "Select the 5 most relevant recommendations for the following text:",
+        "questions":[
+            "Autonomous robots",
+            "Human-robot interaction",
+            "The branch of technology that deals with the design, construction, operation, and application of robots, as well as computer systems for their control, sensory feedback, and information processing is robotics"
+        ],
         "totalResults":"60",
         "data": [
                     {
