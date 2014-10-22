@@ -117,7 +117,6 @@
         currentQuestion,
         startTime,
         taskResults = {
-            'task-number' : 0,
             'overall-time' : 0,
             'questions-results' : []
         };
@@ -417,9 +416,6 @@
 
             var questionResult = {
                 'question-number' : currentQuestion + 1,
-                'dataset-id': dataset['dataset-id'],
-                'description': dataset['description'],
-                'tool-aided': dataset['tool-aided'],
                 'time': elapsedTime,
                 'selected-items': selectedItems
             };
@@ -429,14 +425,17 @@
             if(currentQuestion < questions.length)
                 initializeNextQuestion();
             else{
+                taskResults["task-number"]  = currentTask;
+                taskResults['dataset-id']   = dataset['dataset-id'];
+                taskResults['description']  = dataset['description'];
+                taskResults['tool-aided']   = dataset['tool-aided'];
+
                 // calculate overall time
                 taskResults["questions-results"].forEach(function(q, i){
                     taskResults['overall-time'] += q.time;
                     q.time = q.time.toTime();
                 });
-                taskResults["task-number"] = currentTask;
                 taskResults['overall-time'] = taskResults['overall-time'].toTime();
-                //console.log(JSON.stringify(taskResults));
                 taskStorage.saveTask(taskResults);
                 console.log(taskStorage.getEvaluationResults());
                 self.location = "task_completed.html";
