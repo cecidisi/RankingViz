@@ -1215,4 +1215,24 @@ VIS PANEL (center of screen)
 
 
 
+#task_question_message {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 20em;
+    height: 10em;
+    left: calc(50% - 10em);
+    top: calc(50% - 5em);
+    background: -webkit-linear-gradient(top, #00441b, #006d2c, #00441b);
+    text-align: center;
+    font-weight: bold;
+    color: white;
+}
+
+#task_question_message span {
+    width: 100%;
+    margin: .2em 0em;
+    font-size: 1.1em; */
+}
 

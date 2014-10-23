@@ -10,9 +10,12 @@
         <script type="text/javascript" src="libs/jquery-1.10.2.js" charset="utf-8"></script>
         <script type="text/javascript" src="libs/natural.js" charset="utf-8"></script>
         <script type="text/javascript" src="libs/d3.v3.js" charset="utf-8"></script>
+        <script type="text/javascript" src="libs/pos/lexer.js" charset="utf-8"></script>
+        <script type="text/javascript" src="libs/pos/lexicon.js" charset="utf-8"></script>
+        <script type="text/javascript" src="libs/pos/POSTagger.js" charset="utf-8"></script>
+        <script type="text/javascript" src="libs/pos/pos.js" charset="utf-8"></script>
 
         <script type="text/javascript" src="scripts/utils.js" charset="utf-8"></script>
-
         <script type="text/javascript" src="datasets/datasetManager.js" charset="utf-8" ></script>
         <script type="text/javascript" src="datasets/dataset_t1_30.js" charset="utf-8" ></script>
         <script type="text/javascript" src="datasets/dataset_t1_60.js" charset="utf-8" ></script>
@@ -23,12 +26,6 @@
         <script type="text/javascript" src="datasets/dataset_t4_30.js" charset="utf-8" ></script>
         <script type="text/javascript" src="datasets/dataset_t4_60.js" charset="utf-8" ></script>
         <script type="text/javascript" src="datasets/dataset_test.js" charset="utf-8" ></script>
-
-        <script type="text/javascript" src="scripts/pos/lexer.js" charset="utf-8"></script>
-        <script type="text/javascript" src="scripts/pos/lexicon.js" charset="utf-8"></script>
-        <script type="text/javascript" src="scripts/pos/POSTagger.js" charset="utf-8"></script>
-        <script type="text/javascript" src="scripts/pos/pos.js" charset="utf-8"></script>
-
 
         <link rel="stylesheet" type="text/css" href="css/general-style.css" />
         <link rel="stylesheet" type="text/css" href="css/index-style.css" />

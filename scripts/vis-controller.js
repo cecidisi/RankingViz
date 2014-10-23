@@ -17,7 +17,7 @@
     var btnShowList = "#eexcess_list_button";
     var btnShowText = "#eexcess_text_button";
     var btnFinished = "#eexcess_finished_button";                               // Finishes the task and redirects back to the initial screeen
-    var topicTextSection = "#eexcess_topic_text_section";
+    var sampleTextSection = "#eexcess_topic_text_section";
     var selectedItemsSection = "#eexcess_selected_items_section";               // Section listing items marked as relevant by the user
     var selectedItemsClass = ".eexcess_selected_item";                          // Selected item contained in selectedItemsSection
 
@@ -83,7 +83,7 @@
         data,						// contains the data to be visualized
 	    keywords,
         query,						// string representing the query that triggered the current recommendations
-        topicText, task, questions;
+        sampleText, task, questions;
 
 	// Ancillary variables
 	var dataRanking,					// array that represents the current ranking. Each item is an object specifying "originalIndex, "overallScore", "rankingPos" and "positionsChanged"
@@ -117,6 +117,11 @@
         currentQuestion,
         startTime,
         taskResults = {
+            "timestamp" : "",
+            "task-number" : "",
+            "dataset-id" : "",
+            "description" : "",
+            "tool-aided" : "",
             'overall-time' : 0,
             'questions-results' : []
         };
@@ -261,7 +266,7 @@
 
     EVTHANDLER.btnListClicked = function(event){
         event.stopPropagation();
-        $(topicTextSection).slideUp();
+        $(sampleTextSection).slideUp();
         $(selectedItemsSection).slideToggle();
     };
 
@@ -271,14 +276,14 @@
     EVTHANDLER.btnTextClicked = function(event){
         event.stopPropagation();
         $(selectedItemsSection).slideUp();
-        $(topicTextSection).slideToggle();
+        $(sampleTextSection).slideToggle();
     };
 
 
     ////////	Finished button	////////
 
     EVTHANDLER.btnFinishedClicked = function(){
-      HEADER.finishTask();
+      HEADER.finishQuestion();
     };
 
 
@@ -340,7 +345,7 @@
 
 
     HEADER.internal = {
-        validateFinishedTask : function(){
+        validateIsQuestionAnswered : function(){
             var numberOfSelectedItems = $(selectedItemsClass).length;
             if(numberOfSelectedItems < SELECTED_ITEMS_REQUIRED){
                 alert("You must select exactly " + SELECTED_ITEMS_REQUIRED + " items from the list" +
@@ -366,7 +371,7 @@
         $(headerTaskSection).find('#p_task').html('TASK: ' + task);
         $(headerTaskSection).find('#p_question').html(questions[currentQuestion]);
 
-        $(topicTextSection).find('p').html(topicText);
+        $(sampleTextSection).find('p').html(sampleText);
     }
 
 
@@ -399,9 +404,9 @@
     };
 
 
-    HEADER.finishTask = function(){
+    HEADER.finishQuestion = function(){
 
-        if(HEADER.internal.validateFinishedTask()){
+        if(HEADER.internal.validateIsQuestionAnswered()){
             var elapsedTime = parseInt($.now() - startTime);
 
             var selectedItems = [];
@@ -425,8 +430,11 @@
             if(currentQuestion < questions.length)
                 initializeNextQuestion();
             else{
+                taskResults['timestamp']    = new Date().toString();
                 taskResults["task-number"]  = currentTask;
                 taskResults['dataset-id']   = dataset['dataset-id'];
+                taskResults['topic']        = dataset['topic']
+                taskResults['total-items']  = data.length;
                 taskResults['description']  = dataset['description'];
                 taskResults['tool-aided']   = dataset['tool-aided'];
 
@@ -436,8 +444,9 @@
                     q.time = q.time.toTime();
                 });
                 taskResults['overall-time'] = taskResults['overall-time'].toTime();
+
                 taskStorage.saveTask(taskResults);
-                console.log(taskStorage.getEvaluationResults());
+                console.log(JSON.stringify(taskStorage.getEvaluationResults()));
                 self.location = "task_completed.html";
             }
         }
@@ -512,6 +521,7 @@
 				.attr( "class", "eexcess_keyword_tag" )
 				.attr( "id", function(k, i){ return "tag-"+i; })
                 .attr('tag-pos', function(k, i){ return i; })
+                .attr('is-selected', false)
                 .style( "background", function(k){ return getGradientString(tagColorScale(k.colorCategory+1), [1, 0.7, 1]); })
 				.text( function(k){ return k.term; })
 				.on( "mouseover", EVTHANDLER.tagInBoxMouseOvered)
@@ -544,10 +554,11 @@
 	TAGCLOUD.buildDroppedTag = function( tag ){
 
 		// Append dragged tag onto tag box
-		$( tagBox ).append( tag );
+		$(tagBox).append(tag);
 
 		// Change tag's class
-		tag.removeClass( "eexcess_keyword_tag" ).addClass( "eexcess_keyword_tag_in_box" );
+		tag.removeClass( "eexcess_keyword_tag" ).addClass( "eexcess_keyword_tag_in_box" )
+            .attr('is-selected', true);
 
         // Append "delete" icon to tag and bind event handler
         $("<img class=\"eexcess_tag_img\" src=\"" + DELETE_ICON_IMG + "\" />").appendTo(tag)
@@ -637,7 +648,9 @@
 		// Remove icon and slider
         $(tag).children().remove();
         // Change class
-        $(tag).removeClass("eexcess_keyword_tag_in_box").addClass("eexcess_keyword_tag");
+        $(tag)
+            .removeClass("eexcess_keyword_tag_in_box").addClass("eexcess_keyword_tag")
+            .attr('is-selected', false);
 
         // Restore style
         d3.select(tag)
@@ -653,9 +666,8 @@
         var i = tagIndex - 1;
         var firstTagIndex = $(tagContainer).find(tagClass + ':eq(0)').attr('tag-pos');
 
-        while(i >= firstTagIndex && $.isEmptyObject($(tagContainer).find(tagId + '' + i)) )
+        while(i >= firstTagIndex && $(tagId + '' + i).attr('is-selected').toBool())
             --i;
-
         // Remove from tag box
 		$(tag).detach();
         if(i >= firstTagIndex)    // The current tag should be inserted after another (tag-pos == i)
@@ -1359,7 +1371,35 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+
+
+    function getStaticElementsReady(){
+        var offsetTop = $(btnShowList).offset().top + $(btnShowList).height() + 10;
+        var offsetLeft = $(selectedItemsSection).parent().offset().left + 10;
+        $(selectedItemsSection).width($(headerControlsSection).width() - 20).css("top", offsetTop).css("left", offsetLeft);
+        $(sampleTextSection).width($(headerControlsSection).width() - 20).css("top", offsetTop).css("left", offsetLeft);
+        $('html').click(function(){
+            $(selectedItemsSection).slideUp();
+            $(sampleTextSection).slideUp();
+        });
+        $(selectedItemsSection).click(function(event){ event.stopPropagation(); });
+        $(sampleTextSection).click(function(event){ event.stopPropagation(); });
+
+        $(btnReset).click( function(){ EVTHANDLER.btnResetClicked(); });
+        $(btnRankByOverall).click(function(){ EVTHANDLER.rankButtonClicked(this); });
+        $(btnRankByMax).click(function(){ EVTHANDLER.rankButtonClicked(this); });
+        $(btnShowList).click(EVTHANDLER.btnListClicked);
+        $(btnShowText).click(EVTHANDLER.btnTextClicked);
+        $(btnFinished).click(EVTHANDLER.btnFinishedClicked);
+        $(window).resize(function(){ EVTHANDLER.canvasResized(); });
+        $(mainPanel).resize(function(){ EVTHANDLER.canvasResized(); });
+	}
+
+
     function initializeNextQuestion(){
+
+        data.shuffle();
         data.forEach(function(d){
             d['isSelected'] = false;
         });
@@ -1372,31 +1412,20 @@
         LIST.buildContentList();
         HEADER.clearListOfSelected();
         HEADER.showInfoInHeader();
-        startTime = $.now();
+        DOCPANEL.clear();
+
+        $('#task_question_message')
+            .fadeIn(1)
+            .html('<span>Task: #' + currentTask + '</span><span>Question: #' + (currentQuestion + 1) + '</span>')
+            .dimBackground();
+
+        setTimeout(function(){
+            $('#task_question_message').fadeOut('slow');
+            $('#task_question_message').undim();
+            startTime = $.now();
+        }, 4000);
     }
 
-
-    function getStaticElementsReady(){
-        var offsetTop = $(btnShowList).offset().top + $(btnShowList).height() + 10;
-        var offsetLeft = $(selectedItemsSection).parent().offset().left + 10;
-        $(selectedItemsSection).width($(headerControlsSection).width() - 20).css("top", offsetTop).css("left", offsetLeft);
-        $(topicTextSection).width($(headerControlsSection).width() - 20).css("top", offsetTop).css("left", offsetLeft);
-        $('html').click(function(){
-            $(selectedItemsSection).slideUp();
-            $(topicTextSection).slideUp();
-        });
-        $(selectedItemsSection).click(function(event){ event.stopPropagation(); });
-        $(topicTextSection).click(function(event){ event.stopPropagation(); });
-
-        $(btnReset).click( function(){ EVTHANDLER.btnResetClicked(); });
-        $(btnRankByOverall).click(function(){ EVTHANDLER.rankButtonClicked(this); });
-        $(btnRankByMax).click(function(){ EVTHANDLER.rankButtonClicked(this); });
-        $(btnShowList).click(EVTHANDLER.btnListClicked);
-        $(btnShowText).click(EVTHANDLER.btnTextClicked);
-        $(btnFinished).click(EVTHANDLER.btnFinishedClicked);
-        $(window).resize(function(){ EVTHANDLER.canvasResized(); });
-        $(mainPanel).resize(function(){ EVTHANDLER.canvasResized(); });
-	}
 
     /**
      * 	Initizialization function self-invoked
@@ -1407,28 +1436,31 @@
         console.log(dataset);
 
         data = dataset['data'];													// contains the data to be visualized
-        query = dataset['query'];													// string representing the query that triggered the current recommendations
+       // data.shuffle();
+        console.log(data)
+        query = dataset['query'];												// string representing the query that triggered the current recommendations
 		keywords = dataset['keywords'];
-        topicText = dataset['text'];
+        sampleText = dataset['text'];
         task = dataset['task'];
 
         currentTask = dataset['task-number'];
         questions = dataset['questions'];
         currentQuestion = 0;
 
-        dataRanking = [];
-        PREPROCESSING.extendDataWithAncillaryDetails();
+      //  dataRanking = [];
+      //  PREPROCESSING.extendDataWithAncillaryDetails();
 		PREPROCESSING.extendKeywordsWithColorCategory();
-        HEADER.showInfoInHeader();
-        LIST.buildContentList();
+       // HEADER.showInfoInHeader();
+      //  LIST.buildContentList();
         getStaticElementsReady();
+        initializeNextQuestion();
 
         if(dataset['tool-aided'] == 'yes'){
             rankingVis = new RankingVis(root, width, height, self);
             // Initialize template's elements
-            TAGCLOUD.clearTagbox();
-            TAGCLOUD.buildTagCloud();
-            VISPANEL.resetRanking();
+          //  TAGCLOUD.clearTagbox();
+          //  TAGCLOUD.buildTagCloud();
+           // VISPANEL.resetRanking();
             showRanking = true;
         }
         else{
@@ -1445,7 +1477,7 @@
             showRanking = false;
         }
 
-        startTime = $.now();
+     //   startTime = $.now();
     })();
 
 

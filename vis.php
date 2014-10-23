@@ -20,25 +20,23 @@ and open the template in the editor.
         <script type="text/javascript" src="libs/d3.v3.js" charset="utf-8"></script>
         <script type="text/javascript" src="libs/natural.js" charset="utf-8"></script>
         <script type="text/javascript" src="libs/colorbrewer.js" charset="utf-8"></script>
+        <script type="text/javascript" src="libs/dim-background.js" charset="utf-8"></script>
+        <script type="text/javascript" src="libs/pos/lexer.js" charset="utf-8"></script>
+        <script type="text/javascript" src="libs/pos/lexicon.js" charset="utf-8"></script>
+        <script type="text/javascript" src="libs/pos/POSTagger.js" charset="utf-8"></script>
+        <script type="text/javascript" src="libs/pos/pos.js" charset="utf-8"></script>
         <link rel="stylesheet" type="text/css" href="libs/ui/jquery-ui-1.10.4.custom.min.css">
-
-        <script type="text/javascript" src="scripts/pos/lexer.js" charset="utf-8"></script>
-        <script type="text/javascript" src="scripts/pos/lexicon.js" charset="utf-8"></script>
-        <script type="text/javascript" src="scripts/pos/POSTagger.js" charset="utf-8"></script>
-        <script type="text/javascript" src="scripts/pos/pos.js" charset="utf-8"></script>
 
 		<script type="text/javascript" src="scripts/rankingvis.js" charset="utf-8"></script>
         <script type="text/javascript" src="scripts/settings.js" charset="utf-8"></script>
         <script type="text/javascript" src="scripts/utils.js" charset="utf-8"></script>
         <script type="text/javascript" src="scripts/taskStorage.js" charset="utf-8"></script>
-        <script type="text/javascript" src="scripts/show-and-hide-section.js" charset="utf-8"></script>
 
-       <!-- <link rel="stylesheet" type="text/css" href="css/vis.css" /> -->
         <link rel="stylesheet" type="text/css" href="css/general-style.css" />
         <link rel="stylesheet" type="text/css" href="css/vis-template-style-static.css" />
-        <link rel="stylesheet" type="text/css" href="css/vis-template-style-alternative-3-test.css" />
+<!--        <link rel="stylesheet" type="text/css" href="css/vis-template-style-alternative-3-test.css" /> -->
 
-        <link rel="stylesheet" type="text/css" href="css/vis-template-chart-style-cecilia.css" />
+        <link rel="stylesheet" type="text/css" href="css/vis-template-chart-style.css" />
     </head>
     <body>
 
@@ -130,6 +128,7 @@ and open the template in the editor.
 
 		</div>
 
+        <div id="task_question_message"></div>
         <script type="text/javascript" src="scripts/vis-controller.js" charset="utf-8"></script>
 
     </body>
