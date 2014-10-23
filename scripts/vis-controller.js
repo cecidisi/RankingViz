@@ -348,12 +348,12 @@
         validateIsQuestionAnswered : function(){
             var numberOfSelectedItems = $(selectedItemsClass).length;
             if(numberOfSelectedItems < SELECTED_ITEMS_REQUIRED){
-                alert("You must select exactly " + SELECTED_ITEMS_REQUIRED + " items from the list" +
-                     "\n Items selected = " + numberOfSelectedItems);
-                return false;
+                return confirm("You have not selected " + SELECTED_ITEMS_REQUIRED + " items yet" +
+                    "\n Items selected = " + numberOfSelectedItems +
+                    "\n Are you sure you want to finish Question #" + (currentQuestion + 1) );
             }
             else if(numberOfSelectedItems > SELECTED_ITEMS_REQUIRED){
-                alert("You must select exactly " + SELECTED_ITEMS_REQUIRED + " items from the list" +
+                alert("You cannot select more than " + SELECTED_ITEMS_REQUIRED + " items" +
                      "\n Items selected = " + numberOfSelectedItems);
                 return false;
             }
@@ -431,11 +431,11 @@
                 initializeNextQuestion();
             else{
                 taskResults['timestamp']    = new Date().toString();
+                taskResults['description']  = dataset['description'];
                 taskResults["task-number"]  = currentTask;
                 taskResults['dataset-id']   = dataset['dataset-id'];
-                taskResults['topic']        = dataset['topic']
-                taskResults['total-items']  = data.length;
-                taskResults['description']  = dataset['description'];
+                taskResults['topic']        = dataset['topic'];
+                taskResults['total-items']  = dataset['totalResults'];
                 taskResults['tool-aided']   = dataset['tool-aided'];
 
                 // calculate overall time
@@ -947,6 +947,7 @@
                     .attr("href", "#")
                   //  .on("click", function(d){ window.open(d.uri, '_blank'); })
 					.html(function(d){
+                        LIST.highlightSelectedKeywordsInTitle(d.title);
                         if(d.title.length > 60) return d.title.substring(0, 56) + '...'; return d.title;
                     });
 
@@ -974,6 +975,14 @@
     };
 
 
+
+    /**
+     * Description
+     */
+    LIST.highlightSelectedKeywordsInTitle = function(title){
+        console.log(DOCPANEL.internal.highlightKeywordsInText(title, true));
+
+    };
 
 
 	/**
@@ -1414,9 +1423,10 @@
         HEADER.showInfoInHeader();
         DOCPANEL.clear();
 
+        var minToGo = (currentQuestion == questions.length - 1) ? 6 : 3;
         $('#task_question_message')
             .fadeIn(1)
-            .html('<span>Task: #' + currentTask + '</span><span>Question: #' + (currentQuestion + 1) + '</span>')
+            .html('<span>Task: #' + currentTask + '</span><span>Question: #' + (currentQuestion + 1) + '</span><span>You have ' + minToGo + ' minutes to finish</span>')
             .dimBackground();
 
         setTimeout(function(){
