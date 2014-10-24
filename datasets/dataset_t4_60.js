@@ -4,7 +4,7 @@ function getDataset_t4_60() {
     return {
         "query":"circular economy",
         "dataset-id":"T4-60",
-        "topic" : "T4",
+        "topic" : "T4 CE",
         "description":"Topic 4 - 60 items CE",
         "text":"The circular economy is a generic term for an industrialized economy that is by design or intention, restorative; products and systems are designed in such a way that they can be returned and the materials recycled, reused or remanufactured. A circular economy naturally encompasses a shift from fossil fuels to the use of renewable energy, the eradication of waste and the role of diversity as a characteristic of resilient and productive systems.",
         "task": "Select the 5 most relevant recommendations for the following text:",

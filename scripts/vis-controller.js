@@ -433,8 +433,8 @@
                 taskResults['timestamp']    = new Date().toString();
                 taskResults["task-number"]  = currentTask;
                 taskResults['dataset-id']   = dataset['dataset-id'];
-                taskResults['topic']        = dataset['topic']
-                taskResults['total-items']  = data.length;
+                taskResults['topic']        = dataset['topic'];
+                taskResults['total-items']  = dataset['totalResults'];
                 taskResults['description']  = dataset['description'];
                 taskResults['tool-aided']   = dataset['tool-aided'];
 
@@ -445,6 +445,7 @@
                 });
                 taskResults['overall-time'] = taskResults['overall-time'].toTime();
 
+                console.log(taskResults);
                 taskStorage.saveTask(taskResults);
                 console.log(JSON.stringify(taskStorage.getEvaluationResults()));
                 self.location = "task_completed.html";
@@ -947,7 +948,7 @@
                     .attr("href", "#")
                   //  .on("click", function(d){ window.open(d.uri, '_blank'); })
 					.html(function(d){
-                        if(d.title.length > 60) return d.title.substring(0, 56) + '...'; return d.title;
+                        if(d.title.length > 80) return d.title.substring(0, 76) + '...'; return d.title;
                     });
 
         // fav icon section on the right
@@ -1423,7 +1424,7 @@
             $('#task_question_message').fadeOut('slow');
             $('#task_question_message').undim();
             startTime = $.now();
-        }, 4000);
+        }, 3000);
     }
 
 
