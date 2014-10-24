@@ -18,6 +18,7 @@
             script		: 'http://localhost:8888/uRank/download.php'
         });
         e.preventDefault();
+        console.log("nada");
     };
 
 
