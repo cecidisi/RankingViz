@@ -108,6 +108,7 @@ and open the template in the editor.
                         <label>Title: </label>
                         <h3 id="eexcess_document_details_title"></h3>
                     </div>
+                    
                     <div>
                         <label>Year: </label>
                         <span id="eexcess_document_details_year"></span>

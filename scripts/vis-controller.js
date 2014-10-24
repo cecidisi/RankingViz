@@ -348,9 +348,9 @@
         validateIsQuestionAnswered : function(){
             var numberOfSelectedItems = $(selectedItemsClass).length;
             if(numberOfSelectedItems < SELECTED_ITEMS_REQUIRED){
-                alert("You must select exactly " + SELECTED_ITEMS_REQUIRED + " items from the list" +
-                     "\n Items selected = " + numberOfSelectedItems);
-                return false;
+                return confirm("You need to select exactly " + SELECTED_ITEMS_REQUIRED + " items" +
+                    "\n Items selected = " + numberOfSelectedItems + 
+                    "\n Are you sure you want to finish Question #" + (currentQuestion+1));
             }
             else if(numberOfSelectedItems > SELECTED_ITEMS_REQUIRED){
                 alert("You must select exactly " + SELECTED_ITEMS_REQUIRED + " items from the list" +
@@ -948,7 +948,7 @@
                     .attr("href", "#")
                   //  .on("click", function(d){ window.open(d.uri, '_blank'); })
 					.html(function(d){
-                        if(d.title.length > 80) return d.title.substring(0, 76) + '...'; return d.title;
+                        if(d.title.length > 70) return d.title.substring(0, 66) + '...'; return d.title;
                     });
 
         // fav icon section on the right
@@ -1415,9 +1415,11 @@
         HEADER.showInfoInHeader();
         DOCPANEL.clear();
 
+        var minToGo = (currentQuestion == questions.length - 1) ? 6 : 3;
         $('#task_question_message')
             .fadeIn(1)
-            .html('<span>Task: #' + currentTask + '</span><span>Question: #' + (currentQuestion + 1) + '</span>')
+            .html('<span>Task: #' + currentTask + '</span><span>Question: #' + (currentQuestion + 1) + '</span><span>You have ' +
+                  minToGo + ' minutes to complete it</span>')
             .dimBackground();
 
         setTimeout(function(){
