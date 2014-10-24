@@ -8,6 +8,7 @@
 
 
     var downloadResults = function(e){
+        console.log('nada');
         var scriptURL = (document.URL).replace('controls.html', 'download.php');
         var d = new Date();
         var timestamp = d.getFullYear() + '-' + (parseInt(d.getMonth()) + 1) + '-' + d.getDate() + '_' + d.getHours() + '.' + d.getMinutes() + '.' + d.getSeconds();
