@@ -9,8 +9,8 @@ function getDataset_t4_30() {
         "text":"The circular economy is a generic term for an industrialized economy that is by design or intention, restorative; products and systems are designed in such a way that they can be returned and the materials recycled, reused or remanufactured. A circular economy naturally encompasses a shift from fossil fuels to the use of renewable energy, the eradication of waste and the role of diversity as a characteristic of resilient and productive systems.",
         "task": "Select the 5 most relevant recommendations for the following text:",
         "questions":[
-            "Industrial symbiosis",
-            "Life cycle assessment",
+            "Waste management",
+            "Industrial Symbiosis in China",
             "A circular economy naturally encompasses a shift from fossil fuels to the use of renewable energy, the eradication of waste and the role of diversity as a characteristic of resilient and productive systems"
         ],
         "totalResults":"60",
@@ -112,34 +112,34 @@ function getDataset_t4_30() {
                 }
             },
             {
-                "id":"f97c45de-c74a-3c72-84f5-dcb56d992cb2",
-                "title":"Methodological Aspects of Applying Life Cycle Assessment to Industrial Symbioses",
-                "uri":"http://www.mendeley.com/catalog/methodological-aspects-applying-life-cycle-assessment-industrial-symbioses-1/",
-                "eexcessURI":"http://www.mendeley.com/catalog/methodological-aspects-applying-life-cycle-assessment-industrial-symbioses-1/",
-                "creator":"Tuomas Mattila, Suvi Lehtoranta, Laura Sokka, Matti Melanen, Ari Nissinen",
-                "description":"In view of recent studies of the historical development and current status of industrial symbiosis (IS), life cycle assessment (LCA) is proposed as a general framework for quantifying the environmental performance of by-product exchange. Recent guidelines for LCA (International Reference Life Cycle Data System [ILCD] guidelines) are applied to answer the main research questions in the IS literature reviewed. A typology of five main research questions is proposed: (1) analysis, (2) improvement, and (3) expansion of existing systems; (4) design of new eco-industrial parks, and (5) restructuring of circular economies. The LCA guidelines were found useful in framing the question and choosing an appropriate reference case for comparison. The selection of a correct reference case reduces the risk of overestimating the benefits of by-product exchange. In the analysis of existing systems, environmentally extended input-output analysis (EEIOA) can be used to streamline the analysis and provide an industry average baseline for comparison. However, when large-scale changes are applied to the system, more sophisticated tools are necessary for assessment of the consequences, from market analysis to general equilibrium modeling and future scenario work. Such a rigorous application of systems analysis was not found in the current IS literature, but would benefit the field substantially, especially when the environmental impact of large-scale economic changes is analyzed.",
-                "collectionName":"Journal of Industrial Ecology",
-                "facets":{
-                    "provider":"mendeley",
-                    "type":"unkown",
-                    "language":"unkown",
-                    "year":"2012",
-                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
-                }
-            },
-            {
-                "id":"0f90f19c-3388-33f7-88ca-23aa66daca6b",
-                "title":"Life cycle assessment of electricity generation using fast pyrolysis bio-oil",
-                "uri":"http://www.mendeley.com/research/life-cycle-assessment-electricity-generation-using-fast-pyrolysis-biooil-2/",
-                "eexcessURI":"http://www.mendeley.com/research/life-cycle-assessment-electricity-generation-using-fast-pyrolysis-biooil-2/",
-                "creator":"Jiqing Fan, Tom N. Kalnes, Matthew Alward, Jordan Klinger, Adam Sadehvandi, David R. Shonnard",
-                "description":"Biomass is expected to become an important energy source in U.S. electricity generation under state-lead renewable portfolio standards. This paper investigated the greenhouse gas (GHG) emissions for energy generated from forest resources through pyrolysis-based processing. The GHG emissions of producing pyrolysis bio-oil (pyrolysis oil) from different forest resources were first investigated; logging residues collected from natural regeneration mixed hardwood stands, hybrid poplar cultivated and harvested from abandoned agricultural lands, short rotation forestry (SRF) willow plantations and waste wood available at the site of the pyrolysis plant. Effects of biomass transportation were investigated through a range of distances to a central pyrolysis facility through road transport by semi-truck. Pyrolysis oil is assumed to be converted to electrical power through co-combustion in conventional fossil fuels power plants, gas turbine combined cycle (GTCC) and diesel generators. Life cycle GHG emissions were compared with power generated using fossil fuels and power generated using biomass direct combustion in a conventional Rankine power plant. Life cycle GHG savings of 77%-99% were estimated for power generation from pyrolysis oil combustion relative to fossil fuels combustion, depending on the biomass feedstock and combustion technologies used. Several scenario analyses were conducted to determine effects of pyrolysis oil transportation distance, N-fertilizer inputs to energy crop plantations, and assumed electricity mixes for pyrolysis oil production. ?? 2010 Elsevier Ltd.",
-                "collectionName":"Renewable Energy",
+                "id":"622a9a8a-fa64-3c75-9faa-2dfd86c15e80",
+                "title":"Developing country experience with industrial symbiosis: A case study of The Beijiang Power plant complex in Tianjin, China",
+                "uri":"http://www.mendeley.com/catalog/developing-country-experience-industrial-symbiosis-case-study-beijiang-power-plant-complex-tianjin-c/",
+                "eexcessURI":"http://www.mendeley.com/catalog/developing-country-experience-industrial-symbiosis-case-study-beijiang-power-plant-complex-tianjin-c/",
+                "creator":"Peng Mei Li",
+                "description":"Industrial symbiosis activities are being implemented in the philosophy of circular economy in China. Integrating industrial symbiosis into the corporate development plans to optimize materials and energy flows is a feasible strategy for many corporations in their transition between nonsustainable and sustainable development. The Beijiang Power Plant complex is the largest circular economy pilot in China. This study expounds on its transition course, and in which three factors are essential to making this symbiosis achievable: integration guiding principle; enterprises take the initiative; advanced technology support. We hope to point to a feasible development path for similar corporations.",
+                "collectionName":"2011 International Conference on Electric Technology and Civil Engineering, ICETCE 2011 - Proceedings",
                 "facets":{
                     "provider":"mendeley",
                     "type":"unkown",
                     "language":"unkown",
                     "year":"2011",
+                    "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
+                }
+            },
+            {
+                "id":"4356b766-0216-321d-8456-bdcfcdb07047",
+                "title":"Quantitative assessment of industrial symbiosis for the promotion of circular economy: a case study of the printed circuit boards industry in China's Suzhou New District",
+                "uri":"http://www.mendeley.com/research/quantitative-assessment-industrial-symbiosis-promotion-circular-economy-case-study-printed-circuit-b/",
+                "eexcessURI":"http://www.mendeley.com/research/quantitative-assessment-industrial-symbiosis-promotion-circular-economy-case-study-printed-circuit-b/",
+                "creator":"Zongguo Wen, Xiaoyan Meng",
+                "description":"By strengthening material metabolism among collocated enterprises in leading industrial production chains in eco-industrial parks (EIPs), an industrial symbiosis (IS) system can be constructed, which is effective in strengthening the circular economy (CE). It has become important for EIPs to quantitatively evaluate the CE performance of the production chain while also seeking specific measures that could promote resources utilization efficiency. In this paper, we combine the substance flow analysis (SFA) approach with the resource productivity (RP) indicator to evaluate the contribution of IS to the development of circular economy. Through questionnaires and field surveys of key enterprises in Suzhou New District (SND), a substance flow analysis and resource productivity indicator were developed for core materials (copper, water and energy) in printed circuit boards (PCB) production under the excluding waste utilization scenario and including waste utilization scenario. The results show that the RPCu of chain from electrolytic copper production enterprises (ECPE) to electrolytic copper foil production enterprises is respectively 21.38 and 23.15 thousand yuan per ton, from ECPE to copper clad laminate (CCL) production enterprises is respectively 64.15 and 71.32 thousand yuan per ton, and from ECPE to PCB production enterprises is respectively 176.47and 211.21 thousand yuan per ton under the two scenarios. RP is enhanced by prolonging the industrial production chain and the RP under the excluding waste utilization scenario is higher than the including waste utilization scenario for the same chain, which can be achieved through greater IS. Finally we propose further implications on developing CE in EIPs. ?? 2014 Elsevier Ltd. All rights reserved.",
+                "collectionName":"Journal of Cleaner Production",
+                "facets":{
+                    "provider":"mendeley",
+                    "type":"unkown",
+                    "language":"unkown",
+                    "year":"2014",
                     "license":"https://creativecommons.org/licenses/by/3.0/legalcode"
                 }
             },

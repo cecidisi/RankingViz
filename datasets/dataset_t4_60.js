@@ -9,8 +9,8 @@ function getDataset_t4_60() {
         "text":"The circular economy is a generic term for an industrialized economy that is by design or intention, restorative; products and systems are designed in such a way that they can be returned and the materials recycled, reused or remanufactured. A circular economy naturally encompasses a shift from fossil fuels to the use of renewable energy, the eradication of waste and the role of diversity as a characteristic of resilient and productive systems.",
         "task": "Select the 5 most relevant recommendations for the following text:",
         "questions":[
-            "Industrial symbiosis",
-            "Life cycle assessment",
+            "Waste management",
+            "Industrial Symbiosis in China",
             "A circular economy naturally encompasses a shift from fossil fuels to the use of renewable energy, the eradication of waste and the role of diversity as a characteristic of resilient and productive systems"
         ],
         "totalResults":"60",
