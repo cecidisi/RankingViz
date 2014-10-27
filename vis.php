@@ -113,6 +113,7 @@ and open the template in the editor.
                         <label>Year: </label>
                         <span id="eexcess_document_details_year"></span>
                     </div>
+                    <!--
                     <div>
                         <label>Language: </label>
                         <span id="eexcess_document_details_language"></span>
@@ -121,6 +122,7 @@ and open the template in the editor.
                         <label>Provider: </label>
                         <span id="eexcess_document_details_provider"></span>
                     </div>
+                    -->
                 </div>
                 <div id="eexcess_document_viewer">
                     <p></p>

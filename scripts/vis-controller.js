@@ -42,6 +42,7 @@
 	var allListItems = "#eexcess_content .eexcess_result_list .eexcess_list";	// String to select all li items by class
 	var listItem = "#data-pos-";	                                      		// String to select individual li items by id
 	var rankingContainerClass = ".eexcess_ranking_container";					// class selector for div wrapping ranking indicators in content list
+    var allListItemTitles = ".eexcess_ritem_title";
     var favIconClass = ".eexcess_favicon_section";
     var detailsSections = '.eexcess_item_details_section';
 
@@ -728,6 +729,18 @@
 
 	LIST.internal = {
 
+
+        getFormattedTitle: function(title){
+            if(title.length > 70)
+                title = title.substring(0, 66) + '...';
+
+            console.log(TAGCLOUD.getWeightedKeywordsInBox());
+            title = DOCPANEL.internal.highlightKeywordsInText(title, true);
+            console.log(title);
+            return title;
+
+        },
+
         /**
          *	Calculates the index to scroll to, which depends on the existence or abscence of a ranking
          *	There exists a ranking if dataRanking.length > 0
@@ -932,7 +945,8 @@
 		var aListItem = content.enter()
 							.append("li")
 								.attr("class", "eexcess_list")
-								.attr("id", function(d, i){ return "data-pos-"+i; });
+								.attr("id", function(d, i){ return "data-pos-"+i; })
+                                .attr("pos", function(d, i){ return i; });
 
         var rankingDiv = aListItem.append('div')
             .attr("class", "eexcess_ranking_container");
@@ -945,10 +959,11 @@
 		contentDiv.append("h3")
 				.append("a")
 					.attr("class", "eexcess_ritem_title")
+                    .attr('id', function(d, i){ return 'item-title-' + i; })
                     .attr("href", "#")
                   //  .on("click", function(d){ window.open(d.uri, '_blank'); })
 					.html(function(d){
-                        if(d.title.length > 70) return d.title.substring(0, 66) + '...'; return d.title;
+                         return LIST.internal.getFormattedTitle(d.title);
                     });
 
         // fav icon section on the right
@@ -994,7 +1009,8 @@
 
 		// Synchronizes rendering methods
 		if(!isRankingChanged){
-			this.sortContentList();
+			this.colorKeywordsInTitle();
+            this.sortContentList();
 			this.addRankingPositions(previousRanking);
 			this.hideUnrankedItems();
 			this.animateRanking();
@@ -1011,8 +1027,8 @@
 	 *
 	 * */
 	LIST.stopAnimation = function(){
-		$( ".eexcess_list" ).stop(true, true);
-		$( allListItems )
+		$(".eexcess_list").stop(true, true);
+		$(allListItems)
 			.removeClass("eexcess_list_moving_up")
 			.removeClass("eexcess_list_moving_down")
 			.removeClass("eexcess_list_not_moving");
@@ -1147,6 +1163,21 @@
 
 
     /**
+     * Description
+     */
+    LIST.colorKeywordsInTitle = function(){
+
+        $(allListItems).each(function(i, item){
+            var pos = parseInt($(item).attr('pos'));
+            $(item).find('a').html(LIST.internal.getFormattedTitle(data[pos].title));
+
+        });
+
+    };
+
+
+
+    /**
 	 * Draws legend color icons in each content list item
 	 * */
 	LIST.selectListItem = function( i, flagSelectedOutside ){
@@ -1232,6 +1263,7 @@
 		// Delete ranking related icons
 		$(rankingContainerClass).empty();
 
+        LIST.colorKeywordsInTitle();
         LIST.highlightListItems();
         LIST.updateItemsBackground();
         LIST.bindEventHandlersToItems();
@@ -1307,6 +1339,7 @@
                 word = "";
             var keywordsInBox = TAGCLOUD.getWeightedKeywordsInBox();
 
+            console.log('is title = ' + isTitle + ' -- text w keywords = ' + textWithKeywords);
             text.split('').forEach(function(c){
                 if(c.match(/\w/)){
                     word += c;
@@ -1323,7 +1356,7 @@
             });
             if(word != "")
                 textWithKeywords += this.getStyledWord(word, keywordsInBox);
-            if(isTitle)
+            if(!isTitle)
                 textWithKeywords +='</p>';
 
             return textWithKeywords;
@@ -1415,7 +1448,7 @@
         HEADER.showInfoInHeader();
         DOCPANEL.clear();
 
-        var minToGo = (currentQuestion == questions.length - 1) ? 6 : 3;
+        var minToGo = (currentTask == 0) ? 'X' : (currentQuestion == questions.length - 1) ? 6 : 3;
         $('#task_question_message')
             .fadeIn(1)
             .html('<span>Task: #' + currentTask + '</span><span>Question: #' + (currentQuestion + 1) + '</span><span>You have ' +
