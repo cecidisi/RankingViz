@@ -26,16 +26,14 @@
 
     var selectDatasetChanged = function(){
 
-        var text = "", task = "";
+        var text = "";
         self.datasetId = $("#select-dataset").val();
 
         if(self.datasetId != "NO_DATASET"){
             self.dataset = dsm.getDataset(self.datasetId);
             text = self.dataset.text;
-            task = self.dataset.task;
         }
         $("#section-text").find("p").html(text);
-        $("#section-task").find("p").html(task);
     };
 
 

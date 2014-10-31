@@ -47,24 +47,26 @@
         <div>
             <span>Topic: </span>
             <select id="select-dataset"></select>
-        </div>
-
-        <section id="section-text">
-            <h1>Text</h1>
-            <p></p>
-        </section>
-        <section id="section-task">
-            <h1>Task</h1>
-            <p></p>
-        </section>
-
-        <div>
+            
             <span>Tool aided: </span>
             <select id="select-tool-condition">
                 <option value="yes" selected="selected">Yes</option>
                 <option value="no">No</option>
             </select>
         </div>
+        <div>
+
+        </div>
+
+        <section id="section-task">
+            <h1>Task</h1>
+            <p>The task consists in 3 Questions. For each one of them, select 5 items from the list that you consider the most relevant</p>
+        </section>
+        <section id="section-text">
+            <h1>Topic Overview</h1>
+            <p></p>
+        </section>
+
 
         <input type="button" id="start-button" value="Start" />
 

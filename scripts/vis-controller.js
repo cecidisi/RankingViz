@@ -386,7 +386,7 @@
             selectedItemContainer.append('span').text(data[index].title);
             selectedItemContainer.append('img').attr("src", REMOVE_SMALL_ICON);
 
-            $(selectedItemsSection).find("div[original-index='" + index + "']").click(function(event){ EVTHANDLER.removeSelectedItemIconClicked(event, index); });
+            $(selectedItemsSection).find("div[original-index='" + index + "']").find('img').click(function(event){ EVTHANDLER.removeSelectedItemIconClicked(event, index); });
         }
         else{
             HEADER.removeItemFromListOfSelected(index);
@@ -733,10 +733,7 @@
         getFormattedTitle: function(title){
             if(title.length > 70)
                 title = title.substring(0, 66) + '...';
-
-            console.log(TAGCLOUD.getWeightedKeywordsInBox());
             title = DOCPANEL.internal.highlightKeywordsInText(title, true);
-            console.log(title);
             return title;
 
         },
@@ -1338,8 +1335,6 @@
             var textWithKeywords = isTitle ? '' : '<p>',
                 word = "";
             var keywordsInBox = TAGCLOUD.getWeightedKeywordsInBox();
-
-            console.log('is title = ' + isTitle + ' -- text w keywords = ' + textWithKeywords);
             text.split('').forEach(function(c){
                 if(c.match(/\w/)){
                     word += c;
@@ -1364,7 +1359,7 @@
 
 
         getStyledWord : function(word, keywordsInBox){
-            var trickyWords = ['it', 'is', 'us'];
+            var trickyWords = ['it', 'is', 'us', 'ar'];
             var wordStem = word.replace(/our$/, 'or').stem();
 
             if(trickyWords.indexOf(wordStem) == -1 || word.isAllUpperCase()){
@@ -1459,7 +1454,7 @@
             $('#task_question_message').fadeOut('slow');
             $('#task_question_message').undim();
             startTime = $.now();
-        }, 3000);
+        }, 2500);
     }
 
 
@@ -1473,7 +1468,6 @@
 
         data = dataset['data'];													// contains the data to be visualized
        // data.shuffle();
-        console.log(data)
         query = dataset['query'];												// string representing the query that triggered the current recommendations
 		keywords = dataset['keywords'];
         sampleText = dataset['text'];
