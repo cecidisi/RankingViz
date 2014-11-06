@@ -13,6 +13,10 @@ function Settings(){
         var centerOffset = (iWidth/2) - ((width + margin.left + margin.right)/2);
         var verticalOffset = ((rootHeight - 500) / 2) < 30 ? 30 : ((rootHeight - 500) / 2);
 
+        height = $('#eexcess_content').height();
+        console.log('height = ' + height);
+        console.log('list height = ' + $('#eexcess_content').height());
+        
         return{ 'margin': margin, 'width': width, 'height': height, 'barHeight': barHeight, 'centerOffset': centerOffset, 'verticalOffset': verticalOffset };
 	};
 
@@ -33,7 +37,6 @@ function Settings(){
         while(i < ranking.length && ranking[i][attr] > 0){
 
             a[i] = ranking[i];
-
             a[i]['title']       = data[a[i].originalIndex]['title'];
             a[i]['id']          = data[a[i].originalIndex]['id'];
             a[i]['uri']         = data[a[i].originalIndex]['uri'];
@@ -64,9 +67,6 @@ function Settings(){
                     }
                 }
             });
-
-            //if(a[i].title.contains("Prediction of human behavior in human")) console.log(a[i]);
-
             i++;
         }
         return { 'data' : a};

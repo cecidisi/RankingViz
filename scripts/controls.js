@@ -3,10 +3,12 @@
     var taskStorage = new TaskStorage();
 
     var clearResults = function(){
-        //taskStorage.removeEvaluationsResults();
-        taskStorage.restore();
+        taskStorage.removeEvaluationsResults();
     };
 
+    var restoreResults = function(){
+        taskStorage.restore();
+    };
 
     var downloadResults = function(e){
 
@@ -26,6 +28,7 @@
 
     (function init(){
         $('#clear_results').click(clearResults);
+        $('#restore_results').click(restoreResults);
         $('#download_results').click(downloadResults);
     })();
 
