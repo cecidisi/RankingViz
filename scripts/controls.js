@@ -10,7 +10,7 @@
         taskStorage.fix();
     };
     
-    
+    //
     var restoreResults = function(){
         taskStorage.restore();
     };
