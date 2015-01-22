@@ -9,8 +9,7 @@
     var fixResults = function(){
         taskStorage.fix();
     };
-    
-    //
+
     var restoreResults = function(){
         taskStorage.restore();
     };
