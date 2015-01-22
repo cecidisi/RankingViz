@@ -788,7 +788,6 @@ VIS PANEL (center of screen)
 	text-align: center;
 	color: #fff;
     text-shadow: 0em 0.1em #888;
-    background: -webkit-linear-gradient(top, rgba(100, 100, 100, 0.8) 75%, rgba(50, 50, 50, 0.8));
 }
 
 
