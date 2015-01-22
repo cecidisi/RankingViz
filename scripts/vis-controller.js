@@ -796,7 +796,6 @@
                     }
                 });
                 dataRanking[i].overallScore = dataRanking[i].overallScore.round(3);
-                console.log(dataRanking[i].overallScore);
             });
         },
 
@@ -1006,7 +1005,6 @@
         this.stopAnimation();
         var isRankingChanged = LIST.internal.hasRankingChanged(previousRanking);
 
-        console.log(dataRanking);
 		// Synchronizes rendering methods
 		if(!isRankingChanged){
 			this.colorKeywordsInTitle();
