@@ -12,7 +12,7 @@ function getDataset_t2_30() {
             "Human-robot interaction",
             "The branch of technology that deals with the design, construction, operation, and application of robots, as well as computer systems for their control, sensory feedback, and information processing is robotics"
         ],
-        "totalResults":"60",
+        "totalResults":"30",
         "data": [
                     {
                         "id": "00b85ff1-e525-3a0e-9e51-e25da8f14afe",

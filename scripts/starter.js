@@ -200,7 +200,7 @@
         if(k.variations.length == 1)
             return k.variations[0].term;
 
-        // 2 variations, one in lower casi and the other starting in uppercase --> return in lower case
+        // 2 variations, one in lower case and the other starting in uppercase --> return in lower case
         if(k.variations.length == 2 && !k.variations[0].term.isAllUpperCase() && !k.variations[1].term.isAllUpperCase() && k.variations[0].term.toLowerCase() === k.variations[1].term.toLowerCase())
             return k.variations[0].term.toLowerCase();
 

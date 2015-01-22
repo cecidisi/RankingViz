@@ -58,6 +58,19 @@ function TaskStorage() {
     };
 
 
+    TaskStorage.prototype.fix = function(){
+        var previous = previousResults();
+        previous.forEach(function(d){
+            d["tasks-results"].forEach(function(task){
+                console.log("T3-30".toString().contains("30"));
+                if(task["dataset-id"].toString().contains("30"))
+                    task["total-items"] = "30";
+            });
+        });
+    
+        console.log(JSON.stringify(previous));
+    }
+    
 
     
     this.userCount = (function(value){

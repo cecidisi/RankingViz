@@ -6,6 +6,11 @@
         taskStorage.removeEvaluationsResults();
     };
 
+    var fixResults = function(){
+        taskStorage.fix();
+    };
+    
+    
     var restoreResults = function(){
         taskStorage.restore();
     };
@@ -28,6 +33,7 @@
 
     (function init(){
         $('#clear_results').click(clearResults);
+        $('#fix_results').click(fixResults);
         $('#restore_results').click(restoreResults);
         $('#download_results').click(downloadResults);
     })();

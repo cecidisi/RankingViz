@@ -14,8 +14,6 @@ function Settings(){
         var verticalOffset = ((rootHeight - 500) / 2) < 30 ? 30 : ((rootHeight - 500) / 2);
 
         height = $('#eexcess_content').height();
-        console.log('height = ' + height);
-        console.log('list height = ' + $('#eexcess_content').height());
         
         return{ 'margin': margin, 'width': width, 'height': height, 'barHeight': barHeight, 'centerOffset': centerOffset, 'verticalOffset': verticalOffset };
 	};

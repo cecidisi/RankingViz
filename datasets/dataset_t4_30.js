@@ -13,7 +13,7 @@ function getDataset_t4_30() {
             "Industrial Symbiosis in China",
             "A circular economy naturally encompasses a shift from fossil fuels to the use of renewable energy, the eradication of waste and the role of diversity as a characteristic of resilient and productive systems"
         ],
-        "totalResults":"60",
+        "totalResults":"30",
         "data":[
             {
                 "id":"960ee910-fe1a-3216-aebb-bd3342004cf5",
