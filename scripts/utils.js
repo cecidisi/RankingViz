@@ -75,6 +75,26 @@ Array.prototype.shuffle = function() {
 };
 
 
+Array.prototype.inArray = function(obj) {
+    var keys = Object.keys(obj);
+    for(var i=0; i<keys.length; i++){
+        if(this.getIndexOf(obj[keys[i]], keys[i]) == -1)
+            return false;
+    }
+    return true;
+};
+
+
+
+Array.prototype.pushObjIfNotExist = function(obj) {
+    if(!this.inArray(obj))
+        this.push(obj);
+};
+
+
+
+
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 /**
