@@ -75,7 +75,8 @@ Array.prototype.shuffle = function() {
 };
 
 
-Array.prototype.inArray = function(obj) {
+
+Array.prototype.getObjIndex = function(obj) {
     var keys = Object.keys(obj);
     for(var i=0; i<keys.length; i++){
         if(this.getIndexOf(obj[keys[i]], keys[i]) == -1)
@@ -86,9 +87,37 @@ Array.prototype.inArray = function(obj) {
 
 
 
+Array.prototype.getAllIndicesOf = function(target, field) {
+    var indices = [];
+    this.forEach(function(item, i){
+        if(item[field] === target)
+            indices.push(i);
+    });
+};
+
+
+Array.prototype.isObjInArray = function(obj) {
+    var keys = Object.keys(obj);
+
+    for(var i=0; i<this.length; i++) {
+        var j = 0;
+        while(j<keys.length && this[i][keys[j]] === obj[keys[j]])
+            j++;
+
+        if(j === keys.length)   // all keys match
+            return true;
+    }
+    return false;
+};
+
+
+
 Array.prototype.pushObjIfNotExist = function(obj) {
-    if(!this.inArray(obj))
+    if(!this.isObjInArray(obj)) {
         this.push(obj);
+        return true;
+    }
+    return false;
 };
 
 

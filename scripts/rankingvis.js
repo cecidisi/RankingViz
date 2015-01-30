@@ -6,7 +6,7 @@ function RankingVis(domRoot, iWidth, iHeight, visTemplate){
 	var Vis = visTemplate;
 	var self = this;
 	var root = domRoot;
-	var width, height, margin, centerOffset, verticalOffset, barHeight;
+	var width, height, margin, centerOffset, verticalOffset;
 	var x, y, color, xAxis, yAxis, x0, y0;
 	var svg;
 	var data;
@@ -277,10 +277,9 @@ function RankingVis(domRoot, iWidth, iHeight, visTemplate){
         /******************************************************
 		*	Define canvas dimensions
 		******************************************************/
-		RANKING.Dimensions = RANKING.Settings.getRankingDimensions(domRoot, iWidth, data.length);
+		RANKING.Dimensions = RANKING.Settings.getRankingDimensions(domRoot, iWidth);
 		width          = RANKING.Dimensions.width;
         height         = RANKING.Dimensions.height;
-        barHeight      = RANKING.Dimensions.barHeight;
 		margin         = RANKING.Dimensions.margin;
 		centerOffset   = RANKING.Dimensions.centerOffset;
 		verticalOffset = RANKING.Dimensions.verticalOffset;
@@ -440,7 +439,7 @@ function RankingVis(domRoot, iWidth, iHeight, visTemplate){
         /******************************************************
 		*	Recalculate canvas dimensions
 		******************************************************/
-		RANKING.Dimensions = RANKING.Settings.getRankingDimensions(domRoot, iWidth, data.length);
+		RANKING.Dimensions = RANKING.Settings.getRankingDimensions(domRoot, iWidth);
         height = RANKING.Dimensions.height;
 
 		y.rangeBands(height, .02);
@@ -465,10 +464,9 @@ function RankingVis(domRoot, iWidth, iHeight, visTemplate){
         /******************************************************
 		*	Recalculate canvas dimensions
 		******************************************************/
-		RANKING.Dimensions = RANKING.Settings.getRankingDimensions(domRoot, iWidth, data.length);
+		RANKING.Dimensions = RANKING.Settings.getRankingDimensions(domRoot, iWidth);
 		width          = RANKING.Dimensions.width;
         height         = RANKING.Dimensions.height;
-        barHeight      = RANKING.Dimensions.barHeight;
 		margin         = RANKING.Dimensions.margin;
 		centerOffset   = RANKING.Dimensions.centerOffset;
 		verticalOffset = RANKING.Dimensions.verticalOffset;

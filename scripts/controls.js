@@ -32,60 +32,37 @@
 
     var processResults = function(e) {
 
-        var users = [],
-            queries = ['women in workforce', 'robot', 'augmented reality', 'circular economy'],
-            keywordLists = ['participation&women&workforce', 'gap&gender&wage', 'inquality&man&salary&wage&woman&workforce',
-                            'autonomous&robot', 'human&interaction&robot', 'control&information&robot&sensor',
-                            'environment&virtual', 'context&object&recognition', 'augmented&environment&image&reality&video&world',
-                            'management&waste', 'china&industrial&symbiosis', 'circular&economy&fossil&fuel&system&waste'],
-            documents = [],
-            compositions = [];
-
-
-        for(var i=0; i<24; i++)
-            users.push('user_' + (i+1));
+        var linked_user_doc_qk = [],
+            kw_aux = [
+                { query: 'women in workforce', keywords: ['participation&women&workforce', 'gap&gender&wage', 'inquality&man&salary&wage&woman&workforce']},
+                { query: 'robot', keywords: ['autonomous&robot', 'human&interaction&robot', 'control&information&robot&sensor']},
+                { query: 'augmented reality', keywords: ['environment&virtual', 'context&object&recognition', 'augmented&environment&image&reality&video&world']},
+                { query: 'circular economy', keywords: ['management&waste', 'china&industrial&symbiosis', 'circular&economy&fossil&fuel&system&waste']}];
 
         taskStorage.getEvaluationResults().forEach(function(result){
             result["tasks-results"].forEach(function(task) {
-                if(task["tool-aided"] == 'yes') {
+                if(task["tool-aided"] === 'yes') {
                     task["questions-results"].forEach(function(question) {
+                        var kw = getKeywords(task.query, question["question-number"], kw_aux);
                         question["selected-items"].forEach(function(item) {
-
-                            documents.pushObjIfNotExist(item);
-                            compositions.pushObjIfNotExist({
-                                user: 'user_' + result.user,
-                                query: getQuery(task.topic),
-                                keywordList: getKeywordList(task.topic, question["question-number"]),
-                                'doc-id': item.id
+                            linked_user_doc_qk.push({
+                                user_id: result.user,
+                                document_id: item.id,
+                                document_title: item.title,
+                                query: task.query,
+                                keywords: kw
                             });
                         });
                     });
                 }
             });
         });
+        console.log('linked_user_doc_qk');
+        console.log(linked_user_doc_qk);
 
-
-        console.log(compositions);
-
-        function getQuery(topic) {
-            switch(topic){
-                case "T1 WW": return 'women in workforce'; break;
-                case "T2 Ro": return 'robot'; break;
-                case "T3 AR": return 'augmented reality'; break;
-                case "T4 CC": return 'circular economy'; break;
-            }
-        }
-
-        function getKeywordList(topic, questionNum) {
-
-            var topicNum;
-            switch(topic){
-                case "T1 WW": topicNum = 0; break;
-                case "T2 Ro": topicNum = 1; break;
-                case "T3 AR": topicNum = 2; break;
-                case "T4 CC": topicNum = 3; break;
-            }
-            return keywordLists[topicNum * 3 + (parseInt(questionNum) - 1)];
+        function getKeywords(query, questionNumber, kw_aux) {
+            var index = kw_aux.getIndexOf(query, 'query');
+            return kw_aux[index].keywords[questionNumber - 1].split('&');
         }
 
     };

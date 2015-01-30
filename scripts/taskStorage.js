@@ -60,14 +60,32 @@ function TaskStorage() {
 
     TaskStorage.prototype.fix = function(){
         var previous = previousResults();
+    /*
         previous.forEach(function(d){
             d["tasks-results"].forEach(function(task){
-                console.log("T3-30".toString().contains("30"));
                 if(task["dataset-id"].toString().contains("30"))
                     task["total-items"] = "30";
             });
         });
-    
+    */
+        previous.forEach(function(d) {
+            d["tasks-results"].forEach(function(t) {
+                t['query'] = getQuery(t["dataset-id"]);
+            });
+        });
+
+        function getQuery(datasetId) {
+            switch(datasetId) {
+                case 'T1-30':
+                case 'T1-60':   return 'women in workforce'; break;
+                case 'T2-30':
+                case 'T2-60':   return 'robot'; break;
+                case 'T3-30':
+                case 'T3-60':   return 'augmented reality'; break;
+                case 'T4-30':
+                case 'T4-60':   return 'circular economy'; break;
+            }
+        }
         console.log(JSON.stringify(previous));
     }
     
