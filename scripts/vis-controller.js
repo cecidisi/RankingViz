@@ -944,6 +944,7 @@
 							.append("li")
 								.attr("class", "eexcess_list")
 								.attr("id", function(d, i){ return "data-pos-"+i; })
+                                .attr("doc_id", function(d){ return d.id})
                                 .attr("pos", function(d, i){ return i; });
 
         var rankingDiv = aListItem.append('div')
