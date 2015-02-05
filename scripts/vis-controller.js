@@ -875,6 +875,7 @@
 
                 if(typeof previousRanking === 'undefined' || previousRanking.length == 0){
                     d['positionsChanged'] = 1000;
+                    d['lastIndex'] = -1;
                 }
                 else{
                     var originalIndex = d['originalIndex'];
@@ -883,6 +884,7 @@
                     while( j < previousRanking.length  &&  previousRanking[j].originalIndex !== d['originalIndex'] )
                         j++;
 
+                    d['lastIndex'] = j;
                     if( previousRanking[j].rankingPos === 0 )
                         d['positionsChanged'] = 1000;
                     else
@@ -1145,6 +1147,43 @@
         }, delay);
 	};
 
+    
+    
+
+    /**
+	 * IN PROGRESS
+	 *
+	 * */
+    LIST.anotherAnimation = function() {
+
+        var delay = 4000;
+        dataRanking.forEach(function(d, i){
+            var item = $(listItem +""+ d.originalIndex);
+
+            if( d.overallScore > 0 ){
+                var shift = (d.lastIndex != -1) ? (d.lastIndex * 27.5) + 'px' : (i * 5)+'px' ;
+                var duration = 500 + 50 * i;
+                var movingClass = (d.positionsChanged > 0) ? "eexcess_list_moving_up" : ( (d.positionsChanged < 0) ? "eexcess_list_moving_down" : "eexcess_list_not_moving" );
+
+                item.addClass(movingClass);
+                item.animate({'top': shift}, {
+                    'complete': function(){
+                        $(this).animate({"top": 0}, duration, "swing" );
+                    }
+                });
+            }
+        });
+
+        setTimeout(function(){
+            $(allListItems)
+            .removeClass("eexcess_list_moving_up")
+            .removeClass("eexcess_list_moving_down")
+            .removeClass("eexcess_list_not_moving");
+        }, delay);
+
+    };
+    
+    
 
     /**
      * Description

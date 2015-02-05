@@ -1,7 +1,7 @@
 function Settings(){
 
     Settings.prototype.getRankingDimensions = function(domRoot, iWidth){
-        console.log(domRoot);
+
 		var rootWidth  = $(domRoot).width();
 		var rootHeight = $(domRoot).height();
 
