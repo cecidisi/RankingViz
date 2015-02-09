@@ -764,19 +764,22 @@ VIS PANEL (center of screen)
 
 .eexcess_list_moving_up {
     /*border: 1px solid rgba(0, 250, 0, 0.8);*/
-    box-shadow: inset 0.1em 0.1em 0.2em rgba(0, 250, 0, 0.6), inset -0.1em -0.1em 0.2em rgba(0, 250, 0, 0.6);
+    /*box-shadow: inset 0.1em 0.1em 0.2em rgba(0, 250, 0, 0.6), inset -0.1em -0.1em 0.2em rgba(0, 250, 0, 0.6);*/
+    box-shadow: inset 1px 1px 2px rgba(0, 250, 0, 0.6), inset -1px -1px 2px rgba(0, 250, 0, 0.6);
     -webkit-transition: box-shadow 0s linear;
 }
 
 .eexcess_list_moving_down {
     /*border: 1px solid rgba(250, 10, 10, 0.6);*/
-    box-shadow: inset 0.1em 0.1em 0.2em rgba(250, 10, 10, 0.6), inset -0.1em -0.1em 0.2em rgba(250, 10, 10, 0.6);
+    /*box-shadow: inset 0.1em 0.1em 0.2em rgba(250, 10, 10, 0.6), inset -0.1em -0.1em 0.2em rgba(250, 10, 10, 0.6);*/
+    box-shadow: inset 1px 1px 2px rgba(250, 10, 10, 0.6), inset -1px -1px 2px rgba(250, 10, 10, 0.6);
     -webkit-transition: box-shadow 0s linear;
 }
 
 .eexcess_list_not_moving {
     /*border: 1px solid rgba(128, 128, 128, 0.6);*/
-    box-shadow: inset 0.1em 0.1em 0.2em rgba(128, 128, 128, 0.6), inset -0.1em -0.1em 0.2em rgba(128, 128, 128, 0.6);
+    /*box-shadow: inset 0.1em 0.1em 0.2em rgba(128, 128, 128, 0.6), inset -0.1em -0.1em 0.2em rgba(128, 128, 128, 0.6);*/
+    box-shadow: inset 1px 1px 2px rgba(128, 128, 128, 0.6), inset -1px -1px 2px rgba(128, 128, 128, 0.6);
     -webkit-transition: box-shadow 0s linear;
 }
 
