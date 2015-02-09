@@ -1103,13 +1103,15 @@
         easing = easing || 'swing',
         delay = delay || 0;
 
-        setTimeout(function() {
+        console.log('STOP duration = ' + duration + '; easing = ' + easing + '; delay = ' + delay);
+
+       // setTimeout(function() {
             $(".eexcess_list").stop(true, true);
             $(allListItems)
             .removeClass("eexcess_list_moving_up", duration, easing)
             .removeClass("eexcess_list_moving_down", duration, easing)
             .removeClass("eexcess_list_not_moving", duration, easing);
-        }, delay);
+        //}, delay);
     };
 
 
@@ -1230,7 +1232,7 @@
             var item = $(listItem +""+ d.originalIndex);
 
             if( d.overallScore > 0 ){
-                var shift = i * 5;//parseFloat( 50 + i*10 );
+                var shift = i * 5;
                 var duration = initialDuration + timeLapse * i;
 
                 console.log('ACCORDION duration = ' + duration);
@@ -1249,6 +1251,7 @@
             $(allListItems)
             .removeClass("eexcess_list_moving_up", 1000, easing);
         }, 4000);
+
     };
     
     
