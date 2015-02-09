@@ -76,7 +76,14 @@
 	var STR_DROP_TAGS_HERE = "Drop tags here!";
 	var STR_JUST_RANKED = "new";
 	var STR_SEARCHING = "Searching...";
-    var STR_NO_INDEX = 'no_index'
+    var STR_NO_INDEX = 'no_index';
+
+    var RANKING_STATUS = {
+        new : 'new',
+        reset : 'reset',
+        update : 'update',
+        unchanged : 'unchanged'
+    };
 
 
 	// variables from dataset
@@ -875,7 +882,7 @@
 
                 if(typeof previousRanking === 'undefined' || previousRanking.length == 0){
                     d['positionsChanged'] = 1000;
-                    d['lastIndex'] = -1;
+                    d['lastIndex'] = d.originalIndex;
                 }
                 else{
                     var originalIndex = d['originalIndex'];
@@ -899,23 +906,31 @@
          *	If there doesn't exist a previous ranking or a recommendation wasn't previously ranked, then the value 1000 is assigned
          *
          * */
-        hasRankingChanged: function(previousRanking) {
+        getRankingStatus: function(previousRanking) {
 
-            if( typeof previousRanking === 'undefined' || previousRanking === 'undefined' || previousRanking.length === 0)
-                return false;
+            if( typeof previousRanking === 'undefined' || previousRanking === 'undefined' || previousRanking.length === 0) {
+                return RANKING_STATUS.new;
+            }
 
             if(dataRanking.length != previousRanking.length)
-                return true;
+                return RANKING_STATUS.update;
 
             for(var i = 0; i < dataRanking.length; i++){
-                var j = 0;
-                while(dataRanking[i]['originalIndex'] !== previousRanking[j]['originalIndex'] )
-                    j++;
-
-                if(dataRanking[i]['rankingPos'] !== previousRanking[j]['rankingPos'] )
-                    return false;
+                var j = dataRanking.getIndexOf(dataRanking[i].originalIndex, 'originalIndex');
+                if(j == -1 || dataRanking[i]['rankingPos'] !== previousRanking[j]['rankingPos'])
+                    return RANKING_STATUS.update;
             }
-	       return true;
+            return RANKING_STATUS.unchanged;
+        },
+
+
+
+        getNumberOfRankedItems: function() {
+
+            var i = 0;
+            while(i<dataRanking.length && dataRanking[i].rankingPos>0)
+                i++;
+            return i;
         }
 
 	};
@@ -975,19 +990,28 @@
                 .attr("src", FAV_ICON_OFF);
 
         LIST.updateItemsBackground();
-        LIST.bindEventHandlersToItems();
+        LIST.bindEventHandlersToListItems();
 		$(contentPanel).scrollTo("top");
 	};
 
 
 
-    LIST.bindEventHandlersToItems = function(){
+    LIST.bindEventHandlersToListItems = function(){
         // Event for item clicked
         d3.selectAll(allListItems)
             .on("click", function(d, i){ EVTHANDLER.listItemClicked(d, i); })
             .on("mouseover", EVTHANDLER.listItemHovered)
             .on("mouseout", EVTHANDLER.listItemUnhovered)
             .select(favIconClass).select('img').on("click", function(d, i){ EVTHANDLER.faviconClicked(d, i);});
+    };
+
+    LIST.unbindEventHandlersToListItems = function(){
+        // Event for item clicked
+        d3.selectAll(allListItems)
+        .on("click", '')
+        .on("mouseover", '')
+        .on("mouseout", '')
+        .select(favIconClass).select('img').on("click", '');
     };
 
 
@@ -1006,62 +1030,18 @@
 		this.internal.extendRankingWithPositionsChanged(previousRanking);
         this.highlightListItems();
         this.stopAnimation();
-        var isRankingChanged = LIST.internal.hasRankingChanged(previousRanking);
+        var status = LIST.internal.getRankingStatus(previousRanking);
 
 		// Synchronizes rendering methods
-		if(!isRankingChanged){
-			this.colorKeywordsInTitle();
-            this.sortContentList();
+		if(status == RANKING_STATUS.new || status == RANKING_STATUS.update){
+			this.colorKeywordsInTitles();
 			this.addRankingPositions(previousRanking);
 			this.hideUnrankedItems();
-			this.animateRanking();
             this.updateItemsBackground();
 		}
+        LIST.animateContentList(status);
         DOCPANEL.clear();
-		VISPANEL.drawRanking(isRankingChanged);
-	};
-
-
-
-	/**
-	 * Stop the list movement and restores default style
-	 *
-	 * */
-	LIST.stopAnimation = function(){
-		$(".eexcess_list").stop(true, true);
-		$(allListItems)
-			.removeClass("eexcess_list_moving_up")
-			.removeClass("eexcess_list_moving_down")
-			.removeClass("eexcess_list_not_moving");
-	};
-
-
-
-    /**
-	 * Reorganizes list <li> items according to the calculated ranking
-	 *
-	 * */
-	LIST.sortContentList = function(){
-
-		var liHtml = new Array();
-
-		dataRanking.forEach(function(d, i){
-			var current = $( listItem + "" + d.originalIndex );
-			var outer = $(current).outerHTML();
-			liHtml.push( outer );
-			current.remove();
-		});
-
-		var oldHtml = "";
-		for(var j = liHtml.length-1; j >= 0; j--){
-			$(contentList).html(liHtml[j] + "" + oldHtml);
-			oldHtml = $(contentList).html();
-		}
-
-		// Re-binds on click event to list item. Removing and re-appending DOM elements destroy the bounds to event handlers
-		//d3.selectAll( allListItems ).on("click", EVTHANDLER.listItemClicked);
-        LIST.bindEventHandlersToItems();
-		LIST.selectededListIndex = STR_NO_INDEX;
+		VISPANEL.drawRanking(status);
 	};
 
 
@@ -1070,9 +1050,9 @@
 	 * Appends a yellow circle indicating the ranking position and a colored legend stating #positionsChanged
 	 *
 	 * */
-	LIST.addRankingPositions = function( previousRanking ) {
+	LIST.addRankingPositions = function(previousRanking) {
 
-		$( rankingContainerClass ).empty();
+		$(rankingContainerClass).empty();
 
 		dataRanking.forEach(function(d, i){
 			if( d.overallScore > 0 ){
@@ -1100,7 +1080,7 @@
 
 
 	/**
-	 * Calculate which items should be highlighted
+	 * Hide unranked list items
 	 *
 	 * */
 	LIST.hideUnrankedItems = function(){
@@ -1114,39 +1094,97 @@
 
 
 
+    /**
+	 * Stop the list movement and restores default style
+	 *
+	 * */
+    LIST.stopAnimation = function(duration, easing, delay){
+        duration = duration || 0;
+        easing = easing || 'swing',
+        delay = delay || 0;
+
+        setTimeout(function() {
+            $(".eexcess_list").stop(true, true);
+            $(allListItems)
+            .removeClass("eexcess_list_moving_up", duration, easing)
+            .removeClass("eexcess_list_moving_down", duration, easing)
+            .removeClass("eexcess_list_not_moving", duration, easing);
+        }, delay);
+    };
+
+
+
 	/**
 	 * Handles the visual effects when the ranking is updated.
 	 * Generates accordion-like animation for ranked items and style effects
 	 *
 	 * */
-	LIST.animateRanking = function() {
+	LIST.animateContentList = function(action) {
 
-        var delay = 4000;
-        dataRanking.forEach(function(d, i){
-            var item = $(listItem +""+ d.originalIndex);
+        var accordionInitialDuration = 500,
+            accordionTimeLapse = 50,
+            accordionEasing = 'swing',
+            resortingDuration = 1500,
+            resortingEasing = 'swing',
+            stopDuration = 1000,
+            stopEasing = 'easeInQuad',
+            stopDelay = 2000;
 
-            if( d.overallScore > 0 ){
-                var shift = i * 5;//parseFloat( 50 + i*10 );
-                var duration = 500 + 50 * i;
-                var movingClass = (d.positionsChanged > 0) ? "eexcess_list_moving_up" : ( (d.positionsChanged < 0) ? "eexcess_list_moving_down" : "eexcess_list_not_moving" );
+        switch(action) {
+            case RANKING_STATUS.new:
+                LIST.sortContentList();
+                LIST.accordionAnimation(accordionInitialDuration, accordionTimeLapse, accordionEasing);
+                stopDelay = accordionInitialDuration + accordionTimeLapse * dataRanking.length;
+                //LIST.stopAnimation(stopDuration, stopEasing, stopDelay);
+                break;
 
-                item.addClass(movingClass);
-                item.animate({'top': shift}, {
-                    'complete': function(){
-                        $(this).animate({"top": 0}, duration, "swing" );
-                    }
-                });
-            }
-        });
+            case RANKING_STATUS.update:
+            case RANKING_STATUS.unchanged:
+                LIST.unbindEventHandlersToListItems();
+                LIST.resortListAnimation(resortingDuration, resortingEasing);
+                setTimeout(function() {
+                    //LIST.sortContentList();
+                    //LIST.stopAnimation(stopDuration, stopEasing, stopDelay);
+                }, resortingDuration + 100);
+                break;
 
-        setTimeout(function(){
-            $( allListItems )
-                .removeClass("eexcess_list_moving_up")
-                .removeClass("eexcess_list_moving_down")
-                .removeClass("eexcess_list_not_moving");
-        }, delay);
+            case RANKING_STATUS.reset:
+                // resort items in original order
+                LIST.stopAnimation();
+                break;
+        }
 	};
 
+
+
+
+    /**
+	 * Reorganizes list <li> items according to the calculated ranking
+	 *
+	 * */
+    LIST.sortContentList = function(){
+
+        var liHtml = new Array();
+
+        dataRanking.forEach(function(d, i){
+            var current = $( listItem + "" + d.originalIndex );
+            current.css('top', 0);
+            var outer = $(current).outerHTML();
+            liHtml.push(outer);
+            current.remove();
+        });
+
+        var oldHtml = "";
+        for(var j = liHtml.length-1; j >= 0; j--){
+            $(contentList).html(liHtml[j] + "" + oldHtml);
+            oldHtml = $(contentList).html();
+        }
+
+        // Re-binds on click event to list item. Removing and re-appending DOM elements destroy the bounds to event handlers
+        //d3.selectAll( allListItems ).on("click", EVTHANDLER.listItemClicked);
+        LIST.bindEventHandlersToListItems();
+        LIST.selectededListIndex = STR_NO_INDEX;
+    };
     
     
 
@@ -1154,33 +1192,64 @@
 	 * IN PROGRESS
 	 *
 	 * */
-    LIST.anotherAnimation = function() {
+    LIST.resortListAnimation = function(duration, easing) {
 
-        var delay = 4000;
+        duration = duration || 1500;
+        easing = easing || 'swing';
+
+        console.log('RESORTING  duration = ' + duration + '; easing = ' + easing);
+        var acumHeight = 0;
+        var listHeight = $(contentList).innerHeight();
+        var listTop = $(contentList).position().top;
+
+        dataRanking.forEach(function(d, i){
+
+            if(d.rankingPos > 0) {
+                var item = $(listItem +""+ d.originalIndex);
+                var itemTop = $(item).position().top;
+                var shift = listTop +  acumHeight - itemTop;
+                var movingClass = (d.positionsChanged > 0) ? "eexcess_list_moving_up" : ((d.positionsChanged < 0) ? "eexcess_list_moving_down" : "");
+
+                item.addClass(movingClass);
+                item.animate({"top": '+=' + shift+'px'}, duration, easing);
+
+                acumHeight += $(item).height();
+            }
+        });
+    };
+
+
+
+    LIST.accordionAnimation = function(initialDuration, timeLapse, easing) {
+
+        initialDuration = initialDuration || 500;
+        timeLapse = timeLapse || 50;
+        easing = easing || 'swing';
+
         dataRanking.forEach(function(d, i){
             var item = $(listItem +""+ d.originalIndex);
 
             if( d.overallScore > 0 ){
-                var shift = (d.lastIndex != -1) ? (d.lastIndex * 27.5) + 'px' : (i * 5)+'px' ;
-                var duration = 500 + 50 * i;
-                var movingClass = (d.positionsChanged > 0) ? "eexcess_list_moving_up" : ( (d.positionsChanged < 0) ? "eexcess_list_moving_down" : "eexcess_list_not_moving" );
+                var shift = i * 5;//parseFloat( 50 + i*10 );
+                var duration = initialDuration + timeLapse * i;
 
-                item.addClass(movingClass);
+                console.log('ACCORDION duration = ' + duration);
+
+                item.addClass("eexcess_list_moving_up");
                 item.animate({'top': shift}, {
                     'complete': function(){
-                        $(this).animate({"top": 0}, duration, "swing" );
+                        $(this).animate({"top": 0}, duration, easing);
                     }
                 });
             }
         });
 
-        setTimeout(function(){
-            $(allListItems)
-            .removeClass("eexcess_list_moving_up")
-            .removeClass("eexcess_list_moving_down")
-            .removeClass("eexcess_list_not_moving");
-        }, delay);
 
+        setTimeout(function() {
+            $(".eexcess_list").stop(true, true);
+            $(allListItems)
+            .removeClass("eexcess_list_moving_up", 1000, easing);
+        }, 4000);
     };
     
     
@@ -1190,12 +1259,25 @@
      */
     LIST.updateItemsBackground = function(){
         $(allListItems).removeClass('light_background').removeClass('dark_background');
-        $(allListItems).each(function(i, item){
-            if(i%2 == 0)
-                $(item).addClass('light_background');
-            else
-                $(item).addClass('dark_background');
-        });
+
+        if(dataRanking.length > 0) {
+            dataRanking.forEach(function(d, i) {
+                if(i%2 ==0)
+                    $(listItem + d.originalIndex).addClass('light_background');
+                else
+                    $(listItem + d.originalIndex).addClass('dark_background');
+
+            });
+        }
+        else {
+            $(allListItems).each(function(i, item){
+                if(i%2 == 0)
+                    $(item).addClass('light_background');
+                else
+                    $(item).addClass('dark_background');
+            });
+        }
+
     };
 
 
@@ -1203,7 +1285,7 @@
     /**
      * Description
      */
-    LIST.colorKeywordsInTitle = function(){
+    LIST.colorKeywordsInTitles = function(){
 
         $(allListItems).each(function(i, item){
             var pos = parseInt($(item).attr('pos'));
@@ -1297,15 +1379,15 @@
 			$(contentList).html(liHtml[j] + "" + oldHtml);
 			oldHtml = $(contentList).html();
 		}
+        LIST.bindEventHandlersToListItems();
 
 		// Delete ranking related icons
 		$(rankingContainerClass).empty();
-
-        LIST.colorKeywordsInTitle();
+        dataRanking = [];
+        LIST.colorKeywordsInTitles();
         LIST.highlightListItems();
         LIST.updateItemsBackground();
-        LIST.bindEventHandlersToItems();
-		dataRanking = [];
+        LIST.animateContentList(RANKING_STATUS.reset);
 	};
 
 
@@ -1331,9 +1413,9 @@
 
 	var VISPANEL = {};
 
-	VISPANEL.drawRanking = function(isRankingChanged){
+	VISPANEL.drawRanking = function(status){
         if(showRanking){
-            rankingVis.draw(dataRanking, data, weightColorScale, rankingCriteria, isRankingChanged);
+            rankingVis.draw(dataRanking, data, weightColorScale, rankingCriteria, status);
             $(visPanelCanvas).scrollTo('top');
         }
 	};
@@ -1513,12 +1595,15 @@
        // data.shuffle();
         query = dataset['query'];												// string representing the query that triggered the current recommendations
 		keywords = dataset['keywords'];
+
+        // only for evaluation
         sampleText = dataset['text'];
         task = dataset['task'];
 
         currentTask = dataset['task-number'];
         questions = dataset['questions'];
         currentQuestion = 0;
+        // only for evaluation
 
       //  dataRanking = [];
       //  PREPROCESSING.extendDataWithAncillaryDetails();
@@ -1526,6 +1611,7 @@
        // HEADER.showInfoInHeader();
       //  LIST.buildContentList();
         getStaticElementsReady();
+        // evaluation only
         initializeNextQuestion();
 
         if(dataset['tool-aided'] == 'yes'){

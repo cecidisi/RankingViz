@@ -640,10 +640,10 @@ function RankingVis(domRoot, iWidth, iHeight, visTemplate){
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     RANKING.Ext = {
-        'draw': function(ranking, recomData, colorScale, rankingCriteria, isRankingChanged){
-            if(!isRankingDrawn)
+        'draw': function(ranking, recomData, colorScale, rankingCriteria, status){
+            if(status = 'new')
                 RANKING.Render.draw(ranking, recomData, colorScale, rankingCriteria);
-            else
+            else if(status = 'update')
                 RANKING.Render.update(ranking, recomData, colorScale, rankingCriteria);
         },
         'reset': function(){

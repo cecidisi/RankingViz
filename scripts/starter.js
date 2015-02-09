@@ -118,7 +118,7 @@
             });
 
             tfidf.addDocument(document);    // stemming in natural
-            $.merge(this.allTokens, tokenizer.tokenize(document));
+            $.merge(this.allTokens, tokenizer.tokenize(document));  // all words without stemming
         });
 
         // Save keywords for each item
@@ -223,7 +223,7 @@
         if(stemIndex > -1)
             return k.variations[stemIndex].term;
 
-        // Pick shortest term
+        // Pick shortest variation
         var shortestTerm = k.variations[0].term;
         for(var i = 1; i < k.variations.length; i++){
             if(k.variations[i].term.length < shortestTerm.length)
