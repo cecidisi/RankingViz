@@ -1246,7 +1246,6 @@
 
 
         setTimeout(function() {
-            $(".eexcess_list").stop(true, true);
             $(allListItems)
             .removeClass("eexcess_list_moving_up", 1000, easing);
         }, 4000);
