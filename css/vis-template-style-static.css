@@ -734,8 +734,6 @@ VIS PANEL (center of screen)
     position: relative;
     height: 30px;
     vertical-align: top;
-    /*background: -webkit-linear-gradient(top, whitesmoke 75%, #DDD);*/
-   /* border: 1px solid #ddd;*/
     -webkit-transition: box-shadow 4s linear;
 }
 

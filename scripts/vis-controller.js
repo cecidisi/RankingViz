@@ -1099,19 +1099,26 @@
 	 *
 	 * */
     LIST.stopAnimation = function(duration, easing, delay){
+
+        $(".eexcess_list").stop(true, true);
+        LIST.removeShadowEffect();
+    };
+
+
+    LIST.removeShadowEffect = function(duration, easing, delay) {
+
         duration = duration || 0;
         easing = easing || 'swing',
         delay = delay || 0;
 
-        console.log('STOP duration = ' + duration + '; easing = ' + easing + '; delay = ' + delay);
+        console.log('stop animation delay = ' + delay);
 
-       // setTimeout(function() {
-            $(".eexcess_list").stop(true, true);
+    //    setTimeout(function() {
             $(allListItems)
             .removeClass("eexcess_list_moving_up", duration, easing)
             .removeClass("eexcess_list_moving_down", duration, easing)
             .removeClass("eexcess_list_not_moving", duration, easing);
-        //}, delay);
+    //    }, delay);
     };
 
 
@@ -1128,26 +1135,38 @@
             accordionEasing = 'swing',
             resortingDuration = 1500,
             resortingEasing = 'swing',
-            stopDuration = 1000,
-            stopEasing = 'easeInQuad',
-            stopDelay = 2000;
+            removeDuration = 1000,
+            removeEasing = 'easeInQuad',
+            removeDelay = 4000;
 
         switch(action) {
             case RANKING_STATUS.new:
                 LIST.sortContentList();
                 LIST.accordionAnimation(accordionInitialDuration, accordionTimeLapse, accordionEasing);
-                stopDelay = accordionInitialDuration + accordionTimeLapse * dataRanking.length;
-                //LIST.stopAnimation(stopDuration, stopEasing, stopDelay);
+                LIST.removeShadowEffect(removeDuration, removeEasing, removeDelay);
                 break;
 
             case RANKING_STATUS.update:
             case RANKING_STATUS.unchanged:
                 LIST.unbindEventHandlersToListItems();
                 LIST.resortListAnimation(resortingDuration, resortingEasing);
+
                 setTimeout(function() {
-                    //LIST.sortContentList();
-                    //LIST.stopAnimation(stopDuration, stopEasing, stopDelay);
-                }, resortingDuration + 100);
+                    console.log('ANIMATE INTERMMEDIATE');
+                    $(allListItems).each(function(i, item) {
+                        console.log($(item).attr('class'));
+                    });
+                }, 1100);
+
+                setTimeout(function() {
+                    console.log('ANIMATE AFTER');
+                    $(allListItems).each(function(i, item) {
+                        console.log($(item).attr('class'));
+                    });
+
+                    LIST.sortContentList();
+                    LIST.removeShadowEffect(removeDuration, removeEasing, removeDelay);
+                }, resortingDuration);
                 break;
 
             case RANKING_STATUS.reset:
@@ -1166,11 +1185,13 @@
 	 * */
     LIST.sortContentList = function(){
 
+        console.log('SORT CONTENT LIST');
         var liHtml = new Array();
 
         dataRanking.forEach(function(d, i){
             var current = $( listItem + "" + d.originalIndex );
             current.css('top', 0);
+            //console.log(current.attr('class'));
             var outer = $(current).outerHTML();
             liHtml.push(outer);
             current.remove();
@@ -1199,10 +1220,9 @@
         duration = duration || 1500;
         easing = easing || 'swing';
 
-        console.log('RESORTING  duration = ' + duration + '; easing = ' + easing);
         var acumHeight = 0;
-        var listHeight = $(contentList).innerHeight();
         var listTop = $(contentList).position().top;
+        console.log('ANIMATE RESORTED LIST');
 
         dataRanking.forEach(function(d, i){
 
@@ -1213,6 +1233,7 @@
                 var movingClass = (d.positionsChanged > 0) ? "eexcess_list_moving_up" : ((d.positionsChanged < 0) ? "eexcess_list_moving_down" : "");
 
                 item.addClass(movingClass);
+                console.log(item.attr('class'));
                 item.animate({"top": '+=' + shift+'px'}, duration, easing);
 
                 acumHeight += $(item).height();
@@ -1235,8 +1256,6 @@
                 var shift = i * 5;
                 var duration = initialDuration + timeLapse * i;
 
-                console.log('ACCORDION duration = ' + duration);
-
                 item.addClass("eexcess_list_moving_up");
                 item.animate({'top': shift}, {
                     'complete': function(){
@@ -1245,13 +1264,6 @@
                 });
             }
         });
-
-
-        setTimeout(function() {
-            $(allListItems)
-            .removeClass("eexcess_list_moving_up", 1000, easing);
-        }, 4000);
-
     };
     
     
