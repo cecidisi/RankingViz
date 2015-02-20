@@ -191,6 +191,7 @@
     EVTHANDLER.tagInBoxMouseOvered = function(){
         d3.select(this)
             .style( "background", function(k){ return getGradientString("#0066ff", [1, 0.8, 1]); })
+            .style('border', '1px solid #0066ff')
             .style("color", "#eee");
     };
 
@@ -200,6 +201,7 @@
     EVTHANDLER.tagInBoxMouseOuted = function(){
         d3.select(this)
             .style( "background", function(k){ return getGradientString(tagColorScale(k.colorCategory+1), [1, 0.7, 1]); })
+            .style('border', function(k){ return '1px solid ' + tagColorScale(k.colorCategory+1); })
             .style("color", "#111");
     };
 
@@ -527,11 +529,12 @@
 			.data(keywords)
 			.enter()
 			.append("div")
-				.attr( "class", "eexcess_keyword_tag" )
-				.attr( "id", function(k, i){ return "tag-"+i; })
+				.attr("class", "eexcess_keyword_tag" )
+				.attr("id", function(k, i){ return "tag-"+i; })
                 .attr('tag-pos', function(k, i){ return i; })
                 .attr('is-selected', false)
-                .style( "background", function(k){ return getGradientString(tagColorScale(k.colorCategory+1), [1, 0.7, 1]); })
+                .style("background", function(k){ return getGradientString(tagColorScale(k.colorCategory+1), [1, 0.7, 1]); })
+                .style('border', function(k){ return '1px solid ' + tagColorScale(k.colorCategory+1); })
 				.text( function(k){ return k.term; })
 				.on( "mouseover", EVTHANDLER.tagInBoxMouseOvered)
 				.on( "mouseout", EVTHANDLER.tagInBoxMouseOuted);
@@ -664,7 +667,7 @@
         // Restore style
         d3.select(tag)
             .style("background", function(k){ return getGradientString(tagColorScale(k.colorCategory+1), [1, 0.7, 1]) })
-            .style("border", "")
+            .style('border', function(k){ return '1px solid ' + tagColorScale(k.colorCategory+1); })
             .style("color", "#111")
             .on( "mouseover", EVTHANDLER.tagInBoxMouseOvered)
             .on( "mouseout", EVTHANDLER.tagInBoxMouseOuted);
