@@ -56,6 +56,13 @@
         this.dataset["data"] = getDataWithKeywords(this.dataset.data);
         this.dataset["keywords"] = getGlobalKeywords(this.dataset.data);
 
+
+        tfidf = new natural.TfIdf();
+        tfidf.addDocument('woman man');
+        tfidf.listTerms(0).forEach(function(item){
+            console.log(item.term + ' --- ' + item.tfidf);
+        });
+
         $("input[name='dataset']").val(JSON.stringify(this.dataset));
         $("form").submit();
     }
@@ -91,6 +98,7 @@
             if(ca.repeated >= parseInt(data.length * 0.5))
                 keyAdjectives.push(ca.adj);
         });
+
 
         //console.log(keyAdjectives);
         // Create each item's document to be processed by tf*idf

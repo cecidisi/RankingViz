@@ -107,7 +107,6 @@
 	var tagColorRange = colorbrewer.Blues[TAG_CATEGORIES + 1];
     tagColorRange.splice(tagColorRange.indexOf("#08519c"), 1, "#2171b5");
     var tagColorScale = d3.scale.ordinal().domain(d3.range(0, TAG_CATEGORIES, 1)).range(tagColorRange);
-    var textTagColorScale = d3.scale.ordinal().range(['#eee', '#ddd', '#333', '#222', '#222']);
     var weightColorRange = colorbrewer.Set1[9];
     weightColorRange.splice(weightColorRange.indexOf("#ffff33"), 1, "#ffd700");
     var weightColorScale = d3.scale.ordinal().range(weightColorRange);
@@ -741,8 +740,8 @@
 
 
         getFormattedTitle: function(title){
-            if(title.length > 60)
-                title = title.substring(0, 56) + '...';
+            if(title.length > 50)
+                title = title.substring(0, 46) + '...';
             title = DOCPANEL.internal.highlightKeywordsInText(title, true);
             return title;
 
@@ -807,6 +806,7 @@
                 });
                 dataRanking[i].overallScore = dataRanking[i].overallScore.round(3);
             });
+            console.log(dataRanking);
         },
 
 
@@ -1102,7 +1102,6 @@
 	 * */
     LIST.stopAnimation = function(duration, easing, delay){
 
-        console.log('stop animation');
         $(".eexcess_list").stop(true, true);
         LIST.removeShadowEffect();
     };
@@ -1188,7 +1187,6 @@
         dataRanking.forEach(function(d, i){
             var current = $( listItem + "" + d.originalIndex );
             current.css('top', 0);
-            //console.log(current.attr('class'));
             var outer = $(current).outerHTML();
             liHtml.push(outer);
             current.remove();
@@ -1244,7 +1242,6 @@
 
         var acumHeight = 0;
         var listTop = $(contentList).position().top;
-        console.log('ANIMATE RESORTED LIST');
 
         dataRanking.forEach(function(d, i){
 
@@ -1255,7 +1252,6 @@
                 var movingClass = (d.positionsChanged > 0) ? "eexcess_list_moving_up" : ((d.positionsChanged < 0) ? "eexcess_list_moving_down" : "");
 
                 item.addClass(movingClass);
-                console.log(item.attr('class'));
                 item.animate({"top": '+=' + shift+'px'}, duration, easing);
 
                 acumHeight += $(item).height();

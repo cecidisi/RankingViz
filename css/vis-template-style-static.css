@@ -732,7 +732,7 @@ VIS PANEL (center of screen)
 */
 .eexcess_list {
     position: relative;
-    height: 30px;
+    height: 26px;
     vertical-align: top;
     -webkit-transition: box-shadow 4s linear;
 }
@@ -798,15 +798,15 @@ VIS PANEL (center of screen)
 .eexcess_ranking_pos {
 	display: inline-block;
 	float: left;
-	width: 19px;
-	height: 19px;
+	width: 18px;
+	height: 18px;
 	margin: 4px 2px;
     /*background: -webkit-linear-gradient(top, rgba(255, 175, 0, 0.8) 75%, rgba(235, 155, 0, 0.8));*/
     background: -webkit-linear-gradient(top, rgba(100, 100, 100, 0.8) 75%, rgba(50, 50, 50, 0.8));
 	-webkit-border-radius: 1em;
 	box-shadow: 0.05em 0.15em 0.3em #888;
-	line-height: 1.9em;
-	font-size: 0.85em;
+	line-height: 1.8em;
+	font-size: 0.8em;
 	vertical-align: middle;
 	text-align: center;
 	color: #fff;
@@ -983,7 +983,7 @@ VIS PANEL (center of screen)
     line-height: 1.3em;
     text-align: left;
     /*color: #444;*/
-    color: white:
+    color: white;
 }
 /*
 #eexcess_document_viewer p strong {
