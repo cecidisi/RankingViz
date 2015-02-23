@@ -56,13 +56,6 @@
         this.dataset["data"] = getDataWithKeywords(this.dataset.data);
         this.dataset["keywords"] = getGlobalKeywords(this.dataset.data);
 
-
-        tfidf = new natural.TfIdf();
-        tfidf.addDocument('woman man');
-        tfidf.listTerms(0).forEach(function(item){
-            console.log(item.term + ' --- ' + item.tfidf);
-        });
-
         $("input[name='dataset']").val(JSON.stringify(this.dataset));
         $("form").submit();
     }
@@ -128,6 +121,13 @@
             tfidf.addDocument(document);    // stemming in natural
             $.merge(this.allTokens, tokenizer.tokenize(document));  // all words without stemming
         });
+
+
+//        tfidf.addDocument('woman man');
+//        tfidf.listTerms(data.length).forEach(function(item){
+//            console.log(item.term + ' --- ' + item.tfidf);
+//        });
+
 
         // Save keywords for each item
         // keywordsArray stores all keywords whose score is >= mean score for current item
