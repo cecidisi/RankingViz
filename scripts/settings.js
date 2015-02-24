@@ -12,7 +12,7 @@ function Settings(){
         var centerOffset = (iWidth/2) - ((width + margin.left + margin.right)/2);
         var verticalOffset = ((rootHeight - 500) / 2) < 30 ? 30 : ((rootHeight - 500) / 2);
 
-        return{ 'margin': margin, 'width': width, 'height': height, 'centerOffset': centerOffset, 'verticalOffset': verticalOffset };
+        return{'margin': margin, 'width': width, 'height': height, 'centerOffset': centerOffset, 'verticalOffset': verticalOffset};
 	};
 
 
@@ -22,9 +22,10 @@ function Settings(){
      * INITDATA
      *
      * **/
-	Settings.prototype.getRankingInitData = function( initData, ranking, rankingCriteria ){
+	Settings.prototype.getRankingInitData = function(rankingModel, rankingCriteria){
 
-        var data = fixMissingAndMalformattedValues( initData );
+        var data = fixMissingAndMalformattedValues(rankingModel.getOriginalData());
+        var ranking = rankingModel.getRanking();
         var attr = rankingCriteria == 'overall_score' ? 'overallScore' : 'maxScore';
         var a = [];
         var i = 0;
@@ -88,7 +89,7 @@ function Settings(){
             obj['facets']['provider'] = d.facets.provider;
             obj['facets']['year'] = parseDate(String(d.facets.year));
             obj['facets']['country'] = d.facets.country || "";
-            obj['facets']['keywords'] = d.facets.keywords || [];
+            obj['keywords'] = d.keywords || [];
 
             dataArray.push(obj);
         });
