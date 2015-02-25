@@ -78,14 +78,6 @@
 	var STR_SEARCHING = "Searching...";
     var STR_NO_INDEX = 'no_index';
 
-    var RANKING_STATUS = {
-        new : 'new',
-        reset : 'reset',
-        update : 'update',
-        unchanged : 'unchanged'
-    };
-
-
 	// variables from dataset
     var dataset,
         data,						// contains the data to be visualized
@@ -100,7 +92,8 @@
         showRanking;
 
 	// Ranking object
-	var  rankingVis;
+    var rankingModel;
+	var rankingVis;
 
 
 	// Color scales
@@ -148,7 +141,7 @@
 
     EVTHANDLER.rankButtonClicked = function(sender){
         rankingCriteria = $(sender).attr('sort-by');
-        if(dataRanking.length > 0)
+        if(rankingModel.getStatus() != RANKING_STATUS.no_ranking)
             LIST.rankRecommendations();
     };
 
@@ -258,7 +251,7 @@
 
     EVTHANDLER.faviconClicked = function(d, i){
         d3.event.stopPropagation();
-        var index = (typeof dataRanking !== 'undefined' && dataRanking.length > 0) ? dataRanking[i].originalIndex :  i;
+        var index = rankingModel.getActualIndex(i);
         HEADER.addItemToListOfSelected(index);
         LIST.switchFaviconOnOrOff(index);
     };
@@ -762,179 +755,6 @@
                 return indices[0];
         },
 
-        getActualIndex : function(index){
-            if(dataRanking.length == 0)
-                return index;
-            return dataRanking[index].originalIndex;
-        },
-
-
-        /**
-         *	Creates the ranking items with default values and calculates the weighted score for each selected keyword (tags in tag box)
-         *
-         * */
-        updateRanking: function(){
-
-            dataRanking = [];
-            data.forEach(function(d, i) {
-                dataRanking.push({
-                    'originalIndex': i,
-                    'rankingPos': 0,
-                    'overallScore': 0,
-                    'maxScore' : 0,
-                    'positionsChanged': 1000,
-                    'weightedKeywords': new Array()
-                });
-
-                var max = 0;
-                var keywordsInBox = TAGCLOUD.getWeightedKeywordsInBox();
-                keywordsInBox.forEach(function(wk, j) {
-                    var index = d.keywords.getIndexOf(wk.stem, 'term');
-
-                    if(index > -1){ // item contains keyword in box
-                        var score = (parseFloat(d.keywords[index].score) *  parseFloat(wk.weight)).round(3);
-                        if(score > max)
-                            max = score;
-
-                        dataRanking[i].overallScore = parseFloat(dataRanking[i].overallScore) + score;
-                        dataRanking[i].maxScore = max;
-                        dataRanking[i].weightedKeywords.push({ 'term': wk.stem, 'weightedScore': score });
-                    }
-                    else{   // item doesn't contain keyword in box => maxScore and overallScore are set to 0
-                        dataRanking[i].weightedKeywords.push({ 'term': wk.stem, 'weightedScore': 0, 'maxScore': 0 });
-                    }
-                });
-                dataRanking[i].overallScore = dataRanking[i].overallScore.round(3);
-            });
-            console.log(dataRanking);
-        },
-
-
-        /**
-         *	Sorts the dataRanking array by overall score, using the quicksort algorithm
-         *
-         * */
-        sortRanking: function(array){
-
-            var attr = (rankingCriteria == 'overall_score') ? 'overallScore' : 'maxScore';
-            quicksort(array);
-            assignRankingPosition(array);
-
-            function quicksort(array){
-                qsort(array, 0, array.length);
-            }
-
-            function qsort(array, begin, end) {
-                if(end-1 > begin) {
-                    var pivot = begin +  Math.floor((end - begin) / 2); //begin + Math.floor(Math.random() * (end - begin));
-                    pivot = partition(array, begin, end, pivot);
-                    qsort(array, begin, pivot);
-                    qsort(array, pivot+1, end);
-                }
-            }
-
-            function partition(array, begin, end, pivot) {
-                var piv = array[pivot];
-                array.swap(pivot, end-1);
-                var store = begin;
-                var ix;
-                for(ix = begin; ix < end-1; ++ix) {
-                    //if(array[ix].overallScore >= piv.overallScore) {
-                    if(array[ix][attr] >= piv[attr]) {
-                        array.swap(store, ix);
-                        ++store;
-                    }
-                }
-                array.swap(end-1, store);
-                return store;
-            }
-
-            function assignRankingPosition(array){
-                var currentScore = Number.MAX_VALUE;
-                var currentPos = 1;
-                var itemsInCurrentPos = 0;
-                array.forEach(function(d, i){
-                    if(d[attr] > 0){
-                        if( d[attr] < currentScore ){
-                            currentPos = currentPos + itemsInCurrentPos;
-                            d.rankingPos = currentPos;
-                            currentScore = d[attr];
-                            itemsInCurrentPos = 1;
-                        }
-                        else{
-                            d.rankingPos = currentPos;
-                            itemsInCurrentPos++;
-                        }
-                    }
-                    else{
-                        d.rankingPos = 0;
-                    }
-                });
-            }
-        },
-
-
-        /**
-         *	Calculates the number of positions changed by each recommendations, basing on the array "previousRanking"
-         *	If there doesn't exist a previous ranking or a recommendation wasn't previously ranked, then the value 1000 is assigned
-         *
-         * */
-        extendRankingWithPositionsChanged: function(previousRanking){
-
-            dataRanking.forEach(function(d, i){
-
-                if(typeof previousRanking === 'undefined' || previousRanking.length == 0){
-                    d['positionsChanged'] = 1000;
-                    d['lastIndex'] = d.originalIndex;
-                }
-                else{
-                    var originalIndex = d['originalIndex'];
-                    var currentRankingPos = d['rankingPos'];
-                    var j = 0;
-                    while( j < previousRanking.length  &&  previousRanking[j].originalIndex !== d['originalIndex'] )
-                        j++;
-
-                    d['lastIndex'] = j;
-                    if( previousRanking[j].rankingPos === 0 )
-                        d['positionsChanged'] = 1000;
-                    else
-                        d['positionsChanged'] = previousRanking[j]['rankingPos'] - d['rankingPos'];
-                }
-            });
-        },
-
-
-        /**
-         *	Calculates the number of positions changed by each recommendations, basing on the array "previousRanking"
-         *	If there doesn't exist a previous ranking or a recommendation wasn't previously ranked, then the value 1000 is assigned
-         *
-         * */
-        getRankingStatus: function(previousRanking) {
-
-            if( typeof previousRanking === 'undefined' || previousRanking === 'undefined' || previousRanking.length === 0) {
-                return RANKING_STATUS.new;
-            }
-
-            if(dataRanking.length != previousRanking.length)
-                return RANKING_STATUS.update;
-
-            for(var i = 0; i < dataRanking.length; i++){
-                var j = dataRanking.getIndexOf(dataRanking[i].originalIndex, 'originalIndex');
-                if(j == -1 || dataRanking[i]['rankingPos'] !== previousRanking[j]['rankingPos'])
-                    return RANKING_STATUS.update;
-            }
-            return RANKING_STATUS.unchanged;
-        },
-
-
-
-        getNumberOfRankedItems: function() {
-
-            var i = 0;
-            while(i<dataRanking.length && dataRanking[i].rankingPos>0)
-                i++;
-            return i;
-        }
 
 	};
 
@@ -1026,18 +846,15 @@
 	 * */
 	LIST.rankRecommendations = function() {
 
-        var previousRanking = dataRanking || [];
-		// Recalculates scores and positions, sorts the dataRanking array and extends it with #positionsChanged
-		this.internal.updateRanking();
-		this.internal.sortRanking(dataRanking);
-		this.internal.extendRankingWithPositionsChanged(previousRanking);
+        rankingModel.update(TAGCLOUD.getWeightedKeywordsInBox(), rankingCriteria);
         this.highlightListItems();
-        var status = LIST.internal.getRankingStatus(previousRanking);
-
+        var status = rankingModel.getStatus();
+        console.log(status);
+//
 		// Synchronizes rendering methods
 		if(status == RANKING_STATUS.new || status == RANKING_STATUS.update){
 			this.colorKeywordsInTitles();
-			this.addRankingPositions(previousRanking);
+			this.addRankingPositions();
 			this.hideUnrankedItems();
             this.updateItemsBackground();
 		}
@@ -1052,11 +869,11 @@
 	 * Appends a yellow circle indicating the ranking position and a colored legend stating #positionsChanged
 	 *
 	 * */
-	LIST.addRankingPositions = function(previousRanking) {
+	LIST.addRankingPositions = function() {
 
 		$(rankingContainerClass).empty();
 
-		dataRanking.forEach(function(d, i){
+		rankingModel.getRanking().forEach(function(d, i){
 			if( d.overallScore > 0 ){
 				var color = d.positionsChanged > 0 ? "rgba(0, 200, 0, 0.8)" : ( d.positionsChanged < 0 ? "rgba(250, 0, 0, 0.8)" : "rgba(128, 128, 128, 0.8)" );
 
@@ -1086,7 +903,7 @@
 	 *
 	 * */
 	LIST.hideUnrankedItems = function(){
-        dataRanking.forEach(function(d){
+        rankingModel.getRanking().forEach(function(d){
             if(d.rankingPos == 0)
                 $(listItem + '' + d.originalIndex).css('display', 'none');
             else
@@ -1101,24 +918,16 @@
 	 *
 	 * */
     LIST.stopAnimation = function(duration, easing, delay){
-
         $(".eexcess_list").stop(true, true);
         LIST.removeShadowEffect();
     };
 
 
-    LIST.removeShadowEffect = function(duration, easing, delay) {
-
-        duration = duration || 0;
-        easing = easing || 'swing',
-        delay = delay || 0;
-
-    //    setTimeout(function() {
-            $(allListItems)
-            .removeClass("eexcess_list_moving_up", duration, easing)
-            .removeClass("eexcess_list_moving_down", duration, easing)
-            .removeClass("eexcess_list_not_moving", duration, easing);
-    //    }, delay);
+    LIST.removeShadowEffect = function() {
+        $(allListItems)
+        .removeClass("eexcess_list_moving_up")
+        .removeClass("eexcess_list_moving_down")
+        .removeClass("eexcess_list_not_moving");
     };
 
 
@@ -1139,8 +948,6 @@
             resortingEasing = 'swing',
             unchangedDuration = 1000,
             unchangedEasing = 'linear',
-            removeDuration = 2000,
-            removeEasing = 'easeInQuad',
             removeDelay = 3000;
 
         switch(action) {
@@ -1167,7 +974,7 @@
         }
 
         setTimeout(function() {
-            LIST.removeShadowEffect(removeDuration, removeEasing);
+            LIST.removeShadowEffect();
         }, removeDelay);
 
 
@@ -1184,7 +991,7 @@
 
         var liHtml = new Array();
 
-        dataRanking.forEach(function(d, i){
+        rankingModel.getRanking().forEach(function(d, i){
             var current = $( listItem + "" + d.originalIndex );
             current.css('top', 0);
             var outer = $(current).outerHTML();
@@ -1213,7 +1020,7 @@
         timeLapse = timeLapse || 50;
         easing = easing || 'swing';
 
-        dataRanking.forEach(function(d, i){
+        rankingModel.getRanking().forEach(function(d, i){
             var item = $(listItem +""+ d.originalIndex);
 
             if( d.overallScore > 0 ){
@@ -1243,7 +1050,7 @@
         var acumHeight = 0;
         var listTop = $(contentList).position().top;
 
-        dataRanking.forEach(function(d, i){
+        rankingModel.getRanking().forEach(function(d, i){
 
             if(d.rankingPos > 0) {
                 var item = $(listItem +""+ d.originalIndex);
@@ -1288,8 +1095,9 @@
     LIST.updateItemsBackground = function(){
         $(allListItems).removeClass('light_background').removeClass('dark_background');
 
-        if(dataRanking.length > 0) {
-            dataRanking.forEach(function(d, i) {
+        console.log(rankingModel.getStatus());
+        if(rankingModel.getStatus() != RANKING_STATUS.no_ranking) {
+            rankingModel.getRanking().forEach(function(d, i) {
                 if(i%2 ==0)
                     $(listItem + d.originalIndex).addClass('light_background');
                 else
@@ -1335,7 +1143,7 @@
 		// if clickedListIndex is undefined then the item was selected, otherwise it was deselected
 		if(i !== LIST.selectededListIndex){
             LIST.selectededListIndex = i;
-            var actualIndex = LIST.internal.getActualIndex(i);
+            var actualIndex = rankingModel.getActualIndex(i);
             LIST.highlightListItems(actualIndex);
             DOCPANEL.showDocument(actualIndex);
 		}
@@ -1369,7 +1177,7 @@
 
 
     LIST.hoverListItem = function(index, isExternalCall) {
-        $(listItem + '' + LIST.internal.getActualIndex(index)).addClass("eexcess_list_hover");
+        $(listItem + '' + rankingModel.getActualIndex(index)).addClass("eexcess_list_hover");
         isExternalCall = isExternalCall || false;
         if(!isExternalCall)
             VISPANEL.hoverItem(index);
@@ -1378,7 +1186,7 @@
 
 
     LIST.unhoverListItem = function(index, isExternalCall){
-        $(listItem + '' + LIST.internal.getActualIndex(index)).removeClass("eexcess_list_hover");
+        $(listItem + '' + rankingModel.getActualIndex(index)).removeClass("eexcess_list_hover");
         isExternalCall = isExternalCall || false;
         if(!isExternalCall)
             VISPANEL.unhoverItem(index);
@@ -1392,8 +1200,10 @@
 	 * */
 	LIST.resetContentList = function(){
 
+        rankingModel.reset();
+
 		var liHtml = new Array();
-		data.forEach(function(d, i){
+		rankingModel.getOriginalData().forEach(function(d, i){
 			var item = $( listItem + "" + i );
 			item.css("top", "0");
             item.css("display", "");
@@ -1410,7 +1220,7 @@
 
 		// Delete ranking related icons
 		$(rankingContainerClass).empty();
-        dataRanking = [];
+
         LIST.colorKeywordsInTitles();
         LIST.highlightListItems();
         LIST.updateItemsBackground();
@@ -1442,7 +1252,7 @@
 
 	VISPANEL.drawRanking = function(status){
         if(showRanking){
-            rankingVis.draw(dataRanking, data, weightColorScale, rankingCriteria, status);
+            rankingVis.draw(rankingModel, weightColorScale, rankingCriteria, status);
             $(visPanelCanvas).scrollTo('top');
         }
 	};
@@ -1580,7 +1390,6 @@
 
     function initializeNextQuestion(){
 
-        data.shuffle();
         data.forEach(function(d){
             d['isSelected'] = false;
         });
@@ -1618,23 +1427,22 @@
         dataset = JSON.parse($("#dataset").text());
         console.log(dataset);
 
-        data = dataset['data'];													// contains the data to be visualized
-       // data.shuffle();
-        query = dataset['query'];												// string representing the query that triggered the current recommendations
+        data = dataset['data'];					// contains the data to be visualized
+        query = dataset['query'];				// string representing the query that triggered the current recommendations
 		keywords = dataset['keywords'];
+        PREPROCESSING.extendKeywordsWithColorCategory();
 
         // only for evaluation
         sampleText = dataset['text'];
         task = dataset['task'];
-
         currentTask = dataset['task-number'];
         questions = dataset['questions'];
         currentQuestion = 0;
         // only for evaluation
 
-      //  dataRanking = [];
-      //  PREPROCESSING.extendDataWithAncillaryDetails();
-		PREPROCESSING.extendKeywordsWithColorCategory();
+        rankingModel = new RankingModel(data);
+        rankingVis = new RankingVis(root, width, height, self);
+
        // HEADER.showInfoInHeader();
       //  LIST.buildContentList();
         getStaticElementsReady();
@@ -1642,7 +1450,6 @@
         initializeNextQuestion();
 
         if(dataset['tool-aided'] == 'yes'){
-            rankingVis = new RankingVis(root, width, height, self);
             // Initialize template's elements
           //  TAGCLOUD.clearTagbox();
           //  TAGCLOUD.buildTagCloud();
@@ -1662,8 +1469,6 @@
             $('#eexcess_topic_text_section').css('boxShadow', '.5em .5em 1em #aaa, -.5em .5em 1em #aaa, .5em .5em 1em #aaa');
             showRanking = false;
         }
-
-     //   startTime = $.now();
     })();
 
 
