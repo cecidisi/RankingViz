@@ -844,12 +844,11 @@
 	 * */
 	LIST.rankRecommendations = function() {
 
-        console.log('LIST.rankRecomendations()');
-        console.log(rankingModel.update(TAGCLOUD.getWeightedKeywordsInBox(), rankingCriteria));
+        rankingModel.update(TAGCLOUD.getWeightedKeywordsInBox(), rankingCriteria);
         this.highlightListItems();
         var status = rankingModel.getStatus();
         console.log(status);
-
+//
 		// Synchronizes rendering methods
 		if(status == RANKING_STATUS.new || status == RANKING_STATUS.update){
 			this.colorKeywordsInTitles();
@@ -922,18 +921,11 @@
     };
 
 
-    LIST.removeShadowEffect = function(duration, easing, delay) {
-
-        duration = duration || 0;
-        easing = easing || 'swing',
-        delay = delay || 0;
-
-    //    setTimeout(function() {
-            $(allListItems)
-            .removeClass("eexcess_list_moving_up", duration, easing)
-            .removeClass("eexcess_list_moving_down", duration, easing)
-            .removeClass("eexcess_list_not_moving", duration, easing);
-    //    }, delay);
+    LIST.removeShadowEffect = function() {
+        $(allListItems)
+        .removeClass("eexcess_list_moving_up")
+        .removeClass("eexcess_list_moving_down")
+        .removeClass("eexcess_list_not_moving");
     };
 
 
@@ -954,8 +946,6 @@
             resortingEasing = 'swing',
             unchangedDuration = 1000,
             unchangedEasing = 'linear',
-            removeDuration = 2000,
-            removeEasing = 'easeInQuad',
             removeDelay = 3000;
 
         switch(action) {
@@ -982,7 +972,7 @@
         }
 
         setTimeout(function() {
-            LIST.removeShadowEffect(removeDuration, removeEasing);
+            LIST.removeShadowEffect();
         }, removeDelay);
 
 
@@ -1057,7 +1047,6 @@
 
         var acumHeight = 0;
         var listTop = $(contentList).position().top;
-        console.log('ANIMATE RESORTED LIST');
 
         rankingModel.getRanking().forEach(function(d, i){
 
@@ -1068,7 +1057,6 @@
                 var movingClass = (d.positionsChanged > 0) ? "eexcess_list_moving_up" : ((d.positionsChanged < 0) ? "eexcess_list_moving_down" : "");
 
                 item.addClass(movingClass);
-                console.log(item.attr('class'));
                 item.animate({"top": '+=' + shift+'px'}, duration, easing);
 
                 acumHeight += $(item).height();
@@ -1105,6 +1093,7 @@
     LIST.updateItemsBackground = function(){
         $(allListItems).removeClass('light_background').removeClass('dark_background');
 
+        console.log(rankingModel.getStatus());
         if(rankingModel.getStatus() != RANKING_STATUS.no_ranking) {
             rankingModel.getRanking().forEach(function(d, i) {
                 if(i%2 ==0)

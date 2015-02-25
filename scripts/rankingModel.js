@@ -1,60 +1,4 @@
 
-// Constructor
-function RankingData() {
-
-    var rankingData = Object.create(Array.prototype);
-    rankingData = (Array.apply(rankingData, arguments) || rankingData);
-    RankingData.injectArrayMethods(rankingData);
-    return rankingData;
-}
-
-
-// Define the static methods.
-RankingArray.injectArrayMethods = function(rankingData){
-
-    // Loop over all the prototype methods and add them
-    // to the new collection.
-    for (var method in RankingData.prototype){
-        // Make sure this is a local method.
-        if (RankingData.prototype.hasOwnProperty( method )){
-            // Add the method to the collection.
-            rankingData[ method ] = RankingData.prototype[ method ];
-        }
-    }
-    // Return the updated collection.
-    return rankingData;
-};
-
-
-
-RankingArray.prototype = {
-
-    clear: function() {
-        this.prototype = new Array();
-    },
-
-    length: function() {
-        return this.prototype.length;
-    },
-
-
-
-    swap: function(index1, index2){
-        var tmp = this[index1];
-        this[index1] = this[index2];
-        this[index2] = tmp;
-    }
-
-};
-
-
-//RankingArray.prototype = new Array();
-
-
-
-
-
-
 function RankingModel(data) {
 
     this.ranking = new RankingArray();
@@ -64,17 +8,15 @@ function RankingModel(data) {
 
     var self = this;
 
-
     /**
      *	Creates the ranking items with default values and calculates the weighted score for each selected keyword (tags in tag box)
      *
      * */
     var computeScores =  function(keywords){
 
-        console.log(self.ranking);
-        self.previousRanking = this.ranking;
+//        self.previousRanking = self.ranking.slice();
+        self.previousRanking.clone(self.ranking);
         self.ranking.clear();
-
         self.data.forEach(function(d, i) {
             self.ranking.push({
                 'originalIndex': i,
@@ -181,7 +123,7 @@ function RankingModel(data) {
 
         self.ranking.forEach(function(d, i){
 
-            if(self.previousRanking.length() == 0){
+            if(self.previousRanking.length == 0){
                 d['positionsChanged'] = 1000;
                 d['lastIndex'] = d.originalIndex;
             }
@@ -189,11 +131,11 @@ function RankingModel(data) {
                 var originalIndex = d['originalIndex'];
                 var currentRankingPos = d['rankingPos'];
                 var j = 0;
-                while( j < previousRanking.length()  &&  previousRanking[j].originalIndex !== d['originalIndex'] )
+                while( j < self.previousRanking.length  &&  self.previousRanking[j].originalIndex !== d['originalIndex'] )
                     j++;
 
                 d['lastIndex'] = j;
-                if( previousRanking[j].rankingPos === 0 )
+                if(self.previousRanking[j].rankingPos === 0 )
                     d['positionsChanged'] = 1000;
                 else
                     d['positionsChanged'] = self.previousRanking[j]['rankingPos'] - d['rankingPos'];
@@ -204,23 +146,23 @@ function RankingModel(data) {
 
     var setStatus =  function() {
 
-        if(self.ranking.length() == 0) {
+        if(self.ranking.length == 0) {
             self.status =  RANKING_STATUS.no_ranking;
             return;
         }
 
-        if(self.previousRanking.length() == 0) {
+        if(self.previousRanking.length == 0) {
             self.status = RANKING_STATUS.new;
             return;
         }
 
-        if(self.ranking.length() != self.previousRanking.length()) {
+        if(self.ranking.length != self.previousRanking.length) {
             self.status = RANKING_STATUS.update;
             return;
         }
 
 
-        for(var i = 0; i < self.ranking.length(); i++){
+        for(var i = 0; i < self.ranking.length; i++){
             var j = self.ranking.getIndexOf(self.ranking[i].originalIndex, 'originalIndex');
             if(j == -1 || self.ranking[i]['rankingPos'] !== self.previousRanking[j]['rankingPos']) {
                 self.status = RANKING_STATUS.update;
@@ -256,7 +198,7 @@ function RankingModel(data) {
     RankingModel.prototype.reset = function() {
         self.previousRanking.clear();
         self.ranking.clear();
-
+        setStatus();
     };
 
 
@@ -274,7 +216,7 @@ function RankingModel(data) {
 
 
     RankingModel.prototype.getActualIndex = function(index){
-        if(self.ranking.length() == 0)
+        if(self.ranking.length == 0)
             return index;
         return self.ranking[index].originalIndex;
     };

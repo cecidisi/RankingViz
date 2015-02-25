@@ -27,7 +27,8 @@ and open the template in the editor.
         <script type="text/javascript" src="libs/pos/pos.js" charset="utf-8"></script>
         <link rel="stylesheet" type="text/css" href="libs/ui/jquery-ui-1.10.4.custom.min.css">
 
-        <script type="application/javascript" src="scripts/globals.js" charset="utf-8"></script>
+        <script type="text/javascript" src="scripts/globals.js" charset="utf-8"></script>
+        <script type="text/javascript" src="scripts/rankingArray.js" charset="utf-8"></script>
         <script type="text/javascript" src="scripts/rankingModel.js" charset="utf-8"></script>
         <script type="text/javascript" src="scripts/rankingVis.js" charset="utf-8"></script>
         <script type="text/javascript" src="scripts/settings.js" charset="utf-8"></script>
