@@ -216,7 +216,7 @@ function RankingModel(data) {
 
 
     RankingModel.prototype.getActualIndex = function(index){
-        if(self.ranking.length == 0)
+        if(self.status == RANKING_STATUS.no_ranking)
             return index;
         return self.ranking[index].originalIndex;
     };
