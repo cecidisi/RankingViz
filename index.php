@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width">
 
         <script type="text/javascript" src="libs/jquery-1.10.2.js" charset="utf-8"></script>
-        <script type="text/javascript" src="libs/natural.js" charset="utf-8"></script>
+        <script type="text/javascript" src="libs/natural-adapted.js" charset="utf-8"></script>
         <script type="text/javascript" src="libs/d3.v3.js" charset="utf-8"></script>
         <script type="text/javascript" src="libs/pos/lexer.js" charset="utf-8"></script>
         <script type="text/javascript" src="libs/pos/lexicon.js" charset="utf-8"></script>

@@ -4999,8 +4999,11 @@ THE SOFTWARE.
 var _ = require("underscore")._,
     Tokenizer = require('../tokenizers/regexp_tokenizer').WordTokenizer,
     tokenizer = new Tokenizer(),
+    Stemmer = require('../stemmers/porter_stemmer'),
     stopwords = require('../util/stopwords').words,
     fs = require('fs');
+    Stemmer.attach();
+    var stemmedStopwords = stopwords.map(function(word) { console.log('all'.stem()); return word.stem(); });
 
 function buildDocument(text, key) {
     var stopOut;

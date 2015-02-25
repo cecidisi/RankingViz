@@ -18,7 +18,7 @@ and open the template in the editor.
         <script type="text/javascript" src="libs/jquery-1.10.2.js" charset="utf-8"></script>
         <script type="text/javascript" src="libs/jquery-ui.js" charset="utf-8"></script>
         <script type="text/javascript" src="libs/d3.v3.js" charset="utf-8"></script>
-        <script type="text/javascript" src="libs/natural.js" charset="utf-8"></script>
+        <script type="text/javascript" src="libs/natural-adapted.js" charset="utf-8"></script>
         <script type="text/javascript" src="libs/colorbrewer.js" charset="utf-8"></script>
         <script type="text/javascript" src="libs/dim-background.js" charset="utf-8"></script>
         <script type="text/javascript" src="libs/pos/lexer.js" charset="utf-8"></script>
