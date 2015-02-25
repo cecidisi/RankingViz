@@ -16,7 +16,6 @@ function RankingVis(domRoot, iWidth, iHeight, visTemplate){
 
 	var STR_NO_RANKING = "No Ranking Yet!";
 
-
     RANKING.Settings = new Settings();
 
 
@@ -259,9 +258,9 @@ function RankingVis(domRoot, iWidth, iHeight, visTemplate){
 	*	Draw ranking at first instance
 	*
 	* ***************************************************************************************************************/
-	RANKING.Render.draw = function( ranking, recomData, colorScale, rankingCriteria ){
+	RANKING.Render.draw = function(rankingModel, colorScale, rankingCriteria){
 
-		if(ranking.length == 0)
+        if(rankingModel.getStatus() == RANKING_STATUS.no_ranking)
 			return this.reset();
         $(root).empty();
 
@@ -271,7 +270,7 @@ function RankingVis(domRoot, iWidth, iHeight, visTemplate){
         /******************************************************
 		*	Define input variables
 		******************************************************/
-		RANKING.InitData = RANKING.Settings.getRankingInitData(recomData, ranking, rankingCriteria);
+		RANKING.InitData = RANKING.Settings.getRankingInitData(rankingModel, rankingCriteria);
 		data = RANKING.InitData.data;
 
         /******************************************************
@@ -640,11 +639,11 @@ function RankingVis(domRoot, iWidth, iHeight, visTemplate){
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     RANKING.Ext = {
-        'draw': function(ranking, recomData, colorScale, rankingCriteria, status){
+        'draw': function(rankingModel, colorScale, rankingCriteria, status){
             if(status = 'new')
-                RANKING.Render.draw(ranking, recomData, colorScale, rankingCriteria);
+                RANKING.Render.draw(rankingModel, colorScale, rankingCriteria);
             else if(status = 'update')
-                RANKING.Render.update(ranking, recomData, colorScale, rankingCriteria);
+                RANKING.Render.update(rankingModel, colorScale, rankingCriteria);
         },
         'reset': function(){
             RANKING.Render.reset();

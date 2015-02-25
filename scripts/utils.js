@@ -60,19 +60,15 @@ Array.prototype.getIndexOf = function(target, field) {
 };
 
 
-Array.prototype.swap = function(a, b){
-	var tmp = this[a];
-	this[a] = this[b];
-	this[b] = tmp;
-};
+
 
 // Fisher–Yates shuffle
-Array.prototype.shuffle = function() {
-    for (var i = this.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        this.swap(i, j);
-    }
-};
+//Array.prototype.shuffle = function() {
+//    for (var i = this.length - 1; i > 0; i--) {
+//        var j = Math.floor(Math.random() * (i + 1));
+//        this.swap(i, j);
+//    }
+//};
 
 
 
