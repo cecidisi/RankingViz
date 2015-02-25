@@ -1,12 +1,12 @@
 (function Starter() {
     var self = this;
-
+    var dsm;
     this.dataset = {};
     this.datasetId = "NO_DATASET";
+
+    /*      KE      */
     this.allTokens = [];
     this.keywordsArray = [];
-
-    var dsm;
 
     var stemmer = natural.PorterStemmer; //natural.LancasterStemmer;
     var tokenizer = new natural.WordTokenizer;
@@ -19,7 +19,7 @@
     var pos = new Pos();
     var lexer = new pos.Lexer();
     var tagger = new pos.Tagger();
-
+    /*      KE      */
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /** Event Handlers  **/
