@@ -5003,7 +5003,7 @@ var _ = require("underscore")._,
     stopwords = require('../util/stopwords').words,
     fs = require('fs');
     Stemmer.attach();
-    var stemmedStopwords = stopwords.map(function(word) { console.log('all'.stem()); return word.stem(); });
+    var stemmedStopwords = stopwords.map(function(word) { return word.stem(); });
 
 function buildDocument(text, key) {
     var stopOut;
@@ -5021,8 +5021,8 @@ function buildDocument(text, key) {
     }
 
     return text.reduce(function(document, term) {
-        if(!stopOut || (stopwords.indexOf(term) < 0 && stopwords.indexOf(term.stem()) < 0 )){
-            document[term.stem()] = (document[term.stem()] ? document[term.stem()] + 1 : 1);
+        if(!stopOut || (stemmedStopwords.indexOf(term) < 0)){
+            document[term] = (document[term] ? document[term] + 1 : 1);
         }
 
         return document;

@@ -1,12 +1,12 @@
 
-function RankingVis(domRoot, iWidth, iHeight, visTemplate){
+function RankingVis(domRoot, visControllerInterface){
 
 	var RANKING = {};
 
-	var Vis = visTemplate;
+	var Vis = visControllerInterface;
 	var self = this;
 	var root = domRoot;
-	var width, height, margin, centerOffset, verticalOffset;
+	var width, height, margin;
 	var x, y, color, xAxis, yAxis, x0, y0;
 	var svg;
 	var data;
@@ -44,13 +44,13 @@ function RankingVis(domRoot, iWidth, iHeight, visTemplate){
 	RANKING.Internal = {};
 
 
-    RANKING.Internal.topLimit = function( array, rankingCriteria ){
+/*    RANKING.Internal.topLimit = function( array, rankingCriteria ){
         var attr = (rankingCriteria == 'overall_score') ? 'overallScore' : 'maxScore';
 
         //var maxScore = d3.max(array, function(d) { return d[attr]; }).toFixed(2);
         var maxScore = array[0][attr];
         return maxScore;
-    };
+    };*/
 
 
     RANKING.Internal.getDistributionData = function( term ){
@@ -258,7 +258,7 @@ function RankingVis(domRoot, iWidth, iHeight, visTemplate){
 	*	Draw ranking at first instance
 	*
 	* ***************************************************************************************************************/
-	RANKING.Render.draw = function(rankingModel, colorScale, rankingCriteria){
+	RANKING.Render.draw = function(rankingModel, containerHeight, colorScale){
 
         if(rankingModel.getStatus() == RANKING_STATUS.no_ranking)
 			return this.reset();
@@ -270,25 +270,25 @@ function RankingVis(domRoot, iWidth, iHeight, visTemplate){
         /******************************************************
 		*	Define input variables
 		******************************************************/
-		RANKING.InitData = RANKING.Settings.getRankingInitData(rankingModel, rankingCriteria);
+		RANKING.InitData = RANKING.Settings.getRankingInitData(rankingModel);
 		data = RANKING.InitData.data;
 
         /******************************************************
 		*	Define canvas dimensions
 		******************************************************/
-		RANKING.Dimensions = RANKING.Settings.getRankingDimensions(domRoot, iWidth);
+		RANKING.Dimensions = RANKING.Settings.getRankingDimensions(domRoot, containerHeight);
 		width          = RANKING.Dimensions.width;
         height         = RANKING.Dimensions.height;
 		margin         = RANKING.Dimensions.margin;
-		centerOffset   = RANKING.Dimensions.centerOffset;
-		verticalOffset = RANKING.Dimensions.verticalOffset;
 
 		/******************************************************
 		*	Define scales
 		******************************************************/
 
+        console.log(rankingModel.getMode());
 		x = d3.scale.linear()
-			.domain( [0, RANKING.Internal.topLimit(data, rankingCriteria)] )
+			//.domain( [0, RANKING.Internal.topLimit(data, rankingCriteria)] )
+            .domain( [0, data[0][rankingModel.getMode()]] )
 			.rangeRound( [0, width] );
 
 		y = d3.scale.ordinal()
@@ -336,7 +336,7 @@ function RankingVis(domRoot, iWidth, iHeight, visTemplate){
 		  		.attr("x", width)
 		  		.attr("y", -6)
 		  		.style("text-anchor", "end")
-		  		.text(function(){ if(rankingCriteria == 'overall_score') return "Overall Score"; return 'Max. Score'; });
+		  		.text(function(){ if(rankingModel.getMode() === RANKING_MODE.overall_score) return "Overall Score"; return 'Max. Score'; });
 
         svg.selectAll('.x.axis text')
             .text(function(text){
@@ -368,9 +368,9 @@ function RankingVis(domRoot, iWidth, iHeight, visTemplate){
 	*	Redraw updated ranking and animate with transitions to depict changes
 	*
 	* ***************************************************************************************************************/
-	RANKING.Render.update = function( ranking, recomData, colorScale, rankingCriteria ){
+    RANKING.Render.update = function(rankingModel, containerHeight, colorScale){
 
-		if(ranking.length == 0){
+		if(rankingModel.getStatus() === RANKING_STATUS.no_ranking){
 			return this.reset();
 		}
 
@@ -379,7 +379,7 @@ function RankingVis(domRoot, iWidth, iHeight, visTemplate){
 		/******************************************************
 		*	Define input variables
 		******************************************************/
-        RANKING.InitData = RANKING.Settings.getRankingInitData( recomData, ranking, rankingCriteria );
+        RANKING.InitData = RANKING.Settings.getRankingInitData(rankingModel);
 		data = RANKING.InitData.data;
 
         RANKING.Render.updateCanvasDimensions();
@@ -388,7 +388,8 @@ function RankingVis(domRoot, iWidth, iHeight, visTemplate){
 		*	Redefine x & y scales' domain
 		******************************************************/
 
-		x0 = x.domain([0, RANKING.Internal.topLimit(data, rankingCriteria)]).copy();
+		//x0 = x.domain([0, RANKING.Internal.topLimit(data, rankingCriteria)]).copy();
+        x0 = x.domain([0, data[0][rankingModel.getMode()]]).copy();
 
         y.rangeBands( [0, height], .02);
 		y0 = y.domain(data.map(function(d, i){ return i; })).copy();
@@ -396,7 +397,7 @@ function RankingVis(domRoot, iWidth, iHeight, visTemplate){
         color = colorScale;
 
         svg.select('.x.axis .label')
-            .text(function(){ if(rankingCriteria == 'overall_score') return "Overall Score"; return 'Max. Score'; });
+            .text(function(){ if(rankingModel.getMode() === RANKING_MODE.overall_score) return "Overall Score"; return 'Max. Score'; });
 
         var transition = svg.transition().duration(750),
             delay = function(d, i) { return i * 50; };
@@ -438,7 +439,7 @@ function RankingVis(domRoot, iWidth, iHeight, visTemplate){
         /******************************************************
 		*	Recalculate canvas dimensions
 		******************************************************/
-		RANKING.Dimensions = RANKING.Settings.getRankingDimensions(domRoot, iWidth);
+		RANKING.Dimensions = RANKING.Settings.getRankingDimensions(domRoot, containerHeight);
         height = RANKING.Dimensions.height;
 
 		y.rangeBands(height, .02);
@@ -459,16 +460,14 @@ function RankingVis(domRoot, iWidth, iHeight, visTemplate){
 	*	Redraw without animating when the container's size changes
 	*
 	* ***************************************************************************************************************/
-    RANKING.Render.resize = function(){
+    RANKING.Render.resize = function(containerHeight){
         /******************************************************
 		*	Recalculate canvas dimensions
 		******************************************************/
-		RANKING.Dimensions = RANKING.Settings.getRankingDimensions(domRoot, iWidth);
+		RANKING.Dimensions = RANKING.Settings.getRankingDimensions(domRoot);
 		width          = RANKING.Dimensions.width;
-        height         = RANKING.Dimensions.height;
+    //    height         = RANKING.Dimensions.height;
 		margin         = RANKING.Dimensions.margin;
-		centerOffset   = RANKING.Dimensions.centerOffset;
-		verticalOffset = RANKING.Dimensions.verticalOffset;
 
         x.rangeRound([0, width]);
 		y.rangeBands(height, .02);
@@ -639,17 +638,17 @@ function RankingVis(domRoot, iWidth, iHeight, visTemplate){
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     RANKING.Ext = {
-        'draw': function(rankingModel, colorScale, rankingCriteria, status){
+        'draw': function(rankingModel,containerHeight, colorScale){            // rankingModel, colorScale, rankingCriteria, status
             if(status = 'new')
-                RANKING.Render.draw(rankingModel, colorScale, rankingCriteria);
+                RANKING.Render.draw(rankingModel, containerHeight, colorScale);
             else if(status = 'update')
-                RANKING.Render.update(rankingModel, colorScale, rankingCriteria);
+                RANKING.Render.update(rankingModel, containerHeight, colorScale);
         },
         'reset': function(){
             RANKING.Render.reset();
         },
-        'resize' : function(){
-            if(isRankingDrawn) RANKING.Render.resize();
+        'resize' : function(containerHeight){
+            if(isRankingDrawn) RANKING.Render.resize(containerHeight);
         },
         'drawHistograms' : function( divArray ){
             RANKING.Render.drawHistograms( divArray );

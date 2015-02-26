@@ -82,10 +82,10 @@ and open the template in the editor.
                         <button id="eexcess_btnreset">
                             <img src="media/batchmaster/refresh.png" title="Reset" />
                         </button>
-                        <button id="eexcess_btn_sort_by_overall_score" title="Sort by overall score" sort-by="overall_score">
+                        <button id="eexcess_btn_sort_by_overall_score" title="Sort by overall score" sort-by="overallScore">
                             <img src="media//sort-down.png" />
                         </button>
-                        <button id="eexcess_btn_sort_by_max_score" title="Sort by maximum score" sort-by="max_score">
+                        <button id="eexcess_btn_sort_by_max_score" title="Sort by maximum score" sort-by="maxScore">
                             <img src="media/sort-down.png" />
                         </button>
                     </div>

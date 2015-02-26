@@ -6,3 +6,9 @@ var RANKING_STATUS = {
     unchanged : 'unchanged',
     no_ranking : 'no_ranking'
 };
+
+
+var RANKING_MODE = {
+    overall_score: 'overallScore',
+    max_score: 'maxScore'
+};

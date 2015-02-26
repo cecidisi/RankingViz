@@ -88,7 +88,7 @@
 	// Ancillary variables
 	var dataRanking,					// array that represents the current ranking. Each item is an object specifying "originalIndex, "overallScore", "rankingPos" and "positionsChanged"
         selectedTags = [],				// array of DOM elements contained in the tag box
-        rankingCriteria = 'overall_score',
+        rankingMode = RANKING_MODE.overall_score,
         showRanking;
 
 	// Ranking object
@@ -140,7 +140,7 @@
     ////////	Rank button clicked (by overall or max score)	////////
 
     EVTHANDLER.rankButtonClicked = function(sender){
-        rankingCriteria = $(sender).attr('sort-by');
+        rankingMode = $(sender).attr('sort-by');
         if(rankingModel.getStatus() != RANKING_STATUS.no_ranking)
             LIST.rankRecommendations();
     };
@@ -846,11 +846,10 @@
 	 * */
 	LIST.rankRecommendations = function() {
 
-        rankingModel.update(TAGCLOUD.getWeightedKeywordsInBox(), rankingCriteria);
+        rankingModel.update(TAGCLOUD.getWeightedKeywordsInBox(), rankingMode);
         this.highlightListItems();
         var status = rankingModel.getStatus();
-        console.log(status);
-//
+
 		// Synchronizes rendering methods
 		if(status == RANKING_STATUS.new || status == RANKING_STATUS.update){
 			this.colorKeywordsInTitles();
@@ -860,7 +859,7 @@
 		}
         LIST.animateContentList(status);
         DOCPANEL.clear();
-		VISPANEL.drawRanking(status);
+		VISPANEL.drawRanking();
 	};
 
 
@@ -1095,7 +1094,6 @@
     LIST.updateItemsBackground = function(){
         $(allListItems).removeClass('light_background').removeClass('dark_background');
 
-        console.log(rankingModel.getStatus());
         if(rankingModel.getStatus() != RANKING_STATUS.no_ranking) {
             rankingModel.getRanking().forEach(function(d, i) {
                 if(i%2 ==0)
@@ -1250,9 +1248,9 @@
 
 	var VISPANEL = {};
 
-	VISPANEL.drawRanking = function(status){
+	VISPANEL.drawRanking = function(){
         if(showRanking){
-            rankingVis.draw(rankingModel, weightColorScale, rankingCriteria, status);
+            rankingVis.draw(rankingModel, $(contentPanel).height(), weightColorScale);
             $(visPanelCanvas).scrollTo('top');
         }
 	};
@@ -1432,6 +1430,9 @@
 		keywords = dataset['keywords'];
         PREPROCESSING.extendKeywordsWithColorCategory();
 
+        rankingModel = new RankingModel(data);
+        rankingVis = new RankingVis(root, self);
+
         // only for evaluation
         sampleText = dataset['text'];
         task = dataset['task'];
@@ -1439,9 +1440,6 @@
         questions = dataset['questions'];
         currentQuestion = 0;
         // only for evaluation
-
-        rankingModel = new RankingModel(data);
-        rankingVis = new RankingVis(root, width, height, self);
 
        // HEADER.showInfoInHeader();
       //  LIST.buildContentList();

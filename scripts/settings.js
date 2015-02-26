@@ -1,18 +1,12 @@
 function Settings(){
 
-    Settings.prototype.getRankingDimensions = function(domRoot, iWidth){
+    Settings.prototype.getRankingDimensions = function(domRoot, containerHeight){
 
-		var rootWidth  = $(domRoot).width();
-		var rootHeight = $(domRoot).height();
-
-        //var margin = {top: 20, bottom: 30, left: Math.floor(rootWidth * 0.3), right: Math.floor(rootWidth * 0.02) };
         var margin = {top: 0, bottom: 20, left: 2, right: 0 };
-        var width = rootWidth - margin.left - margin.right;
-        var height = $('#eexcess_content').height();
-        var centerOffset = (iWidth/2) - ((width + margin.left + margin.right)/2);
-        var verticalOffset = ((rootHeight - 500) / 2) < 30 ? 30 : ((rootHeight - 500) / 2);
+        var width = $(domRoot).width() - margin.left - margin.right;
+        var height = containerHeight || '';
 
-        return{'margin': margin, 'width': width, 'height': height, 'centerOffset': centerOffset, 'verticalOffset': verticalOffset};
+        return{ 'margin': margin, 'width': width, 'height': height };
 	};
 
 
@@ -22,11 +16,11 @@ function Settings(){
      * INITDATA
      *
      * **/
-	Settings.prototype.getRankingInitData = function(rankingModel, rankingCriteria){
+	Settings.prototype.getRankingInitData = function(rankingModel){
 
         var data = fixMissingAndMalformattedValues(rankingModel.getOriginalData());
         var ranking = rankingModel.getRanking();
-        var attr = rankingCriteria == 'overall_score' ? 'overallScore' : 'maxScore';
+        var attr = rankingModel.getMode();
         var a = [];
         var i = 0;
 
@@ -44,7 +38,7 @@ function Settings(){
 
             a[i]['weightedKeywords'].forEach(function(wk){
 
-                if(rankingCriteria == 'overall_score'){
+                if(rankingModel.getMode() === RANKING_MODE.overall_score){
 
                     wk['x0'] = x0;
                     wk['x1'] = x0 + wk['weightedScore'];
@@ -76,7 +70,7 @@ function Settings(){
      * **/
 
 
-    function fixMissingAndMalformattedValues( data ){
+    function fixMissingAndMalformattedValues(data){
 
         var dataArray = [];
         data.forEach(function(d){

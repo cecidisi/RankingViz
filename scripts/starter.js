@@ -51,16 +51,42 @@
         console.log("Status: Testing with Dataset " + this.datasetId);
         $("#eexcess_loading").fadeIn('fast');
 
+        var arguments = {
+            minRepetitions : (parseInt(this.dataset.data.length * 0.05) > 1) ? parseInt(this.dataset.data.length * 0.05) : 2
+        };
+
+        var keywordExtractor = new KeywordExtractor(arguments);
+        console.log(keywordExtractor);
+
+        this.dataset.data.forEach(function(d){
+            d.title = d.title.clean();
+            d.description = d.description.clean();
+            var document = (d.description !== "undefined") ? d.title +'. '+ d.description : d.title;
+            document = document.replace(/[-=’‘\']/g, ' ').replace(/[()\"“”]/g,'');
+            keywordExtractor.addDocument(document);
+        });
+
+        keywordExtractor.processCollection();
+
+        this.dataset.data.forEach(function(d, i){
+            d.keywords = keywordExtractor.listDocumentKeywords(i);
+        });
+        this.dataset.keywords = keywordExtractor.getCollectionKeywords();
+
+
+
+
         this.dataset['task-number'] = this.task;
         this.dataset['tool-aided'] = $("#select-tool-condition").val() || 'yes';
-        this.dataset["data"] = getDataWithKeywords(this.dataset.data);
-        this.dataset["keywords"] = getGlobalKeywords(this.dataset.data);
+
+
 
         $("input[name='dataset']").val(JSON.stringify(this.dataset));
         $("form").submit();
     }
 
     /*  KE  */
+/*
 
     function getDataWithKeywords(data){
 
@@ -100,9 +126,6 @@
         data.forEach(function(d, i) {
             var document = '';
             d.taggedWords.forEach(function(tw){
-                /*if(tw[0].match(/our$/) && tw[0].length > 4)
-                    tw[0] = tw[0].replace('our', 'or');
-                */
                 switch(tw[1]){
                     case 'NN':          // singular noun
                         tw[0] = (tw[0].isAllUpperCase()) ? tw[0] : tw[0].toLowerCase();
@@ -241,6 +264,7 @@
         return shortestTerm.toLowerCase();
     }
 
+*/
 
     /*  KE  */
 
