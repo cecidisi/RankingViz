@@ -14,29 +14,36 @@ var RankingModel = (function(){
      *	Creates the ranking items with default values and calculates the weighted score for each selected keyword (tags in tag box)
      *
      * */
-    var computeScores =  function(_data, keywords){
+    var computeScores =  function(_data, query){
+
+        var queryNorm = Math.sqrt(query.length);        // |q|
+        var unitVectorQueryTerm = 1 / queryNorm;                // term score in query unit vector = 1/|q|
 
         var ranking = new RankingArray();
         _data.forEach(function(d, i) {
             ranking.addEmptyElement();
 
-            var max = 0;
-            keywords.forEach(function(wk, j) {
-                var index = d.keywords.getIndexOf(wk.stem, 'term');
-
-                if(index > -1){ // item contains keyword in box
-                    var score = (parseFloat(d.keywords[index].score) *  parseFloat(wk.weight)).round(3);
-                    max = (score > max) ? score : max;
-
-                    ranking[i].overallScore = parseFloat(ranking[i].overallScore) + score;
-                    ranking[i].maxScore = max;
-                    ranking[i].weightedKeywords.push({ 'term': wk.stem, 'weightedScore': score });
-                }
-                else{   // item doesn't contain keyword in box => maxScore and overallScore are set to 0
-                    ranking[i].weightedKeywords.push({ 'term': wk.stem, 'weightedScore': 0, 'maxScore': 0 });
-                }
+            var documentNorm = 0;
+            query.forEach(function(q){
+                documentNorm += Math.pow(d.keywords[q.stem], 2);
             });
-            ranking[i].overallScore = ranking[i].overallScore.round(3);
+
+            documentNorm = Math.sqrt(documentNorm);
+
+            var divider = documentNorm * queryNorm;
+
+            var max = 0;
+            query.forEach(function(q) {
+                var score = 0;
+                if(d.keywords[q.stem]){ // item contains keyword in box
+                    score = ((parseFloat(d.keywords[q.stem]) * unitVectorQueryTerm * parseFloat(q.weight)) / documentNorm).round(3);
+                    max = (score > max) ? score : max;
+                }   // if item doesn't contain query term => maxScore and overallScore are not changed
+                ranking[i].overallScore = parseFloat(ranking[i].overallScore) + score;
+                ranking[i].maxScore = max;
+                ranking[i].weightedKeywords.push({ term: q.term, stem: q.stem, weightedScore: score });
+            });
+            //ranking[i].overallScore = ranking[i].overallScore.round(3);
         });
 
         return ranking;
@@ -80,6 +87,7 @@ var RankingModel = (function(){
             this.previousRanking = this.ranking.clone();
             this.ranking = computeScores(this.data, keywords).sortBy(this.mode).addPositionsChanged(this.previousRanking);
             this.status = updateStatus(this.ranking, this.previousRanking);
+            console.log(this.ranking);
             return this.ranking;
         },
 

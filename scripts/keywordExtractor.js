@@ -8,7 +8,7 @@ var KeywordExtractor = (function(){
     }
 
     var collection = [],
-        documentKeywords = new Array(),
+        documentKeywords = [],
         collectionKeywords = [];
 
     var stemmer = natural.PorterStemmer; //natural.LancasterStemmer;
@@ -54,10 +54,9 @@ var KeywordExtractor = (function(){
 
         // Create each item's document to be processed by tf*idf
         collection.forEach(function(d) {
-            d.tokens = getFilteredTokens(d.taggedWords, keyAdjectives);                          // d.tokens contains raw nouns and important adjectives
-            tfidf.addDocument(d.tokens.map(function(term){ return term.stem(); }).join(' '));    // argument = string of stemmed terms in document array
+            d.tokens = getFilteredTokens(d.taggedWords, keyAdjectives);                                       // d.tokens contains raw nouns and important adjectives
+            tfidf.addDocument(d.tokens.map(function(term){ return term.stem(); }).join(' '));                 // argument = string of stemmed terms in document array
         });
-
 
         // Save keywords for each document
         collection.forEach(function(d, i){
@@ -117,14 +116,15 @@ var KeywordExtractor = (function(){
 
 
     var getDocumentKeywords = function(dIndex) {
-        var aDocumentKeywords = new Array();
+        var docKeywords = {};
 
         tfidf.listTerms(dIndex).forEach(function(item){
             if(isNaN(item.term) && parseFloat(item.tfidf) > 0 ){
-                aDocumentKeywords.push({ 'term': item.term, 'score': item.tfidf });
+                //docKeywords.push({ 'term': item.term, 'score': item.tfidf });
+                docKeywords[item.term] = item.tfidf;
             }
         });
-        return aDocumentKeywords;
+        return docKeywords;
     }
 
 
@@ -159,18 +159,19 @@ var KeywordExtractor = (function(){
     var getCandidateKeywords = function(_documentKeywords) {
 
         var candidateKeywords = [];
-        _documentKeywords.forEach(function(aDocumentKeywords){
+        _documentKeywords.forEach(function(docKeywords){
 
             var sum = 0;
-            aDocumentKeywords.forEach(function(k){
-                sum += k.score;
+            Object.keys(docKeywords).forEach(function(term){
+                sum += docKeywords[term];
             });
 
-            var mean = sum / aDocumentKeywords.length;
-            aDocumentKeywords.forEach(function(k){
-                var kIndex = candidateKeywords.getIndexOf(k.term, 'stem')
-                if(k.score >= mean && kIndex == -1)
-                    candidateKeywords.push({ 'stem': k.term, 'term': '', 'repeated': 1, 'variations': {} });
+            var mean = sum / Object.keys(docKeywords).length;
+            Object.keys(docKeywords).forEach(function(stemmedTerm){
+                //var kIndex = candidateKeywords.getIndexOf(k.term, 'stem')
+                var kIndex = candidateKeywords.getObjectIndex(function(element){element.stem == stemmedTerm});
+                if(docKeywords[stemmedTerm] >= mean && kIndex == -1)
+                    candidateKeywords.push({ 'stem': stemmedTerm, 'term': '', 'repeated': 1, 'variations': {} });
                 else if(kIndex > -1)
                     candidateKeywords[kIndex].repeated++;
             });

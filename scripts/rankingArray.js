@@ -142,13 +142,3 @@ var RankingArray = (function() {
 
 
 
-
-
-
-
-//var foo = new RankingArray();
-//console.log(foo);
-//foo.push({aa:'aa', bb: 'bb'});
-//console.log(foo);
-
-

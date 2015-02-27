@@ -49,7 +49,7 @@
 
     function startVisualization(){
         console.log("Status: Testing with Dataset " + this.datasetId);
-        $("#eexcess_loading").fadeIn('fast');
+      //  $("#eexcess_loading").fadeIn('fast');
 
         var arguments = {
             minRepetitions : (parseInt(this.dataset.data.length * 0.05) > 1) ? parseInt(this.dataset.data.length * 0.05) : 2

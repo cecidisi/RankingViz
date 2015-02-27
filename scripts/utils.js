@@ -118,6 +118,14 @@ Array.prototype.pushObjIfNotExist = function(obj) {
 
 
 
+Array.prototype.getObjectIndex = function(callback) {
+
+    for(var i=0; i<this.length; i++)
+        if(callback.call(this, this[i], i, this))
+            return i;
+
+    return -1;
+};
 
 
 
