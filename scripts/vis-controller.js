@@ -97,10 +97,12 @@
 	var rankingVis;
 
 
-	// Color scales
-	var tagColorRange = colorbrewer.Blues[TAG_CATEGORIES + 1].splice(tagColorRange.indexOf("#08519c"), 1, "#2171b5");
+    // Color scales
+    var tagColorRange = colorbrewer.Blues[TAG_CATEGORIES + 1];
+    tagColorRange.splice(tagColorRange.indexOf("#08519c"), 1, "#2171b5");
     var tagColorScale = d3.scale.ordinal().domain(d3.range(0, TAG_CATEGORIES, 1)).range(tagColorRange);
-    var weightColorRange = colorbrewer.Set1[9].splice(weightColorRange.indexOf("#ffff33"), 1, "#ffd700");
+    var weightColorRange = colorbrewer.Set1[9];
+    weightColorRange.splice(weightColorRange.indexOf("#ffff33"), 1, "#ffd700");
     var weightColorScale = d3.scale.ordinal().range(weightColorRange);
 
 

@@ -159,17 +159,16 @@ var KeywordExtractor = (function(){
     var getCandidateKeywords = function(_documentKeywords) {
 
         var candidateKeywords = [];
-        _documentKeywords.forEach(function(docKeywords){
+        _documentKeywords.forEach(function(docKeywords, i){
 
             var sum = 0;
             Object.keys(docKeywords).forEach(function(term){
                 sum += docKeywords[term];
             });
-
             var mean = sum / Object.keys(docKeywords).length;
+
             Object.keys(docKeywords).forEach(function(stemmedTerm){
-                //var kIndex = candidateKeywords.getIndexOf(k.term, 'stem')
-                var kIndex = candidateKeywords.getObjectIndex(function(element){element.stem == stemmedTerm});
+                var kIndex = candidateKeywords.getObjectIndex(function(element){ return element.stem === stemmedTerm});
                 if(docKeywords[stemmedTerm] >= mean && kIndex == -1)
                     candidateKeywords.push({ 'stem': stemmedTerm, 'term': '', 'repeated': 1, 'variations': {} });
                 else if(kIndex > -1)
