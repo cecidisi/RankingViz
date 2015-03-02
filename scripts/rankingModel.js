@@ -16,6 +16,10 @@ var RankingModel = (function(){
      * */
     var computeScores =  function(_data, query){
 
+        var queryNorm = Math.sqrt(query.length);        // |q|
+        console.log('|q| = ' + queryNorm);
+        var unitVectorQueryTerm = parseFloat(1.00 / queryNorm);                // term score in query unit vector = 1/|q|
+
         var ranking = new RankingArray();
         _data.forEach(function(d, i) {
             ranking.addEmptyElement();
@@ -24,8 +28,9 @@ var RankingModel = (function(){
             query.forEach(function(q) {
                 var score = 0;
                 if(d.keywords[q.stem]){ // item contains keyword in box
-                    score = (parseFloat(d.keywords[q.stem]) * parseFloat(q.weight)).round(3);
+                    score = (parseFloat(d.keywords[q.stem]) *q.weight).round(3) || 0;
                     max = (score > max) ? score : max;
+                    }
                 }   // if item doesn't contain query term => maxScore and overallScore are not changed
                 ranking[i].overallScore = parseFloat(ranking[i].overallScore) + score;
                 ranking[i].maxScore = max;
