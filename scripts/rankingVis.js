@@ -285,7 +285,6 @@ function RankingVis(domRoot, visControllerInterface){
 		*	Define scales
 		******************************************************/
 
-        console.log(rankingModel.getMode());
 		x = d3.scale.linear()
 			//.domain( [0, RANKING.Internal.topLimit(data, rankingCriteria)] )
             .domain( [0, data[0][rankingModel.getMode()]] )
