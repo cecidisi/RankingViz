@@ -16,10 +16,6 @@ var RankingModel = (function(){
      * */
     var computeScores =  function(_data, query){
 
-        var queryNorm = Math.sqrt(query.length);        // |q|
-        console.log('|q| = ' + queryNorm);
-        var unitVectorQueryTerm = parseFloat(1.00 / queryNorm);                // term score in query unit vector = 1/|q|
-
         var ranking = new RankingArray();
         _data.forEach(function(d, i) {
             ranking.addEmptyElement();
