@@ -15,27 +15,34 @@ var RankingModel = (function(){
      *
      * */
     var computeScores =  function(_data, query){
-
         var ranking = new RankingArray();
         _data.forEach(function(d, i) {
             ranking.addEmptyElement();
-
+            var docNorm = getEuclidenNorm(d.keywords);
+            var unitQueryVectorDot = parseFloat(1.00/Math.sqrt(query.length));
             var max = 0;
             query.forEach(function(q) {
-                var score = 0;
-                if(d.keywords[q.stem]){ // item contains keyword in box
-                    score = (parseFloat(d.keywords[q.stem]) *q.weight).round(3) || 0;
-                    max = (score > max) ? score : max;
-                    }
-                }   // if item doesn't contain query term => maxScore and overallScore are not changed
-                ranking[i].overallScore = parseFloat(ranking[i].overallScore) + score;
-                ranking[i].maxScore = max;
-                ranking[i].weightedKeywords.push({ term: q.term, stem: q.stem, weightedScore: score });
+                // termScore = tf-idf(d, t) * unitQueryVector(t) * weight(query term) / |d|   ---    |d| = euclidenNormalization(d)
+                var termScore = (d.keywords[q.stem]) ? ((parseFloat(d.keywords[q.stem]) / docNorm) * unitQueryVectorDot * parseFloat(q.weight)).round(3) :  0;
+                // if item doesn't contain query term => maxScore and overallScore are not changed
+                ranking[i].overallScore += termScore;
+                ranking[i].maxScore = termScore > ranking[i].maxScore ? termScore : ranking[i].maxScore;
+                ranking[i].weightedKeywords.push({ term: q.term, stem: q.stem, weightedScore: termScore });
             });
         });
         return ranking;
     };
 
+
+
+    var getEuclidenNorm = function(docKeywords) {
+
+        var acumSquares = 0;
+        Object.keys(docKeywords).forEach(function(k){
+            acumSquares += docKeywords[k] * docKeywords[k];
+        });
+        return Math.sqrt(acumSquares);
+    };
 
 
 
@@ -50,12 +57,12 @@ var RankingModel = (function(){
         if(_ranking.length != _previousRanking.length)
             return RANKING_STATUS.update;
 
-
-        for(var i = 0; i < _ranking.length; i++){
-            var j = _ranking.getIndexOf(_ranking[i].originalIndex, 'originalIndex');
-            if(j == -1 || _ranking[i]['rankingPos'] !== _previousRanking[j]['rankingPos'])
+        for(var r in _ranking){
+            var indexInPrevious = _previousRanking.getObjectIndex(function(element){ element.originalIndex === r.originalIndex });
+            if(indexInPrevious == -1 || r.rankingPos !== _previousRanking[indexInPrevious].rankingPos)
                 return RANKING_STATUS.update;
         }
+
         return RANKING_STATUS.unchanged;
     };
 
@@ -74,13 +81,15 @@ var RankingModel = (function(){
             this.previousRanking = this.ranking.clone();
             this.ranking = computeScores(this.data, keywords).sortBy(this.mode).addPositionsChanged(this.previousRanking);
             this.status = updateStatus(this.ranking, this.previousRanking);
+            /*console.log('RANKING');
+            console.log(this.ranking);*/
             return this.ranking;
         },
 
         reset: function() {
             this.previousRanking.clear();
             this.ranking.clear();
-            this.status = updateStatus(this);
+            this.status = updateStatus(this.ranking, this.previousRanking);
         },
 
         getRanking: function() {

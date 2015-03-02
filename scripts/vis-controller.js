@@ -486,7 +486,7 @@
 			min: 0,
 			max: 1,
             step: 0.2,
-			value: 0.6,
+			value: 1,
 			slide: EVTHANDLER.slideSlided,
 			stop: EVTHANDLER.slideStopped
 		};
@@ -586,7 +586,7 @@
 
 		// Set tag's style
 		d3.select(tag[0])
-            .style("background", function(){ return "rgba("+ rgbSequence + ", 0.6)"; })
+            .style("background", function(){ return "rgba("+ rgbSequence + ", 1)"; })
             .style("color", "")
             .style("border", "solid 0.2em " + aux)
             .on("mouseover", "")
@@ -688,8 +688,6 @@
         // Clear color scale domain
         weightColorScale.domain([]);
 
-       // var tags = $( tagClassInBox );
-
         for(var i = 0; i < selectedTags.length; i++){
             // Reasign keyword to color scale domain
             var stem = d3.select(selectedTags[i][0]).data()[0].stem;
@@ -715,7 +713,7 @@
         $(tagClassInBox).each(function(i, tag){
             var term = d3.select(tag).data()[0].term;
             var stem = d3.select(tag).data()[0].stem;
-			var weight = parseFloat( $(tag).find(".div-slider").slider("value") / 10);
+			var weight = parseFloat( $(tag).find(".div-slider").slider("value"));
 			weightedKeywords.push({ 'term': term, 'stem': stem, 'weight': weight });
         });
 		return weightedKeywords;
@@ -738,7 +736,6 @@
                 title = title.substring(0, 46) + '...';
             title = DOCPANEL.internal.highlightKeywordsInText(title, true);
             return title;
-
         },
 
         /**
@@ -1319,15 +1316,16 @@
 
         getStyledWord : function(word, keywordsInBox){
             var trickyWords = ['it', 'is', 'us', 'ar'];
-            var wordStem = word.replace(/our$/, 'or').stem();
+            //var wordStem = word.replace(/our$/, 'or').stem();
+            var word = word.replace(/our$/, 'or');
 
-            if(trickyWords.indexOf(wordStem) == -1 || word.isAllUpperCase()){
-                if(keywordsInBox.getIndexOf(wordStem, "stem") > -1)
-                    return "<strong style=\"color:" + weightColorScale(wordStem) + "\">" + word + "</strong>";
+            // First clause solves words like 'IT', second clause that the stem of the doc term (or the singularized term) matches the keyword stem
+            if(trickyWords.indexOf(word.stem()) == -1 || word.isAllUpperCase()) {
+               var kIndex = keywordsInBox.getObjectIndex(function(k){ return (k.stem === word.stem() || k.stem === word.singularizeNoun().stem()); });
+                if(kIndex > -1){
+                    return "<strong style=\"color:" + weightColorScale(keywordsInBox[kIndex].stem) + "\">" + word + "</strong>";
+                }
 
-                wordStem = word.singularizeNoun().stem();
-                if(keywordsInBox.getIndexOf(wordStem, "stem") > -1)
-                    return "<strong style=\"color:" + weightColorScale(wordStem) + "\">" + word + "</strong>";
             }
             return word;
         }
@@ -1342,7 +1340,7 @@
         $(documentDetailsProvider).html(data[index].facets.provider);
         $(documentViewer).html(this.internal.highlightKeywordsInText(data[index].description));
         $(documentViewer + ' p').hide();
-        $(documentViewer + ' p').slideDown('slow');
+        $(documentViewer + ' p').fadeIn('slow');
         $(documentViewer).scrollTo('top');
     };
 
@@ -1352,7 +1350,8 @@
         $(documentDetailsYear).empty();
         $(documentDetailsLanguage).empty();
         $(documentDetailsProvider).empty();
-        $(documentViewer).empty();
+        //$(documentViewer).empty();
+        $(documentViewer + ' p').fadeOut('slow');
     };
 
 
