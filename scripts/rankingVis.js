@@ -136,7 +136,7 @@ function RankingVis(domRoot, visControllerInterface){
                     .attr("height", y.rangeBand())
                     .attr("x", function(d) { return x(d.x0); })
                     .attr("width", 0)
-                    .style("fill", function(d) { return color(d.term); });
+                    .style("fill", function(d) { return color(d.stem); });
 
             var bars = stackedBars.selectAll(".bar");
 
@@ -146,6 +146,7 @@ function RankingVis(domRoot, visControllerInterface){
                         "width": function(d) { return x(d.x1) - x(d.x0); }
                     });
         }, 800);
+
 	};
 
 
@@ -287,7 +288,8 @@ function RankingVis(domRoot, visControllerInterface){
 
 		x = d3.scale.linear()
 			//.domain( [0, RANKING.Internal.topLimit(data, rankingCriteria)] )
-            .domain( [0, data[0][rankingModel.getMode()]] )
+            //.domain( [0, data[0][rankingModel.getMode()]] )
+            .domain([0, 1])
 			.rangeRound( [0, width] );
 
 		y = d3.scale.ordinal()
@@ -304,7 +306,8 @@ function RankingVis(domRoot, visControllerInterface){
 		xAxis = d3.svg.axis()
 	    		.scale(x)
 	    		.orient("bottom")
-	    		.tickFormat(d3.format(".2s"));
+	    		//.tickFormat(d3.format(".2s"));
+                .tickFormat(function(value){ if(value > 0 && value < 1) return (value * 100) + '%'; return ''; });
 
 		// Y Axis
 		yAxis = d3.svg.axis()
@@ -337,10 +340,10 @@ function RankingVis(domRoot, visControllerInterface){
 		  		.style("text-anchor", "end")
 		  		.text(function(){ if(rankingModel.getMode() === RANKING_MODE.overall_score) return "Overall Score"; return 'Max. Score'; });
 
-        svg.selectAll('.x.axis text')
+/*        svg.selectAll('.x.axis text')
             .text(function(text){
                 if(parseFloat(text) == 0.0) return ""; return text;
-            });
+            });*/
 
 		svg.append("g")
 	      	.attr("class", "y axis")
@@ -387,8 +390,8 @@ function RankingVis(domRoot, visControllerInterface){
 		*	Redefine x & y scales' domain
 		******************************************************/
 
-		//x0 = x.domain([0, RANKING.Internal.topLimit(data, rankingCriteria)]).copy();
-        x0 = x.domain([0, data[0][rankingModel.getMode()]]).copy();
+        //x0 = x.domain([0, data[0][rankingModel.getMode()]]).copy();
+        x0 = x.domain([0, 1]).copy();
 
         y.rangeBands( [0, height], .02);
 		y0 = y.domain(data.map(function(d, i){ return i; })).copy();
@@ -406,10 +409,13 @@ function RankingVis(domRoot, visControllerInterface){
             .selectAll("g")
             .delay(delay);
 
-        svg.selectAll('.x.axis text')
+/*        svg.selectAll('.x.axis text')
             .text(function(text){
-                if(parseFloat(text) == 0.0) return ""; return text;
-            });
+                //if(parseFloat(text) == 0.0) return ""; return text;
+                console.log((parseFloat(text) * 100) + '%');
+                this.parentNode.appendChild(this);
+                return (parseFloat(text) * 100) + '%';
+            });*/
 
         transition.select(".y.axis")
             .call(yAxis)

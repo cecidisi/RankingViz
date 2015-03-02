@@ -72,52 +72,6 @@ Array.prototype.getIndexOf = function(target, field) {
 
 
 
-Array.prototype.getObjIndex = function(obj) {
-    var keys = Object.keys(obj);
-    for(var i=0; i<keys.length; i++){
-        if(this.getIndexOf(obj[keys[i]], keys[i]) == -1)
-            return false;
-    }
-    return true;
-};
-
-
-
-Array.prototype.getAllIndicesOf = function(target, field) {
-    var indices = [];
-    this.forEach(function(item, i){
-        if(item[field] === target)
-            indices.push(i);
-    });
-};
-
-
-Array.prototype.isObjInArray = function(obj) {
-    var keys = Object.keys(obj);
-
-    for(var i=0; i<this.length; i++) {
-        var j = 0;
-        while(j<keys.length && this[i][keys[j]] === obj[keys[j]])
-            j++;
-
-        if(j === keys.length)   // all keys match
-            return true;
-    }
-    return false;
-};
-
-
-
-Array.prototype.pushObjIfNotExist = function(obj) {
-    if(!this.isObjInArray(obj)) {
-        this.push(obj);
-        return true;
-    }
-    return false;
-};
-
-
-
 Array.prototype.getObjectIndex = function(callback) {
     for(var i=0; i<this.length; i++) {
         if(callback.call(this, this[i], i, this))
@@ -165,7 +119,12 @@ String.prototype.clean = function(){
         text = textArray.join(' ');
     }
     return text;
-}
+};
+
+
+String.prototype.removeUnnecessaryChars = function() {
+    return this.replace(/[-=’‘\']/g, ' ').replace(/[()\"“”]/g,'');
+};
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////

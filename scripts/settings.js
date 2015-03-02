@@ -2,7 +2,7 @@ function Settings(){
 
     Settings.prototype.getRankingDimensions = function(domRoot, containerHeight){
 
-        var margin = {top: 0, bottom: 20, left: 2, right: 0 };
+        var margin = {top: 0, bottom: 20, left: 2, right: 2 };
         var width = $(domRoot).width() - margin.left - margin.right;
         var height = containerHeight || '';
 
