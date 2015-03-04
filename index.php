@@ -15,6 +15,7 @@
         <script type="text/javascript" src="libs/pos/POSTagger.js" charset="utf-8"></script>
         <script type="text/javascript" src="libs/pos/pos.js" charset="utf-8"></script>
 
+        <script type="text/javascript" src="scripts/globals.js" charset="utf-8"></script>
         <script type="text/javascript" src="scripts/keywordExtractor.js" charset="utf-8"></script>
         <script type="text/javascript" src="scripts/utils.js" charset="utf-8"></script>
         <script type="text/javascript" src="datasets/datasetManager.js" charset="utf-8" ></script>

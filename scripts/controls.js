@@ -16,7 +16,7 @@
 
     var downloadResults = function(e){
 
-        var scriptURL = (document.URL).replace('controls.html', 'download.php'),
+        var scriptURL = pathToServer + 'download.php',
             d = new Date(),
             timestamp = d.getFullYear() + '-' + (parseInt(d.getMonth()) + 1) + '-' + 
                 d.getDate() + '_' + d.getHours() + '.' + d.getMinutes() + '.' + d.getSeconds();
@@ -68,7 +68,7 @@
             return kw_aux[index].keywords[questionNumber - 1].split('&');
         }
         
-        var host = "http://localhost/RankingViz/server/recommender.php";
+        var host =  pathToServer + "recommender.php";
         var successfulInsertions = 0;
         
         linked_user_doc_qk.forEach(function(link, i) {

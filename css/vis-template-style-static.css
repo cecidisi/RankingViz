@@ -664,7 +664,7 @@ VIS PANEL (center of screen)
 }
 
 
-.eexcess_tag_img {
+.eexcess_tag_icon {
 	position: relative;
 	float: right;
 	right: -1.3em;
@@ -728,13 +728,13 @@ VIS PANEL (center of screen)
 
 
 /*
-    <li> items in "#eexcess_content ul". Each <li> wraps 2 container <div>s: ".eexcess_item_ctl" and ".eexcess_ritem_container"
+    <li> items in "#eexcess_content ul". Each <li> wraps 2 container <div>s: ".eexcess_item_ctl" and ".eexcess_title_container"
 */
 .eexcess_list {
     position: relative;
     height: 26px;
     vertical-align: top;
-    -webkit-transition: box-shadow 4s linear;
+    -webkit-transition: box-shadow 4s ease-in/* linear*/;
 }
 
 .eexcess_list a {
@@ -755,30 +755,31 @@ VIS PANEL (center of screen)
 /* <li> itmes' hover style */
 .eexcess_list_hover {
     background: -webkit-linear-gradient(top, rgb(230, 230, 230) 75%, #ccc);
-    /*border: 1px solid #ccc;*/
 }
 
 
+/***************	Watched list item   **************/
+
+.watched {
+    box-shadow: inset 1px 1px 2px rgba(128, 128, 128, 0.6), inset -1px -1px 2px rgba(128, 128, 128, 0.6);
+    -webkit-transition: box-shadow 0s linear;
+}
 
 /***************	Effects for list items when the ranking changes   **************/
 
 .eexcess_list_moving_up {
-    /*border: 1px solid rgba(0, 250, 0, 0.8);*/
-    /*box-shadow: inset 0.1em 0.1em 0.2em rgba(0, 250, 0, 0.6), inset -0.1em -0.1em 0.2em rgba(0, 250, 0, 0.6);*/
-    box-shadow: inset 1px 1px 2px rgba(0, 250, 0, 0.6), inset -1px -1px 2px rgba(0, 250, 0, 0.6);
+    /*box-shadow: inset 1px 1px 2px rgba(0, 250, 0, 0.6), inset -1px -1px 2px rgba(0, 250, 0, 0.6);*/
+    box-shadow: inset 3px 0px rgba(0, 250, 0, 0.6);
     -webkit-transition: box-shadow 0s linear;
 }
 
 .eexcess_list_moving_down {
-    /*border: 1px solid rgba(250, 10, 10, 0.6);*/
-    /*box-shadow: inset 0.1em 0.1em 0.2em rgba(250, 10, 10, 0.6), inset -0.1em -0.1em 0.2em rgba(250, 10, 10, 0.6);*/
-    box-shadow: inset 1px 1px 2px rgba(250, 10, 10, 0.6), inset -1px -1px 2px rgba(250, 10, 10, 0.6);
+    /*box-shadow: inset 1px 1px 2px rgba(250, 10, 10, 0.6), inset -1px -1px 2px rgba(250, 10, 10, 0.6);*/
+    box-shadow: inset 3px 0px rgba(250, 10, 10, 0.6);
     -webkit-transition: box-shadow 0s linear;
 }
 
 .eexcess_list_not_moving {
-    /*border: 1px solid rgba(128, 128, 128, 0.6);*/
-    /*box-shadow: inset 0.1em 0.1em 0.2em rgba(128, 128, 128, 0.6), inset -0.1em -0.1em 0.2em rgba(128, 128, 128, 0.6);*/
     box-shadow: inset 1px 1px 2px rgba(128, 128, 128, 0.6), inset -1px -1px 2px rgba(128, 128, 128, 0.6);
     -webkit-transition: box-shadow 0s linear;
 }
@@ -790,7 +791,7 @@ VIS PANEL (center of screen)
     display: inline-block;
     float: left;
     height: 100%;
-    max-width: 55px;
+    width: 51px;
     padding-left: 1px;
 }
 
@@ -831,33 +832,94 @@ VIS PANEL (center of screen)
 
 /***************	Encloses item title   **************/
 
-.eexcess_ritem_container {
+.eexcess_title_container {
     display: inline-flex;
+    float: left;
     align-items: center;
-    width: calc(100% - 78px);
+    width: calc(100% - 95px);
     height: 100%;
-    margin-left: 2px;
+    margin-left: 5px;
     vertical-align: top;
     text-align: left;
 }
 
+.watched .eexcess_title_container {
+    text-decoration: underline;
+}
 
-/***************	Encloses favicon   **************/
 
-.eexcess_favicon_section {
-    display: inline-flex;
+/***************	Encloses watch icon and fav icon   **************/
+
+.eexcess_listicon_section {
+    /*display: inline-flex;*/
     float: right;
-    width: 16px;
-    margin-right: 2px;
+    width: 38px;
+    height: 100%;
     vertical-align: top;
 }
 
-.eexcess_favicon_section img{
-    margin-top: 6px;
+.favicon, .watchicon {
+    margin-right: 2px;
     cursor: pointer;
+    background-repeat: no-repeat;
+}
+
+.favicon {
+    float: right;
+    margin-top: 6px;
+    padding: 8px;
+}
+
+.watchicon {
+    float: left;
+    margin-top: 7px;
+    padding: 9px;
+    background-size: 14px;
 }
 
 
+.favicon_off {
+    background-image: url('../media/favicon_off.png');
+}
+
+.watchicon_off {
+    background-image: url('../media/batchmaster/watch-2.png');
+    opacity: 0.5;
+}
+
+.eexcess_list .favicon_off,
+.eexcess_list .watchicon_off {
+    display: none;
+}
+
+.eexcess_list:hover .favicon_off,
+.eexcess_list:hover .watchicon_off {
+    display: inline-block;
+    transition: all .2s ease-in-out;
+}
+
+
+.eexcess_list:hover .favicon_off:hover,
+.eexcess_list:hover .watchicon_off:hover {
+    transform: scale(1.1);
+}
+
+
+.favicon_on {
+    display: inline-block;
+    background-image: url('../media/favicon_on.png');
+    transition: all .2s ease-in-out;
+}
+
+.watchicon_on {
+    display: inline-block;
+    background-image: url('../media/batchmaster/watch.png');
+    transition: all .2s ease-in-out;
+}
+
+.favicon_on:hover, .watchicon_on:hover {
+    transform: scale(1.1);
+}
 
 
 /********************************************************************************************************************************************

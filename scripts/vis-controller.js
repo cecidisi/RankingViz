@@ -19,19 +19,18 @@
     var btnFinished = "#eexcess_finished_button";                               // Finishes the task and redirects back to the initial screeen
     var sampleTextSection = "#eexcess_topic_text_section";
     var selectedItemsSection = "#eexcess_selected_items_section";               // Section listing items marked as relevant by the user
-    var selectedItemsClass = ".eexcess_selected_item";                          // Selected item contained in selectedItemsSection
+    var selectedItemsClass = "eexcess_selected_item";                          // Selected item contained in selectedItemsSection
 
     var mainPanel = "#eexcess_main_panel";                                      // Panel containing tag cloug, canvas (in #eexcess_vis) and content list
-    var inputCriteria = '.eexcess_vis_controls_input';
 	var tagContainer = "#eexcess_keywords_container";							// Selector for div wrapping keyword tags
-	var tagClass = ".eexcess_keyword_tag";										// Selector for all keyword tags
+	var tagClass = "eexcess_keyword_tag";										// Selector for all keyword tags
     var tagId = "#tag-";                                                        // Id selector for tags in tag container
 	var tagPos = "tag-pos-";													// attribute for keyword tags. value assigned = index
 	var tagBox = "#eexcess_keywords_box";										// Selector for div where tags are droppped
-	var tagClassInBox = ".eexcess_keyword_tag_in_box";							// Selector for keyword tags inside tag box
-	var weightSliderClass = ".eexcess_weight_slider";							// Selector for slider class within tags in tag box
+	var tagInBoxClass = "eexcess_keyword_tag_in_box";							// Selector for keyword tags inside tag box
+	//var weightSliderClass = "eexcess_weight_slider";							// Selector for slider class within tags in tag box
 	var weightSliderId = "#eexcess_weight_slider_pos-";							// Id selector for slider within tags in tag box
-	var tagImgClass = ".eexcess_tag_img";										// Selector for "delete" icon in tags inside tag box
+	var tagIconClass = "eexcess_tag_icon";										// Selector for "delete" icon in tags inside tag box
 	var btnReset = "#eexcess_btnreset";											// Selector for reset button in vis control panel
     var btnRankByOverall = "#eexcess_btn_sort_by_overall_score";                // Button that triggers ranking by overall score criteria
     var btnRankByMax = "#eexcess_btn_sort_by_max_score";                        // Button to rank by max score criteria
@@ -41,10 +40,15 @@
 	var contentList = "#eexcess_content .eexcess_result_list";					// ul element within div content
 	var allListItems = "#eexcess_content .eexcess_result_list .eexcess_list";	// String to select all li items by class
 	var listItem = "#data-pos-";	                                      		// String to select individual li items by id
-	var rankingContainerClass = ".eexcess_ranking_container";					// class selector for div wrapping ranking indicators in content list
-    var allListItemTitles = ".eexcess_ritem_title";
-    var favIconClass = ".eexcess_favicon_section";
-    var detailsSections = '.eexcess_item_details_section';
+    var watchedClass = 'watched';
+	var rankingContainerClass = "eexcess_ranking_container";					// class selector for div wrapping ranking indicators in content list
+    var listIconClass = "eexcess_listicon_section";
+    var favIconClass = 'favicon';
+    var favIconOffClass = 'favicon_off';
+    var favIconOnClass = 'favicon_on';
+    var watchIconClass = 'watchicon';
+    var watchIconOffClass = 'watchicon_off';
+    var watchIconOnClass = 'watchicon_on';
 
     var documentDetailsTitle = "#eexcess_document_details_title";
     var documentDetailsYear = "#eexcess_document_details_year";
@@ -61,8 +65,6 @@
 	var LOADING_IMG = "media/loading.gif";
 	var DELETE_ICON_IMG = "media/fancybox_sprite_close.png";
 	var NO_IMG = "media/no-img.png";
-    var FAV_ICON_OFF = "media/favicon_off.png";
-    var FAV_ICON_ON = "media/favicon_on.png";
     var REMOVE_SMALL_ICON = "media/batchmaster/remove.png"
     var ICON_EUROPEANA =  "media/Europeana-favicon.ico";
     var ICON_MENDELEY = "media/mendeley-favicon.ico";
@@ -91,6 +93,7 @@
         selectedTags = [],				// array of DOM elements contained in the tag box
         rankingMode = RANKING_MODE.overall_score,
         showRanking;
+
 
 	// Ranking object
     var rankingModel;
@@ -258,6 +261,13 @@
     };
 
 
+
+    EVTHANDLER.watchIconClicked = function(d, i){
+        d3.event.stopPropagation();
+        LIST.watchOrUnwatchListItem(rankingModel.getActualIndex(i));
+    };
+
+
     EVTHANDLER.removeSelectedItemIconClicked = function(event, index) {
         event.stopPropagation();
         HEADER.removeItemFromListOfSelected(index);
@@ -349,7 +359,7 @@
 
     HEADER.internal = {
         validateIsQuestionAnswered : function(){
-            var numberOfSelectedItems = $(selectedItemsClass).length;
+            var numberOfSelectedItems = $('.'+selectedItemsClass).length;
             if(numberOfSelectedItems < SELECTED_ITEMS_REQUIRED){
                 return confirm("You need to select exactly " + SELECTED_ITEMS_REQUIRED + " items" +
                     "\n Items selected = " + numberOfSelectedItems + 
@@ -382,7 +392,7 @@
 
         if(!data[index].isSelected){
             var selectedItemContainer = d3.select(selectedItemsSection).append('div')
-                .attr('class', 'eexcess_selected_item')
+                .attr('class', selectedItemsClass)
                 .attr('original-index', index);
 
             selectedItemContainer.append('span').text(data[index].title);
@@ -413,7 +423,7 @@
             var elapsedTime = parseInt($.now() - startTime);
 
             var selectedItems = [];
-            $(selectedItemsClass).each(function(i, item){
+            $('.'+selectedItemsClass).each(function(i, item){
                 var index = $(item).attr('original-index');
                 var datumToSave = {
                     id : data[index].id,
@@ -518,11 +528,11 @@
 		// Empty tag container
         $(tagContainer).empty();
 		// Append one div per tag
-		d3.select(tagContainer).selectAll(tagClass)
+		d3.select(tagContainer).selectAll('.'+tagClass)
 			.data(keywords)
 			.enter()
 			.append("div")
-				.attr("class", "eexcess_keyword_tag" )
+				.attr("class", tagClass)
 				.attr("id", function(k, i){ return "tag-"+i; })
                 .attr('tag-pos', function(k, i){ return i; })
                 .attr('is-selected', false)
@@ -533,10 +543,10 @@
 				.on( "mouseout", EVTHANDLER.tagInBoxMouseOuted);
 
 		// bind drag behavior to each tag
-		$(tagClass).draggable( BEHAVIOR.draggableOptions );
+		$('.'+tagClass).draggable( BEHAVIOR.draggableOptions );
 
         // bind droppable behavior to tag box
-		$(tagBox).droppable( BEHAVIOR.droppableOptions );
+        $(tagBox).droppable( BEHAVIOR.droppableOptions );
 	};
 
 
@@ -545,7 +555,7 @@
 		// Set tag box legend
 		$(tagBox).find('p').remove();
 
-		if (tag.hasClass("eexcess_keyword_tag")) {
+		if (tag.hasClass(tagClass)) {
 			selectedTags.push(tag);
 			TAGCLOUD.buildDroppedTag(tag);
 		}
@@ -562,11 +572,11 @@
 		$(tagBox).append(tag);
 
 		// Change tag's class
-		tag.removeClass( "eexcess_keyword_tag" ).addClass( "eexcess_keyword_tag_in_box" )
+		tag.removeClass(tagClass).addClass(tagInBoxClass)
             .attr('is-selected', true);
 
         // Append "delete" icon to tag and bind event handler
-        $("<img class=\"eexcess_tag_img\" src=\"" + DELETE_ICON_IMG + "\" />").appendTo(tag)
+        $("<img class='" + tagIconClass + "' src='" + DELETE_ICON_IMG + "' />").appendTo(tag)
             .click(function(){ EVTHANDLER.deleteTagClicked(tag); });
 
         /*
@@ -654,7 +664,7 @@
         $(tag).children().remove();
         // Change class
         $(tag)
-            .removeClass("eexcess_keyword_tag_in_box").addClass("eexcess_keyword_tag")
+            .removeClass(tagInBoxClass).addClass(tagClass)
             .attr('is-selected', false);
 
         // Restore style
@@ -669,7 +679,7 @@
         // Re-append to tag container, in the corresponding postion
         var tagIndex = parseInt($(tag).attr('tag-pos'));
         var i = tagIndex - 1;
-        var firstTagIndex = $(tagContainer).find(tagClass + ':eq(0)').attr('tag-pos');
+        var firstTagIndex = $(tagContainer).find('.'+tagClass + ':eq(0)').attr('tag-pos');
 
         while(i >= firstTagIndex && $(tagId + '' + i).attr('is-selected').toBool())
             --i;
@@ -710,7 +720,7 @@
 	TAGCLOUD.getWeightedKeywordsInBox = function() {
 
 		var  weightedKeywords = [];
-        $(tagClassInBox).each(function(i, tag){
+        $('.'+tagInBoxClass).each(function(i, tag){
             var term = d3.select(tag).data()[0].term;
             var stem = d3.select(tag).data()[0].stem;
 			var weight = parseFloat( $(tag).find(".div-slider").slider("value"));
@@ -732,8 +742,8 @@
 
 
         getFormattedTitle: function(title){
-            if(title.length > 50)
-                title = title.substring(0, 46) + '...';
+            if(title.length > 60)
+                title = title.substring(0, 56) + '...';
             title = DOCPANEL.internal.highlightKeywordsInText(title, true);
             return title;
         },
@@ -765,7 +775,6 @@
 	LIST.selectededListIndex = STR_NO_INDEX;
 
 
-
 	/**
 	 *	Function that populates the list on the right side of the screen.
 	 *	Each item represents one recommendation contained in the variable "data"
@@ -773,7 +782,6 @@
 	 * */
 	LIST.buildContentList = function(){
 
-		//d3.selectAll(".eexcess_ritem").remove();
 		d3.selectAll( allListItems ).remove();
 
 		var content = d3.select(contentList).selectAll("li").data(data);
@@ -786,16 +794,15 @@
                                 .attr("pos", function(d, i){ return i; });
 
         var rankingDiv = aListItem.append('div')
-            .attr("class", "eexcess_ranking_container");
+            .attr("class", rankingContainerClass);
 
 
 		// div 2 wraps the recommendation title (as a link), a short description and a large description (not used yet)
 		var contentDiv = aListItem.append("div")
-			.attr("class", "eexcess_ritem_container");
+			.attr("class", "eexcess_title_container");
 
 		contentDiv.append("h3")
 				.append("a")
-					.attr("class", "eexcess_ritem_title")
                     .attr('id', function(d, i){ return 'item-title-' + i; })
                     .attr("href", "#")
                   //  .on("click", function(d){ window.open(d.uri, '_blank'); })
@@ -804,11 +811,15 @@
                     });
 
         // fav icon section on the right
-        aListItem.append('div')
-            .attr('class', 'eexcess_favicon_section')
-            .append("img")
-                .attr('title', 'Mark as relevant')
-                .attr("src", FAV_ICON_OFF);
+        var iconSection = aListItem.append('div').attr('class', listIconClass);
+
+        iconSection.append("span")
+            .attr("class", watchIconClass + ' ' + watchIconOffClass)
+            .attr('title', 'Start watching');
+
+        iconSection.append("span")
+                .attr("class", favIconClass + ' ' + favIconOffClass)
+                .attr('title', 'Mark as relevant');
 
         LIST.updateItemsBackground();
         LIST.bindEventHandlersToListItems();
@@ -822,8 +833,11 @@
         d3.selectAll(allListItems)
             .on("click", function(d, i){ EVTHANDLER.listItemClicked(d, i); })
             .on("mouseover", EVTHANDLER.listItemHovered)
-            .on("mouseout", EVTHANDLER.listItemUnhovered)
-            .select(favIconClass).select('img').on("click", function(d, i){ EVTHANDLER.faviconClicked(d, i);});
+            .on("mouseout", EVTHANDLER.listItemUnhovered);
+
+        var iconSection = d3.selectAll(allListItems).select('.'+listIconClass);
+            iconSection.select('.'+favIconClass).on("click", function(d, i){ EVTHANDLER.faviconClicked(d, i);})
+            iconSection.select('.'+watchIconClass).on("click", function(d, i){ EVTHANDLER.watchIconClicked(d, i);});
     };
 
     LIST.unbindEventHandlersToListItems = function(){
@@ -832,7 +846,8 @@
         .on("click", '')
         .on("mouseover", '')
         .on("mouseout", '')
-        .select(favIconClass).select('img').on("click", '');
+        .select('.'+listIconClass).select('.'+favIconClass).on("click", '')
+        .select('.'+listIconClass).select('.'+watchIconClass).on("click", '');
     };
 
 
@@ -868,13 +883,13 @@
 	 * */
 	LIST.addRankingPositions = function() {
 
-		$(rankingContainerClass).empty();
+		$('.'+rankingContainerClass).empty();
 
 		rankingModel.getRanking().forEach(function(d, i){
 			if( d.overallScore > 0 ){
 				var color = d.positionsChanged > 0 ? "rgba(0, 200, 0, 0.8)" : ( d.positionsChanged < 0 ? "rgba(250, 0, 0, 0.8)" : "rgba(128, 128, 128, 0.8)" );
 
-				var divRanking = d3.select( listItem + "" + d.originalIndex ).select(rankingContainerClass);
+				var divRanking = d3.select( listItem + "" + d.originalIndex ).select('.'+rankingContainerClass);
 
 				divRanking.append("div")
 					.attr("class", "eexcess_ranking_pos")
@@ -1215,7 +1230,7 @@
         LIST.bindEventHandlersToListItems();
 
 		// Delete ranking related icons
-		$(rankingContainerClass).empty();
+		$('.'+rankingContainerClass).empty();
 
         LIST.colorKeywordsInTitles();
         LIST.highlightListItems();
@@ -1226,17 +1241,26 @@
 
 
     LIST.switchFaviconOnOrOff = function(index){
-
         data[index].isSelected = !data[index].isSelected;
-        var faviconToSwitch = (data[index].isSelected) ? FAV_ICON_ON : FAV_ICON_OFF;
-
-        d3.select(listItem + '' +index).select(favIconClass).select('img')
-            .transition().attr("src", faviconToSwitch).duration(2000);
+        var classToAdd = data[index].isSelected ? favIconOnClass : favIconOffClass;
+        var classToRemove = classToAdd === favIconOnClass ? favIconOffClass : favIconOnClass;
+        $(listItem + '' + index +' .'+ listIconClass + ' .' + favIconClass)
+            .switchClass(classToRemove, classToAdd);
     };
 
 
     LIST.clearAllFavicons = function(){
-        d3.selectAll(allListItems).select(favIconClass).select('img').attr('src', FAV_ICON_OFF);
+        $(allListItems + ' .'+ listIconClass + ' .' + favIconClass).removeClass(favIconOnClass).addClass(favIconOffClass);
+    };
+
+
+    LIST.watchOrUnwatchListItem = function(index){
+        var watchIcon = $(listItem + '' + index +' .'+ listIconClass + ' .' + watchIconClass);
+        var classToAdd = watchIcon.hasClass(watchIconOffClass) ? watchIconOnClass : watchIconOffClass;
+        var classToRemove = classToAdd === watchIconOnClass ? watchIconOffClass : watchIconOnClass;
+        watchIcon.switchClass(classToRemove, classToAdd);
+
+        $(listItem + '' + index).toggleClass(watchedClass);
     };
 
 
@@ -1422,12 +1446,13 @@
      *
      * */
     (function(){
-        dataset = JSON.parse($("#dataset").text());
+
+        dataset = JSON.parse(localStorage.getItem('dataset'));
         console.log(dataset);
 
         data = dataset['data'];					// contains the data to be visualized
         query = dataset['query'];				// string representing the query that triggered the current recommendations
-		keywords = dataset['keywords'];
+        keywords = dataset['keywords'];
         PREPROCESSING.extendKeywordsWithColorCategory();
 
         rankingModel = new RankingModel(data);
@@ -1441,17 +1466,17 @@
         currentQuestion = 0;
         // only for evaluation
 
-       // HEADER.showInfoInHeader();
-      //  LIST.buildContentList();
+        // HEADER.showInfoInHeader();
+        //  LIST.buildContentList();
         getStaticElementsReady();
         // evaluation only
         initializeNextQuestion();
 
         if(dataset['tool-aided'] == 'yes'){
             // Initialize template's elements
-          //  TAGCLOUD.clearTagbox();
-          //  TAGCLOUD.buildTagCloud();
-           // VISPANEL.resetRanking();
+            //  TAGCLOUD.clearTagbox();
+            //  TAGCLOUD.buildTagCloud();
+            // VISPANEL.resetRanking();
             showRanking = true;
         }
         else{
