@@ -55,8 +55,12 @@
         this.dataset['task-number'] = this.task;
         this.dataset['tool-aided'] = $("#select-tool-condition").val() || 'yes';
 
-        $("input[name='dataset']").val(JSON.stringify(this.dataset));
-        $("form").submit();
+        localStorage.setItem('dataset', JSON.stringify(this.dataset));
+        self.location = 'vis.html';
+
+
+        /*$("input[name='dataset']").val(JSON.stringify(this.dataset));
+        $("form").submit();*/
     }
 
 

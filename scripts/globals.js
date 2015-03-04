@@ -12,3 +12,6 @@ var RANKING_MODE = {
     overall_score: 'overallScore',
     max_score: 'maxScore'
 };
+
+
+var pathToServer = 'http://localhost/RankingViz/server/';

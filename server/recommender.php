@@ -1,5 +1,7 @@
 <?php
 
+include 'error_handler.php';
+
 
 if(empty($_POST['action']) || empty($_POST['data'])){
     return_error('A POST parameter is not set', '1001');
@@ -193,16 +195,5 @@ function call_sp($mysqli, $sp_name, $parameter_string) {
     }
     return $result;
 }
-
-
-
-function return_error($message, $code) {
-    header('HTTP/1.1 500 Internal Server Error');
-    header('Content-Type: application/json; charset=UTF-8');
-    die(json_encode(array('message' => 'ERROR '.$message, 'code' => $code)));
-    echo 'ERROR -- '.$message;
-}
-
-
 
 ?>
