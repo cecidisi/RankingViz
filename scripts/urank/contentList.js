@@ -2,9 +2,11 @@
 
 var ContentList = (function(){
 
-    function ContentList(listRoot, highlightKeywordsInText) {
+    function ContentList(arguments, listRoot, callbacks, colorScale, highlightKeywordsInText) {
 
-        this.listRoot = listRoot;
+        this.listRoot = arguments.root;
+        this.callbacks =
+        this.selectedIndex = STR_NO_INDEX;
         this.highlightKeywordsInText = highlightKeywordsInText;
 
         $(this.listRoot).addClass('urank-list-container');
@@ -13,6 +15,8 @@ var ContentList = (function(){
 
     var ulClass = 'urank-list-ul';
     var liClass = 'urank-list-li';
+    var liLightBackground = 'urank-list-li-lightbackground';
+    var liDarkBackground = 'urank-list-li-darkbackground';
     var liRankingContainerClass = 'urank-list-li-ranking-container';
     var liTitleContainerClass = 'urank-list-li-title-container';
     var liButtonsContainer = 'urank-list-li-buttons-container';
@@ -21,7 +25,7 @@ var ContentList = (function(){
     var faviconOnClass = 'urank-list-li-button-favicon-on';
     var watchiconOnClass = 'urank-list-li-button-watchicon-on';
 
-    var liIdPrefix = '#urank-list-li-';
+    var liItem = '#urank-list-li-';
 
 
 
@@ -62,39 +66,45 @@ var ContentList = (function(){
         var iconSection = aListItem.append('div').attr('class', liButtonsContainer);
 
         iconSection.append("span")
-        .attr("class", watchIconClass + ' ' + watchiconOffClass)
-        .attr('title', 'Start watching');
+            .attr("class", watchIconClass + ' ' + watchiconOffClass)
+            .attr('title', 'Start watching');
 
         iconSection.append("span")
-        .attr("class", favIconClass + ' ' + faviconOffClass)
-        .attr('title', 'Mark as relevant');
+            .attr("class", favIconClass + ' ' + faviconOffClass)
+            .attr('title', 'Mark as relevant');
 
         $(this.listRoot).scrollTo('top');
-        LIST.updateItemsBackground();
+        this.updateLiBackground(data),
+
         LIST.bindEventHandlersToListItems();
     };
 
 
-    var updateLiBackground = function(){
-        $(allListItems).removeClass('light_background').removeClass('dark_background');
+    var _bindEventHandlers = function() {
 
-        if(rankingModel.getStatus() != RANKING_STATUS.no_ranking) {
-            rankingModel.getRanking().forEach(function(d, i) {
-                if(i%2 ==0)
-                    $(listItem + d.originalIndex).addClass('light_background');
-                else
-                    $(listItem + d.originalIndex).addClass('dark_background');
+        d3.selectAll(liClass)
+            .on("click", function(d, i){ EVTHANDLER.listItemClicked(d, i); })
+            .on("mouseover", EVTHANDLER.listItemHovered)
+            .on("mouseout", EVTHANDLER.listItemUnhovered);
 
-            });
-        }
-        else {
-            $(allListItems).each(function(i, item){
-                if(i%2 == 0)
-                    $(item).addClass('light_background');
-                else
-                    $(item).addClass('dark_background');
-            });
-        }
+        var iconSection = d3.selectAll(allListItems).select('.'+listIconClass);
+        iconSection.select('.'+favIconClass).on("click", function(d, i){ EVTHANDLER.faviconClicked(d, i);})
+        iconSection.select('.'+watchIconClass).on("click", function(d, i){ EVTHANDLER.watchIconClicked(d, i);});
+
+
+    };
+
+
+
+    var _updateLiBackground = function(data){
+        $(liClass).removeClass(liLightBackground).removeClass(liDarkBackground);
+
+        data.forEach(function(d, i) {
+            var index = d.originalIndex || i;
+            var backgroundClass = (index % 2 == 0) ? liLightBackground : liDarkBackground;
+            $(liItem + index).addClass(backgroundClass);
+        });
+
 
     };
 
@@ -175,15 +185,10 @@ LIST.buildContentList = function(){
 
 LIST.bindEventHandlersToListItems = function(){
     // Event for item clicked
-    d3.selectAll(allListItems)
-    .on("click", function(d, i){ EVTHANDLER.listItemClicked(d, i); })
-    .on("mouseover", EVTHANDLER.listItemHovered)
-    .on("mouseout", EVTHANDLER.listItemUnhovered);
 
-    var iconSection = d3.selectAll(allListItems).select('.'+listIconClass);
-    iconSection.select('.'+favIconClass).on("click", function(d, i){ EVTHANDLER.faviconClicked(d, i);})
-    iconSection.select('.'+watchIconClass).on("click", function(d, i){ EVTHANDLER.watchIconClicked(d, i);});
 };
+
+
 
 LIST.unbindEventHandlersToListItems = function(){
     // Event for item clicked
