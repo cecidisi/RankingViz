@@ -56,11 +56,14 @@
         this.dataset['tool-aided'] = $("#select-tool-condition").val() || 'yes';
 
         localStorage.setItem('dataset', JSON.stringify(this.dataset));
+
+
+
+
+
+
+
         self.location = 'vis.html';
-
-
-        /*$("input[name='dataset']").val(JSON.stringify(this.dataset));
-        $("form").submit();*/
     }
 
 
