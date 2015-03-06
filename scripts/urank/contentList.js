@@ -4,10 +4,16 @@ var ContentList = (function(){
 
     function ContentList(arguments, listRoot, callbacks, colorScale, highlightKeywordsInText) {
 
-        this.listRoot = arguments.root;
-        this.callbacks =
-        this.selectedIndex = STR_NO_INDEX;
-        this.highlightKeywordsInText = highlightKeywordsInText;
+
+        var s = $.extend({
+            root: '',
+            colorScale: [],
+
+
+        }, arguments);
+
+
+
 
         $(this.listRoot).addClass('urank-list-container');
     }

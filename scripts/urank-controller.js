@@ -1,14 +1,46 @@
-(function($){
 
-    $.fn.urank = function(options){
+var Urank = (function(){
 
-        var dom = {
-            tagcloud : options.tagCloud,
-            queryBox : options: queryBox,
-            list: options.list,
-            vispanel: options.vispanel,
-            docviewer: options.docviewer || ''
-        };
+
+
+
+
+    function Urank(arguments) {
+
+        var settings = $.extend({
+            tagCloudRoot: '',
+            tagCloudCallbacks: {},
+            tagBoxRoot: '',
+            tagBoxCallbacks: {},
+            contentListRoot: '',
+            contentListCallBacks: {},
+            visPanelRoot: '',
+            visPanelCallbacks: {},
+            docViewerRoot: '',
+            docViewerCallbacks: {},
+            tagColorRange: [],
+            weightColorRange: []
+
+        }, arguments);
+
+        init(settings);
+    }
+
+
+
+    function init(s){
+
+
+    }
+
+
+
+
+})();
+
+
+
+
 
 
         var width = this.width(),
@@ -1523,5 +1555,5 @@
 
     };
 
-}(jQuery));
+
 
