@@ -1,6 +1,7 @@
 
 var Urank = (function(){
 
+    var s = {};
     var rankingModel, rankingVis;
     var contentList, tagCloud, tagBox, visPanel, docViewer;
 
@@ -121,34 +122,9 @@ var Urank = (function(){
 
 
 
-    ////////	Reset Button Click	////////
-
-    EVTHANDLER.btnResetClicked = function(){
-        TAGCLOUD.clearTagbox();
-        TAGCLOUD.buildTagCloud();
-        LIST.resetContentList();
-        VISPANEL.resetRanking();
-        DOCPANEL.clear();
-    };
 
 
 
-    ////////	content list item click	////////
-
-    EVTHANDLER.listItemClicked = function(d, i){
-        LIST.selectListItem(i);
-    };
-
-    ////////	list item mouseover	////////
-    EVTHANDLER.listItemHovered = function(d, index){
-        LIST.hoverListItem(index);
-    };
-
-
-    ////////	list item mouseout	////////
-    EVTHANDLER.listItemUnhovered = function(d, index){
-        LIST.unhoverListItem(index);
-    };
 
 
 
@@ -245,37 +221,13 @@ var Urank = (function(){
     };
 
 
-    ////////	Show List button	////////
-
-    EVTHANDLER.btnListClicked = function(event){
-        event.stopPropagation();
-        $(sampleTextSection).slideUp();
-        $(selectedItemsSection).slideToggle();
-    };
-
-
-    ////////	Show Text button	////////
-
-    EVTHANDLER.btnTextClicked = function(event){
-        event.stopPropagation();
-        $(selectedItemsSection).slideUp();
-        $(sampleTextSection).slideToggle();
-    };
-
-
-    ////////	Finished button	////////
-
-    EVTHANDLER.btnFinishedClicked = function(){
-        HEADER.finishQuestion();
-    };
-
 
 
 
 
     function Urank(arguments) {
 
-        var settings = $.extend({
+        s = $.extend({
             tagCloudRoot: '',
             tagCloudCallbacks: {},
             tagBoxRoot: '',
@@ -298,15 +250,12 @@ var Urank = (function(){
         tagColorScale = d3.scale.ordinal().domain(d3.range(0, TAG_CATEGORIES, 1)).range(s.tagColorArray);
         queryTermColorScale = d3.scale.ordinal().range(s.queryTermColorArray);
 
-
-
-
-        init(settings);
+        init();
     }
 
 
 
-    function init(s){
+    function init(){
 
         contentList = new ContentList({
             root: '',
@@ -323,12 +272,72 @@ var Urank = (function(){
 
 
 
-    Urank.prototype = {
-        loadData: function(data) {
 
-            rankingModel = new RankingModel(data);
-            rankingVis = new RankingVis(s.
-        }
+    function extendDataWithAncillaryDetails(data){
+
+        data.forEach(function(d){
+            d['isSelected'] = false;
+        });
+    };
+
+
+
+    function extendKeywordsWithColorCategory(keywords){
+
+        var extent = d3.extent(keywords, function(k){ return k['repeated']; });
+        var range = (extent[1] - 1) * 0.1;   // / TAG_CATEGORIES;
+
+        keywords.forEach(function(k){
+            var colorCategory = parseInt((k['repeated'] - 1/*extent[0]*/) / range);
+            k['colorCategory'] = (colorCategory < TAG_CATEGORIES) ? colorCategory : TAG_CATEGORIES - 1;
+        });
+    };
+
+
+
+
+
+    var _loadData = function(data) {
+        var arguments = {
+            minRepetitions : (parseInt(data.length * 0.05) > 1) ? parseInt(data.length * 0.05) : 2
+        };
+
+        var keywordExtractor = new KeywordExtractor(arguments);
+
+        data.forEach(function(d){
+            d.title = d.title.clean();
+            d.description = d.description.clean();
+            var document = (d.description) ? d.title +'. '+ d.description : d.title;
+            keywordExtractor.addDocument(document.removeUnnecessaryChars());
+        });
+
+        keywordExtractor.processCollection();
+
+        data.forEach(function(d, i){
+            d.keywords = keywordExtractor.listDocumentKeywords(i);
+        });
+        this.data = data;
+        var keywords = keywordExtractor.getCollectionKeywords();
+        this.keywords = extendKeywordsWithColorCategory(keywords);
+
+        rankingModel = new RankingModel(this.data);
+        rankingVis = new RankingVis(s.visPanelRoot, this);
+    };
+
+
+
+
+    var _update = function() {
+
+    }
+
+
+
+
+
+    Urank.prototype = {
+        loadData: _loadData,
+        update: _update
 
     }
 
