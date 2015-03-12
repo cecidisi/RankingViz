@@ -182,11 +182,11 @@
 
 
 
-    ////////	Tag in box mouseovered	////////
+    ////////	Tag in cloud mouseovered	////////
 
     EVTHANDLER.tagInBoxMouseOvered = function(){
         d3.select(this)
-            .style( "background", function(k){ return getGradientString("#0066ff", [1, 0.8, 1]); })
+            .style( "background", getGradientString("#0066ff", 10))
             .style('border', '1px solid #0066ff')
             .style("color", "#eee");
     };
@@ -196,7 +196,7 @@
 
     EVTHANDLER.tagInBoxMouseOuted = function(){
         d3.select(this)
-            .style( "background", function(k){ return getGradientString(tagColorScale(k.colorCategory+1), [1, 0.7, 1]); })
+            .style( "background", function(k){ return getGradientString(tagColorScale(k.colorCategory+1), 10); })
             .style('border', function(k){ return '1px solid ' + tagColorScale(k.colorCategory+1); })
             .style("color", "#111");
     };
@@ -217,6 +217,7 @@
 
 	EVTHANDLER.dragStarted = function(event, ui) {
 		draggedItem = $(this).hide();
+        //draggedItem.css('z-index', 999);
 		isOverDroppable = false;
     };
 
@@ -224,7 +225,6 @@
     EVTHANDLER.dragStopped = function(event, ui) {
 		draggedItem.show();
 		if(isOverDroppable){
-			$(this).draggable('destroy');
 			var keywordTerm = d3.select(draggedItem[0]).text();
 			LIST.rankRecommendations();
 		}
@@ -234,8 +234,7 @@
 	////////	Droppable	////////
 
 	EVTHANDLER.dropped = function(event, ui){
-		TAGCLOUD.dropTagInTagBox( ui.draggable );
-		ui.draggable.draggable( BEHAVIOR.draggableOptions );
+        TAGCLOUD.dropTagInTagBox(ui.draggable);
 		isOverDroppable = true;
 	};
 
@@ -477,6 +476,7 @@
 	BEHAVIOR.draggableOptions = {
 			revert: 'invalid',
 			helper: 'clone',
+            zIndex: 999,
 			appendTo: tagBox,
 			start: EVTHANDLER.dragStarted,
 			stop: EVTHANDLER.dragStopped
@@ -536,7 +536,7 @@
 				.attr("id", function(k, i){ return "tag-"+i; })
                 .attr('tag-pos', function(k, i){ return i; })
                 .attr('is-selected', false)
-                .style("background", function(k){ return getGradientString(tagColorScale(k.colorCategory+1), [1, 0.7, 1]); })
+                .style("background", function(k){ return getGradientString(tagColorScale(k.colorCategory+1), 10); })
                 .style('border', function(k){ return '1px solid ' + tagColorScale(k.colorCategory+1); })
 				.text( function(k){ return k.term; })
 				.on( "mouseover", EVTHANDLER.tagInBoxMouseOvered)
@@ -601,9 +601,6 @@
             .style("border", "solid 0.2em " + aux)
             .on("mouseover", "")
             .on("mouseout", "");
-
-        // Reset the draggability
-        tag.draggable('destroy');
 	};
 
 
@@ -669,7 +666,7 @@
 
         // Restore style
         d3.select(tag)
-            .style("background", function(k){ return getGradientString(tagColorScale(k.colorCategory+1), [1, 0.7, 1]) })
+            .style("background", function(k){ return getGradientString(tagColorScale(k.colorCategory+1), 10) })
             .style('border', function(k){ return '1px solid ' + tagColorScale(k.colorCategory+1); })
             .style("color", "#111")
             .on( "mouseover", EVTHANDLER.tagInBoxMouseOvered)
@@ -696,7 +693,7 @@
     TAGCLOUD.updateTagColor = function(){
 
         // Clear color scale domain
-        weightColorScale.domain([]);
+/*        weightColorScale.domain([]);
 
         for(var i = 0; i < selectedTags.length; i++){
             // Reasign keyword to color scale domain
@@ -708,7 +705,7 @@
             d3.select(selectedTags[i][0])
                 .style("background", "rgba("+ rgbSequence + ", " + value + ")")
                 .style("border", "solid 0.2em " + aux);
-        }
+        }*/
     };
 
 

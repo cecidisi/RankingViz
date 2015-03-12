@@ -2,37 +2,39 @@
 
 var ContentList = (function(){
 
+    // Settings
     var s = {};
-    var ulClass = 'urank-list-ul';
-    var liClass = 'urank-list-li';
-    var liHoverClass = 'urank-list-li-hover';
-    var liLightBackground = 'urank-list-li-lightbackground';
-    var liDarkBackground = 'urank-list-li-darkbackground';
-    var liMovingUpClass = 'urank-list-li-movingup';
-    var liMovingDownClass = 'urank-list-li-movingdown';
-    var liNotMovingClass = 'urank-list-li-notmoving';
-    var liRankingContainerClass = 'urank-list-li-ranking-container';
-    var rankingPosClass = 'urank-list-li-ranking-pos';
-    var rankingPosMovedClass = 'urank-list-li-ranking-posmoved';
-    var liTitleContainerClass = 'urank-list-li-title-container';
-    var liButtonsContainer = 'urank-list-li-buttons-container';
-    var faviconClass = 'urank-list-li-button-favicon';
-    var faviconOffClass = 'urank-list-li-button-favicon-off';
-    var faviconOnClass = 'urank-list-li-button-favicon-on';
-    var watchiconClass = 'urank-list-li-button-watchicon-on';
-    var watchiconOffClass = 'urank-list-li-button-watchicon-off';
-    var watchiconOnClass = 'urank-list-li-button-watchicon-on';
-    var liWatchedClass = 'urank-list-li-watched';
-
+    // Classes
+    var contentListContainerClass = 'urank-list-container',
+        ulClass = 'urank-list-ul',
+        liClass = 'urank-list-li',
+        liHoverClass = 'urank-list-li-hover',
+        liLightBackground = 'urank-list-li-lightbackground',
+        liDarkBackground = 'urank-list-li-darkbackground',
+        liMovingUpClass = 'urank-list-li-movingup',
+        liMovingDownClass = 'urank-list-li-movingdown',
+        liNotMovingClass = 'urank-list-li-notmoving',
+        liRankingContainerClass = 'urank-list-li-ranking-container',
+        rankingPosClass = 'urank-list-li-ranking-pos',
+        rankingPosMovedClass = 'urank-list-li-ranking-posmoved',
+        liTitleContainerClass = 'urank-list-li-title-container',
+        liButtonsContainer = 'urank-list-li-buttons-container',
+        faviconClass = 'urank-list-li-button-favicon',
+        faviconOffClass = 'urank-list-li-button-favicon-off',
+        faviconOnClass = 'urank-list-li-button-favicon-on',
+        watchiconClass = 'urank-list-li-button-watchicon-on',
+        watchiconOffClass = 'urank-list-li-button-watchicon-off',
+        watchiconOnClass = 'urank-list-li-button-watchicon-on',
+        liWatchedClass = 'urank-list-li-watched';
+    // Ids
     var liItem = '#urank-list-li-';
 
 
-    function ContentList(arguments, listRoot, callbacks, colorScale, highlightKeywordsInText) {
+    function ContentList(arguments) {
 
-        var _this = this;
-        var s = $.extend({
+        s = $.extend({
             root: '',
-            colorScale: [],
+            colorScale: function(){},
             onListItemClicked: function(d, i){},
             onListItemHovered: function(i){},
             onListItemUnhovered: function(i){},
@@ -40,14 +42,14 @@ var ContentList = (function(){
             onWatchiconClicked: function(d, i){},
             getTextWithKeywordsHighlighted: function(text){ return text;}
         }, arguments);
-
-        $(s.root).addClass('urank-list-container');
-        this.selectedIndex = STR_NO_INDEX;
     }
 
 
 
     var _build = function(data) {
+
+        $(s.root).addClass();
+        this.selectedIndex = STR_NO_INDEX;
 
         // Easier to build with d3 because it's data-driven
         d3.select(s.root).empty();
@@ -144,13 +146,13 @@ var ContentList = (function(){
     var _bindEventHandlers = function() {
 
         d3.selectAll('.'+liClass)
-            .on("click", function(d, i){ s.onListItemClicked(d, i); })
-            .on("mouseover", s.onListItemHovered)
-            .on("mouseout", s.onListItemUnhovered);
+            .on("click", function(d, i){ s.onListItemClicked.call(this, i); })
+            .on("mouseover", function(d, i){ s.onListItemHovered.call(this, i); })
+            .on("mouseout", function(d, i){ s.onListItemUnhovered.call(this, i); });
 
         var iconSection = d3.selectAll('.'+liClass).select('.' + liButtonsContainer);
-        iconSection.select('.'+faviconClass).on("click", function(d, i){ s.onFaviconClicked(d, i);})
-        iconSection.select('.'+watchiconClass).on("click", function(d, i){ s.onWatchiconClicked(d, i);});
+        iconSection.select('.'+faviconClass).on("click", function(d, i){ s.onFaviconClicked.call(this, i);})
+        iconSection.select('.'+watchiconClass).on("click", function(d, i){ s.onWatchiconClicked.call(this, i);});
     };
 
 
@@ -189,12 +191,12 @@ var ContentList = (function(){
 
 
     // receives actual index
-    var _addHoverEffect = function(index) {
+    var _hover = function(index) {
         $(liItem +''+ index).addClass(liHoverClass);
     };
 
 
-    var _removeHoverEffect = function(index) {
+    var _unhover = function(index) {
         $(liItem +''+ index).removeClass(liHoverClass);
     };
 
@@ -251,9 +253,9 @@ var ContentList = (function(){
     };
 
 
-    var _switchFaviconOnOrOff = function(index, isSelected){
-        //data[index].isSelected = !data[index].isSelected;
-        var classToAdd = isSelected ? faviconOnClass : faviconOffClass;
+    var _switchFaviconOnOrOff = function(index){
+        var favIcon = $(liItem + '' + index +' .'+ liButtonsContainer + ' .' + faviconClass);
+        var classToAdd = favIcon.hasClass(faviconOffClass) ? faviconOnClass : faviconOffClass;
         var classToRemove = classToAdd === faviconOnClass ? faviconOffClass : faviconOnClass;
         $(liItem + '' + index +' .'+ liButtonsContainer + ' .' + faviconClass).switchClass(classToRemove, classToAdd);
     };
@@ -401,8 +403,8 @@ var ContentList = (function(){
         stopAnimation: _stopAnimation,
         removeShadowEffect: _removeShadowEffect,
         hideListItems: _hideListItems,
-        addHoverEffect: _addHoverEffect,
-        removeHoverEffect: _removeHoverEffect,
+        hover: _hover,
+        unhover: _unhover,
         showRankingPositions: _showRankingPositions,
         clearAllFavicons: _clearAllFavicons,
         switchFaviconOnOrOff: _switchFaviconOnOrOff,
@@ -414,6 +416,7 @@ var ContentList = (function(){
         formatTitles: _formatTitles
     };
 
+    return ContentList;
 })();
 
 

@@ -33,9 +33,11 @@
         console.log("Status: Testing with Dataset " + this.datasetId);
         $("#eexcess_loading").fadeIn('fast');
 
+
         var arguments = {
             minRepetitions : (parseInt(this.dataset.data.length * 0.05) > 1) ? parseInt(this.dataset.data.length * 0.05) : 2
         };
+
 
         var keywordExtractor = new KeywordExtractor(arguments);
 
@@ -56,11 +58,6 @@
         this.dataset['tool-aided'] = $("#select-tool-condition").val() || 'yes';
 
         localStorage.setItem('dataset', JSON.stringify(this.dataset));
-
-
-
-
-
 
 
         self.location = 'vis.html';

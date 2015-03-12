@@ -50,27 +50,6 @@ function toYear(date){
  *
  * */
 
-Array.prototype.getIndexOf = function(target, field) {
-	var array = this;
-	for(var i = 0; i < array.length; i++) {
-		if(array[i][field] === target)
-			return i;
-	}
-	return -1;
-};
-
-
-
-
-// Fisher–Yates shuffle
-//Array.prototype.shuffle = function() {
-//    for (var i = this.length - 1; i > 0; i--) {
-//        var j = Math.floor(Math.random() * (i + 1));
-//        this.swap(i, j);
-//    }
-//};
-
-
 
 Array.prototype.getObjectIndex = function(callback) {
     for(var i=0; i<this.length; i++) {
@@ -150,65 +129,6 @@ Number.prototype.round = function(places) {
 }
 
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////
-/**
- * jQuery functions (for DOM elements)
- *
- * */
-
-
-$.fn.outerHTML = function() {
-    return $(this).clone().wrap('<div></div>').parent().html();
- };
-
-
-
-
-$.fn.scrollTo = function( target, options, callback ){
-
-	if(typeof options == 'function' && arguments.length == 2){
-		callback = options;
-		options = target;
-	}
-
-	var settings =
-		$.extend({
-			scrollTarget  : target,
-			offsetTop     : 50,
-			duration      : 500,
-			easing        : 'swing'
-		}, options);
-
-	return this.each(function(){
-		var scrollPane = $(this);
-
-		var scrollTarget;
-		if( typeof settings.scrollTarget == "number" ){
-			scrollTarget = settings.scrollTarget;
-		}
-		else{
-			if( settings.scrollTarget == "top" ){
-				scrollTarget = 0;
-			}
-			else{
-				scrollTarget = $(settings.scrollTarget);
-                settings.offsetTop = scrollPane.offset().top;
-			}
-		}
-
-		//var scrollTarget = (typeof settings.scrollTarget == "number") ? settings.scrollTarget : $(settings.scrollTarget);
-		var scrollY = (typeof scrollTarget == "number") ? scrollTarget : scrollPane.scrollTop() + scrollTarget.offset().top - settings.offsetTop;
-
-		scrollPane.animate({scrollTop : scrollY }, parseInt(settings.duration), settings.easing, function(){
-            if (typeof callback == 'function') { callback.call(this); }
-		});
-	});
-};
-
-
-
-
-
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -230,16 +150,6 @@ function cutHex(h) {return (h.charAt(0)=="#") ? h.substring(1,7):h}
  * */
 
 function getGradientString(color, shadeDiff) {
-
-/*    var rgb = (color.contains('#')) ? (hexToR(color) + ", " + hexToG(color) + ", " +hexToB(color)) : color;
-
-    var gradient = "-webkit-linear-gradient(top";
-    shades.forEach(function(s){
-        gradient += ", rgba(" + rgb + ", " + s + ")"
-    });
-
-    gradient += ")";
-    return gradient;*/
 
     var r = parseInt(hexToR(color));
     var g = parseInt(hexToG(color));
