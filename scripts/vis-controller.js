@@ -998,6 +998,28 @@
 	 * */
     LIST.sortContentList = function(){
 
+/*        var liHtml = new Array();
+
+        rankingModel.getRanking().forEach(function(d, i){
+            var current = $( listItem + "" + d.originalIndex );
+            current.css('top', 0);
+            var outer = $(current).outerHTML();
+            liHtml.push(outer);
+            current.remove();
+        });
+
+        var oldHtml = "";
+        for(var j = liHtml.length-1; j >= 0; j--){
+            $(contentList).html(liHtml[j] + "" + oldHtml);
+            oldHtml = $(contentList).html();
+        }
+
+        // Re-binds on click event to list item. Removing and re-appending DOM elements destroy the bounds to event handlers
+        //d3.selectAll( allListItems ).on("click", EVTHANDLER.listItemClicked);
+        LIST.bindEventHandlersToListItems();
+        LIST.selectededListIndex = STR_NO_INDEX;*/
+
+
         var liHtml = new Array();
 
         rankingModel.getRanking().forEach(function(d, i){
@@ -1018,6 +1040,8 @@
         //d3.selectAll( allListItems ).on("click", EVTHANDLER.listItemClicked);
         LIST.bindEventHandlersToListItems();
         LIST.selectededListIndex = STR_NO_INDEX;
+
+
     };
 
 
@@ -1342,7 +1366,9 @@
 
             // First clause solves words like 'IT', second clause that the stem of the doc term (or the singularized term) matches the keyword stem
             if(trickyWords.indexOf(word.stem()) == -1 || word.isAllUpperCase()) {
-               var kIndex = keywordsInBox.getObjectIndex(function(k){ return (k.stem === word.stem() || k.stem === word.singularizeNoun().stem()); });
+               //var kIndex = keywordsInBox.getObjectIndex(function(k){ return (k.stem === word.stem() || k.stem === word.singularizeNoun().stem()); });
+                var kIndex = _.findIndex(keywordsInBox,function(k){ return (k.stem === word.stem() || k.stem === word.singularizeNoun().stem()); });
+                console.log('kindex = ' + kIndex);
                 if(kIndex > -1){
                     return "<strong style=\"color:" + weightColorScale(keywordsInBox[kIndex].stem) + "\">" + word + "</strong>";
                 }

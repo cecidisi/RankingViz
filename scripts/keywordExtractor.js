@@ -168,7 +168,7 @@ var KeywordExtractor = (function(){
             var mean = sum / Object.keys(docKeywords).length;
 
             Object.keys(docKeywords).forEach(function(stemmedTerm){
-                var kIndex = candidateKeywords.getObjectIndex(function(element){ return element.stem === stemmedTerm});
+                var kIndex = _.findIndex(candidateKeywords, function(element){ return element.stem === stemmedTerm});
                 if(docKeywords[stemmedTerm] >= mean && kIndex == -1)
                     candidateKeywords.push({ 'stem': stemmedTerm, 'term': '', 'repeated': 1, 'variations': {} });
                 else if(kIndex > -1)

@@ -22,48 +22,41 @@ var Urank = (function(){
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    highlightKeywordsInText : function(text, isTitle){
-        var textWithKeywords = isTitle ? '' : '<p>',
-            word = "";
-        var keywordsInBox = TAGCLOUD.getWeightedKeywordsInBox();
+    var getStyledText = function(text){
+        var textWithKeywords = '',
+            word = '';
+        var keywordsInBox = tagBox.getKeywordsInBox();
         text.split('').forEach(function(c){
             if(c.match(/\w/)){
                 word += c;
             }
             else if(c == '\n'){
-                textWithKeywords += '</p><p>'
+                textWithKeywords += '<br/>'
             }
             else {
                 if(word != '')
-                    word = DOCPANEL.internal.getStyledWord(word, keywordsInBox);
+                    word = getStyledWord(word, keywordsInBox);
                 textWithKeywords += word + c;
-                word = "";
+                word = '';
             }
         });
-        if(word != "")
-            textWithKeywords += this.getStyledWord(word, keywordsInBox);
-        if(!isTitle)
-            textWithKeywords +='</p>';
-
+        if(word != '')
+            textWithKeywords += getStyledWord(word, keywordsInBox);
         return textWithKeywords;
-    },
+    };
 
 
-        getStyledWord : function(word, keywordsInBox){
-            var trickyWords = ['it', 'is', 'us', 'ar'];
-            //var wordStem = word.replace(/our$/, 'or').stem();
-            var word = word.replace(/our$/, 'or');
-
-            // First clause solves words like 'IT', second clause that the stem of the doc term (or the singularized term) matches the keyword stem
-            if(trickyWords.indexOf(word.stem()) == -1 || word.isAllUpperCase()) {
-                var kIndex = keywordsInBox.getObjectIndex(function(k){ return (k.stem === word.stem() || k.stem === word.singularizeNoun().stem()); });
-                if(kIndex > -1){
-                    return "<strong style=\"color:" + weightColorScale(keywordsInBox[kIndex].stem) + "\">" + word + "</strong>";
-                }
-
+    var getStyledWord = function(word, keywordsInBox){
+        var trickyWords = ['it', 'is', 'us', 'ar'];
+        var word = word.replace(/our$/, 'or');
+        // First clause solves words like 'IT', second clause that the stem of the doc term (or the singularized term) matches the keyword stem
+        if(trickyWords.indexOf(word.stem()) == -1 || word.isAllUpperCase()) {
+            if(_.findIndex(keywordsInBox, function(k){ return (k.stem === word.stem() || k.stem === word.singularizeNoun().stem()); })) {
+                return "<strong style=\"color:" + weightColorScale(keywordsInBox[kIndex].stem) + "\">" + word + "</strong>";
             }
-            return word;
         }
+        return word;
+    };
 
 
 
@@ -79,6 +72,13 @@ var Urank = (function(){
 
     var EVTHANDLER = {
 
+        onLoad: function(data, keywords) {
+            contentList.build(data);
+            tagCloud.build(keywords);
+            tagBox.build();
+            visCanvas.build();
+            docViewer.build();
+        },
         onChange: function(selectedKeywords, newQueryTermColorScale) {
 
             _this.queryTermColorScale = newQueryTermColorScale;
@@ -108,48 +108,26 @@ var Urank = (function(){
         onTagDeleted: function(index) {
             tagCloud.restoreTag(index);
         },
-        onItemClicked : function(d, i) {
-            contentList.highlighListItem(i);
+        onItemClicked : function(index) {
+            contentList.highlighListItem(index);
             // call vispanel.selectitem
             // call docviewer.showdocument
         },
-        onItemHovered: function(d, i) {
-            contentList.addHoverEffect(i);
+        onItemHovered: function(index) {
+            contentList.addHoverEffect(index);
             // call vispanel.hoveritem
         },
-        onItemUnhovered: function(d, i) {
-            contentList.removeHoverEffect(i);
-            visCanvas.unhoverItem(i);
+        onItemUnhovered: function(index) {
+            contentList.removeHoverEffect(index);
+            visCanvas.unhoverItem(index);
         },
-        onFaviconClicked: function(d, i){
-            data[i].isSelected = !data[i].isSelected;
-            contentList.switchFaviconOnOrOff(i, d.isSelected);
+        onFaviconClicked: function(index){
+           // data[i].isSelected = !data[index].isSelected;         //CHECK
+            contentList.switchFaviconOnOrOff(index);
         },
-        onWatchiconClicked: function(d, i) {
+        onWatchiconClicked: function(i) {
             contentList.watchOrUnwatchListItem(d, i);
-        },
-        // to be returned
-        onReset: function() {
-            /*
-            TAGCLOUD.clearTagbox();
-            TAGCLOUD.buildTagCloud();
-            LIST.resetContentList();
-            VISPANEL.resetRanking();
-            DOCPANEL.clear();*/
-            contentList.reset(data);
-
-        },
-        onRankByOverallScore: function() {
-
-        },
-        onRankByMaximumScore: function() {
-
-        },
-        onResize: function() {
-           visCanvas.resize();
         }
-
-
     };
 
 
@@ -167,36 +145,6 @@ var Urank = (function(){
             this.undoHighlight();
         //  DOCPANEL.clear();
     }
-
-
-
-
-
-
-
-
-
-    EVTHANDLER.canvasResized = function(){
-        VISPANEL.resizeRanking();
-    };
-
-
-    ////////	Rank button clicked (by overall or max score)	////////
-
-    EVTHANDLER.rankButtonClicked = function(sender){
-        rankingMode = $(sender).attr('sort-by');
-        if(rankingModel.getStatus() != RANKING_STATUS.no_ranking)
-            LIST.rankRecommendations();
-    };
-
-
-
-
-
-
-
-
-
 
 
 
@@ -222,6 +170,7 @@ var Urank = (function(){
         var options = {
             contentList: {
                 root: s.contentListRoot,
+                originalData: _this.data,
                 colorScale: _this.queryTermColorRange,
                 onListItemClicked: EVTHANDLER.onItemClicked,
                 onListItemHovered: EVTHANDLER.onItemHovered,
@@ -322,21 +271,43 @@ var Urank = (function(){
         this.rankingMode = RANKING_MODE.overall_score;
 
         rankingModel = new RankingModel(this.data);
+
+        EVTHANDLER.onLoad(this.data, this.keywords);
     };
 
 
+    var _reset = function() {
+        contentList.reset(this.data);
+        tagCloud.build(this.keywords);
+        tagBox.clear();
+        visCanvas.reset();
+        docViewer.clear();
+    };
 
+    var _rankByOverallScore = function() {
+        this.rankingMode = RANKING_MODE.overall_score;
+        EVTHANDLER.onChange.call(this, tagBox.getKeywordsInBox(), this.queryTermColorScale);
+    };
 
+    var _rankByMaximumScore: function() {
+        this.rankingMode = RANKING_MODE.max_score;
+        EVTHANDLER.onChange.call(this, tagBox.getKeywordsInBox(), this.queryTermColorScale);
+    };
 
+    var _resize: function() {
+        visCanvas.resize();
+    };
 
 
     Urank.prototype = {
-        loadData: _loadData
+        loadData: _loadData,
+        reset: _reset,
+        rankByOverallScore: _rankByOverallScore,
+        rankByMaximumScore: _rankByMaximumScore,
+        resize: _resize
+    };
 
-    }
-
-
-
+    return Urank;
 })();
 
 

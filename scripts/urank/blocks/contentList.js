@@ -34,6 +34,7 @@ var ContentList = (function(){
 
         s = $.extend({
             root: '',
+            originalData: [],
             colorScale: function(){},
             onListItemClicked: function(d, i){},
             onListItemHovered: function(i){},
@@ -116,12 +117,12 @@ var ContentList = (function(){
     }
 
 
-    var _reset = function(data) {
+    var _reset = function() {
 
         //rankingModel.reset();     do in controller
 
         $('.'+liRankingContainerClass).empty();
-        this.sort(data);
+        this.sort(s.originalData);
         this.updateLiBackground();
         this.formatTitles();
         // LIST.animateContentList(RANKING_STATUS.reset);       call from controller
@@ -277,7 +278,7 @@ var ContentList = (function(){
     * @param {type} data : current ranking
     * @param {type} status Description
     */
-    var _animate = function(data, status) {
+    var _update = function(data, status) {
 
         this.stopAnimation();
 
@@ -399,7 +400,12 @@ var ContentList = (function(){
         build: _build,
         sort: _sort,
         reset: _reset,
+        update: _update,
+        animateAccordionEffect: _animateAccordionEffect,
+        animateResortEffect: _animateResortEffect,
+        animateUnchangedEffect: _animateUnchangedEffect,
         getformattedTitle: _getformattedTitle,
+        formatTitles: _formatTitles,
         bindEvenHandlers: _bindEventHandlers,
         unbindEventHandlers: _unbindEventHandlers,
         updateLiBackground: _updateLiBackground,
@@ -413,120 +419,10 @@ var ContentList = (function(){
         showRankingPositions: _showRankingPositions,
         clearAllFavicons: _clearAllFavicons,
         switchFaviconOnOrOff: _switchFaviconOnOrOff,
-        watchOrUnwatchListItem: _watchOrUnwatchListItem,
-        animate: _animate,
-        animateAccordionEffect: _animateAccordionEffect,
-        animateResortEffect: _animateResortEffect,
-        animateUnchangedEffect: _animateUnchangedEffect,
-        formatTitles: _formatTitles
+        watchOrUnwatchListItem: _watchOrUnwatchListItem
     };
 
     return ContentList;
 })();
 
 
-
-
-
-
-
-/*
-
-var LIST = {};
-
-LIST.internal = {
-
-
-    getFormattedTitle: function(title){ }
-
-};
-
-
-
-
-LIST.selectededListIndex = STR_NO_INDEX;
-
-
-LIST.buildContentList = function(){ };
-
-
-LIST.bindEventHandlersToListItems = function(){ };
-
-
-LIST.unbindEventHandlersToListItems = function(){ };
-
-
-
-
-LIST.rankRecommendations = function() {};
-
-
-
-var _selectListItem = function(index) {}
-
-
-
-LIST.addRankingPositions = function() { };
-
-
-
-
-LIST.hideUnrankedItems = function(){ };
-
-
-
-LIST.stopAnimation = function(duration, easing, delay){ };
-
-
-LIST.removeShadowEffect = function() { };
-
-
-LIST.sortContentList = function(){ };
-
-
-LIST.animateContentList = function(action) { };
-
-
-
-LIST.accordionAnimation = function(initialDuration, timeLapse, easing) { };
-
-
-
-LIST.resortListAnimation = function(duration, easing) { };
-
-
-
-LIST.unchangedListAnimation = function (duration, easing) { };
-
-
-
-LIST.colorKeywordsInTitles = function(){ };     // get formatted title
-
-
-
-LIST.selectListItem = function( i, flagSelectedOutside ){};
-
-
-LIST.highlightListItems = function(index){ };
-
-
-
-LIST.hoverListItem = function(index, isExternalCall) { };
-
-
-
-LIST.unhoverListItem = function(index, isExternalCall){ };
-
-
-LIST.resetContentList = function(){ };
-
-
-
-LIST.switchFaviconOnOrOff = function(index){ };
-
-
-LIST.clearAllFavicons = function(){ };
-
-
-LIST.watchOrUnwatchListItem = function(index){ };
-*/

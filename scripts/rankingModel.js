@@ -58,7 +58,7 @@ var RankingModel = (function(){
             return RANKING_STATUS.update;
 
         for(var r in _ranking){
-            var indexInPrevious = _previousRanking.getObjectIndex(function(element){ element.originalIndex === r.originalIndex });
+            var indexInPrevious = _.findIndex(_previousRanking, function(element){ element.originalIndex === r.originalIndex });
             if(indexInPrevious == -1 || r.rankingPos !== _previousRanking[indexInPrevious].rankingPos)
                 return RANKING_STATUS.update;
         }
