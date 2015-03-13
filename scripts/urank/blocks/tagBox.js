@@ -10,6 +10,8 @@ var TagBox = (function(){
     //  Ids
 
 
+    var _this = this;
+
 
     function Tagbox(arguments) {
 
@@ -77,7 +79,7 @@ var TagBox = (function(){
             var tagPos = $(tag).attr('tag-pos');
             // Append "delete" icon to tag and bind event handler
             $("<img class='" + tagDeleteButtonClass + "' src='" + DELETE_ICON_IMG + "' />").appendTo(tag)
-                .click(function(){ this.deleteTag(tagPos); /*EVTHANDLER.deleteTagClicked(tag);*/ });
+                .click(function(){ _this.deleteTag(tagPos); });
 
             // Add new div to make it a slider
             var weightSlider = $("div").appendTo(tag).slider(this.sliderOptions);
@@ -102,17 +104,6 @@ var TagBox = (function(){
     var _deleteTag = function(index) {
         s.onTagDeleted(index);
         s.onChange.call(this, this.getKeywordsInBox(), s.colorScale);
-
-/*          IN CONTROLLER
-        if( selectedTags.length == 0 ){
-            $('<p></p>').appendTo($(s.root)).text(STR_DROP_TAGS_HERE);
-            LIST.resetContentList();
-            VISPANEL.resetRanking();
-        }
-        else{
-            LIST.rankRecommendations();
-        }
-*/
     };
 
 
