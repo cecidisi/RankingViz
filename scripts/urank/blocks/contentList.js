@@ -272,7 +272,12 @@ var ContentList = (function(){
 
 
 
-    var _animate = function(data, action) {
+    /**
+    * @private     * Description
+    * @param {type} data : current ranking
+    * @param {type} status Description
+    */
+    var _animate = function(data, status) {
 
         this.stopAnimation();
 
@@ -285,7 +290,7 @@ var ContentList = (function(){
             unchangedEasing = 'linear',
             removeDelay = 3000;
 
-        switch(action) {
+        switch(status) {
             case RANKING_STATUS.new:
                 this.sort(data);
                 this.animateAccordionEffect(data, accordionInitialDuration, accordionTimeLapse, accordionEasing);

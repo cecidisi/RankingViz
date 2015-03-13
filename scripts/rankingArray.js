@@ -134,6 +134,14 @@ var RankingArray = (function() {
         },
         clone: function() {
             return this;
+        },
+        getRankedIndices: function() {
+            var a= [];
+            this.forEach(function(item, i){
+                if(item.rankingPos > 0)
+                    a.push(i);
+            });
+            return a;
         }
     };
 

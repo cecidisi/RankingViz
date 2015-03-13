@@ -112,6 +112,9 @@ var RankingModel = (function(){
             if(this.status == RANKING_STATUS.no_ranking)
                 return index;
             return this.ranking[index].originalIndex;
+        },
+        getIndicesOfRankedItems: function() {
+            return this.ranking.getRankedIndices();
         }
     };
 
