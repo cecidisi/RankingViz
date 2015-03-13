@@ -44,42 +44,6 @@ function toYear(date){
 
 
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////
-/**
- * Array prototype
- *
- * */
-
-Array.prototype.getIndexOf = function(target, field) {
-	var array = this;
-	for(var i = 0; i < array.length; i++) {
-		if(array[i][field] === target)
-			return i;
-	}
-	return -1;
-};
-
-
-
-
-// Fisher–Yates shuffle
-//Array.prototype.shuffle = function() {
-//    for (var i = this.length - 1; i > 0; i--) {
-//        var j = Math.floor(Math.random() * (i + 1));
-//        this.swap(i, j);
-//    }
-//};
-
-
-
-Array.prototype.getObjectIndex = function(callback) {
-    for(var i=0; i<this.length; i++) {
-        if(callback.call(this, this[i], i, this))
-            return i;
-    }
-    return -1;
-};
-
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////

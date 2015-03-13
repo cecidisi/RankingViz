@@ -43,24 +43,6 @@ function toYear(date){
 }
 
 
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////
-/**
- * Array prototype
- *
- * */
-
-
-Array.prototype.getObjectIndex = function(callback) {
-    for(var i=0; i<this.length; i++) {
-        if(callback.call(this, this[i], i, this))
-            return i;
-    }
-    return -1;
-};
-
-
-
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 /**
  * String prototype
