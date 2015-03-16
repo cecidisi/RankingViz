@@ -67,22 +67,19 @@ String.prototype.isAllUpperCase = function() {
 };
 
 String.prototype.clean = function(){
-    var text = this;
-    // Clean strings separated by -. E.g. deve- lopment -> development
-    if(text.match(/\w+-\s/g)){
-        var textArray = [],
-            splitText = text.split(' ');
-        for(var i = 0; i < splitText.length; ++i) {
-            if(splitText[i].match(/\w+-$/)){
-                textArray.push(splitText[i].replace('-', '') + splitText[i+1]);
-                ++i;
-            }
-            else
-                textArray.push(splitText[i]);
+    var text = this,
+        textArray = [],
+        splitText = text.split(' ');
+    for(var i = 0; i < splitText.length; ++i) {
+        if(splitText[i].match(/\w+-$/)){
+            textArray.push(splitText[i].replace('-', '') + splitText[i+1]);
+            ++i;
         }
-        text = textArray.join(' ');
+        else
+            textArray.push(splitText[i]);
     }
-    return text;
+    text = textArray.join(' ');
+    return (text[text.length - 1] == ' ') ? text.substring(0, text.length-1) : text;
 };
 
 
@@ -133,6 +130,7 @@ function cutHex(h) {return (h.charAt(0)=="#") ? h.substring(1,7):h}
 
 function getGradientString(color, shadeDiff) {
 
+    shadeDiff = shadeDiff || 10;
     var r = parseInt(hexToR(color));
     var g = parseInt(hexToG(color));
     var b = parseInt(hexToB(color));

@@ -1,5 +1,6 @@
 var TagCloud = (function(){
 
+    var _this;
     // Settings
     var s = {};
     //  Classes
@@ -10,12 +11,14 @@ var TagCloud = (function(){
 
 
     function TagCloud(arguments) {
+        _this = this;
         s = $.extend({
             root: '',
             colorScale: function(){},
             dropIn: '.urank-tagbox-container',
-            onTagInCloudHovered: function(index){},
-            onTagInCloudUnhovered: function(index){}
+            onTagInCloudMouseEnter: function(index){},
+            onTagInCloudMouseLeave: function(index){},
+            onTagInCloudClick: function(index){}
         }, arguments);
 
         this.keywords = [];
@@ -34,30 +37,16 @@ var TagCloud = (function(){
     * * @param {array of objects} keywords Description
     */
     var _build = function(keywords){
-
         this.keywords = keywords;
-        // Empty tag container
-        $(s.root).empty();
-        $(s.root).addClass(tagCloudContainerClass);
+        var root = $(s.root);
+        // Empty tag container and add appropriateclass
+        root.empty().addClass(tagCloudContainerClass);
 
-        // Append one div per keyword
-        d3.select(s.root).selectAll('.'+tagClass)
-            .data(this.keywords)
-            .enter()
-            .append("div")
-            .attr("class", tagClass)
-            .attr("id", function(k, i){ return "urank-tag-"+i; })
-            .attr("term", function(k){ return k.term })
-            .attr("stem", function(k){ return k.stem })
-            .attr('tag-pos', function(k, i){ return i; })
-            .style("background", function(k){ return getGradientString(s.colorScale(k.colorCategory+1), 10); })
-            .style('border', function(k){ return '1px solid ' + s.colorScale(k.colorCategory+1); })
-            .text( function(k){ return k.term; })
-            .on( "mouseover", function(k, i){ s.onTagInCloudHovered.call(this, i); })
-            .on( "mouseout", function(k, i){ s.onTagInCloudUnhovered.call(this, i); });
-
-        // bind drag behavior to each tag
-        $('.'+tagClass).draggable(this.draggableOptions);
+        keywords.forEach(function(k, i){
+            var tag = $("<div class='" + tagClass + "' id='urank-tag-" + i + "' tag-pos='" + i + "'>" + k.term + "</div>").appendTo(root);
+            tag.data({ 'stem': k.stem, 'color': s.colorScale(k.colorCategory+1) });
+            _this.setTagProperties(tag);
+        });
     };
 
 
@@ -66,21 +55,39 @@ var TagCloud = (function(){
     };
 
 
+    var _setTagProperties = function(tag) {
+        tag.css({
+            background: getGradientString(tag.data('color')),
+            border: '1px solid ' + tag.data('color')
+        })
+        .off()
+        .on({
+            mouseenter: function(event){ s.onTagInCloudMouseEnter.call(this, $(this).attr('tag-pos')) },
+            mouseleave: function(event){ s.onTagInCloudMouseLeave.call(this, $(this).attr('tag-pos')) },
+            click: function(event){ s.onTagInCloudClick.call(this, $(this).attr('tag-pos')) }
+        })
+        .draggable(this.draggableOptions);
+        return tag;
+    };
+
+
     var _hoverTag = function(index) {
-        d3.select(tagIdPrefix + '' + index)
-            .style( "background", function(k){ return getGradientString("#0066ff", 10); })
-            .style('border', '1px solid #0066ff')
-            .style("color", "#eee");
+        $(tagIdPrefix + '' + index).css({
+            background: getGradientString('#0066ff', 10),
+            border: '1px solid #0066ff',
+            color: '#eee'
+        })
     };
 
 
     var _unhoverTag = function(index) {
-        d3.select(tagIdPrefix + '' + index)
-            .style( "background", function(k){ return getGradientString(s.colorScale(k.colorCategory+1), 10); })
-            .style('border', function(k){ return '1px solid ' + s.colorScale(k.colorCategory+1); })
-            .style("color", "#111");
+        var color = $(tagIdPrefix + '' + index).data('color');
+        $(tagIdPrefix + '' + index).css({
+            background: getGradientString(color),
+            border: '1px solid ' + color,
+            color: '#111'
+        })
     };
-
 
 
     /**
@@ -89,37 +96,47 @@ var TagCloud = (function(){
 	 * */
     var _restoreTag = function(index){
 
-        var tag = tagIdPrefix + '' + index;
+        var $tag = $(tagIdPrefix + '' + index);
         // Remove icon and slider
-        $(tag).children().remove();
+        $tag.children().remove();
         // Change class
-        $(tag).removeClass().addClass(tagClass)
-            .attr('is-selected', false);
+        $tag.removeClass().addClass(tagClass);
+        this.setTagProperties($tag);
 
-        // Restore style
-        d3.select(tag)
-            .style("background", function(k){ return getGradientString(s.colorScale(k.colorCategory+1), 10) })
-            .style('border', function(k){ return '1px solid ' + s.colorScale(k.colorCategory+1); })
-            .style("color", "#111")
-            .on( "mouseover", function(k, i){ s.onTagInCloudHovered.call(this, i); })
-            .on( "mouseout", function(k, i){ s.onTagInCloudUnhovered.call(this, i); });
-
-        $(tag).draggable(this.draggableOptions);
         // Re-append to tag container, in the corresponding postion
-        var tagIndex = parseInt($(tag).attr('tag-pos'));
+        var tagIndex = parseInt($tag.attr('tag-pos'));
         var i = tagIndex - 1;
         var firstTagIndex = $(s.root).find('.'+ tagClass + ':eq(0)').attr('tag-pos');
-
-        while(i >= firstTagIndex && $(tagIdPrefix + '' + i).prop('is-selected').toBool())
+        // second condition checks if the tag is NOT in Tag Cloud
+        while(i >= firstTagIndex && !$(tagIdPrefix + '' + i).hasClass(tagClass))
             --i;
-        // Remove from tag box
-        $(tag).detach();
-        if(i >= firstTagIndex)    // The current tag should be inserted after another (tag-pos == i)
-            $(tagIdPrefix + '' + i).after(tag);
-        else                      // The current tag is inserted in the first position of tag container
-            $(s.root).prepend(tag);
 
+        var oldOffsetTop = $tag.offset().top;
+        var oldOffsetLeft = $tag.offset().left;
+        // Remove from tag box
+        $tag = $tag.detach();
+
+        if(i >= firstTagIndex)    // The current tag should be inserted after another (tag-pos == i)
+            $(tagIdPrefix + '' + i).after($tag);
+        else                      // The current tag is inserted in the first position of tag container
+            $(s.root).prepend($tag);
+
+        var currentOffsetTop = $tag.offset().top;
+        var currentdOffsetLeft = $tag.offset().left;
         // Insert animation
+
+        $tag.css({ position: 'absolute', top: oldOffsetTop, left: oldOffsetLeft, 'z-index': 999 });
+        $tag.animate({ top: currentOffsetTop, left: currentdOffsetLeft }, 1000, 'swing', function(){
+                $(this).css({ position: 'relative', top: '', left: '', 'z-index': '' })
+
+        });
+        setTimeout(function(){$tag.draggable(this.draggableOptions);},1001);
+
+//        $tag.animate({ position: 'absolute', top: offsetTop, left: offsetLeft }, {
+//            'complete': function(){
+//                //$(this).animate({ position: 'relative', top: 0, left: 0 }, 5000, 'swing');
+//            }
+//        });
     };
 
 
@@ -127,6 +144,7 @@ var TagCloud = (function(){
     TagCloud.prototype = {
         build: _build,
         reset: _reset,
+        setTagProperties: _setTagProperties,
         hoverTag: _hoverTag,
         unhoverTag: _unhoverTag,
         restoreTag: _restoreTag

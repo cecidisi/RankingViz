@@ -73,24 +73,16 @@ var RankingModel = (function(){
  *   RankingModel Prototype
  *
  ****************************************************************************************************/
-
-
     RankingModel.prototype = {
         update: function(keywords, rankingMode) {
             this.mode = rankingMode || RANKING_MODE.overall_score;
-            this.previousRanking = this.ranking.clone();
-//            console.log('before sorting');
-//            console.log(this.ranking);
+            this.previousRanking.set(this.ranking);
             this.ranking = computeScores(this.data, keywords)
                 .sortBy(this.mode)
                 .assignRankingPositions(this.mode)
                 .addPositionsChanged(this.previousRanking);
-//            console.log('after sorting');
-//            console.log(this.ranking);
             this.status = updateStatus(this.ranking, this.previousRanking);
-            /*console.log('RANKING');
-            console.log(this.ranking);*/
-            return this.ranking;
+            return this.ranking.clone();
         },
 
         reset: function() {
@@ -125,9 +117,7 @@ var RankingModel = (function(){
         }
     };
 
-
     return RankingModel;
-
 })();
 
 

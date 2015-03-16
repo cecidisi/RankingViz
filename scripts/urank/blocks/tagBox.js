@@ -20,16 +20,23 @@ var TagBox = (function(){
             colorScale: function(){},
             droppableClass: 'urank-tagcloud-tag',
             onChange: function(selectedKeywords, colorscale){},
-            onTagDeleted: function(index){}
+            onTagDeleted: function(index){},
+            onTagInBoxMouseEnter: function(index){},
+            onTagInBoxMouseLeave: function(index){},
+            onTagInBoxClick: function(index){}
         }, arguments);
 
         _this = this;
+
+        // Bind onChange event handler for custom event
+        $(s.root).on('tagBoxChange', function(){ s.onChange.call(this, _this.getKeywordsInBox(), s.colorScale) });
 
         this.droppableOptions = {
             tolerance: 'touch',
             drop: function(event, ui){
                 _this.dropTag(ui.draggable);
-                s.onChange.call(this, _this.getKeywordsInBox(), s.colorScale)
+                //s.onChange.call(this, _this.getKeywordsInBox(), s.colorScale)
+                $(s.root).trigger('tagBoxChange');
             }
         };
 
@@ -45,9 +52,9 @@ var TagBox = (function(){
                 _this.updateTagStyle(this.parentNode, ui.value);
             },
             stop: function(event, ui) {
-                s.onChange.call(this, _this.getKeywordsInBox(), s.colorScale);
+                //s.onChange.call(this, _this.getKeywordsInBox(), s.colorScale);
+                $(s.root).trigger('tagBoxChange');
             }
-            //stop: EVTHANDLER.slideStopped
         };
     }
 
@@ -55,8 +62,10 @@ var TagBox = (function(){
 
     var _build = function() {
         // bind droppable behavior to tag box
-        $(s.root).addClass(tagboxContainerClass);
-        $(s.root).droppable(this.droppableOptions );
+        $(s.root)
+            .addClass(tagboxContainerClass)
+            //.on('tagBoxChange', s.onChange(_this.getKeywordsInBox(), s.colorScale))
+            .droppable(this.droppableOptions);
     };
 
 
@@ -68,54 +77,53 @@ var TagBox = (function(){
 
 
     var _dropTag = function(tag){
+        var $tag = $(tag);
         // Set tag box legend
         $(s.root).find('p').remove();
 
-        if (tag.hasClass(s.droppableClass)) {
-
+        if ($tag.hasClass(s.droppableClass)) {
             // Append dragged tag onto tag box
-            $(s.root).append(tag);
+            $(s.root).append($tag);
 
             // Change tag's class
-            tag.removeClass().addClass(tagInBoxClass).prop('is-selected', true);
+            $tag.removeClass().addClass(tagInBoxClass);
 
-            var tagPos = $(tag).attr('tag-pos');
             // Append "delete" icon to tag and bind event handler
             $("<span class='" + tagDeleteButtonClass + "'/></span>").appendTo(tag)
-                .click(function(){ _this.deleteTag(tagPos); });
+                .click(function(){
+                s.onTagDeleted($tag.attr('tag-pos'));
+                $(s.root).trigger('tagBoxChange');
+                //s.onChange(_this.getKeywordsInBox(), s.colorScale);
+
+            });
 
             // Add new div to make it a slider
-            var weightSlider = $("<div class='" + tagWeightsliderClass + "'></div>").appendTo(tag).slider(this.sliderOptions);
+            var weightSlider = $("<div class='" + tagWeightsliderClass + "'></div>").appendTo($tag).slider(this.sliderOptions);
 
             // Retrieve color in weightColorScale for the corresponding label
-            var tagStem = $(tag).attr('stem');
-            var aux = s.colorScale(tagStem);
-            var rgbSequence = hexToR(aux) + ', ' + hexToG(aux) + ', ' + hexToB(aux);
+            var color = s.colorScale($tag.data('stem'));
+            var rgbSequence = hexToR(color) + ', ' + hexToG(color) + ', ' + hexToB(color);
 
             // Set tag's style
-            d3.select(tag[0])
-                .style("background", "rgba("+ rgbSequence + ", 1)")
-                .style("color", "")
-                .style("border", "solid 0.2em " + aux)
-                .on("mouseover", "")
-                .on("mouseout", "");
+            $tag
+            .css({
+                background: 'rgba(' + rgbSequence + ', 1)',
+                color: '',
+                border: 'solid 2px ' + color
+            })
+            .off()
+            .on({
+                mouseenter: s.onTagInBoxMouseEnter($tag.attr('tag-pos')),
+                mouseleave: s.onTagInBoxMouseLeave($tag.attr('tag-pos')),
+                click: s.onTagInBoxClick($tag.attr('tag-pos'))
+            });
         }
     };
 
 
-    var _deleteTag = function(index) {
-        s.onTagDeleted(index);
-        s.onChange.call(this, _this.getKeywordsInBox(), s.colorScale);
-    };
-
-
     var _updateTagStyle = function(tag, weight){
-
-        var stem = d3.select(tag).data()[0].stem;
-        var aux = s.colorScale(stem);
-        var rgbSequence = hexToR(aux) + ', ' + hexToG(aux) + ', ' + hexToB(aux);
-
-        d3.select(tag).style("background", "rgba("+ rgbSequence + "," + weight + ")");
+        var color = s.colorScale($(tag).data('stem'));
+        $(tag).css("background", "rgba("+ hexToR(color) + ', ' + hexToG(color) + ', ' + hexToB(color) + "," + weight + ")");
     };
 
 
@@ -128,8 +136,8 @@ var TagBox = (function(){
 
         var  weightedKeywords = [];
         $('.'+tagInBoxClass).each(function(i, tag){
-            var term = d3.select(tag).data()[0].term;
-            var stem = d3.select(tag).data()[0].stem;
+            var term = $(tag).text();
+            var stem = $(tag).data('stem');
             var weight = parseFloat( $(tag).find('.'+tagWeightsliderClass).slider("value"));
             weightedKeywords.push({ 'term': term, 'stem': stem, 'weight': weight });
         });
@@ -141,7 +149,6 @@ var TagBox = (function(){
         build: _build,
         clear: _clear,
         dropTag: _dropTag,
-        deleteTag:_deleteTag,
         updateTagStyle: _updateTagStyle,
         getKeywordsInBox: _getKeywordsInBox
 

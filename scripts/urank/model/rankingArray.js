@@ -1,7 +1,7 @@
 
 var RankingArray = (function() {
 
-    function RankingArray() {
+    function RankingArray(arguments) {
 
         var rankingData = Object.create(Array.prototype);
         rankingData = Array.apply(rankingData, arguments) || rankingData;
@@ -93,12 +93,6 @@ var RankingArray = (function() {
         //  Calculates the number of positions changed by each recommendations, basing on the array "previousRanking"
         //  If there doesn't exist a previous ranking or a recommendation wasn't previously ranked, then the value 1000 is assigned
         addPositionsChanged: function(oldRanking){
-            //"b9602262-e7ac-3c79-97b5-f40faba6df65"
-            console.log('old');
-            console.log(oldRanking);
-            console.log('this');
-            console.log(this);
-
             this.forEach(function(d, i){
                 if(oldRanking.length == 0){
                     d.positionsChanged = 1000;
@@ -110,18 +104,8 @@ var RankingArray = (function() {
                     d.lastIndex = j;
                     if(oldRanking[j].rankingPos === 0 )
                         d.positionsChanged = 1000;
-                    else {
+                    else
                         d.positionsChanged = oldRanking[j].rankingPos - d.rankingPos;
-                        //console.log(oldRanking[j].rankingPos + ' --- ' + d.rankingPos);
-                    }
-
-//                    if(i==0){
-//
-//                        console.log(d);
-//                        console.log(oldRanking[j]);
-//                        console.log('j = ' + j);
-//                    }
-
                 }
             });
             return this;
@@ -137,16 +121,23 @@ var RankingArray = (function() {
             this[index2] = tmp;
         },
         clone: function() {
-            return this.slice();
+            var a = this;
+            return a;
         },
-        getRankedIndices: function() {
-            var a= [];
-            this.forEach(function(item, i){
-                if(item.rankingPos > 0)
-                    a.push(i);
+        set: function(other) {
+            var a = this;
+            a.clear();
+            other.forEach(function(item, i){
+                var keys = Object.keys(item);
+                var obj = {};
+                keys.forEach(function(key){
+                    obj[key] = item[key];
+                });
+                a.push(obj);
             });
             return a;
         }
+
     };
 
     return RankingArray;

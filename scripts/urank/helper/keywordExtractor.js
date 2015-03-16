@@ -247,7 +247,7 @@ var KeywordExtractor = (function(){
             collection.push({ text: document });
         },
         processCollection: function() {
-            console.log('start now');
+            console.log('start keyword extraction');
             var timestamp = $.now();
             extractDocumentKeywords();
             extractGlobalKeywords(this.minRepetitions);

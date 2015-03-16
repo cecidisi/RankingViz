@@ -39,8 +39,7 @@ var ContentList = (function(){
             onListItemHovered: function(i){},
             onListItemUnhovered: function(i){},
             onFaviconClicked: function(d, i){},
-            onWatchiconClicked: function(d, i){},
-            getTextWithKeywordsHighlighted: function(text){ return text;}
+            onWatchiconClicked: function(d, i){}
         }, arguments);
 
         this.data = [];
@@ -50,6 +49,8 @@ var ContentList = (function(){
 
     var _build = function(data) {
 
+        console.log('data in content list');
+        console.log(typeof data);
         this.data = data;
         this.selectedIndex = STR_NO_INDEX;
         $(s.root).addClass();
@@ -216,11 +217,11 @@ var ContentList = (function(){
 
 
     var _reset = function() {
-        $('.'+liRankingContainerClass).empty();
+        $('.'+liRankingContainerClass).css('visibility', 'hidden');
         this.sort(this.data);
-        this.updateLiBackground();
-        this.formatTitles();
-        // LIST.animateContentList(RANKING_STATUS.reset);       call from controller
+        this.updateLiBackground(this.data); // FAILS!!
+        this.formatTitles(this.data);
+        //this.update(this.data, RANKING_STATUS.reset);
     };
 
 
@@ -230,8 +231,6 @@ var ContentList = (function(){
             var index = d.originalIndex ||i;
             var title = (d.title.length > 60) ? (d.title.substring(0, 56) + '...') : d.title + '';
             title = (!keywords || !colorScale) ? title : getStyledText(title, keywords, colorScale);
-            //console.log((!keywords || !colorScale));
-            //console.log(title);
             $(liItem +''+ index).find('a').html(title);
         });
     }
