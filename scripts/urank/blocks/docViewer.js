@@ -28,24 +28,30 @@ var DocViewer = (function(){
         // Append details section, titles and placeholders for doc details
         var detailsSection = $("<div class='" + docViewerDetailsSectionClass + "'></div>").appendTo(docViewerContainer);
 
-        var titleContainer = $('div').appendTo(detailsSection);
-        $('label').appendTo(titleContainer).text('Title:');
-        $("<span id='urank-docviewer-details-title'></span>");
+        var titleContainer = $('<div></div>').appendTo(detailsSection);
+        $("<label>Title:</label>").appendTo(titleContainer);
+        $("<span id='urank-docviewer-details-title'></span>").appendTo(titleContainer);
 
         s.facetsToShow.forEach(function(facetName){
-            var facetContainer = $('div').appendTo(detailsSection);
-            $('label').appendTo(facetContainer).text(facetName.capitalizeFirstLetter() + ':');
-            $("<span id='urank-docviewer-details-" + facetName + "'></span>");
+            var facetContainer = $('<div></div>').appendTo(detailsSection);
+            $("<label>" + facetName.capitalizeFirstLetter() + ":</label>").appendTo(facetContainer);
+            $("<span id='urank-docviewer-details-" + facetName + "'></span>").appendTo(facetContainer);
         });
 
         // Append content section for snippet placeholder
-        var contentSection = $("<div class='" + docViewerContentSectionClass + "'></div>");
-        $('p').appendTo(contentSection);
+        var contentSection = $("<div class='" + docViewerContentSectionClass + "'></div>").appendTo(docViewerContainer);
+        $('<p></p>').appendTo(contentSection);
     };
 
 
 
-    var _showDocument = function(document){
+    /**
+    * @private
+    * Description
+    * @param {type} document Description
+    * @param {Array} keywords (only stems)
+    */
+    var _showDocument = function(document, keywords){
         $(detailItemIdPrefix + 'title').html(s.getTextWithKeywordsHighlighted(document.title));
         s.facetsToShow.forEach(function(facet){
             $(detailItemIdPrefix + '' + facet).html(s.getTextWithKeywordsHighlighted(document.facets[facet]));

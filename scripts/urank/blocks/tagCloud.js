@@ -18,6 +18,7 @@ var TagCloud = (function(){
             onTagInCloudUnhovered: function(index){}
         }, arguments);
 
+        this.keywords = [];
         this.draggableOptions = {
             revert: 'invalid',
             helper: 'clone',
@@ -33,22 +34,23 @@ var TagCloud = (function(){
     * * @param {array of objects} keywords Description
     */
     var _build = function(keywords){
+
+        this.keywords = keywords;
         // Empty tag container
         $(s.root).empty();
         $(s.root).addClass(tagCloudContainerClass);
 
         // Append one div per keyword
         d3.select(s.root).selectAll('.'+tagClass)
-            .data(keywords)
+            .data(this.keywords)
             .enter()
             .append("div")
             .attr("class", tagClass)
-            .attr("id", function(k, i){ return "urank-tag-"+k.term; })
+            .attr("id", function(k, i){ return "urank-tag-"+i; })
             .attr("term", function(k){ return k.term })
             .attr("stem", function(k){ return k.stem })
             .attr('tag-pos', function(k, i){ return i; })
-            .prop('is-selected', false)
-            .style("background", function(k){ return getGradientString(s.colorScale(k.colorCategory+1), [1, 0.7, 1]); })
+            .style("background", function(k){ return getGradientString(s.colorScale(k.colorCategory+1), 10); })
             .style('border', function(k){ return '1px solid ' + s.colorScale(k.colorCategory+1); })
             .text( function(k){ return k.term; })
             .on( "mouseover", function(k, i){ s.onTagInCloudHovered.call(this, i); })
@@ -59,9 +61,14 @@ var TagCloud = (function(){
     };
 
 
+    var _reset = function() {
+        this.build(this.keywords);
+    };
+
+
     var _hoverTag = function(index) {
         d3.select(tagIdPrefix + '' + index)
-            .style( "background", function(k){ return getGradientString("#0066ff", [1, 0.8, 1]); })
+            .style( "background", function(k){ return getGradientString("#0066ff", 10); })
             .style('border', '1px solid #0066ff')
             .style("color", "#eee");
     };
@@ -69,7 +76,7 @@ var TagCloud = (function(){
 
     var _unhoverTag = function(index) {
         d3.select(tagIdPrefix + '' + index)
-            .style( "background", function(k){ return getGradientString(s.colorScale(k.colorCategory+1), [1, 0.7, 1]); })
+            .style( "background", function(k){ return getGradientString(s.colorScale(k.colorCategory+1), 10); })
             .style('border', function(k){ return '1px solid ' + s.colorScale(k.colorCategory+1); })
             .style("color", "#111");
     };
@@ -91,7 +98,7 @@ var TagCloud = (function(){
 
         // Restore style
         d3.select(tag)
-            .style("background", function(k){ return getGradientString(s.colorScale(k.colorCategory+1), [1, 0.7, 1]) })
+            .style("background", function(k){ return getGradientString(s.colorScale(k.colorCategory+1), 10) })
             .style('border', function(k){ return '1px solid ' + s.colorScale(k.colorCategory+1); })
             .style("color", "#111")
             .on( "mouseover", function(k, i){ s.onTagInCloudHovered.call(this, i); })
@@ -119,6 +126,7 @@ var TagCloud = (function(){
 
     TagCloud.prototype = {
         build: _build,
+        reset: _reset,
         hoverTag: _hoverTag,
         unhoverTag: _unhoverTag,
         restoreTag: _restoreTag

@@ -488,7 +488,7 @@ CANVAS PANEL (bottom-center)
 .urank-list-li-watched {
     box-shadow: inset 1px 1px 2px rgba(128, 128, 128, 0.6), inset -1px -1px 2px rgba(128, 128, 128, 0.6);
     -webkit-transition: box-shadow 0s linear;
-    z-index: 999;
+    z-index: 9999;
 }
 
 /***************	Effects for list items when the ranking changes   **************/

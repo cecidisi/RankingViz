@@ -10,7 +10,7 @@ var TagBox = (function(){
     //  Ids
 
 
-    var _this = this;
+    var _this;
 
 
     function Tagbox(arguments) {
@@ -23,10 +23,13 @@ var TagBox = (function(){
             onTagDeleted: function(index){}
         }, arguments);
 
+        _this = this;
+
         this.droppableOptions = {
             tolerance: 'touch',
             drop: function(event, ui){
-                this.dropTag(ui.draggable);
+                _this.dropTag(ui.draggable);
+                s.onChange.call(this, _this.getKeywordsInBox(), s.colorScale)
             }
         };
 
@@ -39,10 +42,10 @@ var TagBox = (function(){
             step: 0.2,
             value: 1,
             slide: function(event, ui) {
-                this.updateTagStyle(this.parentNode, ui.value);
+                _this.updateTagStyle(this.parentNode, ui.value);
             },
             stop: function(event, ui) {
-                s.onChange.call(this, this.getKeywordsInBox());
+                s.onChange.call(this, _this.getKeywordsInBox(), s.colorScale);
             }
             //stop: EVTHANDLER.slideStopped
         };
@@ -53,7 +56,7 @@ var TagBox = (function(){
     var _build = function() {
         // bind droppable behavior to tag box
         $(s.root).addClass(tagboxContainerClass);
-        $(s.root).droppable( BEHAVIOR.droppableOptions );
+        $(s.root).droppable(this.droppableOptions );
     };
 
 
@@ -78,12 +81,11 @@ var TagBox = (function(){
 
             var tagPos = $(tag).attr('tag-pos');
             // Append "delete" icon to tag and bind event handler
-            $("<img class='" + tagDeleteButtonClass + "' src='" + DELETE_ICON_IMG + "' />").appendTo(tag)
+            $("<span class='" + tagDeleteButtonClass + "'/></span>").appendTo(tag)
                 .click(function(){ _this.deleteTag(tagPos); });
 
             // Add new div to make it a slider
-            var weightSlider = $("div").appendTo(tag).slider(this.sliderOptions);
-            weightSlider.addClass(tagWeightsliderClass);
+            var weightSlider = $("<div class='" + tagWeightsliderClass + "'></div>").appendTo(tag).slider(this.sliderOptions);
 
             // Retrieve color in weightColorScale for the corresponding label
             var tagStem = $(tag).attr('stem');
@@ -103,14 +105,14 @@ var TagBox = (function(){
 
     var _deleteTag = function(index) {
         s.onTagDeleted(index);
-        s.onChange.call(this, this.getKeywordsInBox(), s.colorScale);
+        s.onChange.call(this, _this.getKeywordsInBox(), s.colorScale);
     };
 
 
     var _updateTagStyle = function(tag, weight){
 
         var stem = d3.select(tag).data()[0].stem;
-        var aux = weightColorScale(stem);
+        var aux = s.colorScale(stem);
         var rgbSequence = hexToR(aux) + ', ' + hexToG(aux) + ', ' + hexToB(aux);
 
         d3.select(tag).style("background", "rgba("+ rgbSequence + "," + weight + ")");
@@ -128,7 +130,7 @@ var TagBox = (function(){
         $('.'+tagInBoxClass).each(function(i, tag){
             var term = d3.select(tag).data()[0].term;
             var stem = d3.select(tag).data()[0].stem;
-            var weight = parseFloat( $(tag).find(".div-slider").slider("value"));
+            var weight = parseFloat( $(tag).find('.'+tagWeightsliderClass).slider("value"));
             weightedKeywords.push({ 'term': term, 'stem': stem, 'weight': weight });
         });
         return weightedKeywords;

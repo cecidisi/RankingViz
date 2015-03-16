@@ -9,66 +9,12 @@ var Urank = (function(){
     var tagColorRange = colorbrewer.Blues[TAG_CATEGORIES + 1];
     tagColorRange.splice(tagColorRange.indexOf("#08519c"), 1, "#2171b5");
     var queryTermColorRange = colorbrewer.Set1[9];
-    queryTermColorRange.splice(weightColorRange.indexOf("#ffff33"), 1, "#ffd700");
-
-    // NLP
-    var stemmer = natural.PorterStemmer;
-    var nounInflector = new natural.NounInflector();
-    stemmer.attach();
-    nounInflector.attach();
-
-    var _this = this;
+    queryTermColorRange.splice(queryTermColorRange.indexOf("#ffff33"), 1, "#ffd700");
 
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    var _this;
 
-    var getStyledText = function(text){
-        var textWithKeywords = '',
-            word = '';
-        var keywordsInBox = tagBox.getKeywordsInBox();
-        text.split('').forEach(function(c){
-            if(c.match(/\w/)){
-                word += c;
-            }
-            else if(c == '\n'){
-                textWithKeywords += '<br/>'
-            }
-            else {
-                if(word != '')
-                    word = getStyledWord(word, keywordsInBox);
-                textWithKeywords += word + c;
-                word = '';
-            }
-        });
-        if(word != '')
-            textWithKeywords += getStyledWord(word, keywordsInBox);
-        return textWithKeywords;
-    };
-
-
-    var getStyledWord = function(word, keywordsInBox){
-        var trickyWords = ['it', 'is', 'us', 'ar'];
-        var word = word.replace(/our$/, 'or');
-        // First clause solves words like 'IT', second clause that the stem of the doc term (or the singularized term) matches the keyword stem
-        if(trickyWords.indexOf(word.stem()) == -1 || word.isAllUpperCase()) {
-            if(_.findIndex(keywordsInBox, function(k){ return (k.stem === word.stem() || k.stem === word.singularizeNoun().stem()); })) {
-                return "<strong style=\"color:" + weightColorScale(keywordsInBox[kIndex].stem) + "\">" + word + "</strong>";
-            }
-        }
-        return word;
-    };
-
-
-
-
-
-
-
-
-
-
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     var EVTHANDLER = {
 
@@ -81,25 +27,27 @@ var Urank = (function(){
         },
         onChange: function(selectedKeywords, newQueryTermColorScale) {
 
+            _this.selectedKeywords = selectedKeywords;
             _this.queryTermColorScale = newQueryTermColorScale;
 
             if(selectedKeywords.length > 0) {
                 var rankingData = rankingModel.update(selectedKeywords, _this.rankingMode);
-                contentList.undoHighlight();
+              //  contentList.undoHighlight();
                 var status = rankingModel.getStatus();
 
                 // Synchronizes rendering methods
-                if(status == RANKING_STATUS.new || status == RANKING_STATUS.update){
-                    contentList.formatTitles(rankingData);
-                    contentList.showRankingPositions(rankingData);
-                    contentList.hideListItems(rankingModel.getIndicesOfRankedItems());
-                    contentList.updateLiBackground(rankingData);
-                }
-                contentList.animate(rankingData, status);
+//                if(status == RANKING_STATUS.new || status == RANKING_STATUS.update){
+//                    contentList.formatTitles(rankingData, _this.selectedKeywords.map(function(k){return k.stem}), _this.queryTermColorScale);
+//                    contentList.showRankingPositions(rankingData);
+//                  //  contentList.hideListItems(rankingModel.getIndicesOfRankedItems());
+//                    contentList.updateLiBackground(rankingData);
+//                }
+                contentList.update(rankingData, status, _this.selectedKeywords, _this.queryTermColorScale);
                 docViewer.clear();
                 visCanvas.update(rankingModel, $(s.contentListRoot).height(), _this.queryTermColorScale);
             }
             else{
+                rankingModel.reset();
                 tagBox.clear();
                 contentList.reset();
                 visCanvas.reset();
@@ -108,21 +56,27 @@ var Urank = (function(){
         onTagDeleted: function(index) {
             tagCloud.restoreTag(index);
         },
-        onItemClicked : function(index) {
-            contentList.highlighListItem(index);
-            // call vispanel.selectitem
-            // call docviewer.showdocument
+        onTagInCloudHovered: function(index) {
+            tagCloud.hoverTag(index);
         },
-        onItemHovered: function(index) {
-            contentList.addHoverEffect(index);
-            // call vispanel.hoveritem
+        onTagInCloudUnhovered: function(index) {
+            tagCloud.unhoverTag(index);
         },
-        onItemUnhovered: function(index) {
-            contentList.removeHoverEffect(index);
+        onItemClicked : function(document, index) {
+            contentList.highlightListItem(index);
+            visCanvas.selectItem(index);
+            docViewer.showDocument(document);
+        },
+        onItemHovered: function(document, index) {
+            contentList.hover(index);
+            visCanvas.hoverItem(index);
+        },
+        onItemUnhovered: function(document, index) {
+            contentList.unhover(index);
             visCanvas.unhoverItem(index);
         },
         onFaviconClicked: function(index){
-           // data[i].isSelected = !data[index].isSelected;         //CHECK
+            this.data[i].isSelected = ! this.data[index].isSelected;         //CHECK
             contentList.switchFaviconOnOrOff(index);
         },
         onWatchiconClicked: function(i) {
@@ -131,28 +85,11 @@ var Urank = (function(){
     };
 
 
-    // do in controller
-    // Receives actual index. Resolve in controller
-    var _selectListItem = function(index) {
-
-        this.stopAnimation();
-        this.selectedIndex = (index == this.selectedIndex) ? STR_NO_INDEX : index;
-        // if selectedIndex is undefined then the item was deselected, otherwise it was selected
-        if(this.selectedIndex !== STR_NO_INDEX)
-            this.highlightListItems(index);
-        //DOCPANEL.showDocument(index);     do in controller
-        else
-            this.undoHighlight();
-        //  DOCPANEL.clear();
-    }
-
-
-
-
 
 
     function Urank(arguments) {
 
+        _this = this;
         s = $.extend({
             tagCloudRoot: '',
             tagBoxRoot: '',
@@ -170,22 +107,19 @@ var Urank = (function(){
         var options = {
             contentList: {
                 root: s.contentListRoot,
-                originalData: _this.data,
-                colorScale: _this.queryTermColorRange,
                 onListItemClicked: EVTHANDLER.onItemClicked,
                 onListItemHovered: EVTHANDLER.onItemHovered,
                 onListItemUnhovered: EVTHANDLER.onItemUnhovered,
                 onFaviconClicked: EVTHANDLER.onFaviconClicked,
                 onWatchiconClicked: EVTHANDLER.onWatchiconClicked,
-                getTextWithKeywordsHighlighted: function(text){ return text; }
             },
 
             tagCloud: {
                 root: s.tagCloudRoot,
                 colorScale: this.tagColorScale,
                 dropIn: s.tagBoxRoot,
-                onTagInCloudHovered: function(index){},
-                onTagInCloudUnhovered: function(index){}
+                onTagInCloudHovered: EVTHANDLER.onTagInCloudHovered,
+                onTagInCloudUnhovered: EVTHANDLER.onTagInCloudUnhovered
             },
 
             tagBox: {
@@ -193,7 +127,7 @@ var Urank = (function(){
                 colorScale: _this.queryTermColorScale,
                 //droppableClass: 'urank-tagcloud-tag',
                 onChange: EVTHANDLER.onChange,
-                onTagDeleted: function(index){}
+                onTagDeleted: EVTHANDLER.onTagDeleted
             },
 
             visCanvas: {
@@ -206,10 +140,8 @@ var Urank = (function(){
 
             docViewer: {
                 root: s.docViewerRoot,
-                getTextWithKeywordsHighlighted: function(text){ return text; }
             }
         };
-
 
         contentList = new ContentList(options.contentList);
         tagCloud = new TagCloud(options.tagCloud);
@@ -223,10 +155,10 @@ var Urank = (function(){
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     function extendDataWithAncillaryDetails(data){
-
         data.forEach(function(d){
             d['isSelected'] = false;
         });
+        return data;
     };
 
 
@@ -240,6 +172,7 @@ var Urank = (function(){
             var colorCategory = parseInt((k['repeated'] - 1/*extent[0]*/) / range);
             k['colorCategory'] = (colorCategory < TAG_CATEGORIES) ? colorCategory : TAG_CATEGORIES - 1;
         });
+        return keywords;
     };
 
 
@@ -247,6 +180,10 @@ var Urank = (function(){
 
 
     var _loadData = function(data) {
+
+
+
+        data = JSON.parse(data);
         var kwOptions = {
             minRepetitions : (parseInt(data.length * 0.05) > 1) ? parseInt(data.length * 0.05) : 2
         };
@@ -265,11 +202,10 @@ var Urank = (function(){
         data.forEach(function(d, i){
             d.keywords = keywordExtractor.listDocumentKeywords(i);
         });
-        this.data = data;
+        this.data = extendDataWithAncillaryDetails(data);
         var keywords = keywordExtractor.getCollectionKeywords();
         this.keywords = extendKeywordsWithColorCategory(keywords);
         this.rankingMode = RANKING_MODE.overall_score;
-
         rankingModel = new RankingModel(this.data);
 
         EVTHANDLER.onLoad(this.data, this.keywords);
@@ -277,8 +213,9 @@ var Urank = (function(){
 
 
     var _reset = function() {
-        contentList.reset(this.data);
-        tagCloud.build(this.keywords);
+        rankingModel.reset();
+        contentList.reset();
+        tagCloud.reset();
         tagBox.clear();
         visCanvas.reset();
         docViewer.clear();
@@ -289,12 +226,12 @@ var Urank = (function(){
         EVTHANDLER.onChange.call(this, tagBox.getKeywordsInBox(), this.queryTermColorScale);
     };
 
-    var _rankByMaximumScore: function() {
+    var _rankByMaximumScore = function() {
         this.rankingMode = RANKING_MODE.max_score;
         EVTHANDLER.onChange.call(this, tagBox.getKeywordsInBox(), this.queryTermColorScale);
     };
 
-    var _resize: function() {
+    var _resize = function() {
         visCanvas.resize();
     };
 

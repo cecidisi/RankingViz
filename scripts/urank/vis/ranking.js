@@ -3,14 +3,13 @@ function Ranking(arguments){
 
     var s = $.extend({
         root: '.urank-viscanvas-container',
-        onItemClicked: function(index){},
-        onItemHovered: function(index){},
-        onItemUnhovered: function(index){}
+        onItemClicked: function(document, index){},
+        onItemHovered: function(document, index){},
+        onItemUnhovered: function(document, index){}
     }, arguments);
 
     var RANKING = {};
 
-    var Vis = visControllerInterface;
     var self = this;
     var root = s.root;
     var width, height, margin;
@@ -33,15 +32,15 @@ function Ranking(arguments){
 
 
     RANKING.Evt.itemClicked = function(d, i){
-        s.onItemClicked.call(this, i);
+        s.onItemClicked.call(this, d, i);
     };
 
     RANKING.Evt.itemMouseOvered = function(d, i){
-        s.onItemHovered.call(this, i);
+        s.onItemHovered.call(this, d, i);
     };
 
     RANKING.Evt.itemMouseOuted = function(d, i){
-        s.onItemUnhovered.call(this, i);
+        s.onItemUnhovered.call(this, d, i);
     };
 
 

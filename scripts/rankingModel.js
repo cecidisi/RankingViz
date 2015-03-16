@@ -79,7 +79,10 @@ var RankingModel = (function(){
         update: function(keywords, rankingMode) {
             this.mode = rankingMode || RANKING_MODE.overall_score;
             this.previousRanking = this.ranking.clone();
-            this.ranking = computeScores(this.data, keywords).sortBy(this.mode).addPositionsChanged(this.previousRanking);
+            this.ranking = computeScores(this.data, keywords)
+                .sortBy(this.mode)
+                .assignRankingPositions(this.mode)
+                .addPositionsChanged(this.previousRanking);
             this.status = updateStatus(this.ranking, this.previousRanking);
             /*console.log('RANKING');
             console.log(this.ranking);*/

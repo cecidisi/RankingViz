@@ -90,7 +90,6 @@ var RankingArray = (function() {
                     }
                 });
             }
-
             return this;
         },
 
@@ -119,7 +118,6 @@ var RankingArray = (function() {
                         d.positionsChanged = oldRanking[j]['rankingPos'] - d['rankingPos'];
                 }
             });
-
             return this;
         },
 

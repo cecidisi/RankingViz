@@ -75,7 +75,7 @@ var KeywordExtractor = (function(){
             // Find out which adjectives are potentially important and worth keeping
             d.taggedWords.forEach(function(tw){
                 if(tw[1] == 'JJ'){
-                    var adjIndex = candidateAdjectives.getIndexOf(tw[0].toLowerCase(), 'adj');
+                    var adjIndex = _.findIndex(candidateAdjectives, function(ca){ return ca.adj === tw[0].toLowerCase() });
                     if(adjIndex == -1)
                         candidateAdjectives.push({ 'adj': tw[0].toLowerCase(), 'repeated': 1 });
                     else
@@ -143,7 +143,7 @@ var KeywordExtractor = (function(){
         });
 
         getAllTokens(collection).forEach(function(token){
-            var kIndex = collectionKeywords.getIndexOf(token.stem(), 'stem');
+            var kIndex = _.findIndex(collectionKeywords, function(k){ return k.stem == token.stem() });
             if(kIndex >= 0 && stopWords.indexOf(token.toLowerCase()) == -1)
                 collectionKeywords[kIndex].variations[token] = collectionKeywords[kIndex].variations[token] ? collectionKeywords[kIndex].variations[token] + 1 : 1;
         });

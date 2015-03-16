@@ -146,6 +146,56 @@ function getGradientString(color, shadeDiff) {
 
 
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ *
+ *
+ * */
+
+// NLP
+var stemmer = natural.PorterStemmer;
+var nounInflector = new natural.NounInflector();
+stemmer.attach();
+nounInflector.attach();
+
+
+function getStyledText (text, keywords, colorScale){
+    var styledText = '',
+        word = '';
+    text.split('').forEach(function(c){
+        if(c.match(/\w/)){
+            word += c;
+        }
+        else if(c == '\n'){
+            styledText += '<br/>'
+        }
+        else {
+            if(word != '')
+                word = getStyledWord(word, keywords, colorScale);
+            styledText += word + c;
+            word = '';
+        }
+    });
+    //console.log('last word = ' + word);
+    if(word != '')
+        styledText += getStyledWord(word, keywords, colorScale);
+    return styledText;
+}
+
+
+function getStyledWord (word, keywords, colorScale){
+    var trickyWords = ['it', 'is', 'us', 'ar'];
+    var word = word.replace(/our$/, 'or');
+    // First clause solves words like 'IT', second clause that the stem of the doc term (or the singularized term) matches the keyword stem
+    var kIndex = keywords.indexOf(word.stem());
+    if(trickyWords.indexOf(word.stem()) == -1 || word.isAllUpperCase()) {
+        if(keywords.indexOf(word.stem()) > -1 )
+            return "<strong style='color:'" + colorScale(word.stem()) + "'>" + word + "</strong>";;
+        if(keywords.indexOf(word.singularizeNoun().stem()) > -1)
+            return "<strong style='color:'" + colorScale(word.singularizeNoun().stem()) + "'>" + word + "</strong>";;
+    }
+    return word;
+}
 
 
 
