@@ -14,8 +14,7 @@ var DocViewer = (function(){
 
         s = $.extend({
             root: '',
-            facetsToShow: ['year'],
-            getTextWithKeywordsHighlighted: function(text){ return text; }
+            facetsToShow: ['year']
         }, arguments);
     }
 
@@ -30,7 +29,7 @@ var DocViewer = (function(){
 
         var titleContainer = $('<div></div>').appendTo(detailsSection);
         $("<label>Title:</label>").appendTo(titleContainer);
-        $("<span id='urank-docviewer-details-title'></span>").appendTo(titleContainer);
+        $("<h3 id='urank-docviewer-details-title'></h3>").appendTo(titleContainer);
 
         s.facetsToShow.forEach(function(facetName){
             var facetContainer = $('<div></div>').appendTo(detailsSection);
@@ -51,13 +50,13 @@ var DocViewer = (function(){
     * @param {type} document Description
     * @param {Array} keywords (only stems)
     */
-    var _showDocument = function(document, keywords){
-        $(detailItemIdPrefix + 'title').html(s.getTextWithKeywordsHighlighted(document.title));
+    var _showDocument = function(document, keywords, colorScale){
+        $(detailItemIdPrefix + 'title').html(getStyledText(document.title, keywords, colorScale));
         s.facetsToShow.forEach(function(facet){
-            $(detailItemIdPrefix + '' + facet).html(s.getTextWithKeywordsHighlighted(document.facets[facet]));
+            $(detailItemIdPrefix + '' + facet).html(document.facets[facet]);
         });
 
-        $('.' + docViewerContentSectionClass + ' p').html(s.getTextWithKeywordsHighlighted(document.description));
+        $('.' + docViewerContentSectionClass + ' p').html(getStyledText(document.description, keywords, colorScale));
         $('.' + docViewerContentSectionClass + ' p').hide();
         $('.' + docViewerContentSectionClass + ' p').fadeIn('slow');
         $('.' + docViewerContentSectionClass).scrollTo('top');

@@ -394,7 +394,7 @@ function Ranking(arguments){
     * ***************************************************************************************************************/
     RANKING.Render.selectItem = function(index){
 
-        if( itemIndex != selectedIndex ){       // select
+        if( index != selectedIndex ){       // select
             selectedIndex = index;
             svg.selectAll('.stackedbar').style('opacity', function(d, i){ if(i == index) return 1; return 0.3; });
         }

@@ -49,11 +49,9 @@ var ContentList = (function(){
 
     var _build = function(data) {
 
-        console.log('data in content list');
-        console.log(typeof data);
         this.data = data;
         this.selectedIndex = STR_NO_INDEX;
-        $(s.root).addClass();
+        $(s.root).empty().addClass();
 
         // Easier to build with d3 because it's data-driven
         d3.select(s.root).empty();
@@ -88,10 +86,18 @@ var ContentList = (function(){
             .attr("class", faviconClass + ' ' + faviconOffClass)
             .attr('title', 'Mark as relevant');
 
-        $(s.root).scrollTo('top');
+        $(s.root).parent().scrollTo('top');
         this.formatTitles(data);
         this.updateLiBackground(data),
         this.bindEvenHandlers();
+
+        $('.'+liClass).each(function(i, item) {
+            $(item).animate({'top': 5}, {
+                'complete': function(){
+                    $(this).animate({"top": 0}, (i+1)*100, 'swing');
+                }
+            });
+        });
     };
 
 
@@ -154,12 +160,13 @@ var ContentList = (function(){
 
     var _sort = function(data){
 
+        $(s.root).parent().scrollTo('top');
         var liHtml = new Array();
 
         data.forEach(function(d, i){
             var index =(d.originalIndex !== 'undefined') ? d.originalIndex : i;
-
             var current = $(liItem +''+ index);
+            console.log(current.attr('class'));
             current.css('top', 0);
             var outer = $(current).outerHTML();
             liHtml.push(outer);
@@ -218,7 +225,8 @@ var ContentList = (function(){
 
     var _reset = function() {
         $('.'+liRankingContainerClass).css('visibility', 'hidden');
-        this.sort(this.data);
+        //this.sort(this.data);
+        this.build(this.data);
         this.updateLiBackground(this.data); // FAILS!!
         this.formatTitles(this.data);
         //this.update(this.data, RANKING_STATUS.reset);

@@ -101,6 +101,7 @@ var TagCloud = (function(){
         $tag.children().remove();
         // Change class
         $tag.removeClass().addClass(tagClass);
+        $tag.draggable('destroy');
         this.setTagProperties($tag);
 
         // Re-append to tag container, in the corresponding postion
@@ -123,20 +124,12 @@ var TagCloud = (function(){
 
         var currentOffsetTop = $tag.offset().top;
         var currentdOffsetLeft = $tag.offset().left;
-        // Insert animation
-
+        // Animate tag moving from ta box to tag cloud
         $tag.css({ position: 'absolute', top: oldOffsetTop, left: oldOffsetLeft, 'z-index': 999 });
         $tag.animate({ top: currentOffsetTop, left: currentdOffsetLeft }, 1000, 'swing', function(){
-                $(this).css({ position: 'relative', top: '', left: '', 'z-index': '' })
-
+            $(this).css({ position: 'relative', top: '', left: '', 'z-index': '' });
         });
-        setTimeout(function(){$tag.draggable(this.draggableOptions);},1001);
 
-//        $tag.animate({ position: 'absolute', top: offsetTop, left: offsetLeft }, {
-//            'complete': function(){
-//                //$(this).animate({ position: 'relative', top: 0, left: 0 }, 5000, 'swing');
-//            }
-//        });
     };
 
 

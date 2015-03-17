@@ -741,8 +741,8 @@ Document Panel (right) - for visualizing highlighted text
     color: snow;
     /*text-shadow: 0em .1em green;*/
     font-weight: bold;
-    font-size: 1em;
-    line-height: 1.1em;
+    font-size: .9em;
+    line-height: 1.2em;
 }
 
 .urank-docviewer-details-section div h3 strong {
@@ -751,6 +751,7 @@ Document Panel (right) - for visualizing highlighted text
 }
 
 .urank-docviewer-details-section div span {
+    font-size: .9em;
 }
 
 .urank-docviewer-content-section {

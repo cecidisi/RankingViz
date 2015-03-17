@@ -1,18 +1,17 @@
 
 var Urank = (function(){
 
-    var s = {};
-    var rankingModel;
-    var contentList, tagCloud, tagBox, visCanvas, docViewer;
+    var _this,
+        s = {},
+        rankingModel,
+        contentList, tagCloud, tagBox, visCanvas, docViewer;
 
     // Color scales
     var tagColorRange = colorbrewer.Blues[TAG_CATEGORIES + 1];
+    //console.log(tagColorRange.slice(1, TAG_CATEGORIES+1));
     tagColorRange.splice(tagColorRange.indexOf("#08519c"), 1, "#2171b5");
     var queryTermColorRange = colorbrewer.Set1[9];
     queryTermColorRange.splice(queryTermColorRange.indexOf("#ffff33"), 1, "#ffd700");
-
-
-    var _this;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -70,7 +69,7 @@ var Urank = (function(){
         onItemClicked : function(document, index) {
             contentList.highlightListItem(index);
             visCanvas.selectItem(index);
-            docViewer.showDocument(document);
+            docViewer.showDocument(document, _this.selectedKeywords.map(function(k){return k.stem}), _this.queryTermColorScale);
         },
         onItemHovered: function(document, index) {
             contentList.hover(index);
@@ -122,11 +121,27 @@ var Urank = (function(){
             visCanvasRoot: '',
             docViewerRoot: '',
             tagColorArray: tagColorRange,
-            queryTermColorArray: queryTermColorRange
+            queryTermColorArray: queryTermColorRange,
+            onLoad: function(data, keywords){},
+            onChange: function(rankingData, selecedKeywords){},
+            onItemClicked: function(id){},
+            onItemHovered: function(id){},
+            onItemUnhovered: function(id){},
+            onFaviconClicked: function(id){},
+            onWatchiconClicked: function(id){},
+            onTagInCloudMouseEnter: function(index){},
+            onTagInCloudMouseLeave: function(index){},
+            onTagInCloudClick: function(index){},
+            onTagDeleted: function(index){},
+            onTagInBoxMouseEnter: function(index){},
+            onTagInBoxMouseLeave: function(index){},
+            onTagInBoxClick: function(index){}
         }, arguments);
 
         // Set color scales
+        s.tagColorArray = s.tagColorArray.length >= TAG_CATEGORIES ? s.tagColorArray : tagColorRange;
         this.tagColorScale = d3.scale.ordinal().domain(d3.range(0, TAG_CATEGORIES, 1)).range(s.tagColorArray);
+        s.queryTermColorArray = s.queryTermColorArray.length >= TAG_CATEGORIES ? s.queryTermColorArray : queryTermColorRange;
         this.queryTermColorScale = d3.scale.ordinal().range(s.queryTermColorArray);
 
         var options = {
@@ -256,23 +271,3 @@ var Urank = (function(){
 
     return Urank;
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
