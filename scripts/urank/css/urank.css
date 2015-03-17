@@ -668,7 +668,7 @@ Canvas section (right-center) - displays ranking vis
 
 
 /*
-<div> where the charts (timeline, bar chart) are actually rendered
+<div> wrapping urank stacked bars and future visualizations
 */
 .urank-viscanvas-container {
     display: inline-block;
@@ -686,6 +686,8 @@ Contains a <span> for the message and optionally an <img> tag (for the loading i
     display: block;
     margin-top: 8em;
     text-align: center;
+    color: #777;
+    font-size: .9em;
 }
 
 

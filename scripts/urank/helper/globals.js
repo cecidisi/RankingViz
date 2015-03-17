@@ -7,10 +7,7 @@ var STR_DROPPED = "Dropped!";
 var STR_DROP_TAGS_HERE = "Drop tags here!";
 var STR_JUST_RANKED = "new";
 var STR_SEARCHING = "Searching...";
-var STR_NO_INDEX = 'no_index';
-
-
-//
+var STR_UNDEFINED = 'undefined';
 
 
 var VIS_MODULES = {
@@ -20,7 +17,6 @@ var VIS_MODULES = {
 
 var RANKING_STATUS = {
     new : 'new',
-    reset : 'reset',
     update : 'update',
     unchanged : 'unchanged',
     no_ranking : 'no_ranking'

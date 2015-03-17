@@ -11,7 +11,6 @@ var DocViewer = (function(){
 
 
     function DocViewer(arguments) {
-
         s = $.extend({
             root: '',
             facetsToShow: ['year']
@@ -51,11 +50,18 @@ var DocViewer = (function(){
     * @param {Array} keywords (only stems)
     */
     var _showDocument = function(document, keywords, colorScale){
-        $(detailItemIdPrefix + 'title').html(getStyledText(document.title, keywords, colorScale));
-        s.facetsToShow.forEach(function(facet){
-            $(detailItemIdPrefix + '' + facet).html(document.facets[facet]);
-        });
 
+        $(detailItemIdPrefix + 'title').html(getStyledText(document.title, keywords, colorScale));
+
+        var getFacet = function(facetName, facetValue){
+            return facetName == 'year' ? parseDate(facetValue) : facetValue;
+        };
+
+        s.facetsToShow.forEach(function(facet){
+            console.log(getFacet(facet, document.facets[facet]));
+            $(detailItemIdPrefix + '' + facet).html(getFacet(facet, document.facets[facet]));
+        });
+        //console.log(getStyledText(document.description, keywords, colorScale));
         $('.' + docViewerContentSectionClass + ' p').html(getStyledText(document.description, keywords, colorScale));
         $('.' + docViewerContentSectionClass + ' p').hide();
         $('.' + docViewerContentSectionClass + ' p').fadeIn('slow');

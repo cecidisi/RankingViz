@@ -77,13 +77,13 @@ var RankingArray = (function() {
                 if(d[attr] > 0){
                     if( d[attr] < currentScore ){
                         currentPos = currentPos + itemsInCurrentPos;
-                        d.rankingPos = currentPos;
                         currentScore = d[attr];
                         itemsInCurrentPos = 1;
                     } else{
-                        d.rankingPos = currentPos;
                         itemsInCurrentPos++;
                     }
+                    d.rankingPos = currentPos;
+
                 } else{
                     d.rankingPos = 0;
                 }

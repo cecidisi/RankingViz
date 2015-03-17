@@ -23,25 +23,33 @@ var Urank = (function(){
             tagBox.build();
             visCanvas.build();
             docViewer.build();
+            _this.selectedId = STR_UNDEFINED;
+            _this.selectedKeywords = [];
         },
         onChange: function(selectedKeywords, newQueryTermColorScale) {
 
             _this.selectedKeywords = selectedKeywords;
             _this.queryTermColorScale = newQueryTermColorScale;
+            _this.selectedId = STR_UNDEFINED;
 
-            if(selectedKeywords.length > 0) {
-                rankingModel.update(selectedKeywords, _this.rankingMode);
-                var rankingData = rankingModel.getRanking();
-                var status = rankingModel.getStatus();
-                contentList.update(rankingData, status, _this.selectedKeywords, _this.queryTermColorScale);
-                visCanvas.update(rankingModel, $(s.contentListRoot).height(), _this.queryTermColorScale);
-            }
-            else{
-                rankingModel.reset();
-                tagBox.clear();
-                contentList.reset();
-                visCanvas.reset();
-            }
+            var rankingData = rankingModel.update(selectedKeywords, _this.rankingMode);
+            var status = rankingModel.getStatus();
+            contentList.update(rankingData, status, _this.selectedKeywords, _this.queryTermColorScale);
+            visCanvas.update(rankingModel, $(s.contentListRoot).height(), _this.queryTermColorScale);
+//
+//
+//            if(selectedKeywords.length > 0) {
+//                var rankingData = rankingModel.update(selectedKeywords, _this.rankingMode);
+//                var status = rankingModel.getStatus();
+//                contentList.update(rankingData, status, _this.selectedKeywords, _this.queryTermColorScale);
+//                visCanvas.update(rankingModel, $(s.contentListRoot).height(), _this.queryTermColorScale);
+//            }
+//            else{
+//                rankingModel.reset();
+//                tagBox.clear();
+//                contentList.reset();
+//                visCanvas.reset();
+//            }
             docViewer.clear();
         },
         onTagInCloudMouseEnter: function(index) {
@@ -53,8 +61,8 @@ var Urank = (function(){
         onTagInCloudClick: function(index) {
             // TODO
         },
-        onTagDeleted: function(index) {
-            tagCloud.restoreTag(index);
+        onTagDeleted: function($tag) {
+            tagCloud.restoreTag($tag);
             //EVTHANDLER.onChange.call(this, selectedKeywords, newQueryTermColorScale);
         },
         onTagInBoxMouseEnter: function(index) {
@@ -66,25 +74,33 @@ var Urank = (function(){
         onTagInBoxClick: function(index) {
             // TODO
         },
-        onItemClicked : function(document, index) {
-            contentList.highlightListItem(index);
-            visCanvas.selectItem(index);
-            docViewer.showDocument(document, _this.selectedKeywords.map(function(k){return k.stem}), _this.queryTermColorScale);
+        onItemClicked : function(document) {
+            _this.selectedId = _this.selectedId === document.id ? STR_UNDEFINED : document.id;
+            if(_this.selectedId !== STR_UNDEFINED) {    // select
+                contentList.selectListItem(document);
+                visCanvas.selectItem(document);
+                docViewer.showDocument(document, _this.selectedKeywords.map(function(k){return k.stem}), _this.queryTermColorScale);
+            }
+            else {                   // deselect
+                contentList.deselectAllListItems();
+                visCanvas.deselectAllItems();
+                docViewer.clear();
+            }
         },
-        onItemHovered: function(document, index) {
-            contentList.hover(index);
-            visCanvas.hoverItem(index);
+        onItemMouseEnter: function(document) {
+            contentList.hover(document);
+            visCanvas.hoverItem(document);
         },
-        onItemUnhovered: function(document, index) {
-            contentList.unhover(index);
-            visCanvas.unhoverItem(index);
+        onItemMouseLeave: function(document) {
+            contentList.unhover(document);
+            visCanvas.unhoverItem(document);
         },
-        onFaviconClicked: function(index){
-            this.data[i].isSelected = ! this.data[index].isSelected;         //CHECK
-            contentList.switchFaviconOnOrOff(index);
+        onFaviconClicked: function(document){
+            //this.data[i].isSelected = ! this.data[index].isSelected;         //CHECK
+            contentList.switchFaviconOnOrOff(document);
         },
-        onWatchiconClicked: function(i) {
-            contentList.watchOrUnwatchListItem(d, i);
+        onWatchiconClicked: function(document) {
+            contentList.watchOrUnwatchListItem(document);
         },
         // Event handlers to return
         onRankByOverallScore: function() {
@@ -100,8 +116,10 @@ var Urank = (function(){
             contentList.reset();
             tagCloud.reset();
             tagBox.clear();
-            visCanvas.reset();
+            visCanvas.clear();
             docViewer.clear();
+            _this.selectedId = STR_UNDEFINED;
+            _this.selectedKeywords = [];
         },
         onResize: function() {
             visCanvas.resize();
@@ -114,6 +132,9 @@ var Urank = (function(){
     function Urank(arguments) {
 
         _this = this;
+        this.selectedKeywords = [];
+        this.selectedId = STR_UNDEFINED;
+
         s = $.extend({
             tagCloudRoot: '',
             tagBoxRoot: '',
@@ -124,11 +145,11 @@ var Urank = (function(){
             queryTermColorArray: queryTermColorRange,
             onLoad: function(data, keywords){},
             onChange: function(rankingData, selecedKeywords){},
-            onItemClicked: function(id){},
-            onItemHovered: function(id){},
-            onItemUnhovered: function(id){},
-            onFaviconClicked: function(id){},
-            onWatchiconClicked: function(id){},
+            onItemClicked: function(document){},
+            onItemMouseEnter: function(document){},
+            onItemMouseLeave: function(document){},
+            onFaviconClicked: function(document){},
+            onWatchiconClicked: function(document){},
             onTagInCloudMouseEnter: function(index){},
             onTagInCloudMouseLeave: function(index){},
             onTagInCloudClick: function(index){},
@@ -147,9 +168,9 @@ var Urank = (function(){
         var options = {
             contentList: {
                 root: s.contentListRoot,
-                onListItemClicked: EVTHANDLER.onItemClicked,
-                onListItemHovered: EVTHANDLER.onItemHovered,
-                onListItemUnhovered: EVTHANDLER.onItemUnhovered,
+                onItemClicked: EVTHANDLER.onItemClicked,
+                onItemMouseEnter: EVTHANDLER.onItemMouseEnter,
+                onItemMouseLeave: EVTHANDLER.onItemMouseLeave,
                 onFaviconClicked: EVTHANDLER.onFaviconClicked,
                 onWatchiconClicked: EVTHANDLER.onWatchiconClicked
             },
@@ -178,8 +199,8 @@ var Urank = (function(){
                 root: s.visCanvasRoot,
                 //visModule: VIS_MODULES.ranking,
                 onItemClicked: EVTHANDLER.onItemClicked,
-                onItemHovered: EVTHANDLER.onItemHovered,
-                onItemUnhovered: EVTHANDLER.onItemUnhovered
+                onItemMouseEnter: EVTHANDLER.onItemMouseEnter,
+                onItemMouseLeave: EVTHANDLER.onItemMouseLeave
             },
 
             docViewer: {
@@ -223,6 +244,7 @@ var Urank = (function(){
 
         data.forEach(function(d){
             d.isSelected = false;
+            if(d.facets.year) d.facets.year = parseDate(d.facets.year);
             d.title = d.title.clean();
             d.description = d.description.clean();
             var document = (d.description) ? d.title +'. '+ d.description : d.title;

@@ -16,20 +16,23 @@ var RankingModel = (function(){
      * */
     var computeScores =  function(_data, query){
         var ranking = new RankingArray();
-        _data.forEach(function(d, i) {
-            ranking.addEmptyElement(d);
-            var docNorm = getEuclidenNorm(d.keywords);
-            var unitQueryVectorDot = parseFloat(1.00/Math.sqrt(query.length));
-            var max = 0;
-            query.forEach(function(q) {
-                // termScore = tf-idf(d, t) * unitQueryVector(t) * weight(query term) / |d|   ---    |d| = euclidenNormalization(d)
-                var termScore = (d.keywords[q.stem]) ? ((parseFloat(d.keywords[q.stem]) / docNorm) * unitQueryVectorDot * parseFloat(q.weight)).round(3) :  0;
-                // if item doesn't contain query term => maxScore and overallScore are not changed
-                ranking[i].overallScore += termScore;
-                ranking[i].maxScore = termScore > ranking[i].maxScore ? termScore : ranking[i].maxScore;
-                ranking[i].weightedKeywords.push({ term: q.term, stem: q.stem, weightedScore: termScore });
+
+        if(query.length > 0) {
+            _data.forEach(function(d, i) {
+                ranking.addEmptyElement(d);
+                var docNorm = getEuclidenNorm(d.keywords);
+                var unitQueryVectorDot = parseFloat(1.00/Math.sqrt(query.length));
+                var max = 0;
+                query.forEach(function(q) {
+                    // termScore = tf-idf(d, t) * unitQueryVector(t) * weight(query term) / |d|   ---    |d| = euclidenNormalization(d)
+                    var termScore = (d.keywords[q.stem]) ? ((parseFloat(d.keywords[q.stem]) / docNorm) * unitQueryVectorDot * parseFloat(q.weight)).round(3) :  0;
+                    // if item doesn't contain query term => maxScore and overallScore are not changed
+                    ranking[i].overallScore += termScore;
+                    ranking[i].maxScore = termScore > ranking[i].maxScore ? termScore : ranking[i].maxScore;
+                    ranking[i].weightedKeywords.push({ term: q.term, stem: q.stem, weightedScore: termScore });
+                });
             });
-        });
+        }
         return ranking;
     };
 
@@ -48,7 +51,7 @@ var RankingModel = (function(){
 
     var updateStatus =  function(_ranking, _previousRanking) {
 
-        if(_ranking.length == 0)
+        if(!_ranking || _ranking.length == 0)
             return RANKING_STATUS.no_ranking;
 
         if(_previousRanking.length == 0)
@@ -58,11 +61,10 @@ var RankingModel = (function(){
             return RANKING_STATUS.update;
 
         for(var r in _ranking){
-            var indexInPrevious = _.findIndex(_previousRanking, function(element){ element.originalIndex === r.originalIndex });
+            var indexInPrevious = _.findIndex(_previousRanking, function(element){ return element.id === r.id });
             if(indexInPrevious == -1 || r.rankingPos !== _previousRanking[indexInPrevious].rankingPos)
                 return RANKING_STATUS.update;
         }
-
         return RANKING_STATUS.unchanged;
     };
 
@@ -82,13 +84,13 @@ var RankingModel = (function(){
                 .assignRankingPositions(this.mode)
                 .addPositionsChanged(this.previousRanking);
             this.status = updateStatus(this.ranking, this.previousRanking);
-            return this.ranking.clone();
+            return this.ranking;
         },
 
         reset: function() {
             this.previousRanking.clear();
             this.ranking.clear();
-            this.status = updateStatus(this.ranking, this.previousRanking);
+            this.status = updateStatus();
         },
 
         getRanking: function() {
@@ -112,8 +114,12 @@ var RankingModel = (function(){
                 return index;
             return this.ranking[index].originalIndex;
         },
-        getIndicesOfRankedItems: function() {
-            return this.ranking.getRankedIndices();
+        getDocumentById: function(id) {
+            var getId = function(d){ return d.id === id };
+            return this.status === RANKING_STATUS.no_ranking ? this.data[_.findIndex(this.data, getId)] : this.ranking[_.findIndex(this.ranking, getId)];
+        },
+        getDocumentByIndex: function(index) {
+            return this.status === RANKING_STATUS.no_ranking ? this.data[index] : this.ranking[index];
         }
     };
 

@@ -112,21 +112,19 @@ var TagCloud = (function(){
         while(i >= firstTagIndex && !$(tagIdPrefix + '' + i).hasClass(tagClass))
             --i;
 
-        var oldOffsetTop = $tag.offset().top;
-        var oldOffsetLeft = $tag.offset().left;
+        var oldOffset = { top: $tag.offset().top, left: $tag.offset().left};
         // Remove from tag box
         $tag = $tag.detach();
 
-        if(i >= firstTagIndex)    // The current tag should be inserted after another (tag-pos == i)
+        if(i >= firstTagIndex)    // Current tag inserted after another (tag-pos == i)
             $(tagIdPrefix + '' + i).after($tag);
-        else                      // The current tag is inserted in the first position of tag container
+        else                      // Current tag inserted in first position of tag container
             $(s.root).prepend($tag);
 
-        var currentOffsetTop = $tag.offset().top;
-        var currentdOffsetLeft = $tag.offset().left;
+        var currentOffset = { top: $tag.offset().top, left: $tag.offset().left };
         // Animate tag moving from ta box to tag cloud
-        $tag.css({ position: 'absolute', top: oldOffsetTop, left: oldOffsetLeft, 'z-index': 999 });
-        $tag.animate({ top: currentOffsetTop, left: currentdOffsetLeft }, 1000, 'swing', function(){
+        $tag.css({ position: 'absolute', top: oldOffset.top, left: oldOffset.left, 'z-index': 999 });
+        $tag.animate({ top: currentOffset.top, left: currentOffset.left }, 1000, 'swing', function(){
             $(this).css({ position: 'relative', top: '', left: '', 'z-index': '' });
         });
 

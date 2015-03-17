@@ -188,9 +188,9 @@ function getStyledWord (word, keywords, colorScale){
     var kIndex = keywords.indexOf(word.stem());
     if(trickyWords.indexOf(word.stem()) == -1 || word.isAllUpperCase()) {
         if(keywords.indexOf(word.stem()) > -1 )
-            return "<strong style='color:'" + colorScale(word.stem()) + "'>" + word + "</strong>";;
+            return "<strong style='color:" + colorScale(word.stem()) + "'>" + word + "</strong>";
         if(keywords.indexOf(word.singularizeNoun().stem()) > -1)
-            return "<strong style='color:'" + colorScale(word.singularizeNoun().stem()) + "'>" + word + "</strong>";;
+            return "<strong style='color:" + colorScale(word.singularizeNoun().stem()) + "'>" + word + "</strong>";
     }
     return word;
 }

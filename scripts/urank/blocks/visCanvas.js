@@ -22,12 +22,12 @@ var VisCanvas = (function(){
         var visArguments = {
             root: s.root,
             onItemClicked: s.onItemClicked,
-            onItemHovered: s.onItemHovered,
-            onItemUnhovered: s.onItemUnhovered
+            onItemMouseEnter: s.onItemMouseEnter,
+            onItemMouseLeave: s.onItemMouseLeave
         };
 
         this.vis = new s.visModule(visArguments);
-        this.reset();
+        this.clear();
     };
 
 
@@ -40,30 +40,36 @@ var VisCanvas = (function(){
         this.vis.resize();
     };
 
-    var _reset = function(){
-        this.vis.reset();
+    var _clear = function(){
+        this.vis.clear();
         $(s.root).append("<p class='" + visCanvasMessageClass + "'>" + STR_NO_VIS + "</p>");
     };
 
-    var _selectItem =function(index) {
-        this.vis.selectItem(index);
+    var _selectItem =function(document) {
+        this.vis.selectItem(document);
     }
 
-    var _hoverItem = function(index) {
-        this.vis.hoverItem(index);
+    var _deselectAllItems =function() {
+        this.vis.deselectAllItems();
     }
 
-    var _unhoverItem = function(index) {
-        this.vis.unhoverItem(index);
+    var _hoverItem = function(document) {
+//        console.log('hover in viscanvas = ' + document.id);
+        this.vis.hoverItem(document);
+    }
+
+    var _unhoverItem = function(document) {
+        this.vis.unhoverItem(document);
     }
 
 
     VisCanvas.prototype = {
         build: _build,
         update: _update,
-        reset: _reset,
+        clear: _clear,
         resize: _resize,
         selectItem: _selectItem,
+        deselectAllItems: _deselectAllItems,
         hoverItem: _hoverItem,
         unhoverItem: _unhoverItem
     };
