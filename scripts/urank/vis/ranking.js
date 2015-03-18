@@ -28,15 +28,15 @@ function Ranking(arguments){
 
 
     RANKING.Evt.itemClicked = function(d, i){
-        s.onItemClicked.call(this, d);
+        s.onItemClicked.call(this, d.id);
     };
 
     RANKING.Evt.itemMouseEntered = function(d, i){
-        s.onItemMouseEnter.call(this, d);
+        s.onItemMouseEnter.call(this, d.id);
     };
 
     RANKING.Evt.itemMouseLeft = function(d, i){
-        s.onItemMouseLeave.call(this, d);
+        s.onItemMouseLeave.call(this, d.id);
     };
 
 
@@ -367,29 +367,30 @@ function Ranking(arguments){
     *   @param {boolean} isSelectedFromOutside: true means that the call came from Vis object, otherwise it was invoked internally by clicking on a y-axis tick or stacked bar
     *
     * ***************************************************************************************************************/
-    RANKING.Render.selectItem = function(document){
+    RANKING.Render.selectItem = function(id){
         if(isRankingDrawn)
-            svg.selectAll('.stackedbar').style('opacity', function(d){ return d.id == document.id ? 1 : 0.3; });
+            svg.selectAll('.stackedbar').style('opacity', function(d){ return d.id == id ? 1 : 0.3; });
     };
 
 
-    RANKING.Render.deSelectAllItems = function(d){
+    RANKING.Render.deSelectAllItems = function(){
         if(isRankingDrawn)
             svg.selectAll('.stackedbar').style('opacity', 1);
     };
 
 
-    RANKING.Render.hoverItem = function(d) {
-        if(isRankingDrawn)
-            svg.select("#stackedbar-" + d.id).selectAll('.bar')
-                .attr('transform', 'translate(0, 0)')
-                .style('filter', 'url(#drop-shadow)');
+    RANKING.Render.hoverItem = function(id) {
+        if(isRankingDrawn) {
+            svg.select('#stackedbar-' +''+ id).selectAll('.bar')
+            .attr('transform', 'translate(0, 0)')
+            .style('filter', 'url(#drop-shadow)');
+        }
     };
 
 
-    RANKING.Render.unhoverItem = function(d) {
+    RANKING.Render.unhoverItem = function(id) {
         if(isRankingDrawn)
-            svg.select("#stackedbar-" + d.id).selectAll('.bar')
+            svg.select('#stackedbar-' +''+ id).selectAll('.bar')
                 .attr('transform', 'translate(0, 0.2)')
                 .style('filter', '');
     };

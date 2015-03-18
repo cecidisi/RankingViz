@@ -7,8 +7,7 @@ var Urank = (function(){
         contentList, tagCloud, tagBox, visCanvas, docViewer;
 
     // Color scales
-    var tagColorRange = colorbrewer.Blues[TAG_CATEGORIES + 1];
-    //console.log(tagColorRange.slice(1, TAG_CATEGORIES+1));
+    var tagColorRange = colorbrewer.Blues[TAG_CATEGORIES + 1].slice(1, TAG_CATEGORIES+1);
     tagColorRange.splice(tagColorRange.indexOf("#08519c"), 1, "#2171b5");
     var queryTermColorRange = colorbrewer.Set1[9];
     queryTermColorRange.splice(queryTermColorRange.indexOf("#ffff33"), 1, "#ffd700");
@@ -36,20 +35,6 @@ var Urank = (function(){
             var status = rankingModel.getStatus();
             contentList.update(rankingData, status, _this.selectedKeywords, _this.queryTermColorScale);
             visCanvas.update(rankingModel, $(s.contentListRoot).height(), _this.queryTermColorScale);
-//
-//
-//            if(selectedKeywords.length > 0) {
-//                var rankingData = rankingModel.update(selectedKeywords, _this.rankingMode);
-//                var status = rankingModel.getStatus();
-//                contentList.update(rankingData, status, _this.selectedKeywords, _this.queryTermColorScale);
-//                visCanvas.update(rankingModel, $(s.contentListRoot).height(), _this.queryTermColorScale);
-//            }
-//            else{
-//                rankingModel.reset();
-//                tagBox.clear();
-//                contentList.reset();
-//                visCanvas.reset();
-//            }
             docViewer.clear();
         },
         onTagInCloudMouseEnter: function(index) {
@@ -74,12 +59,13 @@ var Urank = (function(){
         onTagInBoxClick: function(index) {
             // TODO
         },
-        onItemClicked : function(document) {
-            _this.selectedId = _this.selectedId === document.id ? STR_UNDEFINED : document.id;
+        onItemClicked : function(documentId) {
+            _this.selectedId = _this.selectedId === documentId ? STR_UNDEFINED : documentId;
             if(_this.selectedId !== STR_UNDEFINED) {    // select
-                contentList.selectListItem(document);
-                visCanvas.selectItem(document);
-                docViewer.showDocument(document, _this.selectedKeywords.map(function(k){return k.stem}), _this.queryTermColorScale);
+                contentList.selectListItem(documentId);
+                visCanvas.selectItem(documentId);
+                console.log(rankingModel.getDocumentById(documentId));
+                docViewer.showDocument(rankingModel.getDocumentById(documentId), _this.selectedKeywords.map(function(k){return k.stem}), _this.queryTermColorScale);
             }
             else {                   // deselect
                 contentList.deselectAllListItems();
@@ -87,20 +73,20 @@ var Urank = (function(){
                 docViewer.clear();
             }
         },
-        onItemMouseEnter: function(document) {
-            contentList.hover(document);
-            visCanvas.hoverItem(document);
+        onItemMouseEnter: function(documentId) {
+            contentList.hover(documentId);
+            visCanvas.hoverItem(documentId);
         },
-        onItemMouseLeave: function(document) {
-            contentList.unhover(document);
-            visCanvas.unhoverItem(document);
+        onItemMouseLeave: function(documentId) {
+            contentList.unhover(documentId);
+            visCanvas.unhoverItem(documentId);
         },
-        onFaviconClicked: function(document){
+        onFaviconClicked: function(documentId){
             //this.data[i].isSelected = ! this.data[index].isSelected;         //CHECK
-            contentList.switchFaviconOnOrOff(document);
+            contentList.switchFaviconOnOrOff(documentId);
         },
-        onWatchiconClicked: function(document) {
-            contentList.watchOrUnwatchListItem(document);
+        onWatchiconClicked: function(documentId) {
+            contentList.watchOrUnwatchListItem(documentId);
         },
         // Event handlers to return
         onRankByOverallScore: function() {
@@ -145,11 +131,11 @@ var Urank = (function(){
             queryTermColorArray: queryTermColorRange,
             onLoad: function(data, keywords){},
             onChange: function(rankingData, selecedKeywords){},
-            onItemClicked: function(document){},
-            onItemMouseEnter: function(document){},
-            onItemMouseLeave: function(document){},
-            onFaviconClicked: function(document){},
-            onWatchiconClicked: function(document){},
+            onItemClicked: function(documentId){},
+            onItemMouseEnter: function(documentId){},
+            onItemMouseLeave: function(documentId){},
+            onFaviconClicked: function(documentId){},
+            onWatchiconClicked: function(documentId){},
             onTagInCloudMouseEnter: function(index){},
             onTagInCloudMouseLeave: function(index){},
             onTagInCloudClick: function(index){},
@@ -244,7 +230,6 @@ var Urank = (function(){
 
         data.forEach(function(d){
             d.isSelected = false;
-            if(d.facets.year) d.facets.year = parseDate(d.facets.year);
             d.title = d.title.clean();
             d.description = d.description.clean();
             var document = (d.description) ? d.title +'. '+ d.description : d.title;

@@ -44,7 +44,7 @@ var TagCloud = (function(){
 
         keywords.forEach(function(k, i){
             var tag = $("<div class='" + tagClass + "' id='urank-tag-" + i + "' tag-pos='" + i + "'>" + k.term + "</div>").appendTo(root);
-            tag.data({ 'stem': k.stem, 'color': s.colorScale(k.colorCategory+1) });
+            tag.data({ 'stem': k.stem, 'color': s.colorScale(k.colorCategory) });
             _this.setTagProperties(tag);
         });
     };

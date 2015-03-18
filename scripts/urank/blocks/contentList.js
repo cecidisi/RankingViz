@@ -73,7 +73,7 @@ var ContentList = (function(){
             li.animate({'top': 5}, {
                 'complete': function(){
                     $(this).animate({"top": 0}, (i+1)*100, 'swing', function(){
-                        _this.bindEvenHandlers(li, d);
+                        _this.bindEvenHandlers(li, d.id);
                     });
                 }
             });
@@ -163,7 +163,7 @@ var ContentList = (function(){
         });
         // Re-binds on click event to list item. Removing and re-appending DOM elements destroys the bindings to event handlers
         $('.'+liClass).each(function(i, li){
-            _this.bindEvenHandlers($(li), data[i]);
+            _this.bindEvenHandlers($(li), data[i].id);
         });
 
     };
@@ -186,28 +186,27 @@ var ContentList = (function(){
     }
 
 
-    var _bindEventHandlers = function(li, d) {
+    var _bindEventHandlers = function(li, id) {
 
-        li.data('d', d)
+        li.data('id', id)
         .off()
         .on({
             click: function(event){
-                event.stopPropagation(); s.onItemClicked.call(this, li.data('d'));
+                event.stopPropagation(); s.onItemClicked.call(this, li.data('id'));
             },
             mouseenter: function(event){
-                event.stopPropagation(); s.onItemMouseEnter.call(this, li.data('d'));
+                event.stopPropagation(); s.onItemMouseEnter.call(this, li.data('id'));
             },
             mouseleave: function(event){
-                event.stopPropagation(); s.onItemMouseLeave.call(this, li.data('d'));
+                event.stopPropagation(); s.onItemMouseLeave.call(this, li.data('id'));
             }
         })
-        .on('click', '.'+liButtonsContainerClass + ' .' + watchiconClass, li.data('d'),  function(event){
+        .on('click', '.'+liButtonsContainerClass + ' .' + watchiconClass, li.data('id'),  function(event){
             event.stopPropagation(); s.onWatchiconClicked.call(this, event.data);
         })
-        .on('click', '.'+liButtonsContainerClass + ' .' + faviconClass, li.data('d'), function(event){
+        .on('click', '.'+liButtonsContainerClass + ' .' + faviconClass, li.data('id'), function(event){
             event.stopPropagation(); s.onFaviconClicked.call(this, event.data);
         });
-
     };
 
 
@@ -298,10 +297,10 @@ var ContentList = (function(){
 
 
 
-    var _selectListItem = function(d) {
+    var _selectListItem = function(id) {
         this.stopAnimation();
         $('.'+liClass).css("opacity", "0.3");
-        $(liItem + '' + d.id).css("opacity", "1");
+        $(liItem + '' + id).css("opacity", "1");
     };
 
 
@@ -311,13 +310,13 @@ var ContentList = (function(){
 
 
     // receives actual index
-    var _hover = function(d) {
-        $(liItem +''+ d.id).addClass(liHoverClass);
+    var _hover = function(id) {
+        $(liItem +''+ id).addClass(liHoverClass);
     };
 
 
-    var _unhover = function(d) {
-        $(liItem +''+ d.id).removeClass(liHoverClass);
+    var _unhover = function(id) {
+        $(liItem +''+ id).removeClass(liHoverClass);
     };
 
 
@@ -375,16 +374,16 @@ var ContentList = (function(){
     };
 
 
-    var _switchFaviconOnOrOff = function(d){
-        var favIcon = $(liItem + '' + d.id).find(' .' + faviconClass);
+    var _switchFaviconOnOrOff = function(id){
+        var favIcon = $(liItem + '' + id).find(' .' + faviconClass);
         var classToAdd = favIcon.hasClass(faviconOffClass) ? faviconOnClass : faviconOffClass;
         var classToRemove = classToAdd === faviconOnClass ? faviconOffClass : faviconOnClass;
         favIcon.switchClass(classToRemove, classToAdd);
     };
 
 
-    var _watchOrUnwatchListItem = function(d){
-        var watchIcon = $(liItem + '' + d.id).find(' .' + watchiconClass);
+    var _watchOrUnwatchListItem = function(id){
+        var watchIcon = $(liItem + '' + id).find(' .' + watchiconClass);
         var classToAdd = watchIcon.hasClass(watchiconOffClass) ? watchiconOnClass : watchiconOffClass;
         var classToRemove = classToAdd === watchiconOnClass ? watchiconOffClass : watchiconOnClass;
         watchIcon.switchClass(classToRemove, classToAdd);

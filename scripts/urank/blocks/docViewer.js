@@ -54,12 +54,14 @@ var DocViewer = (function(){
         $(detailItemIdPrefix + 'title').html(getStyledText(document.title, keywords, colorScale));
 
         var getFacet = function(facetName, facetValue){
+            console.log(parseDate(facetValue));
             return facetName == 'year' ? parseDate(facetValue) : facetValue;
         };
 
         s.facetsToShow.forEach(function(facet){
-            console.log(getFacet(facet, document.facets[facet]));
-            $(detailItemIdPrefix + '' + facet).html(getFacet(facet, document.facets[facet]));
+            //console.log(getFacet(facet, document.facets[facet]));
+            //$(detailItemIdPrefix + '' + facet).html(getFacet(facet, document.facets[facet]));
+            $(detailItemIdPrefix + '' + facet).html(document.facets[facet]);
         });
         //console.log(getStyledText(document.description, keywords, colorScale));
         $('.' + docViewerContentSectionClass + ' p').html(getStyledText(document.description, keywords, colorScale));

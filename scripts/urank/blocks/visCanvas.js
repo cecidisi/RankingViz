@@ -10,9 +10,9 @@ var VisCanvas = (function(){
         s = $.extend({
             root: '',
             visModule: VIS_MODULES.ranking,
-            onItemClicked: function(index){},
-            onItemHovered: function(index){},
-            onItemUnhovered: function(index){}
+            onItemClicked: function(id){},
+            onItemHovered: function(id){},
+            onItemUnhovered: function(id){}
         }, arguments);
     }
 
@@ -45,21 +45,21 @@ var VisCanvas = (function(){
         $(s.root).append("<p class='" + visCanvasMessageClass + "'>" + STR_NO_VIS + "</p>");
     };
 
-    var _selectItem =function(document) {
-        this.vis.selectItem(document);
+    var _selectItem =function(id) {
+        this.vis.selectItem(id);
     }
 
     var _deselectAllItems =function() {
         this.vis.deselectAllItems();
     }
 
-    var _hoverItem = function(document) {
+    var _hoverItem = function(id) {
 //        console.log('hover in viscanvas = ' + document.id);
-        this.vis.hoverItem(document);
+        this.vis.hoverItem(id);
     }
 
-    var _unhoverItem = function(document) {
-        this.vis.unhoverItem(document);
+    var _unhoverItem = function(id) {
+        this.vis.unhoverItem(id);
     }
 
 
