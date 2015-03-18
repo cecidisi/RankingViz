@@ -1,4 +1,4 @@
-function Vis() {
+
 
     var options = {
         tagCloudRoot: '#eexcess_keywords_container',
@@ -8,18 +8,14 @@ function Vis() {
         docViewerRoot: '#eexcess_document_panel'
     };
 
-    var urank = new Urank(options);
+    var init = function(urank){
+        $('#eexcess_btnreset').click(urank.reset);
+        $('#eexcess_btn_sort_by_overall_score').click(urank.rankByOverallScore);
+        $('#eexcess_btn_sort_by_max_score').click(urank.rankByMaximumScore);
 
-    $('#eexcess_btnreset').click(function(){ urank.reset.call(this); });
-    $('#eexcess_btn_sort_by_overall_score').click(function(){ urank.rankByOverallScore.call(this); });
-    $('#eexcess_btn_sort_by_max_score').click(function(){ urank.rankByMaximumScore.call(this); });
+        urank.loadData(localStorage.getItem('data'));
+        $('#message').css('visibility', 'hidden');
+    };
 
+    Urank(init, options, 'scripts/urank/');
 
-    urank.loadData(localStorage.getItem('data'));
-    $('#message').css('visibility', 'hidden');
-
-
-
-
-
-}
