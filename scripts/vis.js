@@ -17,5 +17,5 @@
         $('#message').css('visibility', 'hidden');
     };
 
-    Urank(init, options, 'scripts/urank/');
+    Urank(init, options, 'libs/urank/');
 

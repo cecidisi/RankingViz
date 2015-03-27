@@ -8,17 +8,7 @@
         <meta name="viewport" content="width=device-width">
 
         <script type="text/javascript" src="libs/jquery-1.10.2.js" charset="utf-8"></script>
-        <script type="text/javascript" src="libs/natural-adapted.js" charset="utf-8"></script>
-        <script type="text/javascript" src="libs/d3.v3.js" charset="utf-8"></script>
-        <script type="text/javascript" src="libs/pos/lexer.js" charset="utf-8"></script>
-        <script type="text/javascript" src="libs/pos/lexicon.js" charset="utf-8"></script>
-        <script type="text/javascript" src="libs/pos/POSTagger.js" charset="utf-8"></script>
-        <script type="text/javascript" src="libs/pos/pos.js" charset="utf-8"></script>
-        <script type="text/javascript" src="libs/underscore.js" charset="utf-8"></script>
 
-        <script type="text/javascript" src="scripts/globals.js" charset="utf-8"></script>
-        <script type="text/javascript" src="scripts/keywordExtractor.js" charset="utf-8"></script>
-        <script type="text/javascript" src="scripts/utils.js" charset="utf-8"></script>
         <script type="text/javascript" src="datasets/datasetManager.js" charset="utf-8" ></script>
         <script type="text/javascript" src="datasets/dataset_t1_30.js" charset="utf-8" ></script>
         <script type="text/javascript" src="datasets/dataset_t1_60.js" charset="utf-8" ></script>
@@ -50,7 +40,7 @@
         <div>
             <span>Topic: </span>
             <select id="select-dataset"></select>
-            
+
             <span>Tool aided: </span>
             <select id="select-tool-condition">
                 <option value="yes" selected="selected">Yes</option>

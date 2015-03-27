@@ -32,34 +32,32 @@
     function startVisualization(){
         console.log("Status: Testing with Dataset " + this.datasetId);
         $("#eexcess_loading").fadeIn('fast');
+//
+//
+//        var arguments = {
+//            minRepetitions : (parseInt(this.dataset.data.length * 0.05) > 1) ? parseInt(this.dataset.data.length * 0.05) : 2
+//        };
+//
+//
+//        var keywordExtractor = new KeywordExtractor(arguments);
+//
+//        this.dataset.data.forEach(function(d){
+//            d.title = d.title.clean();
+//            d.description = d.description.clean();
+//            var document = (d.description) ? d.title +'. '+ d.description : d.title;
+//            keywordExtractor.addDocument(document.removeUnnecessaryChars());
+//        });
+//
+//        keywordExtractor.processCollection();
+//
+//        this.dataset.data.forEach(function(d, i){
+//            d.keywords = keywordExtractor.listDocumentKeywords(i);
+//        });
+//        this.dataset.keywords = keywordExtractor.getCollectionKeywords();
+//        this.dataset['task-number'] = this.task;
+//        this.dataset['tool-aided'] = $("#select-tool-condition").val() || 'yes';
 
-
-        var arguments = {
-            minRepetitions : (parseInt(this.dataset.data.length * 0.05) > 1) ? parseInt(this.dataset.data.length * 0.05) : 2
-        };
-
-
-        var keywordExtractor = new KeywordExtractor(arguments);
-
-        this.dataset.data.forEach(function(d){
-            d.title = d.title.clean();
-            d.description = d.description.clean();
-            var document = (d.description) ? d.title +'. '+ d.description : d.title;
-            keywordExtractor.addDocument(document.removeUnnecessaryChars());
-        });
-
-        keywordExtractor.processCollection();
-
-        this.dataset.data.forEach(function(d, i){
-            d.keywords = keywordExtractor.listDocumentKeywords(i);
-        });
-        this.dataset.keywords = keywordExtractor.getCollectionKeywords();
-        this.dataset['task-number'] = this.task;
-        this.dataset['tool-aided'] = $("#select-tool-condition").val() || 'yes';
-
-        localStorage.setItem('dataset', JSON.stringify(this.dataset));
-
-
+        localStorage.setItem('data', JSON.stringify(this.dataset.data));
         self.location = 'vis.html';
     }
 
@@ -81,8 +79,8 @@
         $("#select-dataset").change(selectDatasetChanged);
         $("#start-button").click(startButtonClicked);
 
-        var taskToken = tokenizer.tokenize($('#task').text());
-        this.task = taskToken.length > 0 ? parseInt(taskToken) : 0;
+//        var taskToken = tokenizer.tokenize($('#task').text());
+//        this.task = taskToken.length > 0 ? parseInt(taskToken) : 0;
     })();
 
 })();
