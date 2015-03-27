@@ -305,7 +305,7 @@ var ContentList = (function(){
 
 
     var _deselectAllListItems = function() {
-        $('.'+liClass).css("opacity", "1");
+        $('.'+liClass).css('opacity', '');
     };
 
 
@@ -322,8 +322,9 @@ var ContentList = (function(){
 
     var _highlightListItems = function(idArray) {
 
+        $('.'+liClass).css('opacity', .3);
         idArray.forEach(function(id){
-            $(liItem+''+id).css('display', '')
+            $(liItem+''+id).css({ display: '', opacity: ''});
 
         });
 
