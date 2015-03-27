@@ -320,6 +320,15 @@ var ContentList = (function(){
     };
 
 
+    var _highlightListItems = function(idArray) {
+
+        idArray.forEach(function(id){
+            $(liItem+''+id).css('display', '')
+
+        });
+
+    };
+
     var _stopAnimation = function(timeout){
         $('.'+liClass).stop(true, true);
         this.removeShadowEffect();

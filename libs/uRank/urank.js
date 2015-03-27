@@ -4,6 +4,7 @@ function Urank(callback, args, pathToUrank) {
         load: [
             pathToUrank + 'dependencies/colorbrewer.js',
             pathToUrank + 'dependencies/d3.v3.js',
+            pathToUrank + 'dependencies/d3pie.min.js',
             pathToUrank + 'dependencies/jquery-ui.js',
             pathToUrank + 'dependencies/ui/jquery-ui-1.10.4.custom.min.css',
             pathToUrank + 'dependencies/natural-adapted.js',
@@ -14,6 +15,7 @@ function Urank(callback, args, pathToUrank) {
             pathToUrank + 'dependencies/pos/POSTagger.js',
             pathToUrank + 'dependencies/my_libs/outerHTML.js',
             pathToUrank + 'dependencies/my_libs/scrollTo.js',
+            pathToUrank + 'dependencies/my_libs/fullOffset.js',
             pathToUrank + 'model/keywordExtractor.js',
             pathToUrank + 'model/rankingArray.js',
             pathToUrank + 'model/rankingModel.js',

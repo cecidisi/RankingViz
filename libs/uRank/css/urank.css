@@ -60,7 +60,6 @@ Main Containers
     pointer-events: all;
     margin: 0.2em;
     padding: 3px 5px;
-    /*border: 0.1em #222 solid;*/
     -webkit-border-radius: 7px;
     border-radius: 7px;
     -webkit-box-shadow: 0em 0.1em 0.3em #222;
@@ -68,9 +67,9 @@ Main Containers
     box-shadow: 0em 0.1em 0.3em #222;
     color: #111;
     text-shadow: -0.1em 0.1em 0.5em #eee;
-    opacity: 1.0;
     cursor: move;
 }
+
 
 .urank-tagcloud-tag:hover, .urank-tagcloud-tag-hover-fixed {
     color: #eee;
@@ -85,7 +84,6 @@ Main Containers
 
 
 .urank-tagcloud-tag .urank-tagcloud-prox-keyword-indicator {
-
     visibility: hidden;
     position: absolute;
     display: inline;
@@ -97,18 +95,40 @@ Main Containers
     font-size: 9px;
     line-height: 12px;
     box-shadow: 0 1px 1px #777;
-    cursor: pointer;
 }
 
 
 .urank-tagcloud-tag:hover .urank-tagcloud-prox-keyword-indicator {
     visibility: visible;
+    cursor: inherit;
 }
 
 
 .urank-tagcloud-tag:hover .urank-tagcloud-prox-keyword-indicator:hover {
     transform: scale(1.1);
+    cursor: pointer;
 }
+
+
+.urank-tagcloud-tag .urank-tagcloud-documents-indicator {
+    visibility: hidden;
+    position: absolute;
+    display: inline;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    cursor: pointer;
+    /*background: orange;*/
+}
+
+.urank-tagcloud-tag:hover .urank-tagcloud-documents-indicator {
+    visibility: visible;
+}
+
+.urank-tagcloud-tag:hover .urank-tagcloud-documents-indicator:hover {
+    transform: scale(1.1);
+}
+
 
 
 
@@ -287,7 +307,8 @@ VIS PANEL CONTROLS
     transform: scale(1.0);
 }
 
-.urank-tagbox-tag .urank-tagcloud-prox-keyword-indicator {
+.urank-tagbox-tag .urank-tagcloud-prox-keyword-indicator,
+.urank-tagbox-tag .urank-tagcloud-documents-indicator {
     display: none;
 }
 

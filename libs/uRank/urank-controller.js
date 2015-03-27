@@ -18,7 +18,7 @@ var UrankController = (function(){
 
         onLoad: function(data, keywords) {
             contentList.build(data);
-            tagCloud.build(keywords);
+            tagCloud.build(keywords, data.length);
             tagBox.build();
             visCanvas.build();
             docViewer.build();
@@ -53,16 +53,22 @@ var UrankController = (function(){
         },
         onProxKeywordIndicatorEnter: function(index) {
             tagCloud.proxKeywordIndicatorMouseEnter(index);
+            s.onProxKeywordIndicatorMouseEnter.call(this, index);
         },
         onProxKeywordIndicatorLeave: function(index) {
             tagCloud.proxKeywordIndicatorMouseLeave(index);
+            s.onProxKeywordIndicatorMouseLeave.call(this, index);
         },
         onProxKeywordIndicatorClick: function(index) {
             tagCloud.proxKeywordIndicatorMouseClicked(index);
+            s.onProxKeywordIndicatorClick.call(this, index);
         },
         onTagDeleted: function(index) {
             tagCloud.restoreTag(index);
             s.onTagDeleted.call(this, index);
+        },
+        onDocumentIndicatorClick: function(index) {
+
         },
         onTagInBoxMouseEnter: function(index) {
             // TODO
@@ -163,6 +169,7 @@ var UrankController = (function(){
             onTagInCloudMouseEnter: function(index){},
             onTagInCloudMouseLeave: function(index){},
             onTagInCloudClick: function(index){},
+            onDocumentIndicatorClick: function(index){},
             onProxKeywordIndicatorMouseEnter: function(index){},
             onProxKeywordIndicatorMouseLeave: function(index){},
             onProxKeywordIndicatorClick: function(index){},
@@ -197,13 +204,16 @@ var UrankController = (function(){
                 dropIn: s.tagBoxRoot,
                 onTagInCloudMouseEnter: EVTHANDLER.onTagInCloudMouseEnter,
                 onTagInCloudMouseLeave: EVTHANDLER.onTagInCloudMouseLeave,
-                onTagInCloudClick: EVTHANDLER.onTagInCloudClick
+                onTagInCloudClick: EVTHANDLER.onTagInCloudClick,
+                onDocumentIndicatorClick: EVTHANDLER.onDocumentIndicatorClick,
+                onProxKeywordIndicatorMouseEnter : EVTHANDLER.onProxKeywordIndicatorEnter,
+                onProxKeywordIndicatorMouseLeave : EVTHANDLER.onProxKeywordIndicatorLeave,
+                onProxKeywordIndicatorClick : EVTHANDLER.onProxKeywordIndicatorClick
             },
 
             tagBox: {
                 root: s.tagBoxRoot,
                 colorScale: _this.queryTermColorScale,
-                //droppableClass: 'urank-tagcloud-tag',
                 onChange: EVTHANDLER.onChange,
                 onTagDeleted: EVTHANDLER.onTagDeleted,
                 onTagInBoxMouseEnter: EVTHANDLER.onTagInBoxMouseEnter,

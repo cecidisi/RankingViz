@@ -35,7 +35,6 @@ var TagBox = (function(){
             tolerance: 'touch',
             drop: function(event, ui){
                 _this.dropTag(ui.draggable);
-                //s.onChange.call(this, _this.getKeywordsInBox(), s.colorScale)
                 $(s.root).trigger('tagBoxChange');
             }
         };
@@ -52,7 +51,6 @@ var TagBox = (function(){
                 _this.updateTagStyle(this.parentNode, ui.value);
             },
             stop: function(event, ui) {
-                //s.onChange.call(this, _this.getKeywordsInBox(), s.colorScale);
                 $(s.root).trigger('tagBoxChange');
             }
         };
@@ -64,7 +62,6 @@ var TagBox = (function(){
         // bind droppable behavior to tag box
         $(s.root)
             .addClass(tagboxContainerClass)
-            //.on('tagBoxChange', s.onChange(_this.getKeywordsInBox(), s.colorScale))
             .droppable(this.droppableOptions);
     };
 
@@ -82,7 +79,7 @@ var TagBox = (function(){
         $(s.root).find('p').remove();
 
         if ($tag.hasClass(s.droppableClass)) {
-            // Append dragged tag onto tag box
+            // Append dragged tag to tag box
             $(s.root).append($tag);
 
             // Change tag's class
@@ -90,9 +87,9 @@ var TagBox = (function(){
 
             // Append "delete" icon to tag and bind event handler
             $("<span class='" + tagDeleteButtonClass + "'/></span>").appendTo(tag).click(function(){
-                s.onTagDeleted($tag.attr('tag-pos'));
                 $tag.find('.'+tagDeleteButtonClass).remove();
                 $tag.find('.'+tagWeightsliderClass).remove();
+                s.onTagDeleted.call(this, $tag.attr('tag-pos'));
                 $(s.root).trigger('tagBoxChange');
             });
 
@@ -104,14 +101,11 @@ var TagBox = (function(){
             var rgbSequence = hexToR(color) + ', ' + hexToG(color) + ', ' + hexToB(color);
 
             // Set tag's style
-            $tag
-            .css({
+            $tag.data('keywordColor', color).css({
                 background: 'rgba(' + rgbSequence + ', 1)',
                 color: '',
                 border: 'solid 2px ' + color
-            })
-            .off()
-            .on({
+            }).off().on({
                 mouseenter: s.onTagInBoxMouseEnter($tag.attr('tag-pos')),
                 mouseleave: s.onTagInBoxMouseLeave($tag.attr('tag-pos')),
                 click: s.onTagInBoxClick($tag.attr('tag-pos'))
