@@ -26,6 +26,7 @@ var TagCloud = (function(){
             onTagInCloudMouseEnter: function(index){},
             onTagInCloudMouseLeave: function(index){},
             onTagInCloudClick: function(index){},
+            onDocumentIndicatorClick: function(index){},
             onProxKeywordIndicatorMouseEnter : function(index){},
             onProxKeywordIndicatorMouseLeave : function(index){},
             onProxKeywordIndicatorClick : function(index){}
@@ -45,10 +46,13 @@ var TagCloud = (function(){
         this.pieOptions = {
             size: { pieOuterRadius: '100%', canvasHeight: '14', canvasWidth: '14' },
             effects: {
-                //load: { effect: "none" }
+                load: { effect: "none" },
+                pullOutSegmentOnClick: { effect: 'none', speed: 0, size: 0 },
+                highlightSegmentOnMouseover: false
             },
             labels: {
-                inner: { format: '' }
+                inner: { format: '' },
+                lines: { enabled: false}
             },
             data: {
                 content: [
@@ -56,30 +60,74 @@ var TagCloud = (function(){
                     { label: 'documentsNotIn', value: 0, color: '#fafafa'/*, color: '#010101'*/ },
                 ]
             },
-            effects: { highlightSegmentOnMouseover: false },
             misc: {
                 colors: { segmentStroke: '#65a620' },
                 canvasPadding: { top: 0, right: 0, bottom: 0, left: 0 },
+                gradient: { enabled: true, percentage: 100, color: "#555555" },
             }
         };
 
-        $(s.root).on('click', function(event){
-            if(_this.proxKeywordsMode) {
-                $('.'+tagClass).each(function(i, tag){
-                    _this.setTagProperties($(tag));
-                });
-
-                $(this).off('scroll');
-            }
-        });
     }
 
+
+
+    var onRootScroll = function(event) {
+        event.stopPropagation();
+        var $tag = $('.'+tagHoverFixedClass);
+        setIndicatorsPosition($tag);
+        var $tagPie = $tag.find('.'+documentsIndicatorClass),
+            $redCircle = $tag.find('.'+proxKeywordIndicatorClass),
+            rootOffsetTop = $(this).fullOffset().top,
+            rootHeight = $(this).height(),
+            pieOffsetTop = $tagPie.fullOffset().top,
+            pieHeight = $tagPie.height(),
+            circleOffsetTop = $redCircle.fullOffset().top,
+            circleHeight = $redCircle.height();
+        var visibility = (rootOffsetTop <= (circleOffsetTop + circleHeight) && rootOffsetTop + rootHeight >= circleOffsetTop) ? 'visible' : 'hidden';
+        $redCircle.css('visibility', visibility);
+        visibility = (rootOffsetTop <= (pieOffsetTop + pieHeight) && rootOffsetTop + rootHeight >= pieOffsetTop) ? 'visible' : 'hidden';
+        $tagPie.css('visibility', visibility);
+    };
+
+
+    var onRootClicked = function(event) {
+
+        $(this).off('scroll', onRootScroll);
+        $('.'+tagHoverFixedClass).removeClass(tagHoverFixedClass);
+
+        if(_this.proxKeywordsMode) {
+            $('.'+tagClass).each(function(i, tag){
+                _this.setTagProperties($(tag));
+            });
+        }
+    };
+
+
+
+    var setIndicatorsPosition = function($tag) {
+        // Set pie chart position
+        $tag.find('.'+documentsIndicatorClass).css({
+            top: $tag.offset().top - 4,
+            left: $tag.offset().left + $tag.width() + 5
+        });
+
+        // Set circle position
+        $tag.find('.'+proxKeywordIndicatorClass).css({
+            top: $tag.offset().top + $tag.height() - 1,
+            left: $tag.offset().left + $tag.width() + 7
+        });
+    };
+
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
     * * @param {array of objects} keywords Description
     */
     var _build = function(keywords, collectionSize){
         this.keywords = keywords;
+        this.collectionSize = collectionSize;
+
         var root = $(s.root);
         // Empty tag container and add appropriateclass
         root.empty().addClass(tagCloudContainerClass);
@@ -101,17 +149,20 @@ var TagCloud = (function(){
             // Append red circle section for keywords in proximity indicator
             if(k.keywordsInProximity.length > 0) {
                 tooltipMsg = k.keywordsInProximity.length + " other keywords frequently found close to " + termUpperCase + "\n Click here to lock view";
-                $("<div title='" + tooltipMsg + "'>" + k.keywordsInProximity.length + "</div>").appendTo($tag).addClass(proxKeywordIndicatorClass);
+                var $proyKeywordsIndicator = $("<div></div>").appendTo($tag).addClass(proxKeywordIndicatorClass);
+                $("<div title='" + tooltipMsg + "'>" + k.keywordsInProximity.length + "</div>").appendTo($proyKeywordsIndicator);
             }
 
             $tag.data({ 'originalColor': s.colorScale(k.colorCategory) });
             _this.setTagProperties($tag);
         });
+
+        $(s.root).off().on('click', onRootClicked);
     };
 
 
     var _reset = function() {
-        this.build(this.keywords);
+        this.build(this.keywords, this.collectionSize);
     };
 
 
@@ -144,6 +195,7 @@ var TagCloud = (function(){
         $tag.find('.'+documentsIndicatorClass).css('visibility', '').off().on({
             click: function(event){
                 event.stopPropagation();
+                s.onDocumentIndicatorClick.call(this, $(this).parent().attr(tagPosAttr));
             }
         });
 
@@ -151,28 +203,14 @@ var TagCloud = (function(){
     };
 
 
-    var setIndicatorsPosition = function($tag) {
-        // Set pie chart position
-        $tag.find('.'+documentsIndicatorClass).css({
-            top: $tag.offset().top - 4,
-            left: $tag.offset().left + $tag.width() + 5
-        });
-
-        // Set circle position
-        $tag.find('.'+proxKeywordIndicatorClass).css({
-            top: $tag.offset().top + $tag.height() - 1,
-            left: $tag.offset().left + $tag.width() + 7
-        });
-    };
 
 
 
     var _hoverTag = function(index) {
-
         var $tag = $(tagIdPrefix + '' + index);
         $tag.css({
-            background: getGradientString('#0066ff', 10),
-            border: '1px solid #0066ff',
+            background: '',
+            border: '',
             color: ''
         });
         setIndicatorsPosition($tag);
@@ -236,25 +274,34 @@ var TagCloud = (function(){
         $tag.addClass(tagHoverFixedClass)
             .siblings().css({ color: '#111', textShadow: '0.1em 0.1em 0.5em #eee', cursor: 'auto' });
 
-        $(s.root).on('scroll', function(event) {
-            event.stopPropagation();
-            setIndicatorsPosition($tag);
-            $redCircle = $tag.find('.'+proxKeywordIndicatorClass);
-            var rootOffsetTop = $(this).fullOffset().top,
-                rootHeight = $(this).height(),
-                circleOffsetTop = $redCircle.fullOffset().top,
-                circleHeight = $redCircle.height();
-            var visibility = (rootOffsetTop <= (circleOffsetTop + circleHeight) && rootOffsetTop + rootHeight >= circleOffsetTop) ? 'visible' : 'hidden';
-            $redCircle.css('visibility', visibility);
-        });
+        $(s.root).on('scroll', onRootScroll);
     };
 
 
 
-    var _documentsIndicatorClick = function(index) {
 
 
-    }
+    var _documentsIndicatorClicked = function(index) {
+        $(tagIdPrefix+''+index)
+            .addClass(tagHoverFixedClass)
+            .off('mouseleave')
+            .find('.'+documentsIndicatorClass).css('visibility', 'visible');
+        $(s.root).on('scroll', onRootScroll);
+    };
+
+
+
+    var _removeEffects = function() {
+
+        $(s.root).off('scroll', onRootScroll);
+        $('.'+tagHoverFixedClass).removeClass(tagHoverFixedClass)
+            .on('mouseleave', function(event){ s.onTagInCloudMouseLeave.call(this, $(this).attr(tagPosAttr)) })
+            .trigger('mouseleave');
+
+        $('.'+tagClass).find('.'+documentsIndicatorClass).css('visibility', '')
+        $('.'+tagClass).find('.'+proxKeywordIndicatorClass).css('visibility', '');
+    };
+
 
     /**
 	 *	Detach tag from tag box and return it to container (tag cloud)
@@ -307,7 +354,9 @@ var TagCloud = (function(){
         unhoverTag: _unhoverTag,
         proxKeywordIndicatorMouseClicked: _proxKeywordIndicatorMouseClicked,
         proxKeywordIndicatorMouseEnter: _proxKeywordIndicatorMouseEnter,
-        proxKeywordIndicatorMouseLeave: _proxKeywordIndicatorMouseLeave
+        proxKeywordIndicatorMouseLeave: _proxKeywordIndicatorMouseLeave,
+        documentsIndicatorClicked: _documentsIndicatorClicked,
+        removeEffects: _removeEffects
     };
 
     return TagCloud;

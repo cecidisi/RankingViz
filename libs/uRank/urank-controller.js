@@ -37,6 +37,7 @@ var UrankController = (function(){
             contentList.update(rankingData, status, _this.selectedKeywords, _this.queryTermColorScale);
             visCanvas.update(rankingModel, $(s.contentListRoot).height(), _this.queryTermColorScale);
             docViewer.clear();
+            tagCloud.removeEffects();
             s.onChange.call(this, rankingData, _this.selectedKeywords);
         },
         onTagInCloudMouseEnter: function(index) {
@@ -68,7 +69,11 @@ var UrankController = (function(){
             s.onTagDeleted.call(this, index);
         },
         onDocumentIndicatorClick: function(index) {
-
+            tagCloud.documentsIndicatorClicked(index);
+            var idsArray = _this.keywords[index].inDocument;
+            contentList.highlightListItems(idsArray);
+            visCanvas.highlightItems(idsArray);
+            s.onDocumentIndicatorClick.call(this, index);
         },
         onTagInBoxMouseEnter: function(index) {
             // TODO
@@ -94,6 +99,7 @@ var UrankController = (function(){
                 visCanvas.deselectAllItems();
                 docViewer.clear();
             }
+            tagCloud.removeEffects();
             s.onItemClicked.call(this, documentId);
         },
         onItemMouseEnter: function(documentId) {
@@ -137,8 +143,16 @@ var UrankController = (function(){
             _this.selectedKeywords = [];
             s.onReset.call(this);
         },
-        onResize: function() {
+        onResize: function(event) {
             visCanvas.resize();
+        },
+        onClear: function(event){
+            event.stopPropagation();
+            contentList.deselectAllListItems();
+            contentList.hideUnrankedListItems(rankingModel.getRanking());
+            visCanvas.deselectAllItems();
+            docViewer.clear();
+            tagCloud.removeEffects();
         }
     };
 
@@ -241,6 +255,7 @@ var UrankController = (function(){
         docViewer = new DocViewer(options.docViewer);
 
         $(window).resize(EVTHANDLER.onResize);
+        $('body').on('mousedown', EVTHANDLER.onClear);
     }
 
 

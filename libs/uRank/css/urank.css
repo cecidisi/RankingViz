@@ -72,6 +72,9 @@ Main Containers
 
 
 .urank-tagcloud-tag:hover, .urank-tagcloud-tag-hover-fixed {
+
+    background: -webkit-linear-gradient(top, rgb(0, 102, 255), rgb(20, 122, 255), rgb(0, 102, 255));
+    border: solid 1px rgb(0, 102, 255);
     color: #eee;
     text-shadow: none;
 }
@@ -87,10 +90,17 @@ Main Containers
     visibility: hidden;
     position: absolute;
     display: inline;
-    background: red;
-    border-radius: 6px;
+    width: 14px;
+    height: 14px;
+    padding: 1px;
+}
+
+.urank-tagcloud-tag .urank-tagcloud-prox-keyword-indicator div {
     width: 12px;
     height: 12px;
+    background: red;
+    border-radius: 6px;
+    color: #eee;
     text-align: center;
     font-size: 9px;
     line-height: 12px;
@@ -104,7 +114,7 @@ Main Containers
 }
 
 
-.urank-tagcloud-tag:hover .urank-tagcloud-prox-keyword-indicator:hover {
+.urank-tagcloud-tag:hover .urank-tagcloud-prox-keyword-indicator:hover div {
     transform: scale(1.1);
     cursor: pointer;
 }
@@ -116,9 +126,9 @@ Main Containers
     display: inline;
     width: 16px;
     height: 16px;
+    padding-top: 1px;
     text-align: center;
     cursor: pointer;
-    /*background: orange;*/
 }
 
 .urank-tagcloud-tag:hover .urank-tagcloud-documents-indicator {
@@ -376,6 +386,16 @@ CANVAS PANEL (bottom-center)
 
 .urank-list-li-darkbackground {
     background: #ddd;
+}
+
+.urank-list-li-unranked {
+    background: white;
+    height: 24px;
+    border: 1px dashed #bbb;
+}
+
+.urank-list-li-unranked:hover {
+    background: #eee;
 }
 
 /* <li> itmes' hover style */
