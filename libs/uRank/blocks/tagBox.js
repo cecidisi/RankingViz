@@ -6,7 +6,9 @@ var TagBox = (function(){
     var tagboxContainerClass = 'urank-tagbox-container',
         tagInBoxClass = 'urank-tagbox-tag',
         tagDeleteButtonClass = 'urank-tagbox-tag-delete-button',
-        tagWeightsliderClass = 'urank-tagbox-tag-weight-slider';
+        tagWeightsliderClass = 'urank-tagbox-tag-weight-slider',
+        weightSliderRangeClass = '.urank-tagbox-tag-weight-slider-range',
+        weightSliderHandleClass = 'urank-tagbox-tag-weight-slider-handle';
     //  Ids
 
 
@@ -95,6 +97,8 @@ var TagBox = (function(){
 
             // Add new div to make it a slider
             var weightSlider = $("<div class='" + tagWeightsliderClass + "'></div>").appendTo($tag).slider(this.sliderOptions);
+            weightSlider.find('div').addClass(weightSliderRangeClass);
+            weightSlider.find('a').addClass(weightSliderHandleClass);
 
             // Retrieve color in weightColorScale for the corresponding label
             var color = s.colorScale($tag.attr('stem'));

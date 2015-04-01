@@ -7,8 +7,8 @@ var KeywordExtractor = (function(){
         s = $.extend({
             minDocFrequency: 5,
             minRepetitionsInDocument: 1,
-            maxKeywordDistance: 3,
-            minRepetitionsProxKeywords: 5
+            maxKeywordDistance: 5,
+            minRepetitionsProxKeywords: 4
         }, arguments);
 
 

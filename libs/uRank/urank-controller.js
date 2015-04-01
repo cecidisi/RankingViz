@@ -52,28 +52,28 @@ var UrankController = (function(){
             // TODO
             s.onTagInCloudClick.call(this, index);
         },
-        onProxKeywordIndicatorEnter: function(index) {
-            tagCloud.proxKeywordIndicatorMouseEnter(index);
-            s.onProxKeywordIndicatorMouseEnter.call(this, index);
+        onKeywordHintEnter: function(index) {
+            tagCloud.keywordHintMouseEntered(index);
+            s.onKeywordHintMouseEnter.call(this, index);
         },
-        onProxKeywordIndicatorLeave: function(index) {
-            tagCloud.proxKeywordIndicatorMouseLeave(index);
-            s.onProxKeywordIndicatorMouseLeave.call(this, index);
+        onKeywordHintLeave: function(index) {
+            tagCloud.keywordHintMouseLeft(index);
+            s.onKeywordHintMouseLeave.call(this, index);
         },
-        onProxKeywordIndicatorClick: function(index) {
-            tagCloud.proxKeywordIndicatorMouseClicked(index);
-            s.onProxKeywordIndicatorClick.call(this, index);
+        onKeywordHintClick: function(index) {
+            tagCloud.keywordHintClicked(index);
+            s.onKeywordHintClick.call(this, index);
+        },
+        onDocumentHintClick: function(index) {
+            tagCloud.documentHintClicked(index);
+            var idsArray = _this.keywords[index].inDocument;
+            contentList.highlightListItems(idsArray);
+            visCanvas.highlightItems(idsArray);
+            s.onDocumentHintClick.call(this, index);
         },
         onTagDeleted: function(index) {
             tagCloud.restoreTag(index);
             s.onTagDeleted.call(this, index);
-        },
-        onDocumentIndicatorClick: function(index) {
-            tagCloud.documentsIndicatorClicked(index);
-            var idsArray = _this.keywords[index].inDocument;
-            contentList.highlightListItems(idsArray);
-            visCanvas.highlightItems(idsArray);
-            s.onDocumentIndicatorClick.call(this, index);
         },
         onTagInBoxMouseEnter: function(index) {
             // TODO
@@ -147,6 +147,7 @@ var UrankController = (function(){
             visCanvas.resize();
         },
         onClear: function(event){
+
             event.stopPropagation();
             contentList.deselectAllListItems();
             contentList.hideUnrankedListItems(rankingModel.getRanking());
@@ -165,6 +166,7 @@ var UrankController = (function(){
         this.selectedKeywords = [];
         this.selectedId = STR_UNDEFINED;
 
+        // user-defined arguments
         s = $.extend({
             tagCloudRoot: '',
             tagBoxRoot: '',
@@ -183,10 +185,10 @@ var UrankController = (function(){
             onTagInCloudMouseEnter: function(index){},
             onTagInCloudMouseLeave: function(index){},
             onTagInCloudClick: function(index){},
-            onDocumentIndicatorClick: function(index){},
-            onProxKeywordIndicatorMouseEnter: function(index){},
-            onProxKeywordIndicatorMouseLeave: function(index){},
-            onProxKeywordIndicatorClick: function(index){},
+            onDocumentHintClick: function(index){},
+            onKeywordHintMouseEnter: function(index){},
+            onKeywordHintMouseLeave: function(index){},
+            onKeywordHintClick: function(index){},
             onTagDeleted: function(index){},
             onTagInBoxMouseEnter: function(index){},
             onTagInBoxMouseLeave: function(index){},
@@ -219,10 +221,10 @@ var UrankController = (function(){
                 onTagInCloudMouseEnter: EVTHANDLER.onTagInCloudMouseEnter,
                 onTagInCloudMouseLeave: EVTHANDLER.onTagInCloudMouseLeave,
                 onTagInCloudClick: EVTHANDLER.onTagInCloudClick,
-                onDocumentIndicatorClick: EVTHANDLER.onDocumentIndicatorClick,
-                onProxKeywordIndicatorMouseEnter : EVTHANDLER.onProxKeywordIndicatorEnter,
-                onProxKeywordIndicatorMouseLeave : EVTHANDLER.onProxKeywordIndicatorLeave,
-                onProxKeywordIndicatorClick : EVTHANDLER.onProxKeywordIndicatorClick
+                onDocumentHintClick: EVTHANDLER.onDocumentHintClick,
+                onKeywordHintMouseEnter : EVTHANDLER.onKeywordHintEnter,
+                onKeywordHintMouseLeave : EVTHANDLER.onKeywordHintLeave,
+                onKeywordHintClick : EVTHANDLER.onKeywordHintClick
             },
 
             tagBox: {

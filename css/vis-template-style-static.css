@@ -395,118 +395,6 @@ p#p_question {
     box-shadow: inset .1em .1em .5em #aaa, inset -.1em -.1em .5em #aaa;
 }
 
-/*  Keyword cloud containing keywords in blue sclae  */
-
-#eexcess_keywords_container {
-    overflow-y: auto;
-    width: 100%;
-   /* max-height: 50%;*/
-    padding: 8px 4px;
-    /*background: white;*/
-    background: -webkit-linear-gradient(top, rgba(30, 30, 30, 1), rgba(50, 50, 50, 0.5), rgba(30, 30, 30, 1));
-    box-shadow: inset .2em .2em .5em #ccc, inset -.2em -.2em .5em #ccc;
-}
-
-/*  keywords in keyword container  */
-.eexcess_keyword_tag{
-	display: inline-block;
-	pointer-events: all;
-	margin: 0.2em;
-	padding: 3px 5px;
-	/*border: 0.1em #222 solid;*/
-	-webkit-border-radius: 7px;
-    border-radius: 7px;
-	-webkit-box-shadow: 0em 0.1em 0.3em #222;
-    /*box-shadow: 0em 0.1em 0.3em -0.1em #888;*/
-    box-shadow: 0em 0.1em 0.3em #222;
-    color: #111;
-    text-shadow: -0.1em 0.1em 0.5em #eee;
-	opacity: 1.0;
-	cursor: move;
-}
-
-.eexcess_keyword_tag:hover {
-	color: #eee;
-    text-shadow: none;
-}
-
-/*
-    div on the upper side of #eexcess_controls_left_panel.
-    Wraps #eexcess_controls_chart and #eexcess_controls_chart, which enclose pairs  of span-select DOM elements
-
-
-#eexcess_fixed_controls{
-	height: 20%;
-	margin-top: 2em;
-	margin-bottom: 1%;
-}
-
-
-/*
-    Wraps the first pair span-select, e.g. "Chart  timeline")
-
-#eexcess_controls_chart {
-	margin-left: 5px;
-}
-
-/*
-    <div> for wrapping the divs containing the remaining pairs span-select (".eexcess_mapping_container")
-
-#eexcess_controls_mappings {
-	margin-top: 10px;
-	margin-left: 5px;
-}
-
-
-/*
-    Contains individual <span>, <select> pairs
-
-.eexcess_mapping_container {
-
-}
-
-
-/*
-    Class for <span> elements labelling the <select> elements$$
-
-.eexcess_controls_title {
-	display: block;
-	float: left;
-	text-align : left;
-	margin-left: 2%;
-	width: 35%;
-	z-index: 3;
-}
-
-/*
-    All <select> elements
-
-#eexcess_select_chart,
-.eexcess_select {
-    margin-left: 40%;
-    width: 58%;
-    display: block;
-}
-
-
-.eexcess_controls_facet_static {
-    display: block;
-    width: 56%;
-    height: 1.3em;
-    margin-top: 2px;
-    margin-bottom: 2px;
-    margin-left: 40%;
-    margin right: auto;
-    padding-left: .2em;
-    font-size: 1em;
-    text-align: left;
-
-    background: -webkit-linear-gradient(top,#fefefe, #fff , #fefefe);
-    border: 0.1em #ddd solid;
-    color: #555;
-    box-shadow: 0em 0.1em .1em #999;
-}
-*/
 
 
 
@@ -588,47 +476,6 @@ VIS PANEL (center of screen)
     box-shadow: inset .1em .1em .5em #ccc, inset -.1em -.1em .5em #ccc;
 }
 
-#eexcess_keywords_box p {
-	width: 100%;
-    margin-top: 0.2em;
-	margin-bottom: 0.2em;
-	font-size: 1em;
-    text-align: center;
-    color: #777;
-}
-
-.eexcess_keyword_tag_in_box{
-	cursor: default;
-	display: inline-block;
-	text-align: left;
-	min-width: 14%;
-    height: 2em;
-	margin: 0.8em .3em 0.2em 0.3em;
-    padding: .2em;
-	border-radius: 0.3em;
-	-webkit-border-radius: 0.3em;
-	-webkit-box-shadow: 0em 7px 6px -6px #333;
-    box-shadow: 0em 7px 6px -6px #333;
-    -webkit-text-shadow: -0.1em 0.1em 0.5em #eee;
-    text-shadow: -0.1em 0.1em 0.5em #eee;
-
-}
-
-.eexcess_keyword_tag_in_box:hover {
-    box-shadow: 2px 2px 5px #555, -2px -2px 5px #555;
-}
-
-
-.eexcess_keyword_tag_in_box > text {
-	opacity: 0.5;
-}
-
-.eexcess_weight_slider {
-	margin-top: 0.2em;
-	height: 1em;
-	text-align: left;
-}
-
 .ui-slider-horizontal {
     height: .5em;
     margin: .1em;
@@ -662,20 +509,6 @@ VIS PANEL (center of screen)
 	border-radius: 0.2em;
 	-webkit-border-radius: 0.2em;
 }
-
-
-.eexcess_tag_icon {
-	position: relative;
-	float: right;
-	right: -1.3em;
-	top: -1.1em;
-	z-index: 8040;
-	width: 1.7em;
-	height: 1.4em;
-	cursor: pointer;
-}
-
-
 
 
 /********************************************************************************************************************************************

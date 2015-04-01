@@ -46,10 +46,9 @@ Main Containers
 .urank-tagcloud-container {
     overflow-y: auto;
     width: 100%;
-    /* max-height: 50%;*/
     padding: 8px 4px;
-    /*background: white;*/
-    background: -webkit-linear-gradient(top, rgba(30, 30, 30, 1), rgba(50, 50, 50, 0.5), rgba(30, 30, 30, 1));
+    /*background: -webkit-linear-gradient(top, rgba(30, 30, 30, 1), rgba(50, 50, 50, 0.5), rgba(30, 30, 30, 1));*/
+    background: -webkit-linear-gradient(top, rgba(185, 185, 185, 1), rgba(180, 180, 180, 1));
     box-shadow: inset .2em .2em .5em #ccc, inset -.2em -.2em .5em #ccc;
 }
 
@@ -80,13 +79,19 @@ Main Containers
 }
 
 
-.urank-tagcloud-tag-dimmed {
+.urank-tagcloud-tag.dimmed {
     color: #111;
     text-shadow: -0.1em 0.1em 0.5em #eee;
 }
 
+.urank-tagcloud-tag.dimmed .urank-keyword-hint,
 
-.urank-tagcloud-tag .urank-tagcloud-prox-keyword-indicator {
+.urank-tagcloud-tag.dimmed .urank-documents-hint {
+    visibility: hidden;
+
+}
+
+.urank-tagcloud-tag .urank-keyword-hint {
     visibility: hidden;
     position: absolute;
     display: inline;
@@ -95,7 +100,7 @@ Main Containers
     padding: 1px;
 }
 
-.urank-tagcloud-tag .urank-tagcloud-prox-keyword-indicator div {
+.urank-tagcloud-tag .urank-keyword-hint div {
     width: 12px;
     height: 12px;
     background: red;
@@ -108,19 +113,19 @@ Main Containers
 }
 
 
-.urank-tagcloud-tag:hover .urank-tagcloud-prox-keyword-indicator {
+.urank-tagcloud-tag:hover .urank-keyword-hint {
     visibility: visible;
     cursor: inherit;
 }
 
 
-.urank-tagcloud-tag:hover .urank-tagcloud-prox-keyword-indicator:hover div {
+.urank-tagcloud-tag:hover .urank-keyword-hint:hover div {
     transform: scale(1.1);
     cursor: pointer;
 }
 
 
-.urank-tagcloud-tag .urank-tagcloud-documents-indicator {
+.urank-tagcloud-tag .urank-documents-hint {
     visibility: hidden;
     position: absolute;
     display: inline;
@@ -131,11 +136,11 @@ Main Containers
     cursor: pointer;
 }
 
-.urank-tagcloud-tag:hover .urank-tagcloud-documents-indicator {
+.urank-tagcloud-tag:hover .urank-documents-hint {
     visibility: visible;
 }
 
-.urank-tagcloud-tag:hover .urank-tagcloud-documents-indicator:hover {
+.urank-tagcloud-tag:hover .urank-documents-hint:hover {
     transform: scale(1.1);
 }
 
@@ -258,38 +263,29 @@ VIS PANEL CONTROLS
 
 /* slider div*/
 .urank-tagbox-tag-weight-slider {
-    height: .5em;
+    height: .4em;
     margin: .1em;
-    font-size: 1em;
 }
 
 
 /* ui-slider-range */
-.urank-tagbox-tag-weight-slider div {
-
+.urank-tagbox-tag-weight-slider .urank-tagbox-tag-weight-slider-range
+ {
+    height: 100%;
+    font-size: 0.9em;
+    font-weight: normal;
+    border-radius: 0.3em;
+    -webkit-border-radius: 0.3em;
 }
 
 /* ui-slider-handle */
-.urank-tagbox-tag-weight-slider a {
-    top:-0.2em;
-    width: 0.4em;
+.urank-tagbox-tag-weight-slider .urank-tagbox-tag-weight-slider-handle  {
+    top: -0.3em;
+    width: 0.45em;
     height: .8em;
     border-radius: 0.2em;
     -webkit-border-radius: 0.2em;
 }
-
-/*
-
-.eexcess_weight_slider .ui-slider-range {
-    height: 100%;
-    font-size: 0.9em;
-    font-weight: normal;
-
-    border-radius: 0.3em;
-    -webkit-border-radius: 0.3em;
-}
-*/
-
 
 
 .urank-tagbox-tag .urank-tagbox-tag-delete-button {
@@ -317,8 +313,8 @@ VIS PANEL CONTROLS
     transform: scale(1.0);
 }
 
-.urank-tagbox-tag .urank-tagcloud-prox-keyword-indicator,
-.urank-tagbox-tag .urank-tagcloud-documents-indicator {
+.urank-tagbox-tag .urank-keyword-hint,
+.urank-tagbox-tag .urank-documents-hint {
     display: none;
 }
 
@@ -668,15 +664,15 @@ Document Panel (right) - for visualizing highlighted text
     display: inline-block;
     width: 100%;
     height: calc(100% - 9em);
-    /*background: white;*/
-    background: -webkit-linear-gradient(top, rgba(30, 30, 30, 1), rgba(60, 60, 60, 1), rgba(30, 30, 30, 1));
+    /*background: -webkit-linear-gradient(top, rgba(30, 30, 30, 1), rgba(60, 60, 60, 1), rgba(30, 30, 30, 1));*/
+    background: -webkit-linear-gradient(top, rgba(185, 185, 185, 1), rgba(180, 180, 180, 1));
     box-shadow: inset .2em .2em .5em #ccc, inset -.2em -.2em .5em #ccc;
     overflow-y: auto;
 }
 
 .urank-docviewer-content-section p {
     margin: .5em 1em;
-    font-size: .9em;
+    font-size: .95em;
     text-align: left;
     /*color: #444;*/
     color: white;
