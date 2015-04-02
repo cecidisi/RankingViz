@@ -15,7 +15,7 @@
             $this.css({ top: options.top, left: options.left });
 
             var $container = $(options.container),
-                containerOffset = $container.fullOffset(),
+                containerOffset = $container.offset(),
                 containerHeight = $container.height(),
                 containerWidth = $container.width(),
                 thisOffset = $this.fullOffset(),

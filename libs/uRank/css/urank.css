@@ -70,7 +70,7 @@ Main Containers
 }
 
 
-.urank-tagcloud-tag:hover, .urank-tagcloud-tag-hover-fixed {
+.urank-tagcloud-tag:hover, .urank-tagcloud-tag.selected {
 
     background: -webkit-linear-gradient(top, rgb(0, 102, 255), rgb(20, 122, 255), rgb(0, 102, 255));
     border: solid 1px rgb(0, 102, 255);
@@ -80,16 +80,17 @@ Main Containers
 
 
 .urank-tagcloud-tag.dimmed {
+    border: 1px solid rgba(202, 202, 202, 0.2);
+    background: rgba(202, 202, 202, 0.2);
     color: #111;
-    text-shadow: -0.1em 0.1em 0.5em #eee;
+    /*text-shadow: -0.1em 0.1em 0.5em #eee;*/
 }
 
-.urank-tagcloud-tag.dimmed .urank-keyword-hint,
 
-.urank-tagcloud-tag.dimmed .urank-documents-hint {
-    visibility: hidden;
-
+.urank-tagcloud-tag.dimmed .urank-keyword-hint, .urank-tagcloud-tag.dimmed .urank-document-hint {
+    display: none;
 }
+
 
 .urank-tagcloud-tag .urank-keyword-hint {
     visibility: hidden;
@@ -99,6 +100,7 @@ Main Containers
     height: 14px;
     padding: 1px;
 }
+
 
 .urank-tagcloud-tag .urank-keyword-hint div {
     width: 12px;
@@ -113,13 +115,13 @@ Main Containers
 }
 
 
-.urank-tagcloud-tag:hover .urank-keyword-hint {
+.urank-tagcloud-tag:hover.active .urank-keyword-hint {
     visibility: visible;
     cursor: inherit;
 }
 
 
-.urank-tagcloud-tag:hover .urank-keyword-hint:hover div {
+.urank-tagcloud-tag:hover.active .urank-keyword-hint:hover div {
     transform: scale(1.1);
     cursor: pointer;
 }
@@ -136,15 +138,23 @@ Main Containers
     cursor: pointer;
 }
 
-.urank-tagcloud-tag:hover .urank-documents-hint {
+.urank-tagcloud-tag:hover.active .urank-documents-hint {
     visibility: visible;
 }
 
-.urank-tagcloud-tag:hover .urank-documents-hint:hover {
+.urank-tagcloud-tag:hover.active .urank-documents-hint:hover {
     transform: scale(1.1);
 }
 
 
+.urank-tagcloud-tag.dimmed .urank-documents-hint, .urank-tagcloud-tag.dimmed .urank-documents-hin {
+    visibility: hidden;
+}
+
+
+.hint--right:after {
+    font-size: 10px;
+}
 
 
 /************************************************************************************************************************************

@@ -9,6 +9,7 @@ function Urank(callback, args, pathToUrank) {
             pathToUrank + 'dependencies/ui/jquery-ui-1.10.4.custom.min.css',
             pathToUrank + 'dependencies/natural-adapted.js',
             pathToUrank + 'dependencies/underscore.js',
+            pathToUrank + 'dependencies/hint.min.css',
             pathToUrank + 'dependencies/pos/lexer.js',
             pathToUrank + 'dependencies/pos/lexicon.js',
             pathToUrank + 'dependencies/pos/pos.js',
