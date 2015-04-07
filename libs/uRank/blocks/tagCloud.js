@@ -99,15 +99,15 @@ var TagCloud = (function(){
 
 
     var onRootClicked = function(event) {
+        console.log('mousedown tag cloud');
+        event.stopPropagation();
+        $root.off('scroll', onRootScrolled);
 
-        $(this).off('scroll', onRootScrolled);
-        $('.'+selectedClass).removeClass(selectedClass);
-
-     //   if(_this.proxKeywordsMode) {
+       if(_this.proxKeywordsMode || _this.docHintMode) {
             $('.'+tagClass).each(function(i, tag){
                 _this.setTagProperties($(tag));
             });
-    //    }
+        }
 
         _this.proxKeywordsMode = false;
         _this.docHintMode = false;
@@ -117,12 +117,10 @@ var TagCloud = (function(){
 
     var pinVisualHints = function($tag) {
         // Set pie chart position
-        //if($tag.find('.'+documentHintClass).css('visibility') == 'visible')
-            $tag.find('.'+documentHintClass).pin({ top: $tag.offset().top - 4, left: $tag.offset().left + $tag.width() + 6, container: s.root });
+        $tag.find('.'+documentHintClass).pin({ top: $tag.offset().top - 4, left: $tag.offset().left + $tag.width() + 6, container: s.root });
 
         // Set circle position
-        //if($tag.find('.'+keywordHintClass).css('visibility') == 'visible')
-            $tag.find('.'+keywordHintClass).pin({ top: $tag.offset().top + $tag.height() - 1, left: $tag.offset().left + $tag.width() + 7, container: s.root });
+        $tag.find('.'+keywordHintClass).pin({ top: $tag.offset().top + $tag.height() - 1, left: $tag.offset().left + $tag.width() + 7, container: s.root });
     };
 
 
@@ -163,7 +161,7 @@ var TagCloud = (function(){
             _this.setTagProperties($tag);
         });
 
-        $root.off().on('click', onRootClicked);
+        $root.off().on('mousedown', onRootClicked);
     };
 
 
@@ -174,38 +172,54 @@ var TagCloud = (function(){
 
     var _setTagProperties = function($tag) {
 
-        $tag.removeClass(selectedClass)
-        .css({
-            background: getGradientString($tag.data('originalColor')),
-            border: '1px solid ' + $tag.data('originalColor'),
-            color: '', textShadow: '', cursor: ''
-        })
-        .not(activeClass).removeClass(dimmedClass).addClass(activeClass)
-        .off().on({
-            mouseenter: function(event){ s.onTagInCloudMouseEnter.call(this, $(this).attr(tagPosAttr)) },
-            mouseleave: function(event){ s.onTagInCloudMouseLeave.call(this, $(this).attr(tagPosAttr)) },
-            click: function(event){ s.onTagInCloudClick.call(this, $(this).attr(tagPosAttr)) }
-        });
-        // Set draggable
-        if($tag.is('.ui-draggable'))
-            $tag.draggable('destroy');
-        $tag.draggable(this.draggableOptions);
+       // console.log($('.'+tagClass).not('.'+activeClass));
+      //  console.log('set tag properties --- ' + $tag.text() + ' --- is active = ' + $tag.hasClass(activeClass));
+        if(!$tag.hasClass('dragging')) {
+            $tag.removeClass(selectedClass)
+            .css({
+                background: getGradientString($tag.data('originalColor')),
+                border: '1px solid ' + $tag.data('originalColor'),
+                color: '', textShadow: '', cursor: ''
+            });
 
-        $tag.find('.'+keywordHintClass).css('visibility', '').off().on({
-            mouseenter: function(event){ s.onKeywordHintMouseEnter.call(this, $(this).parent().attr(tagPosAttr)) },
-            mouseleave: function(event){ s.onKeywordHintMouseLeave.call(this, $(this).parent().attr(tagPosAttr)) },
-            click: function(event){
-                event.stopPropagation();
-                s.onKeywordHintClick.call(this, $(this).parent().attr(tagPosAttr));
+            //  Restore non-active classes (dimmed)
+            if(!$tag.hasClass(activeClass)) {
+                $tag.removeClass(dimmedClass).addClass(activeClass)
+                .off().on({
+                    mousedown: function(event){
+                        console.log('mousedown tag');
+                        $(this).addClass('dragging');
+                        $(this).find('.'+keywordHintClass).css('visibility', '');
+                        $(this).find('.'+documentHintClass).css('visibility', '');
+                    },
+                    mouseenter: function(event){ s.onTagInCloudMouseEnter.call(this, $(this).attr(tagPosAttr)) },
+                    mouseleave: function(event){ s.onTagInCloudMouseLeave.call(this, $(this).attr(tagPosAttr)) },
+                    click: function(event){ event.stopPropagation(); s.onTagInCloudClick.call(this, $(this).attr(tagPosAttr)) }
+                });
             }
-        });
 
-        $tag.find('.'+documentHintClass).css('visibility', '').off().on({
-            click: function(event){
-                event.stopPropagation();
-                s.onDocumentHintClick.call(this, $(this).parent().attr(tagPosAttr));
-            }
-        });
+            // Set draggable
+            if($tag.is('.ui-draggable'))
+                $tag.draggable('destroy');
+            $tag.draggable(this.draggableOptions);
+
+            $tag.find('.'+keywordHintClass).css('visibility', '').off().on({
+                //  mouseenter: function(event){ s.onKeywordHintMouseEnter.call(this, $(this).parent().attr(tagPosAttr)) },
+                mouseleave: function(event){ s.onKeywordHintMouseLeave.call(this, $(this).parent().attr(tagPosAttr)) },
+                click: function(event){
+                    event.stopPropagation();
+                    s.onKeywordHintClick.call(this, $(this).parent().attr(tagPosAttr));
+                }
+            });
+
+            $tag.find('.'+documentHintClass).css('visibility', '').off().on({
+                click: function(event){
+                    event.stopPropagation();
+                    s.onDocumentHintClick.call(this, $(this).parent().attr(tagPosAttr));
+                }
+            });
+
+        }
 
         return $tag;
     };
@@ -224,12 +238,11 @@ var TagCloud = (function(){
     var _unhoverTag = function(index) {
         var $tag = $(tagIdPrefix + '' + index);
         var color = $(tagIdPrefix + '' + index).data('originalColor');
-        $tag.css({
-            background: getGradientString(color),
-            border: '1px solid ' + color,
-            color: '#111'
-        })
+        $tag.css({ background: getGradientString(color), border: '1px solid ' + color, color: '#111' });
     };
+
+
+    var _tagClicked = function(index) {};
 
 
     var _keywordHintMouseEntered = function(index) {
@@ -238,10 +251,11 @@ var TagCloud = (function(){
             proxKeywords = _this.keywords[index].keywordsInProximity;
 
         $tag.siblings().each(function(i, siblingTag){
-            if(_.findIndex(proxKeywords, function(proxKw){ return proxKw.stem == $(siblingTag).attr('stem') }) == -1) {
-                var color = $(siblingTag).data('originalColor');
-                var rgbaStr = 'rgba(' + hexToR(color) + ', ' + hexToG(color) + ', ' + hexToB(color) + ', 0.2)';
-                $(siblingTag).css({ background: rgbaStr, border: '1px solid ' + rgbaStr});
+            if(_.findIndex(proxKeywords, function(proxKw){ return proxKw.stem == $(siblingTag).attr('stem') }) === -1) {
+//                var color = $(siblingTag).data('originalColor');
+//                var rgbaStr = 'rgba(' + hexToR(color) + ', ' + hexToG(color) + ', ' + hexToB(color) + ', 0.2)';
+//                $(siblingTag).css({ background: rgbaStr, border: '1px solid ' + rgbaStr});
+                $(siblingTag).css({ background: '', border: '' }).addClass(dimmedClass);
             }
         });
     };
@@ -255,7 +269,8 @@ var TagCloud = (function(){
             if(!_this.proxKeywordsMode) {
             $tag.siblings().each(function(i, siblingTag){
                 var color  = $(siblingTag).data('originalColor');
-                $(siblingTag).css({ background: getGradientString(color, 10), border: '1px solid ' + color });
+                $(siblingTag).removeClass(dimmedClass)
+                    .css({ background: getGradientString(color, 10), border: '1px solid ' + color });
             });
         }
     };
@@ -263,18 +278,18 @@ var TagCloud = (function(){
 
     var _keywordHintClicked = function(index) {
 
-        var $tag = $(tagIdPrefix + '' + index),
-            $redCircle = $tag.find(keywordHintClass);
+        var $tag = $(tagIdPrefix + '' + index);
+        $tag.addClass(selectedClass);
+        $tag.find('.'+keywordHintClass).css('visibility', 'visible');
+        $tag.find('.'+documentHintClass).css('visibility', 'hidden^');
 
-        $('.'+tagClass).off();
-        $('.'+tagClass).each(function(i, tag){
-            var visibility = ($(tag).attr(tagPosAttr) == index) ? 'visible' : 'hidden';
-            $(tag).find('.'+keywordHintClass).off().css('visibility', visibility);
-            $(tag).find('.'+documentHintClass).off().css('visibility', 'hidden');
+        $tag.siblings().each(function(i, siblingTag){
+            $(siblingTag).find('.'+keywordHintClass).off().css('visibility', 'hidden');
+            $(siblingTag).find('.'+documentHintClass).off().css('visibility', 'hidden');
+
+            if($(siblingTag).hasClass(dimmedClass))
+                $(siblingTag).removeClass(activeClass).off();
         });
-
-        $tag.addClass(selectedClass)
-            .siblings().removeClass(activeClass).addClass(dimmedClass);//.css({ color: '#111', textShadow: '0.1em 0.1em 0.5em #eee', cursor: 'auto' });
 
         $root.on('scroll', onRootScrolled);
         _this.proxKeywordsMode = true;
@@ -305,21 +320,14 @@ var TagCloud = (function(){
 
     var _removeEffects = function() {
 
+//        console.log('remove effects --- body mousedown --- kw hint = ' + _this.proxKeywordsMode + ' --- doc hint = ' + _this.docHintMode);
         if(_this.docHintMode || _this.proxKeywordsMode) {
             $root.off('scroll', onRootScrolled);
+
             $('.'+tagClass).each(function(i, tag){
                 _this.setTagProperties($(tag));
             });
-
         }
-
-        /*$('.'+selectedClass).removeClass(selectedClass);
-        $('.'+selectedClass+'.'+dimmedClass).removeClass(dimmedClass)
-            .on('mouseleave', function(event){ s.onTagInCloudMouseLeave.call(this, $(this).attr(tagPosAttr)) })
-            .trigger('mouseleave');
-
-        $('.'+tagClass).find('.'+documentHintClass).css('visibility', '')
-        $('.'+tagClass).find('.'+keywordHintClass).css('visibility', '');*/
     };
 
 
@@ -330,11 +338,8 @@ var TagCloud = (function(){
     var _restoreTag = function(index){
 
         var $tag = $(tagIdPrefix + '' + index);
-        // Remove icon and slider
-        //$tag.children().remove();
         // Change class
         $tag.removeClass().addClass(tagClass);
-        $tag.draggable('destroy');
         this.setTagProperties($tag);
 
         // Re-append to tag container, in the corresponding postion
@@ -371,6 +376,7 @@ var TagCloud = (function(){
         setTagProperties: _setTagProperties,
         restoreTag: _restoreTag,
         hoverTag: _hoverTag,
+        tagClicked:_tagClicked,
         unhoverTag: _unhoverTag,
         keywordHintClicked: _keywordHintClicked,
         keywordHintMouseEntered: _keywordHintMouseEntered,

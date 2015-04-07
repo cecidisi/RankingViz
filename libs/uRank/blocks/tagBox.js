@@ -134,6 +134,7 @@ var TagBox = (function(){
         var  weightedKeywords = [];
         $('.'+tagInBoxClass).each(function(i, tag){
             var term = $(tag).text();
+            console.log('term in box = ' + term);
             var stem = $(tag).attr('stem');
             var weight = parseFloat( $(tag).find('.'+tagWeightsliderClass).slider("value"));
             weightedKeywords.push({ 'term': term, 'stem': stem, 'weight': weight });

@@ -147,7 +147,7 @@ var UrankController = (function(){
             visCanvas.resize();
         },
         onClear: function(event){
-
+            console.log('click controller');
             event.stopPropagation();
             contentList.deselectAllListItems();
             contentList.hideUnrankedListItems(rankingModel.getRanking());
