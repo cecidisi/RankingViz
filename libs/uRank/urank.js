@@ -17,6 +17,8 @@ function Urank(callback, args, pathToUrank) {
             pathToUrank + 'dependencies/my_libs/outerHTML.js',
             pathToUrank + 'dependencies/my_libs/scrollTo.js',
             pathToUrank + 'dependencies/my_libs/fullOffset.js',
+            pathToUrank + 'dependencies/my_libs/fullWidth.js',
+            pathToUrank + 'dependencies/my_libs/fullHeight.js',
             pathToUrank + 'dependencies/my_libs/pin.js',
             pathToUrank + 'model/keywordExtractor.js',
             pathToUrank + 'model/rankingArray.js',

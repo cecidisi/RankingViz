@@ -83,59 +83,54 @@ Main Containers
     border: 1px solid rgba(202, 202, 202, 0.2);
     background: rgba(202, 202, 202, 0.2);
     color: #111;
-    /*text-shadow: -0.1em 0.1em 0.5em #eee;*/
+    text-shadow: -0.1em 0.1em 0.5em #eee;
+    cursor: default;
 }
 
 
-.urank-tagcloud-tag.dimmed .urank-keyword-hint, .urank-tagcloud-tag.dimmed .urank-document-hint {
-    display: none;
-}
-
-
-.urank-tagcloud-tag .urank-keyword-hint {
-    visibility: hidden;
+.urank-keyword-hint {
     position: absolute;
     display: inline;
-    width: 16px;
-    height: 16px;
-    padding: 1px;
-}
-
-
-.urank-tagcloud-tag .urank-keyword-hint div {
     width: 14px;
     height: 14px;
     background: red;
     border-radius: 8px;
     color: #eee;
     text-align: center;
-    font-size: 9px;
-    line-height: 13px;
+    font-size: 8px;
+    line-height: 14px;
     box-shadow: 0 1px 1px #777;
+    cursor: pointer;
+}
+
+
+.urank-tagcloud-tag .urank-keyword-hint {
+    visibility: hidden;
 }
 
 
 .urank-tagcloud-tag:hover.active .urank-keyword-hint {
     visibility: visible;
-    cursor: inherit;
 }
 
 
-.urank-tagcloud-tag:hover.active .urank-keyword-hint:hover div {
+.urank-tagcloud-tag:hover.active .urank-keyword-hint:hover {
     transform: scale(1.1);
+}
+
+
+.urank-documents-hint {
+    position: absolute;
+    display: inline;
+    width: 14px;
+    height: 14px;
+    text-align: center;
     cursor: pointer;
 }
 
 
 .urank-tagcloud-tag .urank-documents-hint {
     visibility: hidden;
-    position: absolute;
-    display: inline;
-    width: 16px;
-    height: 16px;
-    padding-top: 1px;
-    text-align: center;
-    cursor: pointer;
 }
 
 .urank-tagcloud-tag:hover.active .urank-documents-hint {
@@ -147,8 +142,8 @@ Main Containers
 }
 
 
-.urank-tagcloud-tag.dimmed .urank-documents-hint, .urank-tagcloud-tag.dimmed .urank-documents-hin {
-    visibility: hidden;
+.urank-tagcloud-tag.dimmed .urank-documents-hint, .urank-tagcloud-tag.dimmed .urank-documents-hint {
+    display: none;
 }
 
 
