@@ -31,7 +31,7 @@ var TagCloud = (function(){
             zIndex: 999,
             appendTo: s.dropIn,
             start: function(event, ui){ $(this).hide(); },
-            stop: function(event, ui){ $(this).removeClass(draggingClass).show(); }
+            stop: function(event, ui){ $(this).show(); }
         },
         documentHintPinOptions = { top: - 6, right: -7, container: '.'+tagCloudContainerClass },
         keywordHintPintOptions = { bottom: -10, right: -7, container: '.'+tagCloudContainerClass },
@@ -161,6 +161,7 @@ var TagCloud = (function(){
 
     var _setTagProperties = function($tag) {
 
+        console.log('tag setting');
         if(!$tag.hasClass(draggingClass)) {
             $tag.removeClass(selectedClass)
             .css({
@@ -181,6 +182,7 @@ var TagCloud = (function(){
                             $(this).find('.'+documentHintClass).css('visibility', '');
                         }
                     },
+                    mouseup: function(event){ event.stopPropagation(); $(this).removeClass(draggingClass); },
                     mouseenter: function(event){ s.onTagInCloudMouseEnter.call(this, $(this).attr(tagPosAttr)) },
                     mouseleave: function(event){ s.onTagInCloudMouseLeave.call(this, $(this).attr(tagPosAttr)) },
                     click: function(event){ event.stopPropagation(); s.onTagInCloudClick.call(this, $(this).attr(tagPosAttr)) }
