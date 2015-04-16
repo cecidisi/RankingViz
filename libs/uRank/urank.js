@@ -4,7 +4,7 @@ function Urank(callback, args, pathToUrank) {
         load: [
             pathToUrank + 'dependencies/colorbrewer.js',
             pathToUrank + 'dependencies/d3.v3.js',
-            pathToUrank + 'dependencies/d3pie.min.js',
+            pathToUrank + 'dependencies/d3pie.js',
             pathToUrank + 'dependencies/jquery-ui.js',
             pathToUrank + 'dependencies/ui/jquery-ui-1.10.4.custom.min.css',
             pathToUrank + 'dependencies/natural-adapted.js',
