@@ -1,10 +1,10 @@
 
 
-/********************************************************************************************************************************************
+/***************************************************************************************
 
     DROP-DOWN LIST
 
-********************************************************************************************************************************************/
+****************************************************************************************/
 
 .wrapper-dropdown {
 
@@ -362,7 +362,7 @@ p#p_question {
 /*
     <div> containing everything below the header ("#eexcess_header")
 */
-#eexcess_main_panel{
+#urank-main-panel {
 	display: inline-flex;
     justify-content: space-between;
     width: 100%;
@@ -373,26 +373,22 @@ p#p_question {
 
 
 
-/********************************************************************************************************************************************
+/*******************************************************************************************************
 
-   LEFT CONTROL PANEL - Wraps keyword container (tag cloud)
+   COLLECTION KEYWORD BOX (TAG CLOUD)
 
-********************************************************************************************************************************************/
+*******************************************************************************************************/
 
-/*
-    Main panel (div) on the left side (green)
-
-*/
-#eexcess_controls_left_panel {
+#urank-collection-keywords-box {
     float: left;
-    display: flex;
-    align-items: stretch;
     width: 17%;
     height: calc(100% - 1em);
-    padding: .5em;
-    z-index: 2;
-    background: -webkit-linear-gradient(top, rgba(175, 175, 175, 1), rgba(170, 170, 170, 1));
-    box-shadow: inset .1em .1em .5em #aaa, inset -.1em -.1em .5em #aaa;
+
+
+    background: -webkit-linear-gradient(top, rgba(185, 185, 185, 1), rgba(180, 180, 180, 1));
+
+    border: 6px solid rgba(170, 170, 170, 1);
+    box-shadow: inset .2em .2em .5em #ccc, inset -.2em -.2em .5em #ccc;
 }
 
 
@@ -404,20 +400,20 @@ VIS PANEL (center of screen)
 
 ********************************************************************************************************************************************/
 
-#eexcess_vis_panel {
+#urank-vis-panel {
     display: inline-block;
     width: 61%;
     height: 100%;
 }
 
-/********************************************************************************************************************************************
+/***************************************************************************************************
 
     VIS PANEL CONTROLS
 
-********************************************************************************************************************************************/
+***************************************************************************************************/
 
 
-#eexcess_vis_panel_controls {
+#urank-vis-panel-controls {
     display: inline-flex;
     justify-content: space-between;
     align-items: stretch;
@@ -432,7 +428,7 @@ VIS PANEL (center of screen)
 *
 */
 
-#eexcess_ranking_controls {
+#urank-ranking-controls {
 	display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -442,7 +438,7 @@ VIS PANEL (center of screen)
 }
 
 
-#eexcess_ranking_controls button {
+#urank-ranking-controls button {
     min-width: 2.1em;
     height: 1.7em;
     margin: .6em .3em;
@@ -451,7 +447,7 @@ VIS PANEL (center of screen)
 }
 
 
-#eexcess_ranking_controls button img {
+#urank-ranking-controls button img {
     width: 100%;
     height: 100%;
 }
@@ -461,54 +457,14 @@ VIS PANEL (center of screen)
 *   Keyword box (upper mid-right header)
 *
 */
-#eexcess_keywords_box {
-	overflow-x: hidden;
-    overflow-y: auto;
-    display: inline-flex;
-    flex-wrap: wrap;
-    align-items: center;
+#urank-query-box {
     float: right;
-    width: 55%;
-    padding: 0em .3em;
+    width: 55%;background: -webkit-linear-gradient(top, rgba(245, 245, 245, 1), rgba(230, 230, 230, 1));
+
     background: -webkit-linear-gradient(top, rgba(245, 245, 245, 1), rgba(230, 230, 230, 1));
-    list-style-type: none;
-    text-align: left;
     box-shadow: inset .1em .1em .5em #ccc, inset -.1em -.1em .5em #ccc;
 }
 
-.ui-slider-horizontal {
-    height: .5em;
-    margin: .1em;
-}
-
-.ui-widget {
-	font-size: 1em;
-}
-
-.eexcess_weight_slider .ui-slider-range {
-	height: 100%;
-	font-size: 0.9em;
-	font-weight: normal;
-
-	border-radius: 0.3em;
-	-webkit-border-radius: 0.3em;
-}
-
-.ui-slider-range .label {
-	display: inline-block;
-	vertical-align: middle;
-	padding-left: 0.3em;
-	line-height: 1.7em;
-	font-size: 1.1em;
-}
-
-.ui-slider .ui-slider-handle {
-	top:-0.2em;
-	width: 0.4em;
-	height: .8em;
-	border-radius: 0.2em;
-	-webkit-border-radius: 0.2em;
-}
 
 
 /********************************************************************************************************************************************
@@ -535,283 +491,38 @@ VIS PANEL (center of screen)
 /*
     <div> container for the list of recommendations
 */
-#eexcess_content{
-	display: inline-block;
+#urank-content-list {
     float: left;
-	vertical-align: top;
     width: 45%;
 }
 
 
 
-/*
-    List body in "#eexcess_content"
-*/
-#eexcess_content ul{
-	clear:both;
-    width: 100%;
-    margin: 0;
-    margin-left: 1px;
-    padding: 0;
-    list-style: none;
-    display:block;
-    padding-bottom: 1px;
-
-}
-
-
-/*
-    <li> items in "#eexcess_content ul". Each <li> wraps 2 container <div>s: ".eexcess_item_ctl" and ".eexcess_title_container"
-*/
-.eexcess_list {
-    position: relative;
-    height: 26px;
-    vertical-align: top;
-    -webkit-transition: box-shadow 4s ease-in/* linear*/;
-}
-
-.eexcess_list a {
-    color: #333;
-}
-
-
-/***************	<li> background style   **************/
-
-.light_background {
-    background: #eee;
-}
-
-.dark_background {
-    background: #ddd;
-}
-
-/* <li> itmes' hover style */
-.eexcess_list_hover {
-    background: -webkit-linear-gradient(top, rgb(230, 230, 230) 75%, #ccc);
-}
-
-
-/***************	Watched list item   **************/
-
-.watched {
-    box-shadow: inset 1px 1px 2px rgba(128, 128, 128, 0.6), inset -1px -1px 2px rgba(128, 128, 128, 0.6);
-    -webkit-transition: box-shadow 0s linear;
-    z-index: 999;
-}
-
-/***************	Effects for list items when the ranking changes   **************/
-
-.eexcess_list_moving_up {
-    /*box-shadow: inset 1px 1px 2px rgba(0, 250, 0, 0.6), inset -1px -1px 2px rgba(0, 250, 0, 0.6);*/
-    box-shadow: inset 3px 0px rgba(0, 250, 0, 0.6);
-    -webkit-transition: box-shadow 0s linear;
-}
-
-.eexcess_list_moving_down {
-    /*box-shadow: inset 1px 1px 2px rgba(250, 10, 10, 0.6), inset -1px -1px 2px rgba(250, 10, 10, 0.6);*/
-    box-shadow: inset 3px 0px rgba(250, 10, 10, 0.6);
-    -webkit-transition: box-shadow 0s linear;
-}
-
-.eexcess_list_not_moving {
-    box-shadow: inset 1px 1px 2px rgba(128, 128, 128, 0.6), inset -1px -1px 2px rgba(128, 128, 128, 0.6);
-    -webkit-transition: box-shadow 0s linear;
-}
-
-/***************	content list ranking section	**************/
-
-
-.eexcess_ranking_container {
-    display: inline-block;
-    float: left;
-    height: 100%;
-    width: 51px;
-    padding-left: 1px;
-}
-
-
-.eexcess_ranking_pos {
-	display: inline-block;
-	float: left;
-	width: 18px;
-	height: 18px;
-	margin: 4px 2px;
-    /*background: -webkit-linear-gradient(top, rgba(255, 175, 0, 0.8) 75%, rgba(235, 155, 0, 0.8));*/
-    background: -webkit-linear-gradient(top, rgba(100, 100, 100, 0.8) 75%, rgba(50, 50, 50, 0.8));
-	-webkit-border-radius: 1em;
-	box-shadow: 0.05em 0.15em 0.3em #888;
-	line-height: 1.8em;
-	font-size: 0.8em;
-	vertical-align: middle;
-	text-align: center;
-	color: #fff;
-    text-shadow: 0em 0.1em #888;
-}
-
-
-.eexcess_ranking_posmoved {
-	display: inline-block;
-	float: left;
-	width: 24px;
-	height: 19px;
-    margin: 6px 2px 4px 2px;
-    line-height: 1.4em;
-    font-size: .8em;
-	font-weight: bold;
-	vertical-align: middle;
-	text-align: center;
-	color: #222;
-	text-shadow: 0em 0.1em 0 rgba(136, 136, 136, 0.5);
-}
-
-/***************	Encloses item title   **************/
-
-.eexcess_title_container {
-    display: inline-flex;
-    float: left;
-    align-items: center;
-    width: calc(100% - 95px);
-    height: 100%;
-    margin-left: 5px;
-    vertical-align: top;
-    text-align: left;
-}
-
-.watched .eexcess_title_container {
-    text-decoration: underline;
-}
-
-
-/***************	Encloses watch icon and fav icon   **************/
-
-.eexcess_listicon_section {
-    /*display: inline-flex;*/
-    float: right;
-    width: 38px;
-    height: 100%;
-    vertical-align: top;
-}
-
-.favicon, .watchicon {
-    margin-right: 2px;
-    cursor: pointer;
-    background-repeat: no-repeat;
-}
-
-.favicon {
-    float: right;
-    margin-top: 6px;
-    padding: 8px;
-}
-
-.watchicon {
-    float: left;
-    margin-top: 7px;
-    padding: 9px;
-    background-size: 14px;
-}
-
-
-.favicon_off {
-    background-image: url('../media/favicon_off.png');
-}
-
-.watchicon_off {
-    background-image: url('../media/batchmaster/watch-2.png');
-    opacity: 0.5;
-}
-
-.eexcess_list .favicon_off,
-.eexcess_list .watchicon_off {
-    display: none;
-}
-
-.eexcess_list:hover .favicon_off,
-.eexcess_list:hover .watchicon_off {
-    display: inline-block;
-    transition: all .2s ease-in-out;
-}
-
-
-.eexcess_list:hover .favicon_off:hover,
-.eexcess_list:hover .watchicon_off:hover {
-    transform: scale(1.1);
-}
-
-
-.favicon_on {
-    display: inline-block;
-    background-image: url('../media/favicon_on.png');
-    transition: all .2s ease-in-out;
-}
-
-.watchicon_on {
-    display: inline-block;
-    background-image: url('../media/batchmaster/watch.png');
-    transition: all .2s ease-in-out;
-}
-
-.favicon_on:hover, .watchicon_on:hover {
-    transform: scale(1.1);
-}
-
-
-/********************************************************************************************************************************************
+/**********************************************************************************
 
     Canvas section (right-center) - displays ranking vis
 
-********************************************************************************************************************************************/
+**********************************************************************************/
 
-
-/*
-    <div> where the charts (timeline, bar chart) are actually rendered
-*/
-#eexcess_canvas {
-	display: inline-block;
+#urank-canvas {
     width: 55%;
     min-height: 99%;
-	text-align: center;
 }
 
 
-/*
-    <div> appended to #eexcess_canvas when a message should be displayed. E.g. when a new search is triggered or no data are received.
-    Contains a <span> for the message and optionally an <img> tag (for the loading icon, only for the case of a new search )
-*/
-#eexcess_message_on_canvas{
-	display: block;
-	margin-top: 8em;
-	text-align: center;
-}
 
-
-/*
-    <span> in #eexcess_loading_results
-*/
-
-#eexcess_message_on_canvas span{
-	display: block;
-}
-
-
-#eexcess_loading_results span{
-	display: block;
-	font-size: 1.1em;
-}
-
-
-/********************************************************************************************************************************************
+/****************************************************************************************
 
     Document Panel (right) - for visualizing highlighted text
 
-********************************************************************************************************************************************/
+****************************************************************************************/
 
 
 /*
 *   Document Controls (upper right)
 *
 */
-#eexcess_document_panel {
+#urank-document-viewer {
     display: flex;
     flex-direction: column;
     float: right;
@@ -821,94 +532,6 @@ VIS PANEL (center of screen)
     background: -webkit-linear-gradient(top, rgba(175, 175, 175, 1), rgba(170, 170, 170, 1));
     box-shadow: inset .1em .1em .5em #aaa, inset -.1em -.1em .5em #aaa;
 }
-
-#eexcess_document_details {
-    display: flex;
-    flex-wrap: wrap;
-    height: 8em;
-    text-align: left;
-    padding: .5em;
-    color: snow;
-    text-shadow: 0em .1em #444
-}
-
-#eexcess_document_details div {
-    display: inline-flex;
-    width: 100%;
-    align-items: flex-start;
-    padding: .2em 0em;
-}
-
-#eexcess_document_details div label {
-    width: 44px;
-}
-
-#eexcess_document_details div h3 {
-    width: calc(100% - 44px);
-    height: 60px;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
-    color: snow;
-    /*text-shadow: 0em .1em green;*/
-    font-weight: bold;
-    font-size: 1em;
-    line-height: 1.1em;
-}
-
-#eexcess_document_details div h3 strong {
-    /*text-shadow: 0em .1em .5em white, 0em -.1em .5em white;*/
-    text-shadow: 0em .1em #444;
-}
-
-#eexcess_document_details div span {
-}
-
-#eexcess_document_viewer {
-    display: inline-block;
-    width: 100%;
-    height: calc(100% - 9em);
-    /*background: white;*/
-    background: -webkit-linear-gradient(top, rgba(30, 30, 30, 1), rgba(60, 60, 60, 1), rgba(30, 30, 30, 1));
-    box-shadow: inset .2em .2em .5em #ccc, inset -.2em -.2em .5em #ccc;
-    overflow-y: auto;
-}
-
-#eexcess_document_viewer p {
-    margin: .5em 1em;
-    font-size: .9em;
-    text-align: left;
-    /*color: #444;*/
-    color: white;
-}
-/*
-#eexcess_document_viewer p strong {
-    text-shadow: 0em .1em #444;
-}
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

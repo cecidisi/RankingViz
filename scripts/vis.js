@@ -1,11 +1,13 @@
+(function(){
+
 
 
     var options = {
-        tagCloudRoot: '#eexcess_keywords_container',
-        tagBoxRoot: '#eexcess_keywords_box',
-        contentListRoot: '#eexcess_content',
-        visCanvasRoot: '#eexcess_canvas',
-        docViewerRoot: '#eexcess_document_panel'
+        tagCloudRoot: '#urank-collection-keywords-box',
+        tagBoxRoot: '#urank-query-box',
+        contentListRoot: '#urank-content-list',
+        visCanvasRoot: '#urank-canvas',
+        docViewerRoot: '#urank-document-viewer'
     };
 
     var init = function(urank){
@@ -18,4 +20,6 @@
     };
 
     Urank(init, options, 'libs/urank/');
+
+})();
 

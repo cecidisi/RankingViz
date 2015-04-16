@@ -91,15 +91,17 @@ function TaskStorage() {
     
 
     
-    this.userCount = (function(value){
+    /*this.userCount = (function(value){
         if(value != null) return value; return 0;
-    })(getObject('userCount'));
+    })(getObject('userCount'));*/
+
+    this.userCount = getObject('userCount') ? getObject('userCount') : 0;
 
 
-    this.evaluationResults = (function(value){
+    /*this.evaluationResults = (function(value){
         if(value != null) return value; return [];
-    })(getObject('evaluationResults'));
+    })(getObject('evaluationResults'));*/
 
-
+    this.evaluationResults = getObject('evaluationResults') ? getObject('evaluationResults') : [];
     
 }
