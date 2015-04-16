@@ -23,6 +23,8 @@ var UrankController = (function(){
             docViewer.build();
             _this.selectedId = STR_UNDEFINED;
             _this.selectedKeywords = [];
+            $(s.root).off('mousedown', EVTHANDLER.onRootMouseDown).on('mousedown', EVTHANDLER.onRootMouseDown);
+
             s.onLoad.call(this, _this.keywords);
         },
         onChange: function(selectedKeywords, newQueryTermColorScale) {
@@ -38,6 +40,16 @@ var UrankController = (function(){
             docViewer.clear();
             tagCloud.removeEffects();
             s.onChange.call(this, rankingData, _this.selectedKeywords);
+        },
+        onRootMouseDown: function(event){
+            event.stopPropagation();
+            if(event.which == 1) {
+                contentList.deselectAllListItems();
+                contentList.hideUnrankedListItems(_this.rankingModel.getRanking());
+                visCanvas.deselectAllItems();
+                docViewer.clear();
+                tagCloud.removeEffects();
+            }
         },
         onTagInCloudMouseEnter: function(index) {
             tagCloud.hoverTag(index);
@@ -120,6 +132,10 @@ var UrankController = (function(){
             contentList.watchOrUnwatchListItem(documentId);
             s.onWatchiconClicked.call(this, documentId);
         },
+        onResize: function(event) {
+            visCanvas.resize();
+        },
+
         // Event handlers to return
         onRankByOverallScore: function() {
             _this.rankingMode = RANKING_MODE.overall_score;
@@ -142,18 +158,12 @@ var UrankController = (function(){
             _this.selectedKeywords = [];
             s.onReset.call(this);
         },
-        onResize: function(event) {
-            visCanvas.resize();
-        },
-        onClear: function(event){
-            event.stopPropagation();
-            if(event.which == 1) {
-                contentList.deselectAllListItems();
-                contentList.hideUnrankedListItems(_this.rankingModel.getRanking());
-                visCanvas.deselectAllItems();
-                docViewer.clear();
-                tagCloud.removeEffects();
-            }
+        onDestroy : function() {
+            tagCloud.destroy();
+            tagBox.destroy();
+            contentList.destroy();
+            visCanvas.destroy();
+            docViewer.destroy();
         }
     };
 
@@ -169,6 +179,7 @@ var UrankController = (function(){
 
         // user-defined arguments
         s = $.extend({
+            root: 'body',
             tagCloudRoot: '',
             tagBoxRoot: '',
             contentListRoot: '',
@@ -258,7 +269,6 @@ var UrankController = (function(){
         docViewer = new DocViewer(options.docViewer);
 
         $(window).resize(EVTHANDLER.onResize);
-        $('body').on('mousedown', EVTHANDLER.onClear);
     }
 
 
