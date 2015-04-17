@@ -1,0 +1,3 @@
+[submodule "modules/urank"]
+	path = modules/urank
+	url = https://github.com/cecidisi/uRank.git
