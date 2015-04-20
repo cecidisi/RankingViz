@@ -19,7 +19,7 @@
         $('#message').css('visibility', 'hidden');
     };
 
-    Urank(init, options, 'libs/urank/');
+    Urank(init, options, 'modules/urank/');
 
 })();
 
