@@ -1,7 +1,5 @@
 (function(){
 
-
-
     var options = {
         tagCloudRoot: '#urank-collection-keywords-box',
         tagBoxRoot: '#urank-query-box',

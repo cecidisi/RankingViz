@@ -48,10 +48,10 @@ function TaskStorage() {
     TaskStorage.prototype.restore = function(){
         var previous = previousResults();
         //console.log(JSON.stringify(previous));
-        setObject('evaluationResults', previous);
-        setObject('userCount', parseInt(previous[previous.length - 1].user));
-        this.userCount = getObject('userCount');
-        this.evaluationResults = getObject('evaluationResults');
+        this.evaluationResults = previous;
+        this.userCount = parseInt(previous[previous.length - 1].user);
+        setObject('evaluationResults', this.evaluationResults);
+        setObject('userCount', this.userCount);
         console.log('new results');
         console.log(this.evaluationResults);
         
