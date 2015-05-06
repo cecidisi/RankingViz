@@ -1,5 +1,7 @@
 (function Controls(){
 
+    var pathToServer = './server/';
+
     var taskStorage = new TaskStorage();
 
     var clearResults = function(){
@@ -41,30 +43,28 @@
                 { query: 'circular economy', keywords: ['management&waste', 'china&industrial&symbiosis', 'circular&economy&fossil&fuel&system&waste']}];
 
         taskStorage.getEvaluationResults().forEach(function(result){
-            var user_num = (result.user.toString().length == 1) ? '0'+result.user.toString() : result.user.toString();
             
             result["tasks-results"].forEach(function(task) {
-                if(task["tool-aided"] === 'yes') {
-                    task["questions-results"].forEach(function(question) {
-                        var kw = getKeywords(task.query, question["question-number"], kw_aux);
-                        question["selected-items"].forEach(function(item) {
-                            linked_user_doc_qk.push({
-                                user_id: 'user_' + user_num,
-                                document_id: item.id,
-                                document_title: item.title,
-                                query: task.query,
-                                keywords: kw
-                            });
+                task["questions-results"].forEach(function(question) {
+                    var kw = getKeywords(task.query, question["question-number"], kw_aux);
+                    question["selected-items"].forEach(function(item) {
+                        linked_user_doc_qk.push({
+                            user_id: 'user_' + result.user,
+                            document_id: item.id,
+                            document_title: item.title,
+                            query: task.query,
+                            keywords: kw
                         });
                     });
-                }
+                });
+
             });
         });
        // console.log('linked_user_doc_qk');
         //console.log(linked_user_doc_qk);
 
         function getKeywords(query, questionNumber, kw_aux) {
-            var index = kw_aux.getIndexOf(query, 'query');
+            var index = _.findIndex(kw_aux, function(kw){ return kw.query == query });
             return kw_aux[index].keywords[questionNumber - 1].split('&');
         }
         
